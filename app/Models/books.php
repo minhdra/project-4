@@ -25,4 +25,8 @@ class books extends Model
     public function publishers(){
         return $this->belongsTo(publishers::class,'publisherID');
     }
+
+    public function authors() {
+        return $this->hasOneThrough(authors::class, book_authors::class, 'authorID', 'id');
+    }
 }

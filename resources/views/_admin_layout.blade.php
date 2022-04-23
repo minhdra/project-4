@@ -27,7 +27,7 @@
   <link rel="stylesheet" type="text/css" href="/assets/admin/css/app.css">
 </head>
 
-<body data-col="2-columns" class=" 2-columns ">
+<body data-col="2-columns" class=" 2-columns " ng-app='app'>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
   <div class="wrapper">
 
@@ -67,6 +67,7 @@
   <!-- AngularJS -->
   <script src="/assets/js/angular.min.js"></script>
   <script src="/assets/js/dirPagination.js"></script>
+  <script src="/assets/js/controllers/initializationController.js"></script>
   @yield('js')
   
 
