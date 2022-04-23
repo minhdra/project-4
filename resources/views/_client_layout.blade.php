@@ -25,17 +25,17 @@
 <body>
 
   <!-- Header -->
-  @include('components.header')
+  @include('includes.client.header')
   
   <!-- Sidebar -->
-  @include('components.sidebar')
+  @include('includes.client.sidebar')
 
   <!-- Content -->
   @yield('content');
 
 
   <!-- Footer -->
-  @include('components.footer')
+  @include('includes.client.footer')
 
 
   <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>

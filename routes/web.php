@@ -48,3 +48,35 @@ Route::get('/shop/my-account', function () {
 Route::get('/shop/order-tracking', function () {
     return view('client.order-tracking');
 });
+
+/*---------------------------- Administration ------------------------------------ */
+
+Route::get('/admin', function () {
+    return view('admin.index');
+});
+
+Route::get('/admin/extended-table', function () {
+    return view('admin.extended-table');
+});
+
+Route::get('/admin/regular', function () {
+    return view('admin.regular');
+});
+
+Route::get('/admin/data-table', function () {
+    return view('admin.datatable-example');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
