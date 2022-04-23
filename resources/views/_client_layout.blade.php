@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/styles/theme.css">
 </head>
 
-<body>
+<body ng-app='app'>
 
   <!-- Header -->
   @include('includes.client.header')
@@ -107,6 +107,7 @@
   <!-- AngularJS -->
   <script src="/assets/js/angular.min.js"></script>
   <script src="/assets/js/dirPagination.js"></script>
+  <script src="/assets/js/controllers/initializationController.js"></script>
 
   @yield('js')
 </body>

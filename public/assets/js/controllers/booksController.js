@@ -1,9 +1,15 @@
 const baseApi = 'http://localhost:8000/api/';
-const nameController = 'test/';
+const nameController = 'books/';
 const nameChild = 'child/';
 
-const app = angular.module('app', []);
-app.controller('TestController', TestController);
-function TestController($scope, $http) {
-  $scope.hello = 'Hello bros';
+ 
+app.controller('booksController', booksController);
+function booksController($scope, $http) {
+  $http({
+    method: 'GET',
+    url: baseApi + nameController
+  }).then(function (response) {
+    $scope.data = response.data;
+    console.log(response.data);
+  }, error => console.log(error))
 }
