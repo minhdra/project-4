@@ -15,7 +15,8 @@ class booksController extends Controller
      */
     public function index()
     {
-        //
+        $books = books::with('categories')->get()::with('book_languages')->get()::with('publishers')->get();
+        return ['books'=>$books];
     }
 
     /**
