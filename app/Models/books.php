@@ -15,14 +15,14 @@ class books extends Model
     }
     
     public function categories(){
-        return $this->belongsTo(categories::class,'categoryID');
+        return $this->belongsTo(categories::class,'categoryID','id');
     }
 
     public function book_languages(){
-        return $this->belongsTo(book_languages::class,'languageID');
+        return $this->belongsTo(book_languages::class,'languageID','id');
     }
 
     public function publishers(){
-        return $this->belongsTo(publishers::class,'publisherID');
+        return $this->belongsTo(publishers::class,'publisherID','id');
     }
 }

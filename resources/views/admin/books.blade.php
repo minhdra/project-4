@@ -122,3 +122,7 @@
 
 </div>
 @stop
+
+@section('js')
+  <script src=""></script>
+@stop
