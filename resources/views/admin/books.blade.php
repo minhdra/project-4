@@ -1,6 +1,6 @@
 @extends('_admin_layout')
 @section('content')
-<div class="main-panel">
+<div class="main-panel" ng-controller="booksController">
   <div class="main-content">
     <div class="content-wrapper">
       <div class="container-fluid">
@@ -124,5 +124,5 @@
 @stop
 
 @section('js')
-  <script src=""></script>
+  <script src="/assets/js/controllers/booksController.js"></script>
 @stop
