@@ -79,10 +79,6 @@
   </div>
 </section>
 <!-- Test controller -->
-<!-- <div ng-app="app" ng-controller="TestController">
-  @{{hello}}
-</div> -->
-
 <!-- Featured categories -->
 <section class="space-bottom-3">
   <div class="container">
