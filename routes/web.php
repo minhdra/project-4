@@ -55,6 +55,8 @@ Route::get('/admin', function () {
     return view('admin.index');
 });
 
+        /*--------------------- example -------------------------- */
+
 Route::get('/admin/extended-table', function () {
     return view('admin.extended-table');
 });
@@ -67,9 +69,11 @@ Route::get('/admin/data-table', function () {
     return view('admin.datatable-example');
 });
 
+        /*--------------------- end example -------------------------- */
 
-
-
+Route::get('/admin/books', function () {
+    return view('admin.books');
+});
 
 
 
