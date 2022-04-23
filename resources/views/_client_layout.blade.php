@@ -104,6 +104,10 @@
       });
     });
   </script>
+  <!-- AngularJS -->
+  <script src="/assets/js/angular.min.js"></script>
+  <script src="/assets/js/dirPagination.js"></script>
+
   @yield('js')
 </body>
 
