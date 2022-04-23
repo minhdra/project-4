@@ -10,6 +10,10 @@ class books extends Model
     use HasFactory;
     protected $table = 'books';
 
+    public function Price() {
+        return $this->hasOne(prices::class, 'bookID', 'id');
+    }
+    
     public function categories(){
         return $this->belongsTo(categories::class,'categoryID');
     }
