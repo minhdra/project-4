@@ -45,5 +45,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('books', booksController::class);
+Route::resource('categories', categoriesController::class);
+Route::resource('publishers', publishersController::class);
+Route::resource('book_languages', book_languagesController::class);
 Route::post('book/upload', [booksController::class, 'uploadFile'])->name('upload.uploadfile');
 

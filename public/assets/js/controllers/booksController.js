@@ -1,5 +1,8 @@
 const baseApi = 'http://localhost:8000/api/';
 const nameController = 'books/';
+const categoryController = 'categories/'
+const publishersController = 'publishers/'
+const book_languagesController = 'book_languages/'
 const nameChild = 'child/';
 
 app.controller('booksController', booksController);
@@ -16,6 +19,27 @@ function booksController($scope, $http) {
     $scope.data = response.data;
     console.log(response.data);
   }, error => console.log(error))
+  //get drop down categories
+  $http({
+      method: "GET",
+      url:  baseApi + categoryController
+  }).then(function(response) {
+      $scope.categories = response.data.categories;
+  });
+  //get drop down publishers
+  $http({
+      method: "GET",
+      url:  baseApi + publishersController
+  }).then(function(response) {
+      $scope.publishers = response.data.publishers;
+  });
+  //get drop down book_languages
+  $http({
+      method: "GET",
+      url:  baseApi + book_languagesController
+  }).then(function(response) {
+      $scope.book_languages = response.data.book_languages;
+  });
 
 
   $scope.openModal = function(id) {
@@ -31,10 +55,13 @@ function booksController($scope, $http) {
             url: baseApi + nameController + id
         }).then(function(response) {
           $scope.book = response.data.book;
+          $scope.book.publisherID = String($scope.book.publisherID)
+          $scope.book.languageID = String($scope.book.languageID)
+          $scope.book.categoryID = String($scope.book.categoryID)
+    $('#large').modal('show');
           console.log($scope.book);
         }, error => console.log(error));
     }
-    $('#large').modal('show');
   }
 
   $scope.deleteClick = function(id) {

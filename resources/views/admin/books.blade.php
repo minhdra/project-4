@@ -1,16 +1,9 @@
 @extends('_admin_layout')
 @section('content')
-<div class="main-panel" ng-controller="booksController">
+<div ng-controller="booksController">
+<div class="main-panel" >
   <div class="main-content">
     <div class="content-wrapper">
-      <form method="post" action="{{route('upload.uploadfile')}}" id="" enctype="multipart/form-data">
-        @csrf
-        <div>
-          <label for="file">Choose file</label>
-          <input type="file" id="file" name="file">
-        </div>
-        <button type="submit" name="">Submit</button>
-      </form>
       <div class="container-fluid">
         <!--Extended Table starts-->
         <div class="row">
@@ -98,64 +91,71 @@
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
 	  					<label for="book-name">Tên sách</label>
-	  					<input type="text" class="form-control" id="book-name" [(ngModel)]="book.book_name" require>
+	  					<input type="text" class="form-control" id="book-name" ng-model="book.book_name" require>
 	  				</fieldset>
 	  			</div>
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
-	  					<label for="basicInput">Nhà xuất bản</label>
-	  					<input type="text" class="form-control" id="basicInput" require>
+	  					<label for="publisher">Nhà xuất bản</label>
+              <select class="form-control" name="publisher" id="publisher" ng-model="book.publisherID">
+                  <option ng-repeat="option in categories" value="@{{option.id}}">@{{option.category_name}}</option>
+              </select>
 	  				</fieldset>
 	  			</div>
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
-	  					<label for="basicInput">Ngôn ngữ</label>
-	  					<input type="text" class="form-control" id="basicInput" require>
+	  					<label for="language">Ngôn ngữ</label>
+              <select class="form-control" name="language" id="language" ng-model="book.languageID">
+                  <option ng-repeat="option in book_languages" value="@{{option.id}}">@{{option.language_name}}</option>
+              </select>
 	  				</fieldset>
 	  			</div>
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
-	  					<label for="basicInput">Loại sách</label>
-	  					<input type="text" class="form-control" id="basicInput" require>
+	  					<label for="category">Loại sách</label>
+              <select class="form-control" name="category" id="category" ng-model="book.categoryID">
+                  <option ng-repeat="option in categories" value="@{{option.id}}">@{{option.category_name}}</option>
+              </select>
 	  				</fieldset>
 	  			</div>
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
-	  					<label for="basicInput">ISNB</label>
-	  					<input type="text" class="form-control" id="basicInput" require>
+	  					<label for="isnb">ISNB</label>
+	  					<input type="text" class="form-control" id="isnb" ng-model="book.isnb" require>
 	  				</fieldset>
 	  			</div>
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
-	  					<label for="basicInput">Trọng lượng</label>
-	  					<input type="text" class="form-control" id="basicInput" require>
+	  					<label for="weight">Trọng lượng</label>
+	  					<input type="text" class="form-control" id="weight" ng-model="book.weight" require>
 	  				</fieldset>
 	  			</div>
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
-	  					<label for="basicInput">Kiểu sách</label>
-	  					<input type="text" class="form-control" id="basicInput" require>
+	  					<label for="type">Kiểu sách</label>
+	  					<input type="text" class="form-control" id="type" ng-model="book.type" require>
 	  				</fieldset>
 	  			</div>
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
-	  					<label for="basicInput">Kích thước</label>
-	  					<input type="text" class="form-control" id="basicInput" require>
+	  					<label for="dimensions">Kích thước</label>
+	  					<input type="text" class="form-control" id="dimensions" ng-model="book.dimensions" require>
 	  				</fieldset>
 	  			</div>
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
-	  					<label for="basicInput">Ngày xuất bản</label>
-	  					<input type="text" class="form-control" id="basicInput" require>
+	  					<label for="publish_date">Ngày xuất bản</label>
+	  					<input type="text" class="form-control" id="publish_date" ng-model="book.publish_date" require>
 	  				</fieldset>
 	  			</div>
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
-	  					<label for="basicInput">Số trang</label>
-	  					<input type="text" class="form-control" id="basicInput" require>
+	  					<label for="numpages">Số trang</label>
+	  					<input type="text" class="form-control" id="numpages" ng-model="book.numpages" require>
             </fieldset>
             <fieldset class="form-group">
               <label for="basicInput">Ảnh </label>
+              <form method="post" action="{{route('upload.uploadfile')}}" id="" enctype="multipart/form-data">
 	  					<input type="text" class="form-control" id="basicInput" require>
             </fieldset>
             <fieldset class="form-group">
@@ -165,8 +165,8 @@
 	  			</div>
           <div class="col-xl-8 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
-	  					<label for="basicInput">Mô tả</label>
-              <textarea name="des" class="form-control" id="basicInput" rows="8"></textarea>
+	  					<label for="description">Mô tả</label>
+              <textarea name="des" class="form-control" id="description" ng-model="book.description" rows="8"></textarea>
 	  				</fieldset>
 	  			</div>
 	  		</div>
@@ -181,7 +181,7 @@
   </div>
 </div>
 
-
+</div>
 @stop
 
 @section('js')

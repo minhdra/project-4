@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\book_languages;
 use App\Models\publishers;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class publishersController extends Controller
      */
     public function index()
     {
-        //
+        $publishers = publishers::all();
+        return ['publishers'=>$publishers];
     }
 
     /**

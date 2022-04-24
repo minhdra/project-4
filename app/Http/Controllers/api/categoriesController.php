@@ -15,7 +15,8 @@ class categoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = categories::all();
+        return ['categories'=>$categories];
     }
 
     /**

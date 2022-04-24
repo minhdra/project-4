@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\books;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class booksController extends Controller
 {
@@ -59,8 +60,20 @@ class booksController extends Controller
     public function show($id)
     {
         //sai vl
-        $book = books::where('id','=',$id)->get()::with('Price')->with('categories')->with('book_languages')->with('publishers')->get();
-        return ['book'=>$book];
+        // $book = DB::table('books')
+        // ->join('categories', 'books.categoryID', '=', 'categories.id')// joining the contacts table , where user_id and contact_user_id are same
+        // ->join('book_languages', 'books.languageID', '=', 'book_languages.id')// joining the contacts table , where user_id and contact_user_id are same
+        // ->join('publishers', 'books.publisherID', '=', 'publishers.id')// joining the contacts table , where user_id and contact_user_id are same
+        // ->where('books.id',$id)
+        // ->select('books.*','categories.category_name')
+        // ->get();
+        $books = books::where('id',$id)->first();
+        $book = $books->categories;
+        $book = $books->Price;
+        $book = $books->book_languages;
+        $book = $books->publishers;
+        $book = $books->authors;
+        return ['book'=>$books];
     }
 
     /**

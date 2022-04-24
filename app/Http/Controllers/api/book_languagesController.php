@@ -15,7 +15,8 @@ class book_languagesController extends Controller
      */
     public function index()
     {
-        //
+        $book_languages = book_languages::all();
+        return ['book_languages'=>$book_languages];
     }
 
     /**
