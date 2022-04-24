@@ -18,6 +18,16 @@ class booksController extends Controller
         return books::with('Price')->with('categories')->with('book_languages')->with('publishers')->with('authors')->get();
     }
 
+    public function uploadFile(Request $request) {
+        // return $request->file('file')->store('public');
+        if(!empty($request->file('file'))) {
+            $filename = time().'_'. $request->file('file')->getClientOriginalName();
+            $destination = public_path('assets/img/books');
+            $request->file('file')->move($destination, $filename);
+        }
+        return 'Success';
+    }
+
     /**
      * Show the form for creating a new resource.
      *

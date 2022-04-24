@@ -1,8 +1,17 @@
 @extends('_admin_layout')
 @section('content')
+
 <div class="main-panel">
   <div class="main-content">
     <div class="content-wrapper">
+      <form method="post" action="{{route('upload.uploadfile')}}" id="" enctype="multipart/form-data">
+        @csrf
+        <div>
+          <label for="file">Choose file</label>
+          <input type="file" id="file" name="file">
+        </div>
+        <button type="submit" name="">Submit</button>
+      </form>
       <div class="container-fluid">
         <!--Extended Table starts-->
         <div class="row">

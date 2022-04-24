@@ -45,5 +45,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('books', booksController::class);
-// Route::get('product/getNew', [ProductController::class, 'getNew']);
+Route::post('book/upload', [booksController::class, 'uploadFile'])->name('upload.uploadfile');
 
