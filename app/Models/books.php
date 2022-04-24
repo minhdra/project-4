@@ -11,7 +11,7 @@ class books extends Model
     protected $table = 'books';
 
     public function Price() {
-        return $this->hasOne(prices::class, 'bookID', 'id');
+        return $this->hasOne(prices::class, 'bookID', 'id')->where('end_date',null);
     }
     
     public function categories(){
