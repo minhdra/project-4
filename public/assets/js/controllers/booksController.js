@@ -42,6 +42,36 @@ function booksController($scope, $http) {
   });
 
 
+  var uploadFile = function(filedata,type='img'){
+    if (type == 'img'){
+      var imgtype=filedata.type;
+      var reader=new FileReader();
+      reader.onload=function(ev){
+        $('#img_prv').attr('src',ev.target.result).css('width','150px').css('height','150px');
+      }
+      reader.readAsDataURL(filedata);
+    }
+    //upload
+    var postData=new FormData();
+    postData.append('file',filedata);   
+    postData.append('type',type);   
+    $.ajax({
+      headers:{'X-CSRF-Token':$('meta[name=csrf_token]').attr('content')},
+      async:true,
+    type:"post",
+    contentType:false,
+    processData:false,
+    url:baseApi+'book/upload',
+    data:postData,
+    success:function(res){
+      console.log("success");
+    },
+    error:function(res){
+      console.log('loi');
+    }
+    });
+  }
+
   $scope.openModal = function(id) {
     // CKEDITOR.replace( 'des' );
     $scope.id = id;
@@ -58,10 +88,10 @@ function booksController($scope, $http) {
           $scope.book.publisherID = String($scope.book.publisherID)
           $scope.book.languageID = String($scope.book.languageID)
           $scope.book.categoryID = String($scope.book.categoryID)
-    $('#large').modal('show');
           console.log($scope.book);
         }, error => console.log(error));
     }
+    $('#large').modal('show');
   }
 
   $scope.deleteClick = function(id) {
@@ -104,48 +134,13 @@ function booksController($scope, $http) {
     }
 
     $('#img_file_upid').on('change',function(ev){
-
       var filedata=this.files[0];
-      var imgtype=filedata.type;
-   
-   
-      var match=['image/jpeg','image/jpg'];
-      if(!(imgtype==match[0])||(imgtype==match[1])){
-        alert('lỗi')
-      }
-      else{
-        var reader=new FileReader();
-   
-        reader.onload=function(ev){
-          $('#img_prv').attr('src',ev.target.result).css('width','150px').css('height','150px');
-        }
-        reader.readAsDataURL(this.files[0]);
-    
-        /// preview end
-    
-            //upload
-    
-            var postData=new FormData();
-            postData.append('file',this.files[0]);
-    
-  
-    
-            $.ajax({
-            headers:{'X-CSRF-Token':$('meta[name=csrf_token]').attr('content')},
-            async:true,
-            type:"post",
-            contentType:false,
-            url:baseApi+nameController+'upload',
-            data:postData,
-            processData:false,
-            success:function(){
-              console.log("success");
-            }
-    
-    
-            });
-          }
-    
-        })
+      uploadFile(filedata);
+    })
+
+    $('#pdf_file_upid').on('change',function(ev){
+      var filedata=this.files[0];
+      uploadFile(filedata,'pdf');
+    })
 }
 

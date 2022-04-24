@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\books;
 use Illuminate\Http\Request;
+use File;
 use Illuminate\Support\Facades\DB;
 
 class booksController extends Controller
@@ -19,6 +20,18 @@ class booksController extends Controller
         $books = books::with('Price')->with('categories')->with('book_languages')->with('publishers')->get();
         return ['books'=>$books];
     }
+
+    public function uploadFile(Request $request) {
+        $type = $request->type;
+        $data = $request->file('file');
+        $filename = $request->file('file')->getClientOriginalName();
+        $path = ($type == 'img') ? public_path('/assets/img/books/') : public_path('/assets/pdf/');
+        $data->move($path, $filename);
+        return response()->json([
+            'success' => 'done',
+            'valueimg'=>$data ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -33,16 +33,18 @@
                           <th>Tên sách</th>
                           <th>Nhà xuất bản</th>
                           <th>Ngôn ngữ</th>
+                          <th>Giá bán</th>
                           <th>Hình ảnh</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr dir-paginate="book in data.books|filter: q|itemsPerPage:10" current-page="currentPage">
-                          <td>@{{$index+1}}</td>
-                          <td>@{{book.book_name}}</td>
-                          <td>@{{book.publishers.publisher_name}}</td>
-                          <td>@{{book.book_languages.language_name}}</td>
+                          <td >@{{$index+1}}</td>
+                          <td >@{{book.book_name}}</td>
+                          <td >@{{book.publishers.publisher_name}}</td>
+                          <td >@{{book.book_languages.language_name}}</td>
+                          <td align="right">@{{book.price.price}}</td>
                           <td style="padding: 4px;"><img src="/assets/img/books/@{{book.image}}" style='height:40px;' alt=""></td>
                           <td>
                             <a class="success p-0" data-original-title="" title="" ng-click="openModal(book.id)">
@@ -156,18 +158,18 @@
 	  			</div>
           <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
             <fieldset class="form-group">
-                <label for="basicInput">Ảnh </label>
-                <input type="file" name="file_img" id="img_file_upid">
+                <label for="file_img">Ảnh </label>
+                <input type="file" accept="image/*" name="file_img" id="img_file_upid">
                 <div class="row">
-                  <img ng-if="book.image == null" src="/assets/img/books/gosick-9.jpg" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
-                  <img id="img_prv" ng-if="book.image != null" src="/assets/img/books/@{{book.image}}" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
+                  <img ng-if="book.image == ''" src="/assets/img/books/book_temp.png" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
+                  <img id="img_prv" ng-if="book.image != ''" src="/assets/img/books/@{{book.image}}" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
                 </div>
               </fieldset>
 	  			</div>
           <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
             <fieldset class="form-group">
-              <label for="basicInput">PDF</label>
-	  					<input type="text" class="form-control" id="basicInput" require>
+              <label for="file_pdf">PDF xem qua</label>
+	  					<input type="file" accept="application/pdf" name="file_pdf" id="pdf_file_upid">
 	  				</fieldset>
 	  			</div>
 

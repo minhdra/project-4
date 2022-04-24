@@ -49,5 +49,5 @@ Route::resource('categories', categoriesController::class);
 Route::resource('publishers', publishersController::class);
 Route::resource('book_languages', book_languagesController::class);
 
-Route::post('book/upload', [booksController::class, 'uploadFile']);
+Route::post('book/upload', [booksController::class, 'uploadFile'])->name('upload.uploadfile');
 
