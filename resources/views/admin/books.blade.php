@@ -89,8 +89,8 @@
 	  		<div class="row">
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
-	  					<label for="basicInput">Tên sách</label>
-	  					<input type="text" class="form-control" id="basicInput" require>
+	  					<label for="book-name">Tên sách</label>
+	  					<input type="text" class="form-control" id="book-name" [(ngModel)]="book.book_name" require>
 	  				</fieldset>
 	  			</div>
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">

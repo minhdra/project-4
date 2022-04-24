@@ -4,9 +4,11 @@ const nameChild = 'child/';
 
 app.controller('booksController', booksController);
 function booksController($scope, $http) {
+  //set begin
   $scope.currentPage = 1;
   $scope.pageSize = 10;
-
+  $scope.book= [];
+  //set begin
   $http({
     method: 'GET',
     url: baseApi + nameController
@@ -21,19 +23,16 @@ function booksController($scope, $http) {
     $scope.id = id;
     if (id == 0) {
         $scope.modalTitle = "Thêm sách mới";
-        // $scope.product = null;
+        $scope.book = null;
     } else {
         $scope.modalTitle = "Chỉnh sửa thông tin sách";
-        // $http({
-        //     method: "GET",
-        //     url: "http://localhost:8000/api/products/" + id
-        // }).then(function(response) {
-        //     $scope.product = response.data[0];
-        //     $scope.product.id_loai_sp +='';
-        //     $scope.product.id_ncc +='';
-        //     console.log($scope.product)
-        //     CKEDITOR.replace( 'product.mota_sp' );
-        // });
+        $http({
+            method: "GET",
+            url: baseApi + nameController + id
+        }).then(function(response) {
+          $scope.book = response.data.book;
+          console.log($scope.book);
+        }, error => console.log(error));
     }
     $('#large').modal('show');
   }
