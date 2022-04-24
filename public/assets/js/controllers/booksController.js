@@ -102,4 +102,50 @@ function booksController($scope, $http) {
             // });
         }
     }
+
+    $('#img_file_upid').on('change',function(ev){
+
+      var filedata=this.files[0];
+      var imgtype=filedata.type;
+   
+   
+      var match=['image/jpeg','image/jpg'];
+      if(!(imgtype==match[0])||(imgtype==match[1])){
+        alert('lỗi')
+      }
+      else{
+        var reader=new FileReader();
+   
+        reader.onload=function(ev){
+          $('#img_prv').attr('src',ev.target.result).css('width','150px').css('height','150px');
+        }
+        reader.readAsDataURL(this.files[0]);
+    
+        /// preview end
+    
+            //upload
+    
+            var postData=new FormData();
+            postData.append('file',this.files[0]);
+    
+  
+    
+            $.ajax({
+            headers:{'X-CSRF-Token':$('meta[name=csrf_token]').attr('content')},
+            async:true,
+            type:"post",
+            contentType:false,
+            url:baseApi+nameController+'upload',
+            data:postData,
+            processData:false,
+            success:function(){
+              console.log("success");
+            }
+    
+    
+            });
+          }
+    
+        })
 }
+
