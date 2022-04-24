@@ -152,18 +152,27 @@
 	  				<fieldset class="form-group">
 	  					<label for="numpages">Số trang</label>
 	  					<input type="text" class="form-control" id="numpages" ng-model="book.numpages" require>
-            </fieldset>
+            </fieldset>     
+	  			</div>
+          <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
             <fieldset class="form-group">
-              <label for="basicInput">Ảnh </label>
-              <form method="post" action="{{route('upload.uploadfile')}}" id="" enctype="multipart/form-data">
-	  					<input type="text" class="form-control" id="basicInput" require>
-            </fieldset>
+                <label for="basicInput">Ảnh </label>
+                <input type="file" name="file_img" id="img_file_upid">
+                <div class="row">
+                  <img ng-if="book.image == null" src="/assets/img/books/gosick-9.jpg" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
+                  <img id="img_prv" ng-if="book.image != null" src="/assets/img/books/@{{book.image}}" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
+                </div>
+              </fieldset>
+	  			</div>
+          <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
             <fieldset class="form-group">
               <label for="basicInput">PDF</label>
 	  					<input type="text" class="form-control" id="basicInput" require>
 	  				</fieldset>
 	  			</div>
-          <div class="col-xl-8 col-lg-6 col-md-12 mb-1">
+
+
+          <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
 	  				<fieldset class="form-group">
 	  					<label for="description">Mô tả</label>
               <textarea name="des" class="form-control" id="description" ng-model="book.description" rows="8"></textarea>
@@ -186,4 +195,7 @@
 
 @section('js')
   <script src="/assets/js/controllers/booksController.js"></script>
+  <script>
+  
+  </script>
 @stop

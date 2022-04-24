@@ -19,17 +19,6 @@ class booksController extends Controller
         $books = books::with('Price')->with('categories')->with('book_languages')->with('publishers')->get();
         return ['books'=>$books];
     }
-
-    public function uploadFile(Request $request) {
-        // return $request->file('file')->store('public');
-        if(!empty($request->file('file'))) {
-            $filename = time().'_'. $request->file('file')->getClientOriginalName();
-            $destination = public_path('assets/img/books');
-            $request->file('file')->move($destination, $filename);
-        }
-        return 'Success';
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -59,14 +48,6 @@ class booksController extends Controller
      */
     public function show($id)
     {
-        //sai vl
-        // $book = DB::table('books')
-        // ->join('categories', 'books.categoryID', '=', 'categories.id')// joining the contacts table , where user_id and contact_user_id are same
-        // ->join('book_languages', 'books.languageID', '=', 'book_languages.id')// joining the contacts table , where user_id and contact_user_id are same
-        // ->join('publishers', 'books.publisherID', '=', 'publishers.id')// joining the contacts table , where user_id and contact_user_id are same
-        // ->where('books.id',$id)
-        // ->select('books.*','categories.category_name')
-        // ->get();
         $books = books::where('id',$id)->first();
         $book = $books->categories;
         $book = $books->Price;
