@@ -25,6 +25,7 @@
   <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/perfect-scrollbar.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/prism.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/css/app.css">
+  <link rel="stylesheet" type="text/css" href="/assets/styles/custom_theme.css">
 </head>
 
 <body data-col="2-columns" class=" 2-columns " ng-app='app'>
@@ -60,6 +61,7 @@
   <script src="/assets/admin/js/app-sidebar.js"></script>
   <script src="/assets/admin/js/notification-sidebar.js"></script>
   <script src="/assets/admin/js/customizer.js"></script>
+  <!-- <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script> -->
   <!-- END CONVEX JS-->
   <!-- BEGIN PAGE LEVEL JS-->
   <!-- END PAGE LEVEL JS-->

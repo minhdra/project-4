@@ -11,19 +11,19 @@ class books extends Model
     protected $table = 'books';
 
     public function Price() {
-        return $this->hasOne(prices::class, 'bookID', 'id');
+        return $this->hasOne(prices::class, 'bookID', 'id')->where('end_date',null);
     }
     
     public function categories(){
-        return $this->belongsTo(categories::class,'categoryID');
+        return $this->belongsTo(categories::class,'categoryID','id');
     }
 
     public function book_languages(){
-        return $this->belongsTo(book_languages::class,'languageID');
+        return $this->belongsTo(book_languages::class,'languageID','id');
     }
 
     public function publishers(){
-        return $this->belongsTo(publishers::class,'publisherID');
+        return $this->belongsTo(publishers::class,'publisherID','id');
     }
 
     public function authors() {

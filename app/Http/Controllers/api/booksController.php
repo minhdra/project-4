@@ -15,7 +15,8 @@ class booksController extends Controller
      */
     public function index()
     {
-        return books::with('Price')->with('categories')->with('book_languages')->with('publishers')->with('authors')->get();
+        $books = books::with('Price')->with('categories')->with('book_languages')->with('publishers')->get();
+        return ['books'=>$books];
     }
 
     public function uploadFile(Request $request) {
@@ -55,9 +56,11 @@ class booksController extends Controller
      * @param  \App\Models\books  $books
      * @return \Illuminate\Http\Response
      */
-    public function show(books $books)
+    public function show($id)
     {
-        //
+        //sai vl
+        $book = books::where('id','=',$id)->get()::with('Price')->with('categories')->with('book_languages')->with('publishers')->get();
+        return ['book'=>$book];
     }
 
     /**
