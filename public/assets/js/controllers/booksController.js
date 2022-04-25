@@ -136,7 +136,7 @@ function booksController($scope, $http) {
     if ($scope.book.publish_date)
       $scope.book.publish_date = convertDate($scope.book.publish_date);
     //dang them moi sp
-    $scope.book.image = $scope.image;
+    $scope.book.image = $scope.image ? $scope.image : $scope.book.image;
     $scope.book.pdf_src = $scope.pdf_src;
     if ($scope.id == 0) {
       $http({

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\atuhors;
+use App\Models\authors;
 use Illuminate\Http\Request;
 
-class atuhorsController extends Controller
+class authorsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class atuhorsController extends Controller
      */
     public function index()
     {
-        //
+        return authors::all();
     }
 
     /**
@@ -36,51 +36,60 @@ class atuhorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $db = new authors();
+        $db->author_name = $request->author_name;
+        $db->is_active = 1;
+        $db->save();
+        return $db;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\atuhors  $atuhors
+     * @param  \App\Models\authors  $authors
      * @return \Illuminate\Http\Response
      */
-    public function show(atuhors $atuhors)
+    public function show($id)
     {
-        //
+        $db = authors::find($id);
+        return $db;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\atuhors  $atuhors
+     * @param  \App\Models\authors  $authors
      * @return \Illuminate\Http\Response
      */
-    public function edit(atuhors $atuhors)
+    public function edit()
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\atuhors  $atuhors
+     * @param  \App\Models\authors  $authors
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, atuhors $atuhors)
+    public function update(Request $request, $id)
     {
-        //
+        $db = authors::find($id);
+        $db->author_name = $request->author_name;
+        $db->save();
+        return $db;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\atuhors  $atuhors
+     * @param  \App\Models\authors  $authors
      * @return \Illuminate\Http\Response
      */
-    public function destroy(atuhors $atuhors)
+    public function destroy($id)
     {
-        //
+        authors::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

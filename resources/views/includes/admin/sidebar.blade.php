@@ -7,21 +7,19 @@
   <div class="sidebar-content">
     <div class="nav-container">
       <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-        <li class="has-sub nav-item"><a href="#"><i class="icon-home"></i><span data-i18n="" class="menu-title">Dashboard</span><span class="tag badge badge-pill badge-danger mt-1">2</span></a>
-          <ul class="menu-content">
-            <li class="active"><a href="/admin" class="menu-item">eCommerce</a>
-            </li>
-            <li><a href="dashboard-analytics.html" class="menu-item">Analytics</a>
-            </li>
-          </ul>
+        <li class="nav-item active"><a href="/admin" class="menu-item"><i class="icon-home"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
         </li>
-        <li class="has-sub nav-item"><a href="#"><i class="icon-screen-desktop"></i><span data-i18n="" class="menu-title">Apps</span></a>
+        <li class="has-sub nav-item"><a href="#"><i class="icon-screen-desktop"></i><span data-i18n="" class="menu-title">Nhà sách</span></a>
           <ul class="menu-content">
-            <li><a href="chat.html" class="menu-item">Chat</a>
+            <li><a href="/admin/books" class="menu-item">Quản lý sách</a>
             </li>
-            <li><a href="taskboard.html" class="menu-item">Taskboard</a>
+            <li><a href="/admin/categories" class="menu-item">Quản lý thể loại sách</a>
             </li>
-            <li><a href="calendar.html" class="menu-item">Calendar</a>
+            <li><a href="/admin/authors" class="menu-item">Quản ý tác giả</a>
+            </li>
+            <li><a href="/admin/publishers" class="menu-item">Quản lý nhà xuất bản</a>
+            </li>
+            <li><a href="/admin/languages" class="menu-item">Quản lý ngôn ngữ</a>
             </li>
           </ul>
         </li>

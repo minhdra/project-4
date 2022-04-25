@@ -36,7 +36,12 @@ class book_authorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $db = new book_authors();
+        $db->authorID = $request->authorID;
+        $db->id = $request->id;
+        $db->is_active = 1;
+        $db->save();
+        return $db;
     }
 
     /**

@@ -37,7 +37,11 @@ class categoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $db = new categories();
+        $db->category_name = $request->category_name;
+        $db->is_active = 1;
+        $db->save();
+        return $db;
     }
 
     /**
@@ -46,9 +50,10 @@ class categoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(categories $categories)
+    public function show($id)
     {
-        //
+        $db = categories::find($id);
+        return $db;
     }
 
     /**
@@ -57,9 +62,9 @@ class categoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(categories $categories)
+    public function edit()
     {
-        //
+        
     }
 
     /**
@@ -69,9 +74,12 @@ class categoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, categories $categories)
+    public function update(Request $request, $id)
     {
-        //
+        $db = categories::find($id);
+        $db->category_name = $request->category_name;
+        $db->save();
+        return $db;
     }
 
     /**
@@ -80,8 +88,9 @@ class categoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(categories $categories)
+    public function destroy($id)
     {
-        //
+        categories::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

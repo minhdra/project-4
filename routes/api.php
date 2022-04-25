@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\api\address_statusController;
 use App\Http\Controllers\api\addressController;
-use App\Http\Controllers\api\atuhorsController;
+use App\Http\Controllers\api\authorsController;
 use App\Http\Controllers\api\book_authorsController;
 use App\Http\Controllers\api\book_languagesController;
 use App\Http\Controllers\api\BookController;
@@ -48,6 +48,7 @@ Route::resource('books', booksController::class);
 Route::resource('categories', categoriesController::class);
 Route::resource('publishers', publishersController::class);
 Route::resource('book_languages', book_languagesController::class);
+Route::resource('authors', authorsController::class);
 
 Route::post('book/upload', [booksController::class, 'uploadFile'])->name('upload.uploadfile');
 

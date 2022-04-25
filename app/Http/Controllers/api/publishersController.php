@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\book_languages;
 use App\Models\publishers;
 use Illuminate\Http\Request;
 
@@ -38,7 +37,11 @@ class publishersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $db = new publishers();
+        $db->publisher_name = $request->publisher_name;
+        $db->is_active = 1;
+        $db->save();
+        return $db;
     }
 
     /**
@@ -47,9 +50,10 @@ class publishersController extends Controller
      * @param  \App\Models\publishers  $publishers
      * @return \Illuminate\Http\Response
      */
-    public function show(publishers $publishers)
+    public function show($id)
     {
-        //
+        $db = publishers::find($id);
+        return $db;
     }
 
     /**
@@ -58,9 +62,9 @@ class publishersController extends Controller
      * @param  \App\Models\publishers  $publishers
      * @return \Illuminate\Http\Response
      */
-    public function edit(publishers $publishers)
+    public function edit()
     {
-        //
+        
     }
 
     /**
@@ -70,9 +74,12 @@ class publishersController extends Controller
      * @param  \App\Models\publishers  $publishers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, publishers $publishers)
+    public function update(Request $request, $id)
     {
-        //
+        $db = publishers::find($id);
+        $db->publisher_name = $request->publisher_name;
+        $db->save();
+        return $db;
     }
 
     /**
@@ -81,8 +88,9 @@ class publishersController extends Controller
      * @param  \App\Models\publishers  $publishers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(publishers $publishers)
+    public function destroy($id)
     {
-        //
+        publishers::findOrFail($id)->delete();
+        return "Deleted";
     }
 }

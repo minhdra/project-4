@@ -1,22 +1,22 @@
 const baseApi = 'http://localhost:8000/api/';
-const nameController = 'publishers/';
+const nameController = 'authors/';
 const nameChild = 'child/';
 const successStatus = 'success';
 const errorStatus = 'danger';
 
-app.controller('publishersController', publishersController);
-function publishersController($scope, $http) {
+app.controller('authorsController', authorsController);
+function authorsController($scope, $http) {
   //set begin
   $scope.currentPage = 1;
   $scope.pageSize = 10;
   $scope.item;
-  //get all publishers
+  //get all authors
   $http({
     method: 'GET',
     url: baseApi + nameController,
   }).then(
     function (response) {
-      $scope.data = response.data.publishers;
+      $scope.data = response.data;
       console.log(response.data);
     },
     (error) => console.log(error)
@@ -26,10 +26,10 @@ function publishersController($scope, $http) {
     // CKEDITOR.replace( 'des' );
     $scope.id = id;
     if (id == 0) {
-      $scope.modalTitle = 'Thêm nhà xuất bản mới';
+      $scope.modalTitle = 'Thêm tác giả mới';
       $scope.book = null;
     } else {
-      $scope.modalTitle = 'Chỉnh sửa thông tin nhà xuất bản';
+      $scope.modalTitle = 'Chỉnh sửa thông tin tác giả';
       $http({
         method: 'GET',
         url: baseApi + nameController + id,

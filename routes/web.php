@@ -75,8 +75,21 @@ Route::get('/admin/books', function () {
     return view('admin.books');
 });
 
+Route::get('/admin/authors', function () {
+    return view('admin.authors');
+});
 
+Route::get('/admin/languages', function () {
+    return view('admin.languages');
+});
 
+Route::get('/admin/publishers', function () {
+    return view('admin.publishers');
+});
+
+Route::get('/admin/categories', function () {
+    return view('admin.categories');
+});
 
 
 

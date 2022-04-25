@@ -37,7 +37,12 @@ class book_languagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $db = new book_languages();
+        $db->language_name = $request->language_name;
+        $db->language_code = $request->language_code;
+        $db->is_active = 1;
+        $db->save();
+        return $db;
     }
 
     /**
@@ -46,9 +51,10 @@ class book_languagesController extends Controller
      * @param  \App\Models\book_languages  $book_languages
      * @return \Illuminate\Http\Response
      */
-    public function show(book_languages $book_languages)
+    public function show($id)
     {
-        //
+        $db = book_languages::find($id);
+        return $db;
     }
 
     /**
@@ -57,9 +63,9 @@ class book_languagesController extends Controller
      * @param  \App\Models\book_languages  $book_languages
      * @return \Illuminate\Http\Response
      */
-    public function edit(book_languages $book_languages)
+    public function edit()
     {
-        //
+        
     }
 
     /**
@@ -69,9 +75,13 @@ class book_languagesController extends Controller
      * @param  \App\Models\book_languages  $book_languages
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, book_languages $book_languages)
+    public function update(Request $request, $id)
     {
-        //
+        $db = book_languages::find($id);
+        $db->language_name = $request->language_name;
+        $db->language_code = $request->language_code;
+        $db->save();
+        return $db;
     }
 
     /**
@@ -80,8 +90,9 @@ class book_languagesController extends Controller
      * @param  \App\Models\book_languages  $book_languages
      * @return \Illuminate\Http\Response
      */
-    public function destroy(book_languages $book_languages)
+    public function destroy($id)
     {
-        //
+        book_languages::findOrFail($id)->delete();
+        return "Deleted";
     }
 }
