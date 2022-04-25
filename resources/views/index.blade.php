@@ -394,7 +394,7 @@
     <div class="tab-content" id="featuredBooksContent">
       <div class="tab-pane fade show active" id="featured" role="tabpanel" aria-labelledby="featured-tab">
         <ul class="products list-unstyled row no-gutters row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-wd-6 border-top border-left my-0">
-          <li class="product col" ng-repeat="row in data">
+          <li class="product col" ng-repeat="row in data.books">
             <div class="product__inner overflow-hidden p-3 p-md-4d875">
               <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                 <div class="woocommerce-loop-product__thumbnail">
@@ -2669,7 +2669,7 @@
         <a href="../others/authors-single.html" class="text-reset">
           <img src="/assets/img/140x140/img2.jpg" class="mx-auto mb-5 d-block rounded-circle" alt="image-description">
           <div class="author__body text-center">
-            <h2 class="author__name h6 mb-0">Stephen King</h2>
+            <h2 class="authorf__name h6 mb-0">Stephen King</h2>
             <div class="text-gray-700 font-size-2">25 Published Books</div>
           </div>
         </a>
