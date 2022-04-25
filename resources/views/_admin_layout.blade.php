@@ -23,6 +23,7 @@
   <link rel="stylesheet" type="text/css" href="/assets/admin/fonts/feather/style.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/fonts/simple-line-icons/style.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/fonts/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/perfect-scrollbar.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/prism.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/css/app.css">
@@ -41,7 +42,7 @@
     @include('includes.admin.header')
 
     <!-- Content -->
-    @yield('content');
+    @yield('content')
     
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
