@@ -11,6 +11,8 @@ function booksController($scope, $http) {
   $scope.currentPage = 1;
   $scope.pageSize = 10;
   $scope.book= [];
+  $scope.image= "";
+  $scope.pdf_src= "";
   //set begin
   $http({
     method: 'GET',
@@ -50,11 +52,17 @@ function booksController($scope, $http) {
         $('#img_prv').attr('src',ev.target.result).css('width','150px').css('height','150px');
       }
       reader.readAsDataURL(filedata);
+      $scope.image=filedata.name;
+    }
+    else{
+      $scope.pdf_src=filedata.name;
     }
     //upload
     var postData=new FormData();
     postData.append('file',filedata);   
     postData.append('type',type);   
+    
+
     $.ajax({
       headers:{'X-CSRF-Token':$('meta[name=csrf_token]').attr('content')},
       async:true,
@@ -95,41 +103,41 @@ function booksController($scope, $http) {
   }
 
   $scope.deleteClick = function(id) {
-    // var hoi = confirm("Ban co muon xoa that khong");
-    // if (hoi) {
-    //     $http({
-    //         method: "DELETE",
-    //         url: "http://localhost:8000/api/products/" + id
-    //     }).then(function(response) {
-    //         $scope.message = response.data;
-    //         location.reload();
-    //     });
-    // }
+    var hoi = confirm("Ban co muon xoa that khong");
+    if (hoi) {
+        $http({
+            method: "DELETE",
+            url:  baseApi + nameController + $scope.id
+        }).then(function(response) {
+            $scope.message = response.data;
+            location.reload();
+        });
+    }
 }
   $scope.saveData = function() {
         if ($scope.id == 0) { //dang them moi sp
-            // $http({
-            //     method: "POST",
-            //     url: "http://localhost:8000/api/products",
-            //     data: $scope.product,
-            //     "content-Type": "application/json"
-            // }).then(function(response) {
-            //     $scope.message = response.data;
-            //     console.log(response.data);
-            //     location.reload();
-            // });
+            $scope.book.image = $scope.image;
+            $scope.book.pdf_src = $scope.pdf_src;
+            $http({
+                method: "POST",
+                url: baseApi + nameController,
+                data: $scope.book,
+                "content-Type": "application/json"
+            }).then(function(response) {
+                console.log(response);
+                location.reload();
+            });
         } else { //sua san pham
-            // $http({
-            //     method: "PUT",
-            //     url: "http://localhost:8000/api/products/" + $scope.id,
-            //     data: $scope.product,
-            //     "content-Type": "application/json"
-            // }).then(function(response) {
-            //     $scope.message = response.data;
-            //     console.log(response.data);
-            //     location.reload();
-
-            // });
+            $http({
+                method: "PUT",
+                url: baseApi + nameController + $scope.id,
+                data: $scope.book,
+                "content-Type": "application/json"
+            }).then(function(response) {
+                $scope.message = response.data;
+                console.log(response.data);
+                location.reload();
+            });
         }
     }
 

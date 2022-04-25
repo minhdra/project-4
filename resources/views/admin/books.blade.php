@@ -147,7 +147,7 @@
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
 	  				<fieldset class="form-group">
 	  					<label for="publish_date">Ngày xuất bản</label>
-	  					<input type="text" class="form-control" id="publish_date" ng-model="book.publish_date" require>
+              <input type="datetime-local" class="form-control" id="" ng-model="book.publish_date"  name="publish_date">
 	  				</fieldset>
 	  			</div>
 	  			<div class="col-xl-4 col-lg-6 col-md-12 mb-1">
@@ -161,8 +161,8 @@
                 <label for="file_img">Ảnh </label>
                 <input type="file" accept="image/*" name="file_img" id="img_file_upid">
                 <div class="row">
-                  <img ng-if="book.image == ''" src="/assets/img/books/book_temp.png" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
-                  <img id="img_prv" ng-if="book.image != ''" src="/assets/img/books/@{{book.image}}" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
+                  <img ng-if="book.image == '' || book.image==null" src="/assets/img/books/book_temp.png" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
+                  <img id="img_prv" ng-if="book.image != '' && book.image!=null" src="/assets/img/books/@{{book.image}}" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
                 </div>
               </fieldset>
 	  			</div>

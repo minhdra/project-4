@@ -5,7 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\books;
 use Illuminate\Http\Request;
-use File;
+use DateTime;
 use Illuminate\Support\Facades\DB;
 
 class booksController extends Controller
@@ -50,7 +50,24 @@ class booksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $db = new books();
+        $db->book_name  = $request->book_name;
+        $db->categoryID =$request->categoryID;
+        $db->description=$request->description;
+        $db->dimensions=$request->dimensions;
+        $db->image=$request->image;
+        $db->isnb=$request->isnb;
+        $db->languageID=$request->languageID;
+        $db->numpages=$request->numpages;
+        $db->pdf_src=$request->pdf_src;
+        $db->publish_date=$request->publish_date;
+        $db->publisherID=$request->publisherID;
+        $db->type=$request->type;
+        $db->weight = $request->weight; 
+        $db->is_active = 1; 
+        $db->created_at = new Datetime();
+        $db->save();
+        return $db;
     }
 
     /**
@@ -88,9 +105,25 @@ class booksController extends Controller
      * @param  \App\Models\books  $books
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, books $books)
+    public function update(Request $request, $id)
     {
-        //
+        $db = books::find($id);
+        $db->book_name  = $request->book_name;
+        $db->categoryID =$request->categoryID;
+        $db->description=$request->description;
+        $db->dimensions=$request->dimensions;
+        $db->image=$request->image;
+        $db->isnb=$request->isnb;
+        $db->languageID=$request->languageID;
+        $db->numpages=$request->numpages;
+        $db->pdf_src=$request->pdf_src;
+        $db->publish_date=$request->publish_date;
+        $db->publisherID=$request->publisherID;
+        $db->type=$request->type;
+        $db->weight = $request->weight; 
+        // $db->update_at = new Datetime();
+        $db->save();
+        return $db;
     }
 
     /**
@@ -99,8 +132,9 @@ class booksController extends Controller
      * @param  \App\Models\books  $books
      * @return \Illuminate\Http\Response
      */
-    public function destroy(books $books)
+    public function destroy($id)
     {
-        //
+        books::findOrFail($id)->delete();
+        return "Deleted";
     }
 }
