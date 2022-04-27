@@ -118,13 +118,12 @@ function booksController($scope, $http) {
       $scope.modalTitle = 'Chỉnh sửa thông tin sách';
     // connect_api('get',baseApi + nameController + id,(response)=>{
     // $scope.book = response.data.book;
-        console.log(book);
         $scope.book = book;
         $scope.book.publisherID = String ($scope.book.publisherID);
         $scope.book.languageID = String ($scope.book.languageID);
         $scope.book.categoryID = String ($scope.book.categoryID);
 
-        $scope.book.price = $scope.book.price.price;
+        $scope.book.price = $scope.book.prices.price;
         $scope.book.publish_date = new Date($scope.book.publish_date);
         $scope.text.textInput = $scope.book.description;
       // })
@@ -180,19 +179,16 @@ function booksController($scope, $http) {
     var price = parseInt($scope.book.price);
   
     // $scope.book.price.price = price;
+    $scope.book.prices = {};
     $scope.book.prices.price = price;
    
     $scope.book.description = $scope.text.textInput;
-    console.log($scope.book.price);
-    console.log($scope.book);
     if ($scope.id == 0) {
       // them san pham
       connect_api_data('POST',baseApi + nameController,$scope.book,(response)=>{
-        console.log(response);
         //add id to book
         $scope.book.id = response.data.id;
         $scope.books.push($scope.book)
-        console.log($scope.book);
         // location.reload();
         showAlert(successStatus);
       })

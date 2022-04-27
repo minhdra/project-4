@@ -43,7 +43,7 @@
                             <td>@{{book.book_name}}</td>
                             <td>@{{book.publishers.publisher_name}}</td>
                             <td>@{{book.book_languages.language_name}}</td>
-                            <td align="right">@{{book.price.price}}</td>
+                            <td align="right">@{{book.prices.price}}</td>
                             <td style="padding: 4px;"><img src="/assets/img/books/@{{book.image}}" style='height:40px;' alt=""></td>
                             <td>
                               <a class="success p-0" data-original-title="" ng-click="openModal(book.id,book)" data-toggle="tooltip" title="Sửa">

@@ -79,7 +79,7 @@ class booksController extends Controller
         $db->created_at = $date;
         $db->save();
 
-        $db->addprice($db->id,$request->prices->price,$date); 
+        $db->addprice($db->id,$request->price,$date); 
         return $db;
     }
 
@@ -137,7 +137,7 @@ class booksController extends Controller
         $db->weight = $request->weight; 
         $db->save();
 
-        $db->updateprice($id,$request->prices->price,$date);
+        $db->updateprice($id,$request->price,$date);
         return $db;
     }
 
