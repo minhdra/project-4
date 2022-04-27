@@ -16,6 +16,7 @@ function booksController($scope, $http) {
   $scope.image = '';
   $scope.pdf_src = '';
   $scope.books = [];
+  const modalE = $('#large');
   //set begin
   var connect_api = function (method,url,callback) { 
     $http({
@@ -128,7 +129,7 @@ function booksController($scope, $http) {
         $scope.text.textInput = $scope.book.description;
       // })
     }
-    $('#large').modal('show');
+    modalE.modal('show');
   };
 
   $scope.deleteClick = function (book) {
@@ -157,8 +158,6 @@ function booksController($scope, $http) {
     $scope.book.image = $scope.image ? $scope.image : $scope.book.image;
     // $scope.book.image = null ? null : $scope.book.image;
     $scope.book.pdf_src = $scope.pdf_src;
-
-
 
     $scope.book.description = $scope.text.textInput;
     for(i = 0 ; i < $scope.publishers.length;i++){
@@ -191,13 +190,15 @@ function booksController($scope, $http) {
         $scope.books.push($scope.book)
         // location.reload();
         showAlert(successStatus);
+        modalE.modal('hide');
       })
     } else {
       //sua san pham
       connect_api_data('PUT',baseApi + nameController + $scope.id,$scope.book,(response)=>{
-
+        
         // location.reload();
         showAlert(successStatus);
+        modalE.modal('hide');
       })
     }
   };

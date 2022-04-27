@@ -71,6 +71,7 @@ class booksController extends Controller
         $db->languageID=$request->languageID;
         $db->numpages=$request->numpages;
         $db->pdf_src=$request->pdf_src;
+        $db->publish_date= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $request->publish_date)));
         // $db->publish_date=$request->publish_date;
         $db->publisherID=$request->publisherID;
         $db->type=$request->type;
@@ -131,7 +132,8 @@ class booksController extends Controller
         $db->languageID=$request->languageID;
         $db->numpages=$request->numpages;
         $db->pdf_src=$request->pdf_src;
-        $db->publish_date=$request->publish_date;
+        // $db->publish_date=$request->publish_date;
+        $db->publish_date= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $request->publish_date)));
         $db->publisherID=$request->publisherID;
         $db->type=$request->type;
         $db->weight = $request->weight; 
