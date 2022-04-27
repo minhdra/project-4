@@ -178,13 +178,11 @@ function booksController($scope, $http) {
       }
     }
     var price = parseInt($scope.book.price);
-    
-    $scope.book.price = [];
+  
     // $scope.book.price.price = price;
-    $scope.book.price = price;
+    $scope.book.prices.price = price;
    
     $scope.book.description = $scope.text.textInput;
-    $scope.book.price.price = $scope.book.price;
     console.log($scope.book.price);
     console.log($scope.book);
     if ($scope.id == 0) {

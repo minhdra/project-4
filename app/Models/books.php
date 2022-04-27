@@ -10,7 +10,7 @@ class books extends Model
     use HasFactory;
     protected $table = 'books';
 
-    public function Price() {
+    public function prices() {
         return $this->hasOne(prices::class, 'bookID', 'id')->where('end_date',null);
     }
     

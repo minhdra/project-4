@@ -21,7 +21,7 @@ class booksController extends Controller
         $books = books::where('is_active',1)->get();
         foreach ($books as $book) {
             $book->categories;
-            $book->Price;
+            $book->prices;
             $book->book_languages;
             $book->publishers;
             $book->authors;
@@ -79,7 +79,7 @@ class booksController extends Controller
         $db->created_at = $date;
         $db->save();
 
-        $db->addprice($db->id,$request->price->price,$date); 
+        $db->addprice($db->id,$request->prices->price,$date); 
         return $db;
     }
 
@@ -93,7 +93,7 @@ class booksController extends Controller
     {
         $books = books::where('id',$id)->first();
         $book = $books->categories;
-        $book = $books->Price;
+        $book = $books->prices;
         $book = $books->book_languages;
         $book = $books->publishers;
         $book = $books->authors;
@@ -137,7 +137,7 @@ class booksController extends Controller
         $db->weight = $request->weight; 
         $db->save();
 
-        $db->updateprice($id,$request->price->price,$date);
+        $db->updateprice($id,$request->prices->price,$date);
         return $db;
     }
 
