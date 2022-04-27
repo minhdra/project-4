@@ -44,7 +44,7 @@
                             <td>@{{book.publishers.publisher_name}}</td>
                             <td>@{{book.book_languages.language_name}}</td>
                             <td align="right">@{{book.prices.price}}</td>
-                            <td style="padding: 4px;"><img src="/assets/img/books/@{{book.image}}" style='height:40px;' alt=""></td>
+                            <td style="padding: 4px;"><img ng-src="/assets/img/books/@{{book.image}}" style='height:40px;' alt=""></td>
                             <td>
                               <a class="success p-0" data-original-title="" ng-click="openModal(book.id,book)" data-toggle="tooltip" title="Sửa">
                                 <i class="fa fa-pencil font-medium-3 mr-2"></i>
@@ -72,10 +72,9 @@
       </div>
     </div>
   </div>
-
-
-  <div class="modal fade text-left" id="large" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
+  
+  <div class="modal fade text-left" id="large" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" style="display: none; z-index:99999" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document" >
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel17">@{{modalTitle}}</h4>
@@ -161,10 +160,10 @@
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="file_img">Ảnh </label>
-                  <input type="file" accept="image/*" name="file_img" id="img_file_upid">
+                  <input type="file" accept="image/*" name="file_img" id="img_file_upid" class="w-100">
                   <div class="row">
-                    <img ng-if="book.image == '' || book.image==null" src="/assets/img/books/book_temp.png" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
-                    <img id="img_prv" ng-if="book.image != '' && book.image!=null" src="/assets/img/books/@{{book.image}}" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
+                    <img ng-if="book.image == '' || book.image==null" ng-src="/assets/img/books/book_temp.png" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
+                    <img id="img_prv" ng-if="book.image != '' && book.image!=null" ng-src="/assets/img/books/@{{book.image}}" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
                   </div>
                 </fieldset>
               </div>
@@ -174,19 +173,19 @@
                   <input type="file" accept="application/pdf" name="file_pdf" id="pdf_file_upid">
                 </fieldset>
               </div>
-
-
+  
+  
               <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="description">Mô tả</label>
                   <div ckeditor="text.options" ng-model="text.textInput">
-                  <!-- <ckeditor ng-model="book.description"></ckeditor> -->
-                  <!-- <textarea name="description" class="form-control" id="description" (data)="book.description"  rows="8"></textarea> -->
+                    <!-- <ckeditor ng-model="book.description"></ckeditor> -->
+                    <!-- <textarea name="description" class="form-control" id="description" (data)="book.description"  rows="8"></textarea> -->
                 </fieldset>
               </div>
             </div>
           </div>
-
+  
         </div>
         <div class="modal-footer">
           <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Đóng</button>
@@ -195,8 +194,7 @@
       </div>
     </div>
   </div>
-
-  @include('includes.alert')
+    
 </div>
 @stop
 

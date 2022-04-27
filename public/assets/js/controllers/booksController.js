@@ -5,7 +5,7 @@ const publishersController = 'publishers/';
 const book_languagesController = 'book_languages/';
 const nameChild = 'child/';
 const successStatus = 'success';
-const errorStatus = 'danger';
+const errorStatus = 'error';
 
 app.controller('booksController', booksController);
 function booksController($scope, $http) {
@@ -155,7 +155,7 @@ function booksController($scope, $http) {
     // $scope.book.publish_date = convertDate($scope.book.publish_date);
     //dang them moi sp
     $scope.book.image = $scope.image ? $scope.image : $scope.book.image;
-    $scope.book.image = null ? null : $scope.book.image;
+    // $scope.book.image = null ? null : $scope.book.image;
     $scope.book.pdf_src = $scope.pdf_src;
 
 

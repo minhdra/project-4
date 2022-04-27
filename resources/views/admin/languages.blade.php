@@ -104,7 +104,7 @@
     </div>
   </div>
 
-  @include('includes.alert')
+    
 </div>
 @stop
 

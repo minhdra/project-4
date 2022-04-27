@@ -6,11 +6,17 @@ setTimeout(() => {
 }, 2000);
 
 function showAlert(status) {
-  const alert = $('.alert-'+status);
-  alert.show();
-  setTimeout(() => {
-    alert.hide();
-  }, 2000);
+  if (status === 'success')
+  {
+    toastr.success('Thành công! Chúc vui 🐱‍🏍', 'Thành công rồi', {
+      progressBar: !0,
+    });
+  } else
+  {
+    toastr.error('Có lỗi, xử lý đi 😒', 'Có lỗi rồi', {
+      progressBar: !0,
+    });
+  }
 }
 
 function convertDate(date) {

@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/perfect-scrollbar.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/prism.min.css">
+  <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/toastr.css">
+  <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/tagging.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/css/app.css">
   <link rel="stylesheet" type="text/css" href="/assets/styles/custom_theme.css">
 </head>
@@ -58,6 +60,8 @@
   <script src="/assets/admin/vendors/js/pace/pace.min.js"></script>
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
+  <script src="/assets/admin/vendors/js/tagging.min.js"></script>
+  <script src="/assets/admin/vendors/js/toastr.min.js"></script>
   <!-- END PAGE VENDOR JS-->
   <!-- BEGIN CONVEX JS-->
   <script src="/assets/admin/js/app-sidebar.js"></script>
