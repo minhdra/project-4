@@ -15,40 +15,33 @@ function booksController($scope, $http) {
   $scope.book = [];
   $scope.image = '';
   $scope.pdf_src = '';
+  $scope.books = [];
   //set begin
-  $http({
-    method: 'GET',
-    url: baseApi + nameController,
-  }).then(
-    function (response) {
-      $scope.data = response.data;
-      console.log(response.data);
-    },
-    (error) => console.log(error)
-  );
-  //get drop down categories
-  $http({
-    method: 'GET',
-    url: baseApi + categoryController,
-  }).then(function (response) {
-    $scope.categories = response.data.categories;
-  });
-  //get drop down publishers
-  $http({
-    method: 'GET',
-    url: baseApi + publishersController,
-  }).then(function (response) {
-    $scope.publishers = response.data.publishers;
-  });
-  //get drop down book_languages
-  $http({
-    method: 'GET',
-    url: baseApi + book_languagesController,
-  }).then(function (response) {
-    $scope.book_languages = response.data.book_languages;
-  });
-
-  var uploadFile = function (filedata, type = 'img') {
+  var connect_api = function (method,url,callback) { 
+    $http({
+      method: method,
+      url: url,
+    }).then(
+      function (response) {
+        callback(response);
+      },
+      (error) => {console.log(error);showAlert(errorStatus);}
+    );
+   }
+  var connect_api_data = function (method,url,data,callback) { 
+    $http({
+      method: method,
+      url: url,
+      data: data,
+      'content-Type': 'application/json',
+    }).then(
+      function (response) {
+        callback(response);
+      },
+      (error) => {console.log(error);showAlert(errorStatus);}
+    );
+   }
+  function uploadFile (filedata, type = 'img') {
     if (type == 'img') {
       var imgtype = filedata.type;
       var reader = new FileReader();
@@ -84,96 +77,134 @@ function booksController($scope, $http) {
       },
     });
   };
+  //set begin
+  //get books
+  connect_api('get',baseApi + nameController,(response)=>{
+    $scope.books = response.data.books;
+    console.log($scope.books);
+  })
 
-  $scope.openModal = function (id) {
-    // CKEDITOR.replace( 'des' );
+  //get drop down categories
+  connect_api('get',baseApi + categoryController,(response)=>{
+    $scope.categories = response.data.categories;
+  })
+
+  //get drop down publishers
+  connect_api('get',baseApi + publishersController,(response)=>{
+    $scope.publishers = response.data.publishers;
+  })
+  //get drop down book_languages
+  connect_api('get',baseApi + book_languagesController,(response)=>{
+    $scope.book_languages = response.data.book_languages;
+  })
+
+  $scope.openModal = function (id,book) {
+    $scope.text = {
+      textInput : '',
+      options: {
+        language: 'en',
+        allowedContent: true,
+        entities: false
+      }
+    };
     $scope.id = id;
     if (id == 0) {
       $scope.modalTitle = 'Thêm sách mới';
       $scope.book = null;
+      // $scope.book.publisherID = "1";
+      // $scope.book.languageID ="1";
+      // $scope.book.categoryID ="1";
     } else {
       $scope.modalTitle = 'Chỉnh sửa thông tin sách';
-      $http({
-        method: 'GET',
-        url: baseApi + nameController + id,
-      }).then(
-        function (response) {
-          $scope.book = response.data.book;
-          $scope.book.publisherID = String($scope.book.publisherID);
-          $scope.book.languageID = String($scope.book.languageID);
-          $scope.book.categoryID = String($scope.book.categoryID);
-          console.log($scope.book);
-          if ($scope.book.publish_date)
-            $scope.book.publish_date = new Date($scope.book.publish_date);
-        },
-        (error) => console.log(error)
-      );
+    // connect_api('get',baseApi + nameController + id,(response)=>{
+    // $scope.book = response.data.book;
+        console.log(book);
+        $scope.book = book;
+        $scope.book.publisherID = String ($scope.book.publisherID);
+        $scope.book.languageID = String ($scope.book.languageID);
+        $scope.book.categoryID = String ($scope.book.categoryID);
+
+        $scope.book.price = $scope.book.price.price;
+        $scope.book.publish_date = new Date($scope.book.publish_date);
+        $scope.text.textInput = $scope.book.description;
+      // })
     }
     $('#large').modal('show');
   };
 
-  $scope.deleteClick = function (id) {
+  $scope.deleteClick = function (book) {
     var hoi = confirm('Ban co muon xoa that khong');
     // console.log($scope.id);
     if (hoi) {
       $http({
         method: 'DELETE',
-        url: baseApi + nameController + id,
+        url: baseApi + nameController + book.id,
       }).then(
         function (response) {
-          $scope.message = response.data;
-          location.reload();
+          $scope.books.splice($scope.books.indexOf(book),1)
           showAlert(successStatus);
         },
         (error) => {
           console.log(error);
-          showAlert(errorStatus);
+          showAlert(errorStatus); 
         }
       );
     }
   };
   $scope.saveData = function () {
-    if ($scope.book.publish_date)
-      $scope.book.publish_date = convertDate($scope.book.publish_date);
+    // if ($scope.book.publish_date)
+    // $scope.book.publish_date = convertDate($scope.book.publish_date);
     //dang them moi sp
     $scope.book.image = $scope.image ? $scope.image : $scope.book.image;
+    $scope.book.image = null ? null : $scope.book.image;
     $scope.book.pdf_src = $scope.pdf_src;
+
+
+
+    $scope.book.description = $scope.text.textInput;
+    for(i = 0 ; i < $scope.publishers.length;i++){
+      if($scope.publishers[i].id==$scope.book.publisherID){
+        $scope.book.publishers = $scope.publishers[i]
+      }
+    }
+    for(i = 0 ; i < $scope.book_languages.length;i++){
+      if($scope.book_languages[i].id==$scope.book.languageID){
+        $scope.book.book_languages = $scope.book_languages[i]
+      }
+    }
+    for(i = 0 ; i < $scope.categories.length;i++){
+      if($scope.categories[i].id==$scope.book.categoryID){
+        $scope.book.categories = $scope.categories[i]
+      }
+    }
+    var price = parseInt($scope.book.price);
+    
+    $scope.book.price = [];
+    // $scope.book.price.price = price;
+    $scope.book.price = price;
+   
+    $scope.book.description = $scope.text.textInput;
+    $scope.book.price.price = $scope.book.price;
+    console.log($scope.book.price);
+    console.log($scope.book);
     if ($scope.id == 0) {
-      $http({
-        method: 'POST',
-        url: baseApi + nameController,
-        data: $scope.book,
-        'content-Type': 'application/json',
-      }).then(
-        function (response) {
-          console.log(response);
-          location.reload();
-          showAlert(successStatus);
-        },
-        (error) => {
-          console.log(error);
-          showAlert(errorStatus);
-        }
-      );
+      // them san pham
+      connect_api_data('POST',baseApi + nameController,$scope.book,(response)=>{
+        console.log(response);
+        //add id to book
+        $scope.book.id = response.data.id;
+        $scope.books.push($scope.book)
+        console.log($scope.book);
+        // location.reload();
+        showAlert(successStatus);
+      })
     } else {
       //sua san pham
-      $http({
-        method: 'PUT',
-        url: baseApi + nameController + $scope.id,
-        data: $scope.book,
-        'content-Type': 'application/json',
-      }).then(
-        function (response) {
-          $scope.message = response.data;
-          console.log(response.data);
-          location.reload();
-          showAlert(successStatus);
-        },
-        (error) => {
-          console.log(error);
-          showAlert(errorStatus);
-        }
-      );
+      connect_api_data('PUT',baseApi + nameController + $scope.id,$scope.book,(response)=>{
+
+        // location.reload();
+        showAlert(successStatus);
+      })
     }
   };
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\books;
+use App\Models\prices;
 use Illuminate\Http\Request;
 use DateTime;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,16 @@ class booksController extends Controller
      */
     public function index()
     {
-        $books = books::with('Price')->with('categories')->with('book_languages')->with('publishers')->get();
+        $books = books::where('is_active',1)->get();
+        foreach ($books as $book) {
+            $book->categories;
+            $book->Price;
+            $book->book_languages;
+            $book->publishers;
+            $book->authors;
+        }
+
+        // $books = books::with('Price')->with('categories')->with('book_languages')->with('publishers')->get();
         return ['books'=>$books];
     }
 
@@ -50,6 +60,7 @@ class booksController extends Controller
      */
     public function store(Request $request)
     {
+        $date = new Datetime();
         $db = new books();
         $db->book_name  = $request->book_name;
         $db->categoryID =$request->categoryID;
@@ -60,13 +71,15 @@ class booksController extends Controller
         $db->languageID=$request->languageID;
         $db->numpages=$request->numpages;
         $db->pdf_src=$request->pdf_src;
-        $db->publish_date=$request->publish_date;
+        // $db->publish_date=$request->publish_date;
         $db->publisherID=$request->publisherID;
         $db->type=$request->type;
         $db->weight = $request->weight; 
         $db->is_active = 1; 
-        $db->created_at = new Datetime();
+        $db->created_at = $date;
         $db->save();
+
+        $db->addprice($db->id,$request->price->price,$date); 
         return $db;
     }
 
@@ -107,6 +120,7 @@ class booksController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $date = new Datetime();
         $db = books::find($id);
         $db->book_name  = $request->book_name;
         $db->categoryID =$request->categoryID;
@@ -121,8 +135,9 @@ class booksController extends Controller
         $db->publisherID=$request->publisherID;
         $db->type=$request->type;
         $db->weight = $request->weight; 
-        // $db->update_at = new Datetime();
         $db->save();
+
+        $db->updateprice($id,$request->price->price,$date);
         return $db;
     }
 
@@ -134,7 +149,9 @@ class booksController extends Controller
      */
     public function destroy($id)
     {
-        books::findOrFail($id)->delete();
+        $db = books::findOrFail($id);
+        $db->is_active=0;
+        $db->save();
         return "Deleted";
     }
 }

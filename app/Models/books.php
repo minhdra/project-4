@@ -29,4 +29,26 @@ class books extends Model
     public function authors() {
         return $this->hasOneThrough(authors::class, book_authors::class, 'authorID', 'id');
     }
+
+    public function addprice($bookID,$price,$date) {
+        $db2 = new prices();
+        $db2->bookID = $bookID;
+        $db2->price = $price;
+        $db2->start_date= $date;
+        $db2->is_active= 1;
+        $db2->save();
+    }
+
+    public function updateprice($bookID,$price,$date) {
+        $db  = prices::where('end_date',null)->where('bookID',$bookID)->first();
+        $db->end_date = $date;
+        $db->save();
+        // return $db;
+        $db2 = new prices();
+        $db2->bookID = $bookID;
+        $db2->price = $price;
+        $db2->start_date= $date;
+        $db2->is_active= 1;
+        $db2->save();
+    }
 }

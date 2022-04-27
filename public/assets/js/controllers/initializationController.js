@@ -1,4 +1,4 @@
-const app = angular.module('app', ['angularUtils.directives.dirPagination']);
+const app = angular.module('app', ['angularUtils.directives.dirPagination','ckeditor']);
 setTimeout(() => {
   $(function () {
     $('[data-toggle="tooltip"]').tooltip();

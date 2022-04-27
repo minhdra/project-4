@@ -63,7 +63,6 @@
   <script src="/assets/admin/js/app-sidebar.js"></script>
   <script src="/assets/admin/js/notification-sidebar.js"></script>
   <script src="/assets/admin/js/customizer.js"></script>
-  <!-- <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script> -->
   <!-- END CONVEX JS-->
   <!-- BEGIN PAGE LEVEL JS-->
   <!-- END PAGE LEVEL JS-->
@@ -72,6 +71,8 @@
   <script src="/assets/js/angular.min.js"></script>
   <script src="/assets/js/dirPagination.js"></script>
   <script src="/assets/js/controllers/initializationController.js"></script>
+  <script src="//cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+  <script src="/assets/js/angular-ckeditor.js"></script>
   @yield('js')
   
 

@@ -38,7 +38,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr dir-paginate="book in data.books|filter: q|itemsPerPage:10" current-page="currentPage">
+                          <tr dir-paginate="book in books|filter: q|itemsPerPage:10" current-page="currentPage">
                             <td>@{{$index+1}}</td>
                             <td>@{{book.book_name}}</td>
                             <td>@{{book.publishers.publisher_name}}</td>
@@ -46,13 +46,13 @@
                             <td align="right">@{{book.price.price}}</td>
                             <td style="padding: 4px;"><img src="/assets/img/books/@{{book.image}}" style='height:40px;' alt=""></td>
                             <td>
-                              <a class="success p-0" data-original-title="" ng-click="openModal(book.id)" data-toggle="tooltip" title="Sửa">
+                              <a class="success p-0" data-original-title="" ng-click="openModal(book.id,book)" data-toggle="tooltip" title="Sửa">
                                 <i class="fa fa-pencil font-medium-3 mr-2"></i>
                               </a>
                               <a class="info p-0" data-original-title="" data-toggle="tooltip" title="check">
                                 <i class="fa fa-check font-medium-3 mr-2"></i>
                               </a>
-                              <a class="danger p-0" data-original-title="" data-toggle="tooltip" title="Xóa" ng-click="deleteClick(book.id)">
+                              <a class="danger p-0" data-original-title="" data-toggle="tooltip" title="Xóa" ng-click="deleteClick(book)">
                                 <i class="fa fa-trash-o font-medium-3 mr-2"></i>
                               </a>
                             </td>
@@ -148,6 +148,12 @@
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                 <fieldset class="form-group">
+                  <label for="price">Giá bán</label>
+                  <input type="text" class="form-control" id="price" ng-model="book.price" require>
+                </fieldset>
+              </div>
+              <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                <fieldset class="form-group">
                   <label for="numpages">Số trang</label>
                   <input type="text" class="form-control" id="numpages" ng-model="book.numpages" require>
                 </fieldset>
@@ -173,7 +179,9 @@
               <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="description">Mô tả</label>
-                  <textarea name="des" class="form-control" id="description" ng-model="book.description" rows="8"></textarea>
+                  <div ckeditor="text.options" ng-model="text.textInput">
+                  <!-- <ckeditor ng-model="book.description"></ckeditor> -->
+                  <!-- <textarea name="description" class="form-control" id="description" (data)="book.description"  rows="8"></textarea> -->
                 </fieldset>
               </div>
             </div>
