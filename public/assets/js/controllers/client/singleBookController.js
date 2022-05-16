@@ -3,7 +3,7 @@ const nameBooks = 'books/'
 app.controller('singleBookController', singleBookController);
 function singleBookController($scope, $http) {
   $scope.book_id = $('#book-id').val();
-
+  $scope.quantity = 1;
   
   const connect_api = function (method, url, data, callback) {
     const params = {};
@@ -28,5 +28,16 @@ function singleBookController($scope, $http) {
       $scope.item = res.data.book;
       console.log(res.data);
     })
+  }
+
+  // Change quantity
+  $scope.changeQuantity = (index) => {
+    if (index === 0)
+    {
+      if ($scope.quantity > 1)
+        $scope.quantity--;
+    }
+    else
+      $scope.quantity++;
   }
 }
