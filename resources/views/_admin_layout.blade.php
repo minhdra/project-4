@@ -67,6 +67,7 @@
   <script src="/assets/admin/js/app-sidebar.js"></script>
   <script src="/assets/admin/js/notification-sidebar.js"></script>
   <script src="/assets/admin/js/customizer.js"></script>
+  <script src="/assets/admin/js/tagging.js"></script>
   <!-- END CONVEX JS-->
   <!-- BEGIN PAGE LEVEL JS-->
   <!-- END PAGE LEVEL JS-->

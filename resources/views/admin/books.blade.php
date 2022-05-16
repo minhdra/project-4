@@ -72,9 +72,9 @@
       </div>
     </div>
   </div>
-  
+
   <div class="modal fade text-left" id="large" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" style="display: none; z-index:99999" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document" >
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel17">@{{modalTitle}}</h4>
@@ -105,6 +105,12 @@
                   <select class="form-control" name="language" id="language" ng-model="book.languageID">
                     <option ng-repeat="option in book_languages" value="@{{option.id}}">@{{option.language_name}}</option>
                   </select>
+                </fieldset>
+              </div>
+              <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                <fieldset class="form-group">
+                  <label for="category">Loại sách</label>
+                  <div class="edit-on-delete form-control tagging" data-tags-input-name="edit-on-delete"><input class="type-zone" contenteditable="true" spellcheck="false" data-ms-editor="true"></div>
                 </fieldset>
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
@@ -173,8 +179,8 @@
                   <input type="file" accept="application/pdf" name="file_pdf" id="pdf_file_upid">
                 </fieldset>
               </div>
-  
-  
+
+
               <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="description">Mô tả</label>
@@ -185,7 +191,7 @@
               </div>
             </div>
           </div>
-  
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Đóng</button>
@@ -194,7 +200,7 @@
       </div>
     </div>
   </div>
-    
+
 </div>
 @stop
 
