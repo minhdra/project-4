@@ -32,7 +32,7 @@
   <link rel="stylesheet" type="text/css" href="/assets/styles/custom_theme.css">
 </head>
 
-<body data-col="2-columns" class=" 2-columns " ng-app='app'>
+<body data-col="2-columns" class=" 2-columns " ng-app="app" ng-controller="globalController">
   <!-- ////////////////////////////////////////////////////////////////////////////-->
   <div class="wrapper">
 
@@ -75,6 +75,7 @@
   <script src="/assets/js/angular.min.js"></script>
   <script src="/assets/js/dirPagination.js"></script>
   <script src="/assets/js/controllers/initializationController.js"></script>
+  <script src="/assets/js/controllers/admin/globalController.js"></script>
   <script src="//cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
   <script src="/assets/js/angular-ckeditor.js"></script>
   @yield('js')

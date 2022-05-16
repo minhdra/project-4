@@ -7,19 +7,19 @@
   <div class="sidebar-content">
     <div class="nav-container">
       <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-        <li class="nav-item active"><a href="/admin" class="menu-item"><i class="icon-home"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
+        <li class="nav-item" ng-class="getClass('/admin')"><a href="/admin" class="menu-item"><i class="icon-home"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
         </li>
         <li class="has-sub nav-item"><a href="#"><i class="icon-screen-desktop"></i><span data-i18n="" class="menu-title">Nhà sách</span></a>
           <ul class="menu-content">
-            <li><a href="/admin/books" class="menu-item">Quản lý sách</a>
+            <li ng-class="getClass('/books')"><a href="/admin/books" class="menu-item">Quản lý sách</a>
             </li>
-            <li><a href="/admin/categories" class="menu-item">Quản lý thể loại sách</a>
+            <li ng-class="getClass('/categories')"><a href="/admin/categories" class="menu-item">Quản lý thể loại sách</a>
             </li>
-            <li><a href="/admin/authors" class="menu-item">Quản ý tác giả</a>
+            <li ng-class="getClass('/authors')"><a href="/admin/authors" class="menu-item">Quản ý tác giả</a>
             </li>
-            <li><a href="/admin/publishers" class="menu-item">Quản lý nhà xuất bản</a>
+            <li ng-class="getClass('/publishers')"><a href="/admin/publishers" class="menu-item">Quản lý nhà xuất bản</a>
             </li>
-            <li><a href="/admin/languages" class="menu-item">Quản lý ngôn ngữ</a>
+            <li ng-class="getClass('/languages')"><a href="/admin/languages" class="menu-item">Quản lý ngôn ngữ</a>
             </li>
           </ul>
         </li>
