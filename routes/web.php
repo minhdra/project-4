@@ -19,19 +19,19 @@ Route::get('/', function () {
 
 Route::get('/shop', function () {
     return view('index');
-});
+})->name('home');
 
 Route::get('/shop/list', function () {
     return view('client.list-products');
-});
+})->name('shop');
 
-Route::get('/shop/product', function () {
-    return view('client.single-product');
-});
+Route::get('/shop/list/{id}', function ($id) {
+    return view('client.single-product', ['id'=>$id]);
+})->name('single');
 
 Route::get('/shop/cart', function () {
     return view('client.cart');
-});
+})->name('cart');
 
 Route::get('/shop/checkout', function () {
     return view('client.checkout');

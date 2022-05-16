@@ -68,7 +68,7 @@
                 Trang chủ
               </a>
               <ul id="homeDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900" aria-labelledby="homeDropdownInvoker">
-                <li><a href="../home/index.html" class="dropdown-item link-black-100">Home v1</a></li>
+                <li><a   href="{{route('home')}}" class="dropdown-item link-black-100">Home v1</a></li>
                 <li><a href="../home/home-v2.html" class="dropdown-item link-black-100">Home v2</a></li>
                 <li><a href="../home/home-v3.html" class="dropdown-item link-black-100">Home v3</a></li>
                 <li><a href="../home/home-v4.html" class="dropdown-item link-black-100">Home v4</a></li>
@@ -94,7 +94,7 @@
                   </a>
                   <ul id="shopDropdownsubMenuone" class="dropdown-unfold dropdown-menu dropdown-sub-menu font-size-2 rounded-0 border-gray-900" aria-labelledby="shopDropdownsubmenuoneInvoker">
                     <li><a href="../shop/v1.html" class="dropdown-item link-black-100">Shop List v1</a></li>
-                    <li><a href="../shop/v2.html" class="dropdown-item link-black-100">Shop List v2</a></li>
+                    <li><a   href="{{route('shop')}}" class="dropdown-item link-black-100">Shop List v2</a></li>
                     <li><a href="../shop/v3.html" class="dropdown-item link-black-100">Shop List v3</a></li>
                     <li><a href="../shop/v4.html" class="dropdown-item link-black-100">Shop List v4</a></li>
                     <li><a href="../shop/v5.html" class="dropdown-item link-black-100">Shop List v5</a></li>
@@ -108,7 +108,7 @@
                   <a id="shopDropdownsubmenutwoInvoker" href="#" class="dropdown-toggle dropdown-item dropdown-item__sub-menu link-black-100 d-flex align-items-center justify-content-between" aria-haspopup="true" aria-expanded="false" data-unfold-event="hover" data-unfold-target="#shopDropdownsubMenutwo" data-unfold-type="css-animation" data-unfold-duration="200" data-unfold-delay="100" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut">Single Product
                   </a>
                   <ul id="shopDropdownsubMenutwo" class="dropdown-unfold dropdown-menu dropdown-sub-menu font-size-2 rounded-0 border-gray-900" aria-labelledby="shopDropdownsubmenutwoInvoker">
-                    <li><a href="../shop/single-product-v1.html" class="dropdown-item link-black-100">Shop Single v1</a></li>
+                    <li><a   href="/shop/list/@{{row.id}}" class="dropdown-item link-black-100">Shop Single v1</a></li>
                     <li><a href="../shop/single-product-v2.html" class="dropdown-item link-black-100">Shop Single v2</a></li>
                     <li><a href="../shop/single-product-v3.html" class="dropdown-item link-black-100">Shop Single v3</a></li>
                     <li><a href="../shop/single-product-v4.html" class="dropdown-item link-black-100">Shop Single v4</a></li>
@@ -137,7 +137,7 @@
                         <div class="col-3">
                           <ul class="menu list-unstyled">
                             <li><span class=" d-block link-black-100 py-3 font-size-3 font-weight-medium">Home</span></li>
-                            <li><a href="../home/index.html" class="d-block link-black-100 py-1">Home v1</a></li>
+                            <li><a   href="{{route('home')}}" class="d-block link-black-100 py-1">Home v1</a></li>
                             <li><a href="../home/home-v2.html" class="d-block link-black-100 py-1">Home v2</a></li>
                             <li><a href="../home/home-v3.html" class="d-block link-black-100 py-1">Home v3</a></li>
                             <li><a href="../home/home-v4.html" class="d-block link-black-100 py-1">Home v4</a></li>
@@ -155,7 +155,7 @@
                         <div class="col-3">
                           <ul class="menu list-unstyled">
                             <li><span class=" d-block link-black-100 py-3 font-size-3 font-weight-medium">Single Product</span></li>
-                            <li><a href="../shop/single-product-v1.html" class="d-block link-black-100 py-1">Single Product v1</a></li>
+                            <li><a   href="/shop/list/@{{row.id}}" class="d-block link-black-100 py-1">Single Product v1</a></li>
                             <li><a href="../shop/single-product-v2.html" class="d-block link-black-100 py-1">Single Product v2</a></li>
                             <li><a href="../shop/single-product-v3.html" class="d-block link-black-100 py-1">Single Product v3</a></li>
                             <li><a href="../shop/single-product-v4.html" class="d-block link-black-100 py-1">Single Product v4</a></li>
@@ -175,7 +175,7 @@
                           <ul class="menu list-unstyled">
                             <li><span class=" d-block link-black-100 py-3 font-size-3 font-weight-medium">Shop List</span></li>
                             <li><a href="../shop/v1.html" class="d-block link-black-100 py-1">Shop List v1</a></li>
-                            <li><a href="../shop/v2.html" class="d-block link-black-100 py-1">Shop List v2</a></li>
+                            <li><a   href="{{route('shop')}}" class="d-block link-black-100 py-1">Shop List v2</a></li>
                             <li><a href="../shop/v3.html" class="d-block link-black-100 py-1">Shop List v3</a></li>
                             <li><a href="../shop/v4.html" class="d-block link-black-100 py-1">Shop List v4</a></li>
                             <li><a href="../shop/v5.html" class="d-block link-black-100 py-1">Shop List v5</a></li>

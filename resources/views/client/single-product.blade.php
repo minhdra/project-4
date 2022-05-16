@@ -1,15 +1,16 @@
 @extends('_client_layout')
 @section('content')
 
-<div class="">
+<div class="" ng-controller="singleBookController" ng-init="loadData()">
+  <input type="text" id="book-id" hidden value="{{$id}}">
   <div class="page-header border-bottom">
     <div class="container">
       <div class="d-md-flex justify-content-between align-items-center py-4">
         <h1 class="page-title font-size-3 font-weight-medium mb-md-0 text-lh-lg">Chi tiết</h1>
         <nav class="woocommerce-breadcrumb font-size-2">
-          <a href="../home/index.html" class="h-primary">Trang chủ</a>
+          <a href="{{route('home')}}" class="h-primary">Trang chủ</a>
           <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>
-          <a href="../shop/v2.html" class="h-primary">Cửa hàng</a>
+          <a href="{{route('shop')}}" class="h-primary">Cửa hàng</a>
           <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>Chi tiết
         </nav>
       </div>
@@ -22,22 +23,16 @@
           <div class="row">
             <div class="col-md-4 col-lg-3 woocommerce-product-gallery woocommerce-product-gallery--with-images images">
               <figure class="woocommerce-product-gallery__wrapper pt-8 mb-0">
-                <div class="js-slick-carousel u-slick" data-pagi-classes="text-center u-slick__pagination my-4">
+                <div class=" u-slick" data-pagi-classes="text-center u-slick__pagination my-4">
                   <div class="js-slide">
-                    <img src="/assets/img/200x327/img3.jpg" alt="Image Description" class="mx-auto img-fluid">
-                  </div>
-                  <div class="js-slide">
-                    <img src="/assets/img/200x327/img3.jpg" alt="Image Description" class="mx-auto img-fluid">
-                  </div>
-                  <div class="js-slide">
-                    <img src="/assets/img/200x327/img3.jpg" alt="Image Description" class="mx-auto img-fluid">
+                    <img style="width: 200px" ng-src="/assets/img/books/@{{item.image}}" alt="Image Description" class="mx-auto img-fluid">
                   </div>
                 </div>
               </figure>
             </div>
             <div class="col-md-8 col-lg-5 pl-0 summary entry-summary">
               <div class="space-top-2 pl-4 pl-wd-6 px-wd-7 pb-5">
-                <h1 class="product_title entry-title font-size-7 mb-3">Where the Crawdads Sing</h1>
+                <h1 class="product_title entry-title font-size-7 mb-3">@{{item.book_name}}</h1>
                 <div class="font-size-2 mb-4">
                   <span class="text-yellow-darker">
                     <span class="fas fa-star"></span>
@@ -48,10 +43,11 @@
                   </span>
                   <span class="ml-3">(3,714)</span>
                   <span class="ml-3 font-weight-medium">Tác giả:</span>
-                  <span class="ml-2 text-gray-600">Anna Banks</span>
+                  <span class="ml-2 text-gray-600">@{{item.authors.author_name}}</span>
                 </div>
                 <div class="woocommerce-product-details__short-description font-size-2 mb-5">
-                  <p class="">Where the Crawdads Sing được kể theo hai mốc thời gian đan xen. Dòng thời gian đầu mô tả cuộc đời và những cuộc phiêu lưu của một cô gái trẻ Kya Clark trong vùng đầm lầy ở Bắc Carolina từ năm 1952 đến 1919. Dòng thời gian thứ hai kể về những sự kiện xảy ra ở thị trấn hư cấu Barkley Cove, sau cuộc điều tra vụ giết người và người dân ở đây nghĩ rằng cái chết của Chase Andrew liên quan đến Kya.</p>
+                  
+                  <p ng-bind-html="@{{item.description}}"></p>
                   <!-- <p class="mb-0">*The multi-million copy bestseller*</p>
                   <p class="mb-0">Soon to be a major film</p>
                   <p class="mb-4">A Number One New York Times Bestseller</p>
@@ -90,11 +86,11 @@
               <div class="border mt-md-8">
                 <div class="bg-white-100 py-4 px-5">
                   <p class="price font-size-22 font-weight-medium mb-0">
-                    <span class="woocommerce-Price-amount amount">
+                    <!-- <span class="woocommerce-Price-amount amount">
                       <span class="woocommerce-Price-currencySymbol">đ</span>50.000
-                    </span> –
+                    </span> – -->
                     <span class="woocommerce-Price-amount amount">
-                      <span class="woocommerce-Price-currencySymbol">đ</span>100.000
+                      <span class="woocommerce-Price-currencySymbol">đ</span>@{{item.prices.price | number}}
                     </span>
                   </p>
                 </div>
@@ -514,25 +510,25 @@
                 <div class="product__inner overflow-hidden p-3 p-md-4d875">
                   <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                     <div class="woocommerce-loop-product__thumbnail">
-                      <a href="../shop/single-product-v1.html" class="d-block"><img src="/assets/img/120x180/img1.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                      <a href="/shop/list/@{{row.id}}" class="d-block"><img src="/assets/img/120x180/img1.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                     </div>
                     <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="../shop/single-product-v1.html">Paperback</a></div>
-                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="../shop/single-product-v1.html">Think Like a Monk: Train Your Mind for Peace and Purpose Everyday</a></h2>
+                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">Paperback</a></div>
+                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="/shop/list/@{{row.id}}">Think Like a Monk: Train Your Mind for Peace and Purpose Everyday</a></h2>
                       <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div>
                       <div class="price d-flex align-items-center font-weight-medium font-size-3">
                         <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>29</span>
                       </div>
                     </div>
                     <div class="product__hover d-flex align-items-center">
-                      <a href="../shop/single-product-v1.html" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
+                      <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
                         <span class="product__add-to-cart">ADD TO CART</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-switch"></i>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-heart"></i>
                       </a>
                     </div>
@@ -543,25 +539,25 @@
                 <div class="product__inner overflow-hidden p-3 p-md-4d875">
                   <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                     <div class="woocommerce-loop-product__thumbnail">
-                      <a href="../shop/single-product-v1.html" class="d-block"><img src="/assets/img/120x180/img2.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                      <a href="/shop/list/@{{row.id}}" class="d-block"><img src="/assets/img/120x180/img2.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                     </div>
                     <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="../shop/single-product-v1.html">Kindle Edition</a></div>
-                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="../shop/single-product-v1.html">The Overdue Life of Amy Byler</a></h2>
+                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">Kindle Edition</a></div>
+                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="/shop/list/@{{row.id}}">The Overdue Life of Amy Byler</a></h2>
                       <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Kelly Harms</a></div>
                       <div class="price d-flex align-items-center font-weight-medium font-size-3">
                         <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>29</span>
                       </div>
                     </div>
                     <div class="product__hover d-flex align-items-center">
-                      <a href="../shop/single-product-v1.html" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
+                      <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
                         <span class="product__add-to-cart">ADD TO CART</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-switch"></i>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-heart"></i>
                       </a>
                     </div>
@@ -572,25 +568,25 @@
                 <div class="product__inner overflow-hidden p-3 p-md-4d875">
                   <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                     <div class="woocommerce-loop-product__thumbnail">
-                      <a href="../shop/single-product-v1.html" class="d-block"><img src="/assets/img/120x180/img3.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                      <a href="/shop/list/@{{row.id}}" class="d-block"><img src="/assets/img/120x180/img3.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                     </div>
                     <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="../shop/single-product-v1.html">Paperback</a></div>
-                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="../shop/single-product-v1.html">All You Can Ever Know: A Memoir</a></h2>
+                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">Paperback</a></div>
+                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="/shop/list/@{{row.id}}">All You Can Ever Know: A Memoir</a></h2>
                       <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div>
                       <div class="price d-flex align-items-center font-weight-medium font-size-3">
                         <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>29</span>
                       </div>
                     </div>
                     <div class="product__hover d-flex align-items-center">
-                      <a href="../shop/single-product-v1.html" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
+                      <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
                         <span class="product__add-to-cart">ADD TO CART</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-switch"></i>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-heart"></i>
                       </a>
                     </div>
@@ -601,25 +597,25 @@
                 <div class="product__inner overflow-hidden p-3 p-md-4d875">
                   <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                     <div class="woocommerce-loop-product__thumbnail">
-                      <a href="../shop/single-product-v1.html" class="d-block"><img src="/assets/img/120x180/img4.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                      <a href="/shop/list/@{{row.id}}" class="d-block"><img src="/assets/img/120x180/img4.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                     </div>
                     <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="../shop/single-product-v1.html">Kindle Edition</a></div>
-                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="../shop/single-product-v1.html">The Last Sister (Columbia River Book 1)</a></h2>
+                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">Kindle Edition</a></div>
+                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="/shop/list/@{{row.id}}">The Last Sister (Columbia River Book 1)</a></h2>
                       <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Kelly Harms</a></div>
                       <div class="price d-flex align-items-center font-weight-medium font-size-3">
                         <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>29</span>
                       </div>
                     </div>
                     <div class="product__hover d-flex align-items-center">
-                      <a href="../shop/single-product-v1.html" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
+                      <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
                         <span class="product__add-to-cart">ADD TO CART</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-switch"></i>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-heart"></i>
                       </a>
                     </div>
@@ -630,25 +626,25 @@
                 <div class="product__inner overflow-hidden p-3 p-md-4d875">
                   <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                     <div class="woocommerce-loop-product__thumbnail">
-                      <a href="../shop/single-product-v1.html" class="d-block"><img src="/assets/img/120x180/img5.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                      <a href="/shop/list/@{{row.id}}" class="d-block"><img src="/assets/img/120x180/img5.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                     </div>
                     <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="../shop/single-product-v1.html">Paperback</a></div>
-                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="../shop/single-product-v1.html">Think Like a Monk: Train Your Mind for Peace and Purpose Everyday</a></h2>
+                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">Paperback</a></div>
+                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="/shop/list/@{{row.id}}">Think Like a Monk: Train Your Mind for Peace and Purpose Everyday</a></h2>
                       <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div>
                       <div class="price d-flex align-items-center font-weight-medium font-size-3">
                         <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>29</span>
                       </div>
                     </div>
                     <div class="product__hover d-flex align-items-center">
-                      <a href="../shop/single-product-v1.html" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
+                      <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
                         <span class="product__add-to-cart">ADD TO CART</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-switch"></i>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-heart"></i>
                       </a>
                     </div>
@@ -659,25 +655,25 @@
                 <div class="product__inner overflow-hidden p-3 p-md-4d875">
                   <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                     <div class="woocommerce-loop-product__thumbnail">
-                      <a href="../shop/single-product-v1.html" class="d-block"><img src="/assets/img/120x180/img6.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                      <a href="/shop/list/@{{row.id}}" class="d-block"><img src="/assets/img/120x180/img6.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                     </div>
                     <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="../shop/single-product-v1.html">Kindle Edition</a></div>
-                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="../shop/single-product-v1.html">The Overdue Life of Amy Byler</a></h2>
+                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">Kindle Edition</a></div>
+                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="/shop/list/@{{row.id}}">The Overdue Life of Amy Byler</a></h2>
                       <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Kelly Harms</a></div>
                       <div class="price d-flex align-items-center font-weight-medium font-size-3">
                         <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>29</span>
                       </div>
                     </div>
                     <div class="product__hover d-flex align-items-center">
-                      <a href="../shop/single-product-v1.html" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
+                      <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
                         <span class="product__add-to-cart">ADD TO CART</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-switch"></i>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-heart"></i>
                       </a>
                     </div>
@@ -688,25 +684,25 @@
                 <div class="product__inner overflow-hidden p-3 p-md-4d875">
                   <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                     <div class="woocommerce-loop-product__thumbnail">
-                      <a href="../shop/single-product-v1.html" class="d-block"><img src="/assets/img/120x180/img7.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                      <a href="/shop/list/@{{row.id}}" class="d-block"><img src="/assets/img/120x180/img7.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                     </div>
                     <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="../shop/single-product-v1.html">Paperback</a></div>
-                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="../shop/single-product-v1.html">All You Can Ever Know: A Memoir</a></h2>
+                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">Paperback</a></div>
+                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="/shop/list/@{{row.id}}">All You Can Ever Know: A Memoir</a></h2>
                       <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div>
                       <div class="price d-flex align-items-center font-weight-medium font-size-3">
                         <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>29</span>
                       </div>
                     </div>
                     <div class="product__hover d-flex align-items-center">
-                      <a href="../shop/single-product-v1.html" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
+                      <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
                         <span class="product__add-to-cart">ADD TO CART</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-switch"></i>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-heart"></i>
                       </a>
                     </div>
@@ -717,25 +713,25 @@
                 <div class="product__inner overflow-hidden p-3 p-md-4d875">
                   <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                     <div class="woocommerce-loop-product__thumbnail">
-                      <a href="../shop/single-product-v1.html" class="d-block"><img src="/assets/img/120x180/img8.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                      <a href="/shop/list/@{{row.id}}" class="d-block"><img src="/assets/img/120x180/img8.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                     </div>
                     <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="../shop/single-product-v1.html">Kindle Edition</a></div>
-                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="../shop/single-product-v1.html">The Last Sister (Columbia River Book 1)</a></h2>
+                      <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">Kindle Edition</a></div>
+                      <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark"><a href="/shop/list/@{{row.id}}">The Last Sister (Columbia River Book 1)</a></h2>
                       <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Kelly Harms</a></div>
                       <div class="price d-flex align-items-center font-weight-medium font-size-3">
                         <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>29</span>
                       </div>
                     </div>
                     <div class="product__hover d-flex align-items-center">
-                      <a href="../shop/single-product-v1.html" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
+                      <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark h-dark font-weight-medium mr-auto">
                         <span class="product__add-to-cart">ADD TO CART</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-switch"></i>
                       </a>
-                      <a href="../shop/single-product-v1.html" class="h-p-bg btn btn-outline-primary border-0">
+                      <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                         <i class="flaticon-heart"></i>
                       </a>
                     </div>
@@ -754,4 +750,7 @@
 
 
 
+@stop
+@section('js')
+<script src="/assets/js/controllers/client/singleBookController.js"></script>
 @stop

@@ -409,7 +409,7 @@
                             </div>
                             <ul class="">
                               <li>
-                                <a href="../home/index.html">Home v1</a>
+                                <a   href="{{route('home')}}">Home v1</a>
                               </li>
                               <li>
                                 <a href="../home/home-v2.html">Home v2</a>
@@ -461,7 +461,7 @@
                             </div>
                             <ul class="">
                               <li>
-                                <a href="../shop/single-product-v1.html">Single Product v1</a>
+                                <a   href="/shop/list/@{{row.id}}">Single Product v1</a>
                               </li>
                               <li>
                                 <a href="../shop/single-product-v2.html">Single Product v2</a>
@@ -523,7 +523,7 @@
                                 <a href="../shop/v1.html">Shop List v1</a>
                               </li>
                               <li>
-                                <a href="../shop/v2.html">Shop List v2</a>
+                                <a   href="{{route('shop')}}">Shop List v2</a>
                               </li>
                               <li>
                                 <a href="../shop/v3.html">Shop List v3</a>

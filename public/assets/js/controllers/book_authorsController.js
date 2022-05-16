@@ -1,4 +1,4 @@
-const baseApi = 'http://localhost:8000/api/';
+
 const nameController = 'book_authors/';
 const nameChild = 'child/';
 

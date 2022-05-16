@@ -1,4 +1,4 @@
-const baseApi = 'http://localhost:8000/api/';
+
 const nameController = 'publishers/';
 const nameChild = 'child/';
 const successStatus = 'success';

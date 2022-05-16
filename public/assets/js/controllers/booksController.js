@@ -1,4 +1,4 @@
-const baseApi = 'http://localhost:8000/api/';
+
 const nameController = 'books/';
 const categoryController = 'categories/';
 const publishersController = 'publishers/';

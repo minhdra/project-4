@@ -108,6 +108,7 @@
   <script src="/assets/js/angular.min.js"></script>
   <script src="/assets/js/dirPagination.js"></script>
   <script src="/assets/js/controllers/initializationController.js"></script>
+  <script src="/assets/js/angular-ckeditor.js"></script>
 
   @yield('js')
 </body>

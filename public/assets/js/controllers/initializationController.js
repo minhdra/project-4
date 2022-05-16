@@ -1,4 +1,5 @@
-const app = angular.module('app', ['angularUtils.directives.dirPagination','ckeditor']);
+const baseApi = 'http://localhost:8000/api/';
+const app = angular.module('app', ['angularUtils.directives.dirPagination', 'ckeditor']);
 setTimeout(() => {
   $(function () {
     $('[data-toggle="tooltip"]').tooltip();

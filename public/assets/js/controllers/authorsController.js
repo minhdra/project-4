@@ -1,4 +1,4 @@
-const baseApi = 'http://localhost:8000/api/';
+
 const nameController = 'authors/';
 const nameChild = 'child/';
 const successStatus = 'success';
