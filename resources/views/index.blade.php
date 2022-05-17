@@ -1,12 +1,12 @@
 @extends('_client_layout')
 @section('content')
 
-<div ng-controller="booksController">
+<div ng-controller="booksController" class="m-auto">
   <!-- Slider -->
-  <section class="space-bottom-3">
+  <section class="space-bottom-3 m-auto">
     <div class="bg-gray-200 space-2 space-lg-0 bg-img-hero" style="background-image: url(/assets/img/1920x588/img1.jpg);">
-      <div class="container" style="max-width: 1200px">
-        <div class="js-slick-carousel u-slick" data-pagi-classes="text-center u-slick__pagination position-absolute right-0 left-0 mb-n8 mb-lg-4 bottom-0">
+      <div class="container">
+        <div class="owl-carousel slides">
           <div class="js-slide">
             <div class="hero row min-height-588 align-items-center">
               <div class="col-lg-7 col-wd-6 mb-4 mb-lg-0">
@@ -80,38 +80,13 @@
     </div>
   </section>
   <!-- New books -->
-  <section class="space-bottom-3">
-    <div class="container" style="max-width: 1200px">
+  <section class="space-bottom-3 m-auto" style="max-width: 1200px;">
+    <div class="container">
       <header class="mb-5 d-md-flex justify-content-between align-items-center">
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Sách mới</h2>
         <a href="../shop/v1.html" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-      <div class="js-slick-carousel products no-gutters" data-pagi-classes="d-xl-none text-center position-absolute right-0 left-0 u-slick__pagination mt-4 mb-0" data-arrows-classes="d-none d-xl-block u-slick__arrow u-slick__arrow-centered--y" data-arrow-left-classes="fas fa-chevron-left u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas fa-chevron-right u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="5" data-responsive='[{
-                       "breakpoint": 1500,
-                       "settings": {
-                         "slidesToShow": 4
-                       }
-                    },{
-                       "breakpoint": 1199,
-                       "settings": {
-                         "slidesToShow": 3
-                       }
-                    },{
-                       "breakpoint": 992,
-                       "settings": {
-                         "slidesToShow": 2
-                       }
-                    }, {
-                       "breakpoint": 768,
-                       "settings": {
-                         "slidesToShow": 1
-                       }
-                    }, {
-                       "breakpoint": 554,
-                       "settings": {
-                         "slidesToShow": 1
-                       }
-                    }]'>
+       <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in books">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
@@ -145,38 +120,13 @@
     </div>
   </section>
   <!-- Bestselling books -->
-  <section class="space-bottom-3">
-    <div class="container" style="max-width: 1200px">
+  <section class="space-bottom-3 m-auto" style="max-width: 1200px;">
+    <div class="container">
       <header class="mb-5 d-md-flex justify-content-between align-items-center">
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Sách bán chạy nhất</h2>
         <a href="../shop/v1.html" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-      <div class="js-slick-carousel products no-gutters" data-pagi-classes="d-xl-none text-center position-absolute right-0 left-0 u-slick__pagination mt-4 mb-0" data-arrows-classes="d-none d-xl-block u-slick__arrow u-slick__arrow-centered--y" data-arrow-left-classes="fas fa-chevron-left u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas fa-chevron-right u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="5" data-responsive='[{
-                       "breakpoint": 1500,
-                       "settings": {
-                         "slidesToShow": 4
-                       }
-                    },{
-                       "breakpoint": 1199,
-                       "settings": {
-                         "slidesToShow": 3
-                       }
-                    },{
-                       "breakpoint": 992,
-                       "settings": {
-                         "slidesToShow": 2
-                       }
-                    }, {
-                       "breakpoint": 768,
-                       "settings": {
-                         "slidesToShow": 1
-                       }
-                    }, {
-                       "breakpoint": 554,
-                       "settings": {
-                         "slidesToShow": 1
-                       }
-                    }]'>
+       <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in books">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
@@ -216,38 +166,13 @@
     </a>
   </div>
   <!-- Manga collections -->
-  <section class="space-bottom-3">
-    <div class="container" style="max-width: 1200px">
+  <section class="space-bottom-3 m-auto" style="max-width: 1200px;">
+    <div class="container">
       <header class="mb-5 d-md-flex justify-content-between align-items-center">
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Manga - Comic</h2>
         <a href="../shop/v1.html" class="h-primary d-block">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-      <div class="js-slick-carousel products no-gutters" data-pagi-classes="d-xl-none text-center position-absolute right-0 left-0 u-slick__pagination mt-4 mb-0" data-arrows-classes="d-none d-xl-block u-slick__arrow u-slick__arrow-centered--y" data-arrow-left-classes="fas fa-chevron-left u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas fa-chevron-right u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="5" data-responsive='[{
-                       "breakpoint": 1500,
-                       "settings": {
-                         "slidesToShow": 4
-                       }
-                    },{
-                       "breakpoint": 1199,
-                       "settings": {
-                         "slidesToShow": 3
-                       }
-                    },{
-                       "breakpoint": 992,
-                       "settings": {
-                         "slidesToShow": 2
-                       }
-                    }, {
-                       "breakpoint": 768,
-                       "settings": {
-                         "slidesToShow": 1
-                       }
-                    }, {
-                       "breakpoint": 554,
-                       "settings": {
-                         "slidesToShow": 1
-                       }
-                    }]'>
+       <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in books">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
@@ -287,38 +212,13 @@
     </a>
   </div>
   <!-- Doraemon -->
-  <section class="space-bottom-3">
-    <div class="container" style="max-width: 1200px">
+  <section class="space-bottom-3 m-auto" style="max-width: 1200px;">
+    <div class="container">
       <header class="mb-5 d-md-flex justify-content-between align-items-center">
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Doraemon</h2>
         <a href="../shop/v1.html" class="h-primary d-block">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-      <div class="js-slick-carousel products no-gutters" data-pagi-classes="d-xl-none text-center position-absolute right-0 left-0 u-slick__pagination mt-4 mb-0" data-arrows-classes="d-none d-xl-block u-slick__arrow u-slick__arrow-centered--y" data-arrow-left-classes="fas fa-chevron-left u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas fa-chevron-right u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="5" data-responsive='[{
-                       "breakpoint": 1500,
-                       "settings": {
-                         "slidesToShow": 4
-                       }
-                    },{
-                       "breakpoint": 1199,
-                       "settings": {
-                         "slidesToShow": 3
-                       }
-                    },{
-                       "breakpoint": 992,
-                       "settings": {
-                         "slidesToShow": 2
-                       }
-                    }, {
-                       "breakpoint": 768,
-                       "settings": {
-                         "slidesToShow": 1
-                       }
-                    }, {
-                       "breakpoint": 554,
-                       "settings": {
-                         "slidesToShow": 1
-                       }
-                    }]'>
+       <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in books">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
@@ -352,8 +252,8 @@
     </div>
   </section>
   <!-- Favorite authors -->
-  <section class="space-bottom-3">
-    <div class="container" style="max-width: 1200px">
+  <section class="space-bottom-3 m-auto" style="max-width: 1200px;">
+    <div class="container">
       <header class="d-md-flex justify-content-between align-items-center mb-8">
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Favorite Authors</h2>
         <a href="../others/authors-list.html" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
