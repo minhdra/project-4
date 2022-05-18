@@ -16,12 +16,12 @@
   <link rel="stylesheet" href="/assets/vendor/flaticon/font/flaticon.css">
   <link rel="stylesheet" href="/assets/vendor/animate.css/animate.css">
   <link rel="stylesheet" href="/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
-  <!-- <link rel="stylesheet" href="/assets/vendor/slick-carousel/slick/slick.css" /> -->
   <link rel="stylesheet" href="/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
   <link rel="stylesheet" href="/assets/styles/vendors/owl.carousel.min.css" >
-
   <link rel="stylesheet" href="/assets/styles/carousel.css">
+
   <link rel="stylesheet" href="/assets/styles/theme.css">
+  <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/toastr.css">
 </head>
 
 <body ng-app='app'>
@@ -48,6 +48,8 @@
   <script src="/assets/vendor/owl.carousel.min.js"></script>
   <script src="/assets/vendor/multilevel-sliding-mobile-menu/dist/jquery.zeynep.js"></script>
   <script src="/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <script src="/assets/admin/vendors/js/toastr.min.js"></script>
 
   <script src="/assets/js/hs.core.js"></script>
   <script src="/assets/js/components/hs.unfold.js"></script>
@@ -110,6 +112,8 @@
   <script src="/assets/js/angular.min.js"></script>
   <script src="/assets/js/dirPagination.js"></script>
   <script src="/assets/js/controllers/initializationController.js"></script>
+  <script src="/assets/js/controllers/client/headerController.js"></script>
+  <script src="/assets/js/controllers/client/accountController.js"></script>
   <script src="/assets/js/angular-ckeditor.js"></script>
   
   @yield('js')

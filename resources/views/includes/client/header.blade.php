@@ -1,4 +1,4 @@
-<header id="site-header" class="site-header__v1">
+<header id="site-header" class="site-header__v1" ng-controller="headerController">
   <div class="topbar border-bottom d-none d-md-block">
     <div class="container-fluid px-2 px-md-5 px-xl-8d75">
       <div class="topbar__nav d-md-flex justify-content-between align-items-center">

@@ -140,7 +140,7 @@
 </aside>
 
 <!-- Account -->
-<aside id="sidebarContent" class="u-sidebar u-sidebar__lg" aria-labelledby="sidebarNavToggler">
+<aside id="sidebarContent" class="u-sidebar u-sidebar__lg" aria-labelledby="sidebarNavToggler" ng-controller="accountController">
   <div class="u-sidebar__scroller">
     <div class="u-sidebar__container">
       <div class="u-header-sidebar__footer-offset">
@@ -154,7 +154,7 @@
 
         <div class="js-scrollbar u-sidebar__body">
           <div class="u-sidebar__content u-header-sidebar__content">
-            <form class="">
+            <di class="">
 
               <div id="login" data-target-group="idForm">
 
@@ -166,8 +166,8 @@
 
                   <div class="form-group mb-4">
                     <div class="js-form-message js-focus-state">
-                      <label id="signinEmailLabel" class="form-label" for="signinEmail">Username or email *</label>
-                      <input type="email" class="form-control rounded-0 height-4 px-4" name="email" id="signinEmail" placeholder="creativelayers088@gmail.com" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel" required>
+                      <label class="form-label" for="username">Username *</label>
+                      <input type="text" class="form-control rounded-0 height-4 px-4" name="username" id="username" placeholder="Username" ng-model="loginModel.username" required>
                     </div>
                   </div>
 
@@ -175,7 +175,7 @@
                   <div class="form-group mb-4">
                     <div class="js-form-message js-focus-state">
                       <label id="signinPasswordLabel" class="form-label" for="signinPassword">Password *</label>
-                      <input type="password" class="form-control rounded-0 height-4 px-4" name="password" id="signinPassword" placeholder="" aria-label="" aria-describedby="signinPasswordLabel" required>
+                      <input type="password" class="form-control rounded-0 height-4 px-4" name="password" id="signinPassword" placeholder="" ng-model="loginModel.password" required>
                     </div>
                   </div>
 
@@ -183,7 +183,7 @@
 
                     <div class="js-form-message">
                       <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
-                        <input type="checkbox" class="custom-control-input" id="termsCheckbox" name="termsCheckbox" required>
+                        <input type="checkbox" class="custom-control-input" id="termsCheckbox" name="termsCheckbox" ng-model="checkRemember" ng-change="changedRemember(checkRemember)">
                         <label class="custom-control-label" for="termsCheckbox">
                           <span class="font-size-2 text-secondary-gray-700">
                             Remember me
@@ -195,7 +195,7 @@
                     <a class="js-animation-link text-dark font-size-2 t-d-u link-muted font-weight-medium" href="javascript:;" data-target="#forgotPassword" data-link-group="idForm" data-animation-in="fadeIn">Forgot Password?</a>
                   </div>
                   <div class="mb-4d75">
-                    <button type="submit" class="btn btn-block py-3 rounded-0 btn-dark">Sign In</button>
+                    <button class="btn btn-block py-3 rounded-0 btn-dark" ng-click="login()">Sign In</button>
                   </div>
                   <div class="mb-2">
                     <a href="javascript:;" class="js-animation-link btn btn-block py-3 rounded-0 btn-outline-dark font-weight-medium" data-target="#signup" data-link-group="idForm" data-animation-in="fadeIn">Create Account</a>
@@ -213,16 +213,16 @@
 
                   <div class="form-group mb-4">
                     <div class="js-form-message js-focus-state">
-                      <label id="signinEmailLabel1" class="form-label" for="signinEmail1">Email *</label>
-                      <input type="email" class="form-control rounded-0 height-4 px-4" name="email" id="signinEmail1" placeholder="creativelayers088@gmail.com" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1" required>
+                      <label id="signUpUsernameLabel" class="form-label" for="signUpUsername">Username *</label>
+                      <input type="username" class="form-control rounded-0 height-4 px-4" name="signUpUsername" id="signUpUsername" placeholder="" aria-describedby="signUpUsernameLabel" ng-model="registerModel.username">
                     </div>
                   </div>
 
 
                   <div class="form-group mb-4">
                     <div class="js-form-message js-focus-state">
-                      <label id="signinPasswordLabel1" class="form-label" for="signinPassword1">Password *</label>
-                      <input type="password" class="form-control rounded-0 height-4 px-4" name="password" id="signinPassword1" placeholder="" aria-label="" aria-describedby="signinPasswordLabel1" required>
+                      <label id="signinPasswordLabel1" class="form-label" for="signupPassword">Password *</label>
+                      <input type="password" class="form-control rounded-0 height-4 px-4" name="password" id="signupPassword" placeholder="" aria-label="" aria-describedby="signinPasswordLabel1" ng-model="registerModel.password">
                     </div>
                   </div>
 
@@ -230,12 +230,13 @@
                   <div class="form-group mb-4">
                     <div class="js-form-message js-focus-state">
                       <label id="signupConfirmPasswordLabel" class="form-label" for="signupConfirmPassword">Confirm Password *</label>
-                      <input type="password" class="form-control rounded-0 height-4 px-4" name="confirmPassword" id="signupConfirmPassword" placeholder="" aria-label="" aria-describedby="signupConfirmPasswordLabel" required>
+                      <input type="password" class="form-control rounded-0 height-4 px-4" name="confirmPassword" id="signupConfirmPassword" placeholder="" aria-label="" aria-describedby="signupConfirmPasswordLabel" ng-model="registerModel.confirmPassword">
+                      <span class="text-danger mb-10">@{{registerModel.password===registerModel.confirmPassword?'':'Must be same password'}}</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <button type="submit" class="btn btn-block py-3 rounded-0 btn-dark">Create Account</button>
+                    <button class="btn btn-block py-3 rounded-0 btn-dark" ng-click="register()" ng-disabled="registerModel.password!==registerModel.confirmPassword">Create Account</button>
                   </div>
                   <div class="text-center mb-4">
                     <span class="small text-muted">Already have an account?</span>
@@ -257,7 +258,7 @@
                   <div class="form-group mb-4">
                     <div class="js-form-message js-focus-state">
                       <label id="signinEmailLabel3" class="form-label" for="signinEmail3">Email *</label>
-                      <input type="email" class="form-control rounded-0 height-4 px-4" name="email" id="signinEmail3" placeholder="creativelayers088@gmail.com" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel3" required>
+                      <input type="email" class="form-control rounded-0 height-4 px-4" name="email" id="signinEmail3" placeholder="creativelayers088@gmail.com" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel3">
                     </div>
                   </div>
 
@@ -272,7 +273,7 @@
                 </div>
               </div>
 
-            </form>
+            </di>
           </div>
         </div>
 
@@ -409,7 +410,7 @@
                             </div>
                             <ul class="">
                               <li>
-                                <a   href="{{route('home')}}">Home v1</a>
+                                <a href="{{route('home')}}">Home v1</a>
                               </li>
                               <li>
                                 <a href="../home/home-v2.html">Home v2</a>
@@ -461,7 +462,7 @@
                             </div>
                             <ul class="">
                               <li>
-                                <a   href="/shop/list/@{{row.id}}">Single Product v1</a>
+                                <a href="/shop/list/@{{row.id}}">Single Product v1</a>
                               </li>
                               <li>
                                 <a href="../shop/single-product-v2.html">Single Product v2</a>
@@ -523,7 +524,7 @@
                                 <a href="../shop/v1.html">Shop List v1</a>
                               </li>
                               <li>
-                                <a   href="{{route('shop')}}">Shop List v2</a>
+                                <a href="{{route('shop')}}">Shop List v2</a>
                               </li>
                               <li>
                                 <a href="../shop/v3.html">Shop List v3</a>

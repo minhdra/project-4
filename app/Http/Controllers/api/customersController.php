@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\customers;
+use App\Models\users;
 use Illuminate\Http\Request;
 
 class customersController extends Controller
@@ -16,6 +17,27 @@ class customersController extends Controller
     public function index()
     {
         //
+    }
+
+    public function login(Request $request) {
+        $db = customers::where('username', $request->username)->where('password', $request->password)->where('is_active', 1)->selectRaw('id')->first();
+        return $db;
+    }
+
+    public function register(Request $request) {
+        $check = customers::where('username', $request->username)->first();
+        if(!$check) {
+            $db = new customers();
+            $db->username = $request->username;
+            $db->password = $request->password;
+            $db->status = 1;
+            $db->save();
+            $check = "true";
+        }
+        else {
+            $check = "false";
+        }
+        return $check;
     }
 
     /**
