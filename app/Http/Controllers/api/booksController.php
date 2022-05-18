@@ -26,8 +26,12 @@ class booksController extends Controller
             $book->publishers;
             $book->authors;
         }
+        return ['books'=>$books];
+    }
 
-        // $books = books::with('Price')->with('categories')->with('book_languages')->with('publishers')->get();
+    public function get_basic()
+    {
+        $books = books::where('is_active',1)->get();
         return ['books'=>$books];
     }
 

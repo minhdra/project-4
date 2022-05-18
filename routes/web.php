@@ -91,6 +91,10 @@ Route::get('/admin/categories', function () {
     return view('admin.categories');
 });
 
+Route::get('/admin/invoices', function () {
+    return view('admin.invoices');
+});
+
 
 
 

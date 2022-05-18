@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\invoice_details;
 use App\Models\invoices;
+use DateTime;
 use Illuminate\Http\Request;
 
 class invoicesController extends Controller
@@ -15,7 +17,11 @@ class invoicesController extends Controller
      */
     public function index()
     {
-        //
+        $invoices = invoices::where('is_active',1)->get();
+        foreach($invoices as $invoice){
+            $invoice->publishers;
+        }
+        return $invoices;
     }
 
     /**
@@ -36,7 +42,29 @@ class invoicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $invoice = new invoices();
+        $invoice->publisher_id = $request->publisher_id;
+        $invoice->staffID = $request->staffID;
+        $invoice->invoice_date = new DateTime();
+        $invoice->total = $request->total;
+        $invoice->discount = $request->discount;
+        $invoice->status = 4;
+        $invoice->save();
+
+        $id = $invoice->id;
+
+        $invoice_details = $request['invoice_details'];
+        foreach($invoice_details as $invoice_detail){
+            $db_invoice_detail = new invoice_details();
+            $db_invoice_detail->invoiceID = $id;
+            $db_invoice_detail->bookID = $invoice_detail['bookID'];
+            $db_invoice_detail->quantity = $invoice_detail['quantity'];
+            $db_invoice_detail->discount = $invoice_detail['discount'];
+            $db_invoice_detail->price = $invoice_detail['price'];
+            $db_invoice_detail->total = $invoice_detail['total'];
+            $db_invoice_detail->save();
+        }
+        return $invoice;
     }
 
     /**
@@ -45,9 +73,15 @@ class invoicesController extends Controller
      * @param  \App\Models\invoices  $invoices
      * @return \Illuminate\Http\Response
      */
-    public function show(invoices $invoices)
+    public function show($id)
     {
-        //
+        $invoice = invoices::find($id);
+        $invoice_details = $invoice->invoice_details;
+        $invoice->publishers;
+        foreach($invoice_details as $invoice_detail){
+            $invoice_detail->books;
+        }
+        return $invoice;
     }
 
     /**
@@ -68,9 +102,27 @@ class invoicesController extends Controller
      * @param  \App\Models\invoices  $invoices
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, invoices $invoices)
+    public function update(Request $request, $id)
     {
-        //
+        $invoice = invoices::find($id);
+        $invoice->publisher_id = $request->publisher_id;
+        $invoice->staffID = $request->staffID;
+        $invoice->total = $request->total;
+        $invoice->discount = $request->discount;
+        $invoice->status = 4;
+        $invoice->save();
+
+        $invoice_details = $request['invoice_details'];
+        foreach($invoice_details as $invoice_detail){
+            $db_invoice_detail = invoice_details::find($invoice_detail['id']);
+            $db_invoice_detail->bookID = $invoice_detail['bookID'];
+            $db_invoice_detail->quantity = $invoice_detail['quantity'];
+            $db_invoice_detail->discount = $invoice_detail['discount'];
+            $db_invoice_detail->price = $invoice_detail['price'];
+            $db_invoice_detail->total = $invoice_detail['total'];
+            $db_invoice_detail->save();
+        }
+        return $invoice;
     }
 
     /**

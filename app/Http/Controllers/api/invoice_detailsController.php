@@ -68,9 +68,15 @@ class invoice_detailsController extends Controller
      * @param  \App\Models\invoice_details  $invoice_details
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, invoice_details $invoice_details)
+    public function update(Request $request,$id)
     {
-        //
+        $invoice_detail = invoice_details::find($id);
+        $invoice_detail->quantity =$request->quantity;
+        $invoice_detail->price =$request->price;
+        $invoice_detail->discount =$request->discount;
+        $invoice_detail->total =$invoice_detail->price * $invoice_detail->quantity * (100-$invoice_detail->discount)/100;
+        $invoice_detail->save();
+        return $invoice_detail;
     }
 
     /**

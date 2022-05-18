@@ -11,4 +11,15 @@
 .modal-xl {
     max-width: 1000px;
 }
+.modal-2xl {
+    max-width: 1400px;
+}
+}
+
+.selected{
+    background: #d8d8df !important;
+}
+
+.form-control-plaintext {
+    border-bottom: 1px solid #0b0b0b30 !important;
 }

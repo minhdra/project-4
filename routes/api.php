@@ -45,6 +45,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('books', booksController::class);
+Route::resource('invoices', invoicesController::class);
+Route::resource('invoice_details', invoice_detailsController::class);
 Route::resource('categories', categoriesController::class);
 Route::resource('publishers', publishersController::class);
 Route::resource('book_languages', book_languagesController::class);
@@ -53,3 +55,5 @@ Route::post('customers/login', [customersController::class, 'login']);
 Route::post('customers/register', [customersController::class, 'register']);
 
 Route::post('book/upload', [booksController::class, 'uploadFile'])->name('upload.uploadfile');
+Route::get('book/get_basic', [booksController::class, 'get_basic'])->name('book.get_basic');
+
