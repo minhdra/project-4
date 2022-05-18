@@ -42,7 +42,7 @@
                           <td class="product-name" data-title="Product">
                             <div class="d-flex align-items-center">
                               <a href="#">
-                                <img src="../../assets/img/90x138/img1.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="">
+                                <img ng-src="../../assets/img/90x138/img1.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="">
                               </a>
                               <div class="ml-3 m-w-200-lg-down">
                                 <a href="#">The Overdue Life of Amy Byler</a>
@@ -92,7 +92,7 @@
                           <td class="product-name" data-title="Product">
                             <div class="d-flex align-items-center">
                               <a href="#">
-                                <img src="../../assets/img/90x138/img2.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="">
+                                <img ng-src="../../assets/img/90x138/img2.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="">
                               </a>
                               <div class="ml-3 m-w-200-lg-down">
                                 <a href="#">All You Can Ever Know: A Memoir</a>
@@ -142,7 +142,7 @@
                           <td class="product-name" data-title="Product">
                             <div class="d-flex align-items-center">
                               <a href="#">
-                                <img src="../../assets/img/90x138/img3.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="">
+                                <img ng-src="../../assets/img/90x138/img3.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="">
                               </a>
                               <div class="ml-3 m-w-200-lg-down">
                                 <a href="#">Winter Garden</a>

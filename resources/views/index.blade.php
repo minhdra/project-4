@@ -86,7 +86,7 @@
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Sách mới</h2>
         <a href="../shop/v1.html" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-       <div class="products no-gutters owl-carousel">
+      <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in books">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
@@ -94,22 +94,22 @@
                 <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
               </div>
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                
+
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
                 <div class="price d-flex align-items-center font-weight-medium font-size-3">
-                  <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">đ</span><span>@{{row.prices.price | number}}</span></span>
+                  <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">đ</span><span class="text-primary"> @{{row.prices.price | number}}</span></span>
                 </div>
               </div>
               <div class="product__hover d-flex align-items-center">
-                <a   href="/shop/list/@{{row.id}}" class="text-uppercase text-dark font-weight-medium mr-auto">
+                <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark font-weight-medium mr-auto">
                   <span class="product__add-to-cart">ADD TO CART</span>
                   <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                 </a>
-                <a   href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                   <i class="flaticon-switch"></i>
                 </a>
-                <a   href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
+                <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                   <i class="flaticon-heart"></i>
                 </a>
               </div>
@@ -126,7 +126,7 @@
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Sách bán chạy nhất</h2>
         <a href="../shop/v1.html" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-       <div class="products no-gutters owl-carousel">
+      <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in books">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
@@ -134,22 +134,22 @@
                 <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
               </div>
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                
-                <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a   href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
+
+                <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
                 <div class="price d-flex align-items-center font-weight-medium font-size-3">
-                  <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">đ</span><span></span>
+                  <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">đ</span><span class="text-primary"> @{{row.prices.price | number}}</span></span>
                 </div>
               </div>
               <div class="product__hover d-flex align-items-center">
-                <a   href="/shop/list/@{{row.id}}" class="text-uppercase text-dark font-weight-medium mr-auto">
+                <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark font-weight-medium mr-auto">
                   <span class="product__add-to-cart">ADD TO CART</span>
                   <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                 </a>
-                <a   href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                   <i class="flaticon-switch"></i>
                 </a>
-                <a   href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
+                <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                   <i class="flaticon-heart"></i>
                 </a>
               </div>
@@ -172,7 +172,7 @@
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Manga - Comic</h2>
         <a href="../shop/v1.html" class="h-primary d-block">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-       <div class="products no-gutters owl-carousel">
+      <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in books">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
@@ -180,22 +180,22 @@
                 <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
               </div>
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                
-                <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a   href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
+
+                <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
                 <div class="price d-flex align-items-center font-weight-medium font-size-3">
-                  <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">đ</span><span></span>
+                  <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">đ</span><span class="text-primary"> @{{row.prices.price | number}}</span></span>
                 </div>
               </div>
               <div class="product__hover d-flex align-items-center">
-                <a   href="/shop/list/@{{row.id}}" class="text-uppercase text-dark font-weight-medium mr-auto">
+                <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark font-weight-medium mr-auto">
                   <span class="product__add-to-cart">ADD TO CART</span>
                   <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                 </a>
-                <a   href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                   <i class="flaticon-switch"></i>
                 </a>
-                <a   href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
+                <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                   <i class="flaticon-heart"></i>
                 </a>
               </div>
@@ -218,7 +218,7 @@
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Doraemon</h2>
         <a href="../shop/v1.html" class="h-primary d-block">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-       <div class="products no-gutters owl-carousel">
+      <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in books">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
@@ -226,22 +226,22 @@
                 <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
               </div>
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-                
-                <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a   href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
+
+                <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
                 <div class="price d-flex align-items-center font-weight-medium font-size-3">
-                  <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">đ</span><span></span>
+                  <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">đ</span><span class="text-primary"> @{{row.prices.price | number}}</span></span>
                 </div>
               </div>
               <div class="product__hover d-flex align-items-center">
-                <a   href="/shop/list/@{{row.id}}" class="text-uppercase text-dark font-weight-medium mr-auto">
+                <a href="/shop/list/@{{row.id}}" class="text-uppercase text-dark font-weight-medium mr-auto">
                   <span class="product__add-to-cart">ADD TO CART</span>
                   <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                 </a>
-                <a   href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
+                <a href="/shop/list/@{{row.id}}" class="mr-1 h-p-bg btn btn-outline-primary border-0">
                   <i class="flaticon-switch"></i>
                 </a>
-                <a   href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
+                <a href="/shop/list/@{{row.id}}" class="h-p-bg btn btn-outline-primary border-0">
                   <i class="flaticon-heart"></i>
                 </a>
               </div>
@@ -358,5 +358,5 @@
 
 @stop
 @section('js')
-  <script src="/assets/js/controllers/booksController.js"></script>     
+<script src="/assets/js/controllers/booksController.js"></script>
 @stop

@@ -84,7 +84,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img1.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img1.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -113,7 +113,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img2.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img2.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -142,7 +142,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img3.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img3.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -171,7 +171,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img4.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img4.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -200,7 +200,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img5.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img5.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -229,7 +229,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img6.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img6.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -258,7 +258,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img7.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img7.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -287,7 +287,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img8.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img8.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -316,7 +316,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img9.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img9.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -345,7 +345,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img10.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img10.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -374,7 +374,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img1.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img1.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -403,7 +403,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                       <div class="woocommerce-loop-product__thumbnail">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img7.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img7.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -438,7 +438,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link row position-relative">
                       <div class="col-md-auto woocommerce-loop-product__thumbnail mb-3 mb-md-0">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img1.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img1.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="col-md woocommerce-loop-product__body product__body pt-3 bg-white mb-3 mb-md-0">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -468,7 +468,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link row position-relative">
                       <div class="col-md-auto woocommerce-loop-product__thumbnail mb-3 mb-md-0">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img2.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img2.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="col-md woocommerce-loop-product__body product__body pt-3 bg-white mb-3 mb-md-0">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -498,7 +498,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link row position-relative">
                       <div class="col-md-auto woocommerce-loop-product__thumbnail mb-3 mb-md-0">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img3.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img3.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="col-md woocommerce-loop-product__body product__body pt-3 bg-white mb-3 mb-md-0">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -528,7 +528,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link row position-relative">
                       <div class="col-md-auto woocommerce-loop-product__thumbnail mb-3 mb-md-0">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img4.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img4.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="col-md woocommerce-loop-product__body product__body pt-3 bg-white mb-3 mb-md-0">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -558,7 +558,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link row position-relative">
                       <div class="col-md-auto woocommerce-loop-product__thumbnail mb-3 mb-md-0">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img5.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img5.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="col-md woocommerce-loop-product__body product__body pt-3 bg-white mb-3 mb-md-0">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>
@@ -588,7 +588,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link row position-relative">
                       <div class="col-md-auto woocommerce-loop-product__thumbnail mb-3 mb-md-0">
-                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img src="../../assets/img/150x226/img6.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a   href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="../../assets/img/150x226/img6.jpg" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="col-md woocommerce-loop-product__body product__body pt-3 bg-white mb-3 mb-md-0">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a   href="/shop/list/@{{row.id}}">Bìa mềm</a></div>

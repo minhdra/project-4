@@ -39,16 +39,16 @@ class delivery_addressesController extends Controller
         $db = new delivery_addresses();
         $db->customer_id = $request->customer_id;
         $db->full_name = $request->full_name;
+        $db->phone = $request->phone;
         $db->province = $request->province;
         $db->district = $request->district;
         $db->commune = $request->commune;
         $db->specific_address = $request->specific_address;
-        $db->type_address = $request->type_address;
+        $db->type = $request->type;
         $db->status = $request->status;
         if($db->status == 1) {
             $this->updateStatus($db->customer_id);
         }
-        $db->phone_number = $request->phone_number;
         $db->save();
 
         return $db;
@@ -96,16 +96,16 @@ class delivery_addressesController extends Controller
     {
         $db = delivery_addresses::where('is_active', 1)->find($id);
         $db->full_name = $request->full_name;
+        $db->phone = $request->phone;
         $db->province = $request->province;
         $db->district = $request->district;
         $db->commune = $request->commune;
         $db->specific_address = $request->specific_address;
-        $db->type_address = $request->type_address;
+        $db->type = $request->type;
         $db->status = $request->status;
         if($db->status == 1) {
             $this->updateStatus($db->customer_id);
         }
-        $db->phone_number = $request->phone_number;
         $db->save();
 
         return $db;

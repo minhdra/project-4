@@ -6,6 +6,12 @@ setTimeout(() => {
   });
 }, 2000);
 
+function checkCustomerLogin() {
+  const request = JSON.parse(sessionStorage.getItem('customer')) || JSON.parse(localStorage.getItem('customer')) || {};
+
+  return request;
+}
+
 function showAlert(status) {
   if (status === 'success')
   {
@@ -26,4 +32,37 @@ function convertDate(date) {
     date = new Date(date);
     result = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes();
   return result;
+}
+
+async function getCities() {
+  let data = [];
+  await $.ajax({
+    url: '/assets/hanhchinhvn/tinh_tp.json',
+    context: document.body
+  }).done(function (res) {
+    data = res;
+  });
+  return data;
+}
+
+async function getDistricts() {
+  let data = [];
+  await $.ajax({
+    url: '/assets/hanhchinhvn/quan_huyen.json',
+    context: document.body
+  }).done(function (res) {
+    data = res;
+  });
+  return data;
+}
+
+async function getCommunes() {
+  let data = [];
+  await $.ajax({
+    url: '/assets/hanhchinhvn/xa_huyen.json',
+    context: document.body
+  }).done(function (res) {
+    data = res;
+  });
+  return data;
 }

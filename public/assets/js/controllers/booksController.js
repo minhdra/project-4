@@ -124,7 +124,7 @@ function booksController($scope, $http) {
         $scope.book.languageID = String ($scope.book.languageID);
         $scope.book.categoryID = String ($scope.book.categoryID);
 
-        $scope.book.price = $scope.book.prices.price;
+        $scope.book.price = $scope.book.prices?.price;
         $scope.book.publish_date = new Date($scope.book.publish_date);
         $scope.text.textInput = $scope.book.description;
       // })

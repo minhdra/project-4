@@ -4,6 +4,8 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\order_details;
+use App\Models\orders;
+use App\Models\products;
 use Illuminate\Http\Request;
 
 class order_detailsController extends Controller
@@ -15,7 +17,17 @@ class order_detailsController extends Controller
      */
     public function index()
     {
-        //
+        $products = products::where('is_active', 1)->get();
+        $orders = orders::where('is_active', 1)->get();
+        $details = order_details::where('is_active', 1)->get();
+        foreach ($details as $detail) {
+            $detail->product;
+            $order = $detail->order;
+            $customer = $order->customer;
+            $customer->info;
+        }
+
+        return ['details' => $details, 'products' => $products, 'orders' => $orders];
     }
 
     /**
@@ -36,7 +48,30 @@ class order_detailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $db = new order_details();
+        $db->order_id = $request->order_id;
+        $db->product_id = $request->product_id;
+        $db->quantity = $request->quantity;
+        $db->single_price = $request->single_price;
+        $db->image = $request->image;
+        $db->color = $request->color;
+        $db->size = $request->size;
+        $db->save();
+
+        $total = $this->calculateTotal($db->order_id);
+        (new orders())->updateTotal($db->order_id, $total);
+
+        return $db;
+    }
+
+    private function calculateTotal($order_id) {
+        $total = 0;
+        $details = order_details::where('is_active', 1)->where('order_id', $order_id)->get();
+        foreach ($details as $detail) {
+            $total += $detail->quantity * $detail->single_price;
+        }
+
+        return $total;
     }
 
     /**
@@ -45,9 +80,10 @@ class order_detailsController extends Controller
      * @param  \App\Models\order_details  $order_details
      * @return \Illuminate\Http\Response
      */
-    public function show(order_details $order_details)
+    public function show($id)
     {
-        //
+        $db = order_details::where('is_active', 1)->find($id);
+        return $db;
     }
 
     /**
@@ -68,9 +104,22 @@ class order_detailsController extends Controller
      * @param  \App\Models\order_details  $order_details
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, order_details $order_details)
+    public function update(Request $request, $id)
     {
-        //
+        $db = order_details::where('is_active', 1)->find($id);
+        $db->order_id = $request->order_id;
+        $db->product_id = $request->product_id;
+        $db->quantity = $request->quantity;
+        $db->single_price = $request->single_price;
+        $db->image = $request->image;
+        $db->color = $request->color;
+        $db->size = $request->size;
+        $db->save();
+
+        $total = $this->calculateTotal($db->order_id);
+        (new orders())->updateTotal($db->order_id, $total);        
+
+        return $db;
     }
 
     /**
@@ -79,8 +128,12 @@ class order_detailsController extends Controller
      * @param  \App\Models\order_details  $order_details
      * @return \Illuminate\Http\Response
      */
-    public function destroy(order_details $order_details)
+    public function destroy($id)
     {
-        //
+        $db = order_details::findOrFail($id);
+        $db->is_active = 0;
+        $db->save();
+
+        return "Deleted";
     }
 }

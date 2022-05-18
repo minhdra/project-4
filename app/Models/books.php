@@ -15,19 +15,19 @@ class books extends Model
     }
     
     public function categories(){
-        return $this->belongsTo(categories::class,'categoryID','id');
+        return $this->belongsTo(categories::class,'categoryID','id')->where('is_active', 1);
     }
 
     public function book_languages(){
-        return $this->belongsTo(book_languages::class,'languageID','id');
+        return $this->belongsTo(book_languages::class,'languageID','id')->where('is_active', 1);
     }
 
     public function publishers(){
-        return $this->belongsTo(publishers::class,'publisherID','id');
+        return $this->belongsTo(publishers::class,'publisherID','id')->where('is_active', 1);
     }
 
     public function authors() {
-        return $this->hasOneThrough(authors::class, book_authors::class, 'authorID', 'id');
+        return $this->hasOneThrough(authors::class, book_authors::class, 'authorID', 'id')->where('authors.is_active', 1);
     }
 
     public function addprice($bookID,$price,$date) {
@@ -41,8 +41,10 @@ class books extends Model
 
     public function updateprice($bookID,$price,$date) {
         $db  = prices::where('end_date',null)->where('bookID',$bookID)->first();
-        $db->end_date = $date;
-        $db->save();
+        if($db) {
+            $db->end_date = $date;
+            $db->save();
+        }
         // return $db;
         $db2 = new prices();
         $db2->bookID = $bookID;

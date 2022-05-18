@@ -14,18 +14,19 @@ function headerController($rootScope, $http) {
       },
       (error) => {
         console.log(error);
-        showAlert(errorStatus);
+        // showAlert(errorStatus);
       }
     );
   };
   $rootScope.customer = {};
   $rootScope.check = checkCustomerLogin();
+  $rootScope.total = 0;
 
   $rootScope.loadCart = () => {
-    if ($rootScope.check.id) {
+    if ($rootScope.check) {
       connect_api(
         'GET',
-        baseApi + nameAccount + $rootScope.check.id,
+        baseApi + nameAccount + $rootScope.check,
         null,
         function (res) {
           $rootScope.customer = res.data;
@@ -39,7 +40,6 @@ function headerController($rootScope, $http) {
   $rootScope.loadDropdownCategories = () => {
     $rootScope.selectedCategory = 0;
     connect_api('GET', baseApi + 'categories', null, function (res) {
-      console.log(res.data.categories);
       const all = {
         id: 0,
         name: 'All'
@@ -90,9 +90,10 @@ function headerController($rootScope, $http) {
     });
   };
 
-  function checkCustomerLogin() {
-    const request = JSON.parse(sessionStorage.getItem('customer')) || JSON.parse(localStorage.getItem('customer')) || {};
-  
-    return request;
+  // Show modal login
+  $rootScope.showLogin = () => {
+    $('#sidebarNavToggler').click();
   }
+
+
 }
