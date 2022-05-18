@@ -82,7 +82,7 @@ function booksController($scope, $http) {
   //get books
   connect_api('get',baseApi + nameController,(response)=>{
     $scope.books = response.data.books;
-    console.log($scope.books);
+    console.log(response.data);
   })
 
   //get drop down categories
