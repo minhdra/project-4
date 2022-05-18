@@ -45,10 +45,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('books', booksController::class);
+Route::resource('invoices', invoicesController::class);
+Route::resource('invoice_details', invoice_detailsController::class);
 Route::resource('categories', categoriesController::class);
 Route::resource('publishers', publishersController::class);
 Route::resource('book_languages', book_languagesController::class);
 Route::resource('authors', authorsController::class);
 
 Route::post('book/upload', [booksController::class, 'uploadFile'])->name('upload.uploadfile');
+Route::get('book/get_basic', [booksController::class, 'get_basic'])->name('book.get_basic');
 
