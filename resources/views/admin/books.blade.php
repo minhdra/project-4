@@ -9,14 +9,19 @@
           <div class="row">
             <div class="col-12">
               <h2 class="content-header">Quản lý sách</h2>
-              <p class="content-sub-header">Tables with some actions and with more feathers.</p>
             </div>
           </div>
           <section id="extended">
             <div class="row">
               <div class="col-sm-12">
                 <div class="card">
-                  <div class="card-header">
+                <div class="card-header" style="display: flex;justify-content: space-between;">
+                    <div class="input-group mb-3" style="width:27%;">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Tìm kiếm</span>
+                      </div>
+                      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model='finding'>
+                    </div>
                     <div class="card-title-wrap bar-success">
                       <h4 class="card-title">
                         <button class="btn btn-info btn-block" style="margin: 0px;" ng-click="openModal(0)">Thêm</button>
@@ -39,7 +44,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr dir-paginate="book in books|filter: q|itemsPerPage:10" current-page="currentPage">
+                          <tr dir-paginate="book in books|filter: finding|itemsPerPage:10" current-page="currentPage">
                             <td>@{{$index+1}}</td>
                             <td>@{{book.book_name}}</td>
                             <td>@{{book.publishers.publisher_name}}</td>
@@ -87,7 +92,7 @@
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="book-name">Tên sách</label>
-                  <input type="text" class="form-control" id="book-name" ng-model="book.book_name" require>
+                  <input type="text" class="form-control" id="book-name" ng-model="book.book_name" >
                 </fieldset>
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
@@ -125,25 +130,25 @@
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="isnb">ISNB</label>
-                  <input type="text" class="form-control" id="isnb" ng-model="book.isnb" require>
+                  <input type="text" class="form-control" id="isnb" ng-model="book.isnb" >
                 </fieldset>
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="weight">Trọng lượng</label>
-                  <input type="text" class="form-control" id="weight" ng-model="book.weight" require>
+                  <input type="text" class="form-control" id="weight" ng-model="book.weight" >
                 </fieldset>
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="type">Kiểu sách</label>
-                  <input type="text" class="form-control" id="type" ng-model="book.type" require>
+                  <input type="text" class="form-control" id="type" ng-model="book.type" >
                 </fieldset>
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="dimensions">Kích thước</label>
-                  <input type="text" class="form-control" id="dimensions" ng-model="book.dimensions" require>
+                  <input type="text" class="form-control" id="dimensions" ng-model="book.dimensions" >
                 </fieldset>
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
@@ -155,13 +160,13 @@
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="price">Giá bán</label>
-                  <input type="text" class="form-control" id="price" ng-model="book.price" require>
+                  <input type="text" class="form-control" id="price" ng-model="book.price" >
                 </fieldset>
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="numpages">Số trang</label>
-                  <input type="text" class="form-control" id="numpages" ng-model="book.numpages" require>
+                  <input type="text" class="form-control" id="numpages" ng-model="book.numpages" >
                 </fieldset>
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
@@ -184,16 +189,19 @@
                   </div>
                 </div>
               </div>
-
+              <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                <fieldset class="form-group">
+                  <input type="text" class="form-control" ng-model="book.quantity" placeholder="Tồn kho">
+                </fieldset>
+              </div>
 
               <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
                 <fieldset class="form-group">
                   <label for="description">Mô tả</label>
                   <div ckeditor="text.options" ng-model="text.textInput">
-                    <!-- <ckeditor ng-model="book.description"></ckeditor> -->
-                    <!-- <textarea name="description" class="form-control" id="description" (data)="book.description"  rows="8"></textarea> -->
                 </fieldset>
               </div>
+              
             </div>
           </div>
 

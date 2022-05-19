@@ -44,6 +44,11 @@
             "no-comma": true,
         });
 
+        // Don't allow comma key to add new tag
+        $(".no-backspace").tagging({
+            "no-backspace": true,
+        });
+
 
         /*******************************
         *       Advance Options        *

@@ -37,6 +37,7 @@ function InvoicesController($scope, $http) {
     );
    }
   //set begin
+  $scope.finding = "";
   $scope.currentPage = 1;
   $scope.pageSize = 10;
   $scope.item;

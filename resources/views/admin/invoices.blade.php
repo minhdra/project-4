@@ -34,14 +34,19 @@ datalist option:hover, datalist option:focus {
           <div class="row">
             <div class="col-12">
               <h2 class="content-header">Nhập hàng</h2>
-              <p class="content-sub-header">Tables with some actions and with more feathers.</p>
             </div>
           </div>
           <section id="extended">
             <div class="row">
               <div class="col-sm-12">
                 <div class="card">
-                  <div class="card-header">
+                  <div class="card-header" style="display: flex;justify-content: space-between;">
+                    <div class="input-group mb-3" style="width:27%;">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Tìm kiếm</span>
+                      </div>
+                      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model='finding'>
+                    </div>
                     <div class="card-title-wrap bar-success">
                       <h4 class="card-title">
                         <button class="btn btn-info btn-block" style="margin: 0px;" ng-click="openModal(0)">Thêm đơn nhập</button>
@@ -55,14 +60,14 @@ datalist option:hover, datalist option:focus {
                           <tr>
                             <th>STT</th>
                             <th>Thời gian</th>
-                            <th>Nhà cung cấp</th>
+                            <th>Nhà xuất bản</th>
                             <th>Tổng cộng</th>
                             <th>Trạng thái</th>
                             <th>Actions</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr dir-paginate="row in data|filter: q|itemsPerPage:10" current-page="currentPage">
+                          <tr dir-paginate="row in data|filter: finding|itemsPerPage:10" current-page="currentPage">
                             <td>@{{$index+1}}</td>
                             <td>@{{row.invoice_date}}</td>
                             <td>@{{row.publishers.publisher_name}}</td>
