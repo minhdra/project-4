@@ -28,6 +28,7 @@ function singleBookController($rootScope, $scope, $http) {
     connect_api('GET', baseApi + nameBooks + $scope.book_id, null, function (res) {
       $scope.item = res.data.book;
       console.log(res.data);
+      $("#des-single").html($scope.item.description);
     })
   }
 

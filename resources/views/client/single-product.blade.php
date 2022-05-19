@@ -145,9 +145,7 @@
 
 
           <div class="tab-content container" id="pills-tabContent">
-            <div class="woocommerce-Tabs-panel panel col-xl-8 offset-xl-2 entry-content wc-tab tab-pane fade show active" id="pills-one-example1" role="tabpanel" aria-labelledby="pills-one-example1-tab">
-              @{{item.description}}
-
+            <div id="des-single" class="woocommerce-Tabs-panel panel col-xl-8 offset-xl-2 entry-content wc-tab tab-pane fade show active"  role="tabpanel" aria-labelledby="pills-one-example1-tab">
 
             </div>
             <div class="woocommerce-Tabs-panel panel col-xl-8 offset-xl-2 entry-content wc-tab tab-pane fade pt-9" id="pills-four-example1" role="tabpanel" aria-labelledby="pills-four-example1-tab">
