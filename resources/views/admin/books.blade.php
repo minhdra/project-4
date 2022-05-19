@@ -32,6 +32,7 @@
                             <th>Tên sách</th>
                             <th>Nhà xuất bản</th>
                             <th>Ngôn ngữ</th>
+                            <th>Tồn kho</th>
                             <th>Giá bán</th>
                             <th>Hình ảnh</th>
                             <th>Actions</th>
@@ -43,14 +44,12 @@
                             <td>@{{book.book_name}}</td>
                             <td>@{{book.publishers.publisher_name}}</td>
                             <td>@{{book.book_languages.language_name}}</td>
+                            <td align="right">@{{book.quantity}}</td>
                             <td align="right">@{{book.prices.price}}</td>
                             <td style="padding: 4px;"><img ng-src="/assets/img/books/@{{book.image}}" style='height:40px;' alt=""></td>
                             <td>
                               <a class="success p-0" data-original-title="" ng-click="openModal(book.id,book)" data-toggle="tooltip" title="Sửa">
                                 <i class="fa fa-pencil font-medium-3 mr-2"></i>
-                              </a>
-                              <a class="info p-0" data-original-title="" data-toggle="tooltip" title="check">
-                                <i class="fa fa-check font-medium-3 mr-2"></i>
                               </a>
                               <a class="danger p-0" data-original-title="" data-toggle="tooltip" title="Xóa" ng-click="deleteClick(book)">
                                 <i class="fa fa-trash-o font-medium-3 mr-2"></i>
@@ -74,7 +73,7 @@
   </div>
 
   <div class="modal fade text-left" id="large" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" style="display: none; z-index:99999" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel17">@{{modalTitle}}</h4>
@@ -109,8 +108,10 @@
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                 <fieldset class="form-group">
-                  <label for="category">Loại sách</label>
-                  <div class="edit-on-delete form-control tagging" data-tags-input-name="edit-on-delete"><input class="type-zone" contenteditable="true" spellcheck="false" data-ms-editor="true"></div>
+                  <label for="genres">Thể loại</label>
+                  <div class="edit-on-delete form-control tagging" data-tags-input-name="edit-on-delete" id="genres">
+                    <input class="type-zone" contenteditable="true" spellcheck="false" data-ms-editor="true">
+                  </div>
                 </fieldset>
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
@@ -164,20 +165,24 @@
                 </fieldset>
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
-                <fieldset class="form-group">
-                  <label for="file_img">Ảnh </label>
-                  <input type="file" accept="image/*" name="file_img" id="img_file_upid" class="w-100">
-                  <div class="row">
-                    <img ng-if="book.image == '' || book.image==null" ng-src="/assets/img/books/book_temp.png" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
-                    <img id="img_prv" ng-if="book.image != '' && book.image!=null" ng-src="/assets/img/books/@{{book.image}}" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
+                <div class="input-group mb-3">
+                  <div class="custom-file">
+                    <input class="custom-file-input" type="file" accept="image/*" name="file_img" id="img_file_upid" >
+                    <label class="custom-file-label" for="file_img" id="file_img">Chọn ảnh</label>
                   </div>
-                </fieldset>
+                </div>
+                <div style="float: right;">
+                      <img ng-if="book.image == '' || book.image==null" ng-src="/assets/img/books/book_temp.png" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
+                      <img id="img_prv" ng-if="book.image != '' && book.image!=null" ng-src="/assets/img/books/@{{book.image}}" id="img_prv" style="max-width: 150px;max-height: 150px" class="img-thumbnail" alt="">
+                  </div>
               </div>
               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
-                <fieldset class="form-group">
-                  <label for="file_pdf">PDF xem qua</label>
-                  <input type="file" accept="application/pdf" name="file_pdf" id="pdf_file_upid">
-                </fieldset>
+                <div class="input-group mb-3">
+                  <div class="custom-file">
+                    <input class="custom-file-input" type="file" accept="application/pdf"  name="file_pdf" id="pdf_file_upid" >
+                    <label class="custom-file-label" for="file_pdf" id="file_pdf">Chọn ảnh</label>
+                  </div>
+                </div>
               </div>
 
 
@@ -206,7 +211,15 @@
 
 @section('js')
 <script src="/assets/js/controllers/booksController.js"></script>
-<script>
 
+<script type="application/javascript">
+    $('input[type="file"]').change(function(e){
+        var fileName = e.target.files[0].name;
+        // console.log(this.labels());
+        console.log($('#'+this.name).html(fileName));
+
+        // $(this).label().html(fileName);
+    });
 </script>
+
 @stop

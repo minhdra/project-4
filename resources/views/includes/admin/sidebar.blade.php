@@ -13,6 +13,8 @@
           <ul class="menu-content">
             <li ng-class="getClass('/books')"><a href="/admin/books" class="menu-item">Quản lý sách</a>
             </li>
+            <li ng-class="getClass('/invoices')"><a href="/admin/invoices" class="menu-item">Quản lý nhập hàng</a>
+            </li>
             <li ng-class="getClass('/categories')"><a href="/admin/categories" class="menu-item">Quản lý thể loại sách</a>
             </li>
             <li ng-class="getClass('/authors')"><a href="/admin/authors" class="menu-item">Quản ý tác giả</a>

@@ -75,6 +75,7 @@ class booksController extends Controller
         $db->languageID=$request->languageID;
         $db->numpages=$request->numpages;
         $db->pdf_src=$request->pdf_src;
+        $db->genres=$request->genres;
         $db->publish_date= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $request->publish_date)));
         // $db->publish_date=$request->publish_date;
         $db->publisherID=$request->publisherID;
@@ -136,6 +137,7 @@ class booksController extends Controller
         $db->languageID=$request->languageID;
         $db->numpages=$request->numpages;
         $db->pdf_src=$request->pdf_src;
+        $db->genres=$request['genres'];
         // $db->publish_date=$request->publish_date;
         $db->publish_date= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $request->publish_date)));
         $db->publisherID=$request->publisherID;
@@ -144,6 +146,7 @@ class booksController extends Controller
         $db->save();
 
         $db->updateprice($id,$request->price,$date);
+        
         return $db;
     }
 

@@ -1,4 +1,3 @@
-
 const nameController = 'books/';
 const categoryController = 'categories/';
 const publishersController = 'publishers/';
@@ -7,9 +6,13 @@ const nameChild = 'child/';
 const successStatus = 'success';
 const errorStatus = 'error';
 
+
+
+
 app.controller('booksController', booksController);
 function booksController($scope, $http) {
   //set begin
+  
   $scope.currentPage = 1;
   $scope.pageSize = 10;
   $scope.book = [];
@@ -82,6 +85,18 @@ function booksController($scope, $http) {
   //get books
   connect_api('get',baseApi + nameController,(response)=>{
     $scope.books = response.data.books;
+    $scope.books.forEach((book)=>{
+      var tmp_array = [];
+      if(book.genres!=null){
+        book.genres_app = JSON.parse(book.genres)
+        var i=0;
+        for(var i =0;i<book.genres_app.length;i++){
+          tmp_array.push(book.genres_app[i].tag)
+        }
+        book.genres_app=tmp_array;
+      }
+      
+    })
     console.log($scope.books);
   })
 
@@ -112,10 +127,13 @@ function booksController($scope, $http) {
     if (id == 0) {
       $scope.modalTitle = 'Thêm sách mới';
       $scope.book = null;
+      $("#genres").tagging( "reset" );
       // $scope.book.publisherID = "1";
       // $scope.book.languageID ="1";
       // $scope.book.categoryID ="1";
     } else {
+      
+      $("#genres").tagging( "reset" );
       $scope.modalTitle = 'Chỉnh sửa thông tin sách';
     // connect_api('get',baseApi + nameController + id,(response)=>{
     // $scope.book = response.data.book;
@@ -123,6 +141,8 @@ function booksController($scope, $http) {
         $scope.book.publisherID = String ($scope.book.publisherID);
         $scope.book.languageID = String ($scope.book.languageID);
         $scope.book.categoryID = String ($scope.book.categoryID);
+
+        $("#genres").tagging( "add",$scope.book.genres_app);
 
         $scope.book.price = $scope.book.prices.price;
         $scope.book.publish_date = new Date($scope.book.publish_date);
@@ -151,12 +171,29 @@ function booksController($scope, $http) {
       );
     }
   };
+
+  var convert_to_json = function (array) {  
+    if(array != []){
+      result=`[`
+      for(var i = 0 ;i<array.length;i++){
+        var element = array[i];
+        tmp_json = `{"tag":"`+element+`"},`
+        result+=tmp_json;
+      }
+      if(result != '['){
+        result = result.substring(0,result.length-1);
+      }
+      result+=']'
+      return result;
+    }
+  }
+  
   $scope.saveData = function () {
-    // if ($scope.book.publish_date)
-    // $scope.book.publish_date = convertDate($scope.book.publish_date);
+    tags = $("#genres").tagging('getTags');
+    json = convert_to_json(tags);
+    // console.log(json);
     //dang them moi sp
     $scope.book.image = $scope.image ? $scope.image : $scope.book.image;
-    // $scope.book.image = null ? null : $scope.book.image;
     $scope.book.pdf_src = $scope.pdf_src;
 
     $scope.book.description = $scope.text.textInput;
@@ -180,8 +217,9 @@ function booksController($scope, $http) {
     // $scope.book.price.price = price;
     $scope.book.prices = {};
     $scope.book.prices.price = price;
-   
     $scope.book.description = $scope.text.textInput;
+    $scope.book.genres_app = tags;
+    $scope.book.genres = json;
     if ($scope.id == 0) {
       // them san pham
       connect_api_data('POST',baseApi + nameController,$scope.book,(response)=>{
@@ -195,7 +233,7 @@ function booksController($scope, $http) {
     } else {
       //sua san pham
       connect_api_data('PUT',baseApi + nameController + $scope.id,$scope.book,(response)=>{
-        
+        console.log(response);
         // location.reload();
         showAlert(successStatus);
         modalE.modal('hide');

@@ -136,7 +136,7 @@ function InvoicesController($scope, $http) {
         console.log(res);
         var objIndex = $scope.data.findIndex((obj => obj.id == $scope.id));
         $scope.data[objIndex] = $scope.invoice; 
-        // modalE.modal('hide');
+        modalE.modal('hide');
       })
     }
   };
@@ -163,14 +163,13 @@ function InvoicesController($scope, $http) {
   };
 
   $scope.selected_row = function (row){
-    if($('#invoice_details tr.selected').length !=0){
+    if($scope.selected_invoice_details.bookID == row.bookID){
       $scope.selected_invoice_details = {};
+      console.log('ngu');
     }
     else{
       $scope.selected_invoice_details = angular.copy(row);
     }
-    console.log($scope.selected_invoice_details);
-
   }
 
   $scope.book_selected = function (book){
@@ -182,17 +181,27 @@ function InvoicesController($scope, $http) {
       invoice_detail.discount = 0;
       invoice_detail.price = 0;
       invoice_detail.quantity = 0;
-      invoice_detail.total = 0;
+      invoice_detail.total = 0; 
       $scope.invoice_details.push(invoice_detail);
+      
+      
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('book_finding').value = ''
+      })
+      $scope.selected_invoice_details = angular.copy(invoice_detail);
       for(var i = 0 ;i<$scope.invoice_details.length;i++){
-        $scope.total_invoice  += $scope.invoice_details[i].total;
+          $scope.total_invoice  += $scope.invoice_details[i].total;
+        }
       }
-    }
     else{
       toastr.info('Đã tồn tại sách này');
       // showAlert(errorStatus);
     }
-    
+    // $ = jQuery.noConflict();
+    // jQuery( document ).ready(function( $ ) {
+    //   $('#book_finding').val('');
+    // });
+    // $ = jQuery.noConflict(true);
   }
 
   $scope.publisher_change = function (id){

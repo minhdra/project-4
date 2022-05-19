@@ -71,10 +71,7 @@ datalist option:hover, datalist option:focus {
                             <td>
                               <a class="success p-0" data-original-title="" ng-click="openModal(row.id)" data-toggle="tooltip" title="Sửa">
                                 <i class="fa fa-pencil font-medium-3 mr-2"></i>
-                              </a>
-                              <a class="info p-0" data-original-title="" data-toggle="tooltip" title="check">
-                                <i class="fa fa-check font-medium-3 mr-2"></i>
-                              </a>
+                              </a>  
                               <a class="danger p-0" data-original-title="" data-toggle="tooltip" title="Xóa" ng-click="deleteClick(row.id)">
                                 <i class="fa fa-trash-o font-medium-3 mr-2"></i>
                               </a>
@@ -112,7 +109,7 @@ datalist option:hover, datalist option:focus {
                 <div class="col-xl-8 col-lg-8 col-md-8"  style="background: oldlace;padding: 20px;border-radius: 6px;">
                     <div class="row" style="display: flex;justify-content: center;" ng-if="isCreate">
                         <div class="form-group" style="width:70%;">
-                            <input class="form-control" placeholder="Tìm kiếm sản phẩm" list="ShowDataList">
+                            <input class="form-control" placeholder="Tìm kiếm sách" id="book_finding" list="ShowDataList">
                             <datalist id="ShowDataList" style="z-index: 100;">
                               <option value="@{{book.book_name}}" ng-repeat="book in books" ng-click="book_selected(book)">@{{book.book_name}}</option>
                             </datalist>
@@ -136,7 +133,7 @@ datalist option:hover, datalist option:focus {
                         <div class="block" style="width:100%;display:flex;justify-content: space-between;">
                             <div class="form-group col-xl-4 col-lg-4 col-md-4" style="display: flex;align-items: center;justify-content: space-between;">
                                 <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Giảm giá:</label>
-                                <input ng-model="selected_invoice_details.discount" type="number" min="0" class="form-control col-xl-8 col-lg-8 col-md-8" id="book_name">
+                                <input ng-model="selected_invoice_details.discount" type="number" min="0" max="99" class="form-control col-xl-8 col-lg-8 col-md-8" id="book_name">
                             </div>
                             <button class="btn btn-info" style="margin-right: 15px;" ng-click="update(selected_invoice_details)">Cập nhật</button>
                         </div>
@@ -199,7 +196,7 @@ datalist option:hover, datalist option:focus {
                     <div class="block" style="width:100%;display:flex;justify-content: space-between;">
                         <div class="form-group col-xl-12 col-lg-12 col-md-12" style="display: flex;align-items: center;justify-content: space-between;">
                             <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Giảm giá:</label>
-                            <input ng-model="invoice.discount" ng-change="invoice_discount_change(invoice.discount)"  type="number" min="0" class="form-control col-xl-8 col-lg-8 col-md-8">
+                            <input ng-model="invoice.discount" ng-change="invoice_discount_change(invoice.discount)"  type="number" min="0" max="99" class="form-control col-xl-8 col-lg-8 col-md-8">
                         </div>
                     </div>
                     <div class="block" style="width:100%;display:flex;justify-content: space-between;">
