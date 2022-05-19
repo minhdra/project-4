@@ -12,13 +12,11 @@ class cart_details extends Model
     public function insertCartDetails($request, $cart_id) {
         $db = new cart_details();
         $db->cart_id = $cart_id;
-        $db->product_id = $request['product_id'];
+        $db->book_id = $request['book_id'];
         $db->quantity = $request['quantity'];
         $db->single_price = $request['single_price'];
         $db->status = $request['status'];
-        $db->size = $request['size']['size'];
-        $db->color = $request['color']['color'];
-        $db->image = $request['image']['image'];
+        $db->image = $request['image'];
         $db->save();
 
         return $db;
@@ -30,7 +28,6 @@ class cart_details extends Model
         $db->quantity = $request['quantity'];
         // $db->single_price = $request['single_price'];
         $db->status = $request['status'];
-        $db->size = $request['size']['size'];
         // $db->color = $request['color']['color'];
         // $db->image = $request['image']['image'];
         $db->save();
@@ -44,7 +41,7 @@ class cart_details extends Model
         return "Success deleted";
     }
 
-    public function product() {
-        return $this->hasOne(products::class, 'id','product_id');
+    public function book() {
+        return $this->hasOne(books::class, 'id', 'book_id');
     }
 }

@@ -35,6 +35,30 @@ class booksController extends Controller
         return ['books'=>$books];
     }
 
+    public function search(Request $request) {
+        if($request->category_id == 0 || !$request->category_id) {
+            $books = books::where('is_active', 1)->where('book_name', 'LIKE', '%'.$request->book_name.'%')->get();
+            foreach ($books as $book) {
+                $book->categories;
+                $book->prices;
+                $book->book_languages;
+                $book->publishers;
+                $book->authors;
+            }
+        }
+        else {
+            $books = books::where('is_active', 1)->where('book_name', 'LIKE', '%'.$request->book_name.'%')->where('categoryID', $request->category_id)->get();
+            foreach ($books as $book) {
+                $book->categories;
+                $book->prices;
+                $book->book_languages;
+                $book->publishers;
+                $book->authors;
+            }
+        }
+        return $books;
+    } 
+
     public function uploadFile(Request $request) {
         $type = $request->type;
         $data = $request->file('file');

@@ -142,7 +142,7 @@ function InvoicesController($scope, $http) {
   };
   // Delete
   $scope.deleteClick = function (id) {
-    var hoi = confirm('Ban co muon xoa that khong');
+    var hoi = confirm('Bạn có muốn xóa thật không?');
     // console.log($scope.id);
     if (hoi) {
       $http({

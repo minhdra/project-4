@@ -25,6 +25,10 @@ Route::get('/shop/list', function () {
     return view('client.list-products');
 })->name('shop');
 
+Route::post('/shop?category={category}&keyword={keyword}', function ($category, $keyword) {
+    return view('client.list-products', ['category' => $category, 'keyword' => $keyword]);
+})->name('search');
+
 Route::get('/shop/list/{id}', function ($id) {
     return view('client.single-product', ['id'=>$id]);
 })->name('single');
@@ -35,7 +39,7 @@ Route::get('/shop/cart', function () {
 
 Route::get('/shop/checkout', function () {
     return view('client.checkout');
-});
+})->name('checkout');
 
 Route::get('/shop/order-received', function () {
     return view('client.order-received');
@@ -55,21 +59,9 @@ Route::get('/admin', function () {
     return view('admin.index');
 });
 
-        /*--------------------- example -------------------------- */
-
-Route::get('/admin/extended-table', function () {
-    return view('admin.extended-table');
-});
-
-Route::get('/admin/regular', function () {
-    return view('admin.regular');
-});
-
-Route::get('/admin/data-table', function () {
-    return view('admin.datatable-example');
-});
-
-        /*--------------------- end example -------------------------- */
+Route::get('/admin/login', function () {
+    return view('admin.login');
+})->name('admin.login');
 
 Route::get('/admin/books', function () {
     return view('admin.books');

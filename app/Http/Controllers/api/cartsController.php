@@ -24,7 +24,7 @@ class cartsController extends Controller
             $customer->info;
             $details = $cart->details;
             foreach ($details as $detail) {
-                $detail->product;
+                $detail->book;
             }
         }
         return ['carts'=>$carts, 'customers'=>$customers];
@@ -57,7 +57,7 @@ class cartsController extends Controller
                 $c = false;
                 $thisDetail = '';
                 foreach ($details as $d) {
-                    if ($d['product_id'] == $item['product_id'] && $d['color'] == $item['color']['color']) {
+                    if ($d['book_id'] == $item['book_id']) {
                         $thisDetail = $d;
                         $c = true;
                         break;
@@ -97,7 +97,7 @@ class cartsController extends Controller
         $customer->info;
         $details = $cart->details;
         foreach ($details as $detail) {
-            $detail->product;
+            $detail->book;
         }
         // $db = carts::with('customer')->with('details')->where('is_active', 1)->find($id);
         return $cart;

@@ -1,4 +1,5 @@
 const nameAccount = 'customers/';
+let nameCartDetail = 'cart_details/';
 app.controller('headerController', headerController);
 function headerController($rootScope, $http) {
   const connect_api = function (method, url, data, callback) {
@@ -22,6 +23,7 @@ function headerController($rootScope, $http) {
   $rootScope.check = checkCustomerLogin();
   $rootScope.total = 0;
 
+  // Get customer
   $rootScope.loadCart = () => {
     if ($rootScope.check) {
       connect_api(
@@ -29,6 +31,7 @@ function headerController($rootScope, $http) {
         baseApi + nameAccount + $rootScope.check,
         null,
         function (res) {
+          console.log(res.data)
           $rootScope.customer = res.data;
           $rootScope.countTotal();
         }
@@ -40,11 +43,11 @@ function headerController($rootScope, $http) {
   $rootScope.loadDropdownCategories = () => {
     $rootScope.selectedCategory = 0;
     connect_api('GET', baseApi + 'categories', null, function (res) {
-      const all = {
-        id: 0,
-        name: 'All'
-      }
-      $rootScope.categories = [all, ...res.data.categories];
+      // const all = {
+      //   id: 0,
+      //   name: 'All'
+      // }
+      $rootScope.categories = [...res.data.categories];
     });
   }
   $rootScope.loadDropdownCategories();
@@ -84,10 +87,16 @@ function headerController($rootScope, $http) {
 
   // Remove
   $rootScope.remove = (id, index) => {
-    connect_api('DELETE', baseApi + nameCartDetail + id, null, function (res) {
-      $rootScope.customer.cart_details.splice(index, 1);
-      $rootScope.countTotal();
-    });
+    var hoi = confirm('Bạn có muốn xóa thật không?');
+    // console.log($scope.id);
+    if (hoi)
+    {
+      connect_api('DELETE', baseApi + nameCartDetail + id, null, function (res) {
+        $rootScope.customer.cart_details.splice(index, 1);
+        $rootScope.countTotal();
+        toastr.success('Xóa thành công');
+      });
+    }
   };
 
   // Show modal login

@@ -22,7 +22,7 @@
         },
       }
     });
-  }, 2000);
+  }, 2500);
 
   setTimeout(() => {
     $('.owl-carousel.slides').owlCarousel({
@@ -30,6 +30,18 @@
       dots: true,
       lazyLoad: true,
       items: 1,
+      loop: true,
+      navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+    });
+  }, 2000);
+
+  setTimeout(() => {
+    $('.owl-carousel.authors').owlCarousel({
+      nav: true,
+      dots: false,
+      lazyLoad: true,
+      margin: 50,
+      items: 5,
       loop: true,
       navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
     });

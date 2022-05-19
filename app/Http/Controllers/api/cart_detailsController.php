@@ -38,12 +38,11 @@ class cart_detailsController extends Controller
     {
         $db = new cart_details();
         $db->cart_id = $request->cart_id;
-        $db->product_id = $request->product_id;
+        $db->book_id = $request->book_id;
         $db->quantity = $request->quantity;
         $db->single_price = $request->single_price;
         $db->status = $request->status;
-        $db->size = $request->size;
-        $db->color = $request->color;
+
         $db->image = $request->image;
         $db->save();
 
@@ -83,12 +82,11 @@ class cart_detailsController extends Controller
     public function update(Request $request, $id)
     {
         $db = cart_details::where('is_active', 1)->find($id);
-        $db->product_id = $request->product_id;
+        $db->book_id = $request->book_id;
         $db->quantity = $request->quantity;
         $db->single_price = $request->single_price;
         $db->status = $request->status;
-        $db->size = $request->size;
-        $db->color = $request->color;
+
         $db->image = $request->image;
         $db->save();
 
