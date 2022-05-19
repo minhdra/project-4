@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\invoice_details;
 use App\Models\invoices;
+use App\Models\books;
 use DateTime;
 use Illuminate\Http\Request;
 
@@ -55,12 +56,17 @@ class invoicesController extends Controller
 
         $invoice_details = $request['invoice_details'];
         foreach($invoice_details as $invoice_detail){
+            $db_book = books::where('is_active',1)->find($invoice_detail['bookID']);
+            $db_book->quantity += $invoice_detail['quantity'];
+            $db_book->save();
             $db_invoice_detail = new invoice_details();
             $db_invoice_detail->invoiceID = $id;
             $db_invoice_detail->bookID = $invoice_detail['bookID'];
             $db_invoice_detail->quantity = $invoice_detail['quantity'];
             $db_invoice_detail->discount = $invoice_detail['discount'];
             $db_invoice_detail->price = $invoice_detail['price'];
+
+           
             $db_invoice_detail->total = $invoice_detail['total'];
             $db_invoice_detail->save();
         }
@@ -114,8 +120,26 @@ class invoicesController extends Controller
 
         $invoice_details = $request['invoice_details'];
         foreach($invoice_details as $invoice_detail){
+
+            $db_book = books::where('is_active',1)->find($invoice_detail['bookID']);
+            
+
             $db_invoice_detail = invoice_details::find($invoice_detail['id']);
             $db_invoice_detail->bookID = $invoice_detail['bookID'];
+            $margin_quantity =  $db_invoice_detail->quantity - $invoice_detail['quantity'];
+            if($margin_quantity > 0){
+                //Giảm số lượng
+                $db_book->quantity -= $margin_quantity;
+            }
+            else if($margin_quantity == 0){
+                continue;
+            }
+            else{
+                //Tăng số lượng
+                $db_book->quantity += $margin_quantity;
+            }
+            $db_book->save();
+
             $db_invoice_detail->quantity = $invoice_detail['quantity'];
             $db_invoice_detail->discount = $invoice_detail['discount'];
             $db_invoice_detail->price = $invoice_detail['price'];
