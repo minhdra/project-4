@@ -3,8 +3,7 @@ const categoryController = 'categories/';
 const publishersController = 'publishers/';
 const book_languagesController = 'book_languages/';
 const nameChild = 'child/';
-const successStatus = 'success';
-const errorStatus = 'error';
+
 
 
 
@@ -154,7 +153,7 @@ function booksController($scope, $http) {
   };
 
   $scope.deleteClick = function (book) {
-    var hoi = confirm('Ban co muon xoa that khong');
+    var hoi = confirm('Bạn có muốn xóa thật không?');
     // console.log($scope.id);
     if (hoi) {
       $http({

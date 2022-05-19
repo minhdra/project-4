@@ -15,7 +15,7 @@ class categoriesController extends Controller
      */
     public function index()
     {
-        $categories = categories::all();
+        $categories = categories::where('is_active', 1)->get();
         return ['categories'=>$categories];
     }
 

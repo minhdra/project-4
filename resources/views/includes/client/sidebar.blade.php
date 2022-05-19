@@ -290,7 +290,7 @@
 
         <div class="d-flex align-items-center position-absolute top-0 right-0 z-index-2 mt-5 mr-md-6 mr-4">
           <button type="button" class="close ml-auto" aria-controls="sidebarContent1" aria-haspopup="true" aria-expanded="false" data-unfold-event="click" data-unfold-hide-on-scroll="false" data-unfold-target="#sidebarContent1" data-unfold-type="css-animation" data-unfold-animation-in="fadeInRight" data-unfold-animation-out="fadeOutRight" data-unfold-duration="500">
-            <span aria-hidden="true">Close <i class="fas fa-times ml-2"></i></span>
+            <span aria-hidden="true"><i class="fas fa-times ml-2"></i></span>
           </button>
         </div>
 
@@ -299,40 +299,40 @@
           <div class="u-sidebar__content u-header-sidebar__content" ng-if="customer.id && customer.cart_details.length > 0">
 
             <header class="border-bottom px-4 px-md-6 py-4">
-              <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-icon-126515 mr-3 font-size-5"></i>Your shopping bag (customer.cart_details.length)</h2>
+              <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-icon-126515 mr-3 font-size-5"></i>Giỏ của bạn (@{{customer.cart_details.length}})</h2>
             </header>
 
-            <div class="px-4 py-5 px-md-6 border-bottom">
+            <div class="px-4 py-5 px-md-6 border-bottom" ng-repeat="row in customer.cart_details">
               <div class="media">
-                <a href="#" class="d-block"><img ng-src="/assets/img/120x180/img6.jpg" class="img-fluid" alt="image-description"></a>
+                <a href="#" class="d-block"><img width="100px" ng-src="/assets/img/books/@{{row.image}}" class="img-fluid" alt="image-description"></a>
                 <div class="media-body ml-4d875">
-                  <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate"><a href="#">Hard Cover</a></div>
+                  <!-- <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate"><a href="#">Hard Cover</a></div> -->
                   <h2 class="woocommerce-loop-product__title h6 text-lh-md mb-1 text-height-2 crop-text-2">
-                    <a href="#" class="text-dark">The Ride of a Lifetime: Lessons Learned from 15 Years as CEO</a>
+                    <a href="/shop/list/@{{row.id}}" class="text-dark">@{{row.book.book_name}}</a>
                   </h2>
-                  <div class="font-size-2 mb-1 text-truncate"><a href="#" class="text-gray-700">Robert Iger</a></div>
-                  <div class="price d-flex align-items-center font-weight-medium font-size-3">
-                    <span class="woocommerce-Price-amount amount">1 x <span class="woocommerce-Price-currencySymbol">$</span>125.30</span>
+                  <div class="font-size-2 mb-1 text-truncate"><a href="#" class="text-gray-700">@{{row.book.authors.author_name ? row.book.authors.author_name : row.book.categories.category_name}}</a></div>
+                  <div class="price d-flex align-items-center font-weight-medium font-size-2">
+                    <span class="woocommerce-Price-amount amount">@{{row.quantity}} x <span class="text-primary">@{{row.single_price | number}}</span><span class="woocommerce-Price-currencySymbol">VND</span></span>
                   </div>
                 </div>
                 <div class="mt-3 ml-3">
-                  <a href="#" class="text-dark"><i class="fas fa-times"></i></a>
+                  <a href="#" class="text-dark"><i class="fas fa-times" ng-click="remove(row.id, $index)"></i></a>
                 </div>
               </div>
             </div>
             <div class="px-4 py-5 px-md-6 d-flex justify-content-between align-items-center font-size-3">
-              <h4 class="mb-0 font-size-3">Subtotal:</h4>
-              <div class="font-weight-medium">@{{$root.total}} VND</div>
+              <h4 class="mb-0 font-size-3">Tổng:</h4>
+              <div class="font-weight-medium text-primary">@{{$root.total | number}} VND</div>
             </div>
             <div class="px-4 mb-8 px-md-6">
-              <a href="../shop/cart.html" class="btn btn-block py-4 rounded-0 btn-outline-dark mb-4">View Cart</a>
-              <a href="../shop/checkout.html" class="btn btn-block py-4 rounded-0 btn-dark">Checkout</a>
+              <a href="{{route('cart')}}" class="btn btn-block py-4 rounded-0 btn-outline-dark mb-4">Xem giỏ</a>
+              <a href="{{route('checkout')}}" class="btn btn-block py-4 rounded-0 btn-dark">Thanh toán</a>
             </div>
           </div>
           <div class="u-sidebar__content u-header-sidebar__content" ng-if="customer.id && customer.cart_details.length == 0">
 
             <header class="border-bottom px-4 px-md-6 py-4">
-              <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-icon-126515 mr-3 font-size-5"></i>Your shopping bag (0)</h2>
+              <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-icon-126515 mr-3 font-size-5"></i>Giỏ của bạn (0)</h2>
             </header>
             <div class="px-4 mb-8 px-md-6">
               <h3 class="font-size-5 py-4 mb-0 text-center">
@@ -345,7 +345,7 @@
           <div class="u-sidebar__content u-header-sidebar__content" ng-if="!customer.id">
 
             <header class="border-bottom px-4 px-md-6 py-4">
-              <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-icon-126515 mr-3 font-size-5"></i>Your shopping bag (0)</h2>
+              <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-icon-126515 mr-3 font-size-5"></i>Giỏ của bạn (0)</h2>
             </header>
             <div class="px-4 mb-8 px-md-6">
               <h3 class="font-size-5 py-4 mb-0 text-center">
@@ -483,7 +483,7 @@
                             </div>
                             <ul class="">
                               <li>
-                                <a href="../shop/cart.html">Shop cart</a>
+                                <a href="{{route('cart')}}">Shop cart</a>
                               </li>
                               <li>
                                 <a href="../shop/checkout.html">Shop checkout</a>

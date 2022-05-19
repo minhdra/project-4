@@ -21,12 +21,16 @@ class customersController extends Controller
         $db = customers::where('is_active', 1)->get();
         foreach ($db as $customer) {
             $customer->cart;
-            $cart_details=$customer->cart_details;
-            foreach($cart_details as $cart_detail){
-                $cart_detail->product;
+            $cart_details = $customer->cart_details;
+            foreach ($cart_details as $cart_detail) {
+                $book = $cart_detail->book;
+                $book->categories;
+                $book->publishers;
+                $book->prices;
+                $book->languages;
             }
             $orders = $customer->orders;
-            foreach($orders as $order){
+            foreach ($orders as $order) {
                 $order->details;
             }
             $customer->info;
@@ -36,22 +40,23 @@ class customersController extends Controller
         // return customers::with(['cart', 'cart_details', 'info', 'delivery_addresses'])->where('is_active', 1)->get();
     }
 
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         $db = customers::where('username', $request->username)->where('password', $request->password)->where('is_active', 1)->selectRaw('id, username')->first();
         return $db;
     }
 
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $check = customers::where('username', $request->username)->first();
-        if(!$check) {
+        if (!$check) {
             $db = new customers();
             $db->username = $request->username;
             $db->password = $request->password;
             $db->status = 1;
             $db->save();
             $check = "true";
-        }
-        else {
+        } else {
             $check = "false";
         }
         return $check;
@@ -82,7 +87,7 @@ class customersController extends Controller
         $db->save();
 
         $info = $request->info;
-        if($info) {
+        if ($info) {
             (new customer_infos())->insertInfo($info, $db->id);
         }
         return $this->show($db->id);
@@ -96,14 +101,18 @@ class customersController extends Controller
      */
     public function show($id)
     {
-        $db = customers::where('is_active', 1)->where('id',$id)->first();
+        $db = customers::where('is_active', 1)->where('id', $id)->first();
         $db->cart;
-        $cart_details=$db->cart_details;
-        foreach($cart_details as $cart_detail){
-            $cart_detail->product;
+        $cart_details = $db->cart_details;
+        foreach ($cart_details as $cart_detail) {
+            $book = $cart_detail->book;
+            $book->categories;
+            $book->publishers;
+            $book->prices;
+            $book->languages;
         }
         $orders = $db->orders;
-        foreach($orders as $order){
+        foreach ($orders as $order) {
             $order->details;
         }
         $db->info;
@@ -138,9 +147,9 @@ class customersController extends Controller
         $db->save();
         $i = $request->info;
         $info = new customer_infos();
-        if($i) {
+        if ($i) {
             $idInfo = $i['id'] ?? null;
-            if($idInfo)
+            if ($idInfo)
                 $info->updateInfo($i, $idInfo);
             else
                 $info->insertInfo($i, $db->id);
@@ -162,13 +171,13 @@ class customersController extends Controller
         $db->save();
 
         $info = customer_infos::where('is_active', 1)->where('customer_id', $db->id)->first();
-        if($info) {
+        if ($info) {
             $info->is_active = 0;
             $info->save();
         }
 
         $address = delivery_addresses::where('is_active', 1)->where('customer_id', $db->id)->first();
-        if($address) {
+        if ($address) {
             $address->is_active = 0;
             $address->save();
         }

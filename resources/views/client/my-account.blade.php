@@ -246,7 +246,7 @@
                     <td class="align-middle py-5">$37</td>
                     <td class="align-middle py-5">In Stock</td>
                     <td class="align-middle py-5">
-                      <span class="product__add-to-cart">ADD TO CART</span>
+                      <span class="product__add-to-cart">Thêm vào giỏ</span>
                     </td>
                   </tr>
                 </tbody>

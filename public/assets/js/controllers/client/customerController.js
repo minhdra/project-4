@@ -44,7 +44,6 @@ function customerController($scope, $http) {
         null,
         function (res) {
           $scope.customer = res.data;
-          console.log(res.data);
           $scope.getStatus($scope.customer.orders);
         }
       );
@@ -177,9 +176,6 @@ function customerController($scope, $http) {
       );
     }
   };
-
-  // close modal delivery address 
-  $scope.closeModal
 
   // Handle event change city
   $scope.changeCity = () => {

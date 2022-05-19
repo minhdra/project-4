@@ -93,7 +93,7 @@
                           <div class="border px-3 width-120">
                             <div class="js-quantity">
                               <div class="d-flex align-items-center">
-                                <label class="screen-reader-text sr-only">Quantity</label>
+                                <label class="screen-reader-text sr-only">Số lượng</label>
                                 <a class="js-minus text-dark" href="javascript:;" ng-click="changeQuantity(0)">
                                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10px" height="1px">
                                     <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M-0.000,-0.000 L10.000,-0.000 L10.000,1.000 L-0.000,1.000 L-0.000,-0.000 Z" />
@@ -111,7 +111,7 @@
 
                         </div>
                         <br>
-                        <button type="submit" name="add-to-cart" value="7145" class="mb-4 mb-md-0 btn btn-primary border-0 rounded-0 p-3 min-width-250 single_add_to_cart_button button alt">Add to cart</button>
+                        <button type="submit" name="add-to-cart" value="7145" class="mb-4 mb-md-0 btn btn-primary border-0 rounded p-3 min-width-250 single_add_to_cart_button button alt" ng-click="addCart()">Thêm vào giỏ</button>
                         <!-- <ul class="list-unstyled nav ml-xl-5 mt-md-4 mt-xl-0">
                           <li class="mr-6 mb-4 mb-md-0">
                             <a href="#" class="h-primary"><i class="flaticon-heart mr-2"></i> Add to Wishlist</a>
@@ -407,7 +407,7 @@
                     </div>
                     <div class="product__hover d-flex align-items-center">
                       <a href="../shop/single-product-v2.html" class="text-uppercase text-dark font-weight-medium mr-auto">
-                        <span class="product__add-to-cart">ADD TO CART</span>
+                        <span class="product__add-to-cart">Thêm vào giỏ</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
                       <a href="../shop/single-product-v2.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
@@ -436,7 +436,7 @@
                     </div>
                     <div class="product__hover d-flex align-items-center">
                       <a href="../shop/single-product-v2.html" class="text-uppercase text-dark font-weight-medium mr-auto">
-                        <span class="product__add-to-cart">ADD TO CART</span>
+                        <span class="product__add-to-cart">Thêm vào giỏ</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
                       <a href="../shop/single-product-v2.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
@@ -465,7 +465,7 @@
                     </div>
                     <div class="product__hover d-flex align-items-center">
                       <a href="../shop/single-product-v2.html" class="text-uppercase text-dark font-weight-medium mr-auto">
-                        <span class="product__add-to-cart">ADD TO CART</span>
+                        <span class="product__add-to-cart">Thêm vào giỏ</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
                       <a href="../shop/single-product-v2.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
@@ -494,7 +494,7 @@
                     </div>
                     <div class="product__hover d-flex align-items-center">
                       <a href="../shop/single-product-v2.html" class="text-uppercase text-dark font-weight-medium mr-auto">
-                        <span class="product__add-to-cart">ADD TO CART</span>
+                        <span class="product__add-to-cart">Thêm vào giỏ</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
                       <a href="../shop/single-product-v2.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
@@ -523,7 +523,7 @@
                     </div>
                     <div class="product__hover d-flex align-items-center">
                       <a href="../shop/single-product-v2.html" class="text-uppercase text-dark font-weight-medium mr-auto">
-                        <span class="product__add-to-cart">ADD TO CART</span>
+                        <span class="product__add-to-cart">Thêm vào giỏ</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
                       <a href="../shop/single-product-v2.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
@@ -552,7 +552,7 @@
                     </div>
                     <div class="product__hover d-flex align-items-center">
                       <a href="../shop/single-product-v2.html" class="text-uppercase text-dark font-weight-medium mr-auto">
-                        <span class="product__add-to-cart">ADD TO CART</span>
+                        <span class="product__add-to-cart">Thêm vào giỏ</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
                       <a href="../shop/single-product-v2.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
@@ -581,7 +581,7 @@
                     </div>
                     <div class="product__hover d-flex align-items-center">
                       <a href="../shop/single-product-v2.html" class="text-uppercase text-dark font-weight-medium mr-auto">
-                        <span class="product__add-to-cart">ADD TO CART</span>
+                        <span class="product__add-to-cart">Thêm vào giỏ</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
                       <a href="../shop/single-product-v2.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">
@@ -610,7 +610,7 @@
                     </div>
                     <div class="product__hover d-flex align-items-center">
                       <a href="../shop/single-product-v2.html" class="text-uppercase text-dark font-weight-medium mr-auto">
-                        <span class="product__add-to-cart">ADD TO CART</span>
+                        <span class="product__add-to-cart">Thêm vào giỏ</span>
                         <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                       </a>
                       <a href="../shop/single-product-v2.html" class="mr-1 h-p-bg btn btn-outline-primary border-0">

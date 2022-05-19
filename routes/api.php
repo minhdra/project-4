@@ -30,6 +30,8 @@ use App\Http\Controllers\api\invoicesController;
 use App\Http\Controllers\api\order_detailsController;
 use App\Http\Controllers\api\order_statusController;
 use App\Http\Controllers\api\ordersController;
+use App\Http\Controllers\api\cartsController;
+use App\Http\Controllers\api\cart_detailsController;
 use App\Http\Controllers\api\paymentsController;
 use App\Http\Controllers\api\positionsController;
 use App\Http\Controllers\api\pricesController;
@@ -62,7 +64,7 @@ Route::resource('orders', ordersController::class);
 Route::resource('order_details', order_detailsController::class);
 Route::post('customers/login', [customersController::class, 'login']);
 Route::post('customers/register', [customersController::class, 'register']);
-
+Route::post('books/search', [booksController::class, 'search'])->name('search');
 Route::post('book/upload', [booksController::class, 'uploadFile'])->name('upload.uploadfile');
 Route::get('book/get_basic', [booksController::class, 'get_basic'])->name('book.get_basic');
 

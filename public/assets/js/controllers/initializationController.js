@@ -1,4 +1,6 @@
 const baseApi = 'http://localhost:8000/api/';
+const successStatus = 'success';
+const errorStatus = 'error';
 const app = angular.module('app', ['angularUtils.directives.dirPagination', 'ckeditor']);
 setTimeout(() => {
   $(function () {
@@ -7,7 +9,7 @@ setTimeout(() => {
 }, 2000);
 
 function checkCustomerLogin() {
-  const request = JSON.parse(sessionStorage.getItem('customer')) || JSON.parse(localStorage.getItem('customer')) || {};
+  const request = JSON.parse(sessionStorage.getItem('customer')) || JSON.parse(localStorage.getItem('customer')) || undefined;
 
   return request;
 }
