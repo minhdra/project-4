@@ -98,11 +98,11 @@ class booksController extends Controller
     public function show($id)
     {
         $books = books::where('id',$id)->first();
-        $book = $books->categories;
-        $book = $books->prices;
-        $book = $books->book_languages;
-        $book = $books->publishers;
-        $book = $books->authors;
+        $books->categories;
+        $books->prices;
+        $books->book_languages;
+        $books->publishers;
+        $books->authors;
         return ['book'=>$books];
     }
 
@@ -126,7 +126,8 @@ class booksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $date = new Datetime();
+        $newDate = new DateTime();
+        $date = date('Y-m-d', strtotime(str_replace('-', '/', $newDate->format('Y-m-d'))));
         $db = books::find($id);
         $db->book_name  = $request->book_name;
         $db->categoryID =$request->categoryID;

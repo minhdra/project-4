@@ -14,18 +14,19 @@ function headerController($rootScope, $http) {
       },
       (error) => {
         console.log(error);
-        showAlert(errorStatus);
+        // showAlert(errorStatus);
       }
     );
   };
   $rootScope.customer = {};
   $rootScope.check = checkCustomerLogin();
+  $rootScope.total = 0;
 
   $rootScope.loadCart = () => {
-    if ($rootScope.check.id) {
+    if ($rootScope.check) {
       connect_api(
         'GET',
-        apiBase + nameCustomer + $rootScope.check.id,
+        baseApi + nameAccount + $rootScope.check,
         null,
         function (res) {
           $rootScope.customer = res.data;
@@ -38,13 +39,12 @@ function headerController($rootScope, $http) {
 
   $rootScope.loadDropdownCategories = () => {
     $rootScope.selectedCategory = 0;
-    connect_api('GET', apiBase + 'categories', null, function (res) {
-      console.log(res.data);
+    connect_api('GET', baseApi + 'categories', null, function (res) {
       const all = {
         id: 0,
         name: 'All'
       }
-      $rootScope.categories = [all, ...res.data];
+      $rootScope.categories = [all, ...res.data.categories];
     });
   }
   $rootScope.loadDropdownCategories();
@@ -74,7 +74,7 @@ function headerController($rootScope, $http) {
 
     connect_api(
       'PUT',
-      apiBase + nameCartDetail + $rootScope.customer.cart_details[index].id,
+      baseApi + nameCartDetail + $rootScope.customer.cart_details[index].id,
       $rootScope.customer.cart_details[index],
       function (res) {
         $rootScope.countTotal();
@@ -84,9 +84,16 @@ function headerController($rootScope, $http) {
 
   // Remove
   $rootScope.remove = (id, index) => {
-    connect_api('DELETE', apiBase + nameCartDetail + id, null, function (res) {
+    connect_api('DELETE', baseApi + nameCartDetail + id, null, function (res) {
       $rootScope.customer.cart_details.splice(index, 1);
       $rootScope.countTotal();
     });
   };
+
+  // Show modal login
+  $rootScope.showLogin = () => {
+    $('#sidebarNavToggler').click();
+  }
+
+
 }

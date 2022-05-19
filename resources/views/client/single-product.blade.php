@@ -8,9 +8,9 @@
       <div class="d-md-flex justify-content-between align-items-center py-4">
         <h1 class="page-title font-size-3 font-weight-medium mb-md-0 text-lh-lg">Chi tiết</h1>
         <nav class="woocommerce-breadcrumb font-size-2">
-          <a href="{{route('home')}}" class="h-primary">Trang chủ</a>
+          <a href="{{route('home')}}" class="h-primary font-weight-medium">Trang chủ</a>
           <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>
-          <a href="{{route('shop')}}" class="h-primary">Cửa hàng</a>
+          <a href="{{route('shop')}}" class="h-primary font-weight-medium">Cửa hàng</a>
           <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>Chi tiết
         </nav>
       </div>
@@ -33,7 +33,7 @@
               </div>
               <div class="col-md-8 col-wd-7 pl-0 summary entry-summary">
                 <div class="space-top-2 px-4 px-xl-5 px-wd-7 pb-5">
-                  <h1 class="product_title entry-title font-size-7 mb-3">@{{item.book_name}}</h1>
+                  <h1 class="product_title entry-title font-size-6 mb-3">@{{item.book_name}}</h1>
                   <div class="font-size-2 mb-4">
                     <span class="text-yellow-darker">
                       <span class="fas fa-star"></span>
@@ -79,7 +79,7 @@
                       </div>
                       <div class="font-size-2 mb-4">
                         <span class="font-weight-medium text-gray-600">Khuôn khổ:</span>
-                        <span class="ml-2 "><strong>@{{item.dimensions}} cm</strong></span>
+                        <span class="ml-2 "><strong>@{{item.dimensions.indexOf('cm') < 0 ? item.dimensions + 'cm' : item.dimensions}}</strong></span>
                       </div>
                       <div class="font-size-2 mb-4">
                         <span class="font-weight-medium text-gray-600">Trọng lượng:</span>

@@ -144,7 +144,7 @@ function booksController($scope, $http) {
 
         $("#genres").tagging( "add",$scope.book.genres_app);
 
-        $scope.book.price = $scope.book.prices.price;
+        $scope.book.price = $scope.book.prices?.price;
         $scope.book.publish_date = new Date($scope.book.publish_date);
         $scope.text.textInput = $scope.book.description;
       // })
