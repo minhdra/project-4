@@ -1,8 +1,6 @@
 
 const nameController = 'publishers/';
 const nameChild = 'child/';
-const successStatus = 'success';
-const errorStatus = 'danger';
 
 app.controller('publishersController', publishersController);
 function publishersController($scope, $http) {

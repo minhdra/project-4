@@ -2,16 +2,12 @@ const nameController = 'books/';
 const categoryController = 'categories/';
 const publishersController = 'publishers/';
 const book_languagesController = 'book_languages/';
+const authorsController = 'authors/';
 const nameChild = 'child/';
-
-
-
-
 
 app.controller('booksController', booksController);
 function booksController($scope, $http) {
   //set begin
-  
   $scope.finding = '';
   $scope.currentPage = 1;
   $scope.pageSize = 10;
@@ -110,6 +106,10 @@ function booksController($scope, $http) {
     $scope.publishers = response.data.publishers;
   })
   //get drop down book_languages
+  connect_api('get',baseApi + authorsController,(response)=>{
+    $scope.authors = response.data;
+  })
+  //get drop down authors
   connect_api('get',baseApi + book_languagesController,(response)=>{
     $scope.book_languages = response.data.book_languages;
   })
@@ -123,20 +123,29 @@ function booksController($scope, $http) {
         entities: false
       }
     };
+  
     $scope.id = id;
     if (id == 0) {
       $scope.modalTitle = 'Thêm sách mới';
       $scope.book = null;
       $("#genres").tagging( "reset" );
+      $("#book_authors").tagging( "reset" );
       // $scope.book.publisherID = "1";
       // $scope.book.languageID ="1";
       // $scope.book.categoryID ="1";
     } else {
       
       $("#genres").tagging( "reset" );
+      $("#book_authors").tagging( "reset" );
       $scope.modalTitle = 'Chỉnh sửa thông tin sách';
     // connect_api('get',baseApi + nameController + id,(response)=>{
     // $scope.book = response.data.book;
+
+    //     var element = document.getElementById("img_file_upid");
+    //     var file = element.files[0];
+    //     var blob = file.slice(0, file.size, 'image/*');
+    //     newFile = new File([""],$scope.book.image, {type: 'image/*'});
+
         $scope.book = book;
         $scope.book.publisherID = String ($scope.book.publisherID);
         $scope.book.languageID = String ($scope.book.languageID);
@@ -240,6 +249,13 @@ function booksController($scope, $http) {
       })
     }
   };
+
+  $scope.author_selected = function (author){
+    console.log(author);
+    $("#book_authors").tagging( "add",author);
+    tags = $("#book_authors").tagging('getTags');
+    console.log(tags);
+  }
 
   $('#img_file_upid').on('change', function (ev) {
     var filedata = this.files[0];

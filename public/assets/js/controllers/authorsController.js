@@ -1,9 +1,6 @@
 
 const nameController = 'authors/';
 const nameChild = 'child/';
-const successStatus = 'success';
-const errorStatus = 'danger';
-
 app.controller('authorsController', authorsController);
 function authorsController($scope, $http) {
   //set begin
@@ -104,4 +101,5 @@ function authorsController($scope, $http) {
       );
     }
   };
+
 }

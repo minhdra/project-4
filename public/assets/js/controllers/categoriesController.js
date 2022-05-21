@@ -1,8 +1,6 @@
 
 const nameController = 'categories/';
 const nameChild = 'child/';
-const successStatus = 'success';
-const errorStatus = 'danger';
 
 app.controller('categoriesController', categoriesController);
 function categoriesController($scope, $http) {

@@ -77,7 +77,7 @@
   <script src="/assets/js/dirPagination.js"></script>
   <script src="/assets/js/controllers/initializationController.js"></script>
   <script src="/assets/js/controllers/admin/globalController.js"></script>
-  <script src="//cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+  <script src="/assets/vendor/ckeditor/ckeditor.js"></script>
   <script src="/assets/js/angular-ckeditor.js"></script>
   @yield('js')
   

@@ -4,8 +4,6 @@ const booksController = 'books/';
 const publishersController = 'publishers/';
 const invoice_detailsController = 'invoice_details/';
 const nameChild = 'child/';
-const successStatus = 'success';
-const errorStatus = 'error';
  
 app.controller('invoicesController', InvoicesController);
 function InvoicesController($scope, $http) {
