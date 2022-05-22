@@ -115,7 +115,7 @@
                       @{{row.status.status_name}}
                     </td>
                     <td class="align-middle py-5">
-                      <span class="text-primary">@{{row.total}} VND</span> cho @{{row.orders?.order_details?.length || 0}} chi tiết
+                      <span class="text-primary">@{{row.total|number}} VND</span> cho @{{row.details.length || 0}} chi tiết
                     </td>
                     <td class="align-middle py-5">
                       <div class="d-flex justify-content-center">
@@ -126,13 +126,13 @@
                   </tr>
                 </tbody>
               </table>
-              <h6 class="font-size-5 text-primary">Bạn chưa có đơn hàng nào</h6>
+              <h6 class="font-size-5 text-primary" ng-if="customer.orders.length === 0">Bạn chưa có đơn hàng nào</h6>
             </div>
           </div>
           <div class="tab-pane fade" id="pills-four-example1" role="tabpanel" aria-labelledby="pills-four-example1-tab">
             <div class="pt-5 pl-md-5 pt-lg-8 pl-lg-9 space-bottom-2 mb-lg-4">
               <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-4 mb-lg-4 pb-xl-1">Địa chỉ của bạn</h6>
-              <button class="btn btn-primary rounded mb-4" type="button" ng-click="showUpdateDeliveryAddress()">Add a new address</button>
+              <button class="btn btn-primary rounded mb-4" type="button" ng-click="showUpdateDeliveryAddress()">Thêm địa chỉ mới</button>
               <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
                 <div class="col" ng-repeat="row in customer.delivery_addresses">
                   <div class="mb-6 mb-md-0">
@@ -148,8 +148,8 @@
 
                     </address>
                     <div class="d-flex">
-                      <button class="btn btn-info rounded py-1 mr-2" type="button" ng-click="showUpdateDeliveryAddress(row)">Edit</button>
-                      <button class="btn btn-danger rounded py-1" type="button" ng-click="removeDeliveryAddress(row.id)">Delete</button>
+                      <button class="btn btn-info rounded py-1 mr-2" type="button" ng-click="showUpdateDeliveryAddress(row)">Sửa</button>
+                      <button class="btn btn-danger rounded py-1" type="button" ng-click="removeDeliveryAddress(row.id)">Xóa</button>
                     </div>
                   </div>
                 </div>
@@ -260,10 +260,10 @@
 
   <!-- Modal -->
   <div class="modal fade" id="modalOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Danh sách chi tiết</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -273,21 +273,21 @@
             <thead>
               <tr class="border">
                 <th scope="col" class="py-3 border-bottom-0 font-weight-medium pl-3 pl-lg-5">Sách / Truyện</th>
-                <th scope="col" class="py-3 border-bottom-0 font-weight-medium">Số lượng</th>
                 <th scope="col" class="py-3 border-bottom-0 font-weight-medium">Giá sản phẩm</th>
+                <th scope="col" class="py-3 border-bottom-0 font-weight-medium">Số lượng</th>
                 <th scope="col" class="py-3 border-bottom-0 font-weight-medium">Hình ảnh</th>
                 <th scope="col" class="py-3 border-bottom-0 font-weight-medium">Tổng tiền</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border" ng-repeat="row in order.order_details">
-                <th class="pl-3 pl-md-5 font-weight-normal py-6">row.product.book_name</th>
-                <td class="align-middle py-5">@{{row.quantity}}</td>
-                <td class="align-middle py-5">@{{row.single_price | number}}</td>
-                <td class="align-middle py-5">
+              <tr class="border" ng-repeat="row in order.details">
+                <th class="pl-3 pl-md-5 font-weight-normal py-5">@{{row.book.book_name}}</th>
+                <td class="py-5">đ@{{row.single_price | number}}</td>
+                <td class="py-5">@{{row.quantity}}</td>
+                <td class="py-5">
                   <img ng-src="/assets/img/books/@{{row.image}}" alt="" width="100px">
                 </td>
-                <td class="align-middle py-5">@{{row.single_price*row.quantity | number}}</td>
+                <td class="py-5">đ@{{row.single_price*row.quantity | number}}</td>
               </tr>
             </tbody>
           </table>

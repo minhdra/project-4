@@ -44,42 +44,12 @@ function customerController($scope, $http) {
         null,
         function (res) {
           $scope.customer = res.data;
-          $scope.getStatus($scope.customer.orders);
+          console.log($scope.customer);
         }
       );
     } else {
       history.back();
     }
-  };
-
-  $scope.getStatus = (orders) => {
-    orders.forEach((item) => {
-      switch (item.flag) {
-        case 0:
-          return (item.flag = 'Cancelled');
-
-        case 1:
-          return (item.flag = 'Wait confirm');
-
-        case 2:
-          return (item.flag = 'Confirmed');
-
-        case 3:
-          return (item.flag = 'Taking stuff');
-
-        case 4:
-          return (item.flag = 'Took stuff success');
-
-        case 5:
-          return (item.flag = 'Delivering');
-
-        case 6:
-          return (item.flag = 'Delivered success');
-
-        default:
-          break;
-      }
-    });
   };
 
   $scope.logout = () => {

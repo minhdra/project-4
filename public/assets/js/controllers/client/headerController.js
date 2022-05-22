@@ -31,7 +31,6 @@ function headerController($rootScope, $http) {
         baseApi + nameAccount + $rootScope.check,
         null,
         function (res) {
-          console.log(res.data)
           $rootScope.customer = res.data;
           $rootScope.countTotal();
         }

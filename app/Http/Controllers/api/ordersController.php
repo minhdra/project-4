@@ -23,8 +23,17 @@ class ordersController extends Controller
         foreach ($orders as $order) {
             $c = $order->customer;
             $c->info;
-            $order->details;
+            $details = $order->details;
             $order->status;
+            $order->discount;
+            foreach ($details as $detail) {
+                $b = $detail->book;
+                $b->prices;
+                $b->book_languages;
+                $b->authors;
+                $b->publishers;
+                $b->categories;
+            }
         }
         return ['orders'=>$orders, 'customers'=>$customers];
     }
@@ -52,6 +61,7 @@ class ordersController extends Controller
         $db->delivery_address = $request->delivery_address;
         $db->total = $request->total;
         $db->order_status_id = 1;
+        $db->discount_id = $request->discount_id ?? null;
         $db->save();
         $details = $request->details;
         if($details) {
@@ -75,8 +85,17 @@ class ordersController extends Controller
         $order = orders::where('is_active', 1)->find($id);
         $c = $order->customer;
         $c->info;
-        $order->details;
+        $details = $order->details;
         $order->status;
+        $order->discount;
+        foreach ($details as $detail) {
+            $b = $detail->book;
+            $b->prices;
+            $b->book_languages;
+            $b->authors;
+            $b->publishers;
+            $b->categories;
+        }
         return $order;
     }
 
@@ -102,7 +121,7 @@ class ordersController extends Controller
     {
         $db = orders::where('is_active', 1)->find($id);
         $db->delivery_address = $request->delivery_address;
-        
+        $db->discount_id = $request->discount_id ?? null;
         $db->total = $request->total;
         $db->order_status_id = $request->order_status_id;
         $db->save();

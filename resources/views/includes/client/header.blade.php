@@ -22,10 +22,11 @@
             <div class="site-search ml-xl-0 ml-md-auto w-r-100 my-2 my-xl-0">
               <form class="form-inline">
                 <div class="input-group">
-                  <div class="input-group-prepend">
-                    <i class="glph-icon flaticon-loupe input-group-text py-2d75 bg-white-100 border-white-100"></i>
-                  </div>
-                  <input class="form-control bg-white-100 min-width-380 py-2d75 height-4 border-white-100" type="search" placeholder="Search for Books by Keyword ..." aria-label="Search" spellcheck="false" data-ms-editor="true">
+                  
+                  <input class="form-control bg-white-100 min-width-380 py-2d75 height-4 border-white-100" type="search" placeholder="Search for Books by Keyword ..." aria-label="Search" spellcheck="false" data-ms-editor="true" ng-model="keyword">
+                  <a class="input-group-prepend h-primary" href="/shop/list?keyword=@{{keyword}}">
+                    <i class="glph-icon flaticon-loupe input-group-text h-primary py-2d75 bg-white-100 border-white-100"></i>
+                  </a>
                 </div>
                 <button class="btn btn-outline-success my-2 my-sm-0 sr-only" type="submit">Search</button>
               </form>

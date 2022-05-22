@@ -80,9 +80,9 @@
                         <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-
+                        <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                         <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
-                        <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
+                        <div class="font-size-2  mb-2 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.authors.author_name?row.authors.author_name:row.categories.category_name}}</a></div>
                         <div class="price d-flex align-items-center font-weight-medium font-size-2">
                           <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
                         </div>
@@ -115,7 +115,7 @@
                         <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
                       </div>
                       <div class="col-md woocommerce-loop-product__body product__body pt-3 bg-white mb-3 mb-md-0">
-                        <!-- <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">Bìa mềm</a></div> -->
+                        <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                         <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 crop-text-2 h-dark"><a href="/shop/list/@{{row.id}}" tabindex="0">@{{row.book_name}}</a></h2>
                         <div class="font-size-2  mb-2 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.authors.author_name?row.authors.author_name:row.categories.category_name}}</a></div>
                         <!-- <p class="font-size-2 mb-2 crop-text-2">After disappearing for three years, Artemis Fowl has returned to a life different from the one he left. And spends his days teaching his twin siblings the</p> -->
@@ -143,17 +143,8 @@
             </div>
           </div>
 
-          <nav aria-label="Page navigation example">
-            <ul class="pagination pagination__custom justify-content-md-center flex-nowrap flex-md-wrap overflow-auto overflow-md-visble">
-              <li class="flex-shrink-0 flex-md-shrink-1 page-item"><a class="page-link" href="#">Trước</a></li>
-              <li class="flex-shrink-0 flex-md-shrink-1 page-item"><a class="page-link" href="#">1</a></li>
-              <li class="flex-shrink-0 flex-md-shrink-1 page-item"><a class="page-link" href="#">2</a></li>
-              <li class="flex-shrink-0 flex-md-shrink-1 page-item active" aria-current="page"><a class="page-link" href="#">3</a></li>
-              <li class="flex-shrink-0 flex-md-shrink-1 page-item"><a class="page-link" href="#">4</a></li>
-              <li class="flex-shrink-0 flex-md-shrink-1 page-item"><a class="page-link" href="#">5</a></li>
-              <li class="flex-shrink-0 flex-md-shrink-1 page-item"><a class="page-link" href="#">Sau</a></li>
-            </ul>
-          </nav>
+          <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
+          </dir-pagination-controls>
         </div>
         <div id="secondary" class="sidebar widget-area order-1" role="complementary">
           <div id="widgetAccordion">

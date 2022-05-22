@@ -1,7 +1,6 @@
 app.controller('accountController', accountController);
 function accountController($scope, $http) {
-  $scope.customer_id =
-    sessionStorage.getItem('user') || localStorage.getItem('user');
+  $scope.customer_id = checkCustomerLogin();
   $scope.checkRemember = false;
   $scope.loginModel = {};
   $scope.registerModel = {};
