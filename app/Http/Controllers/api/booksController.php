@@ -70,6 +70,33 @@ class booksController extends Controller
             'valueimg'=>$data ]);
     }
 
+    // Get newest products
+    public function getNewest() {
+        $books = books::where('is_active', 1)->orderBy('created_at', 'desc')->limit(10)->get();
+        foreach ($books as $book) {
+            $book->categories;
+            $book->prices;
+            $book->book_languages;
+            $book->publishers;
+            $book->authors;
+        }
+        return $books;
+    }
+    
+    // Get best seller products
+    public function getBestSeller() {
+        $books = books::where('is_active', 1)->get();
+        foreach ($books as $book) {
+            $book->categories;
+            $book->prices;
+            $book->book_languages;
+            $book->publishers;
+            $book->authors;
+            $book->order_details;
+        }
+        return $books;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

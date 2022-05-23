@@ -7,6 +7,7 @@ function authorsController($scope, $http) {
   $scope.currentPage = 1;
   $scope.pageSize = 10;
   $scope.item;
+  const modalE = $('#large');
   //get all authors
   $http({
     method: 'GET',
@@ -24,7 +25,7 @@ function authorsController($scope, $http) {
     $scope.id = id;
     if (id == 0) {
       $scope.modalTitle = 'Thêm tác giả mới';
-      $scope.book = null;
+      $scope.item = null;
     } else {
       $scope.modalTitle = 'Chỉnh sửa thông tin tác giả';
       $http({
@@ -37,7 +38,7 @@ function authorsController($scope, $http) {
         (error) => console.log(error)
       );
     }
-    $('#large').modal('show');
+    modalE.modal('show');
   };
   // Save data from modal
   $scope.saveData = function () {
@@ -51,8 +52,9 @@ function authorsController($scope, $http) {
       }).then(
         function (response) {
           console.log(response);
-          location.reload();
+          $scope.data.push(response.data);
           showAlert(successStatus);
+          modalE.modal('hide');
         },
         (error) => {
           console.log(error);
@@ -69,9 +71,10 @@ function authorsController($scope, $http) {
       }).then(
         function (response) {
           $scope.message = response.data;
-          console.log(response.data);
-          location.reload();
+          const index = $scope.data.findIndex(item => item.id == $scope.id);
+          $scope.data[index] = $scope.item;
           showAlert(successStatus);
+          modalE.modal('hide');
         },
         (error) => {
           console.log(error);
@@ -91,7 +94,8 @@ function authorsController($scope, $http) {
       }).then(
         function (response) {
           $scope.message = response.data;
-          location.reload();
+          // location.reload();
+          $scope.data.splice($scope.data.findIndex(item=>item.id==id),1)
           showAlert(successStatus);
         },
         (error) => {

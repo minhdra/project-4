@@ -65,6 +65,8 @@ Route::resource('order_details', order_detailsController::class);
 Route::post('customers/login', [customersController::class, 'login']);
 Route::post('customers/register', [customersController::class, 'register']);
 Route::post('books/search', [booksController::class, 'search'])->name('search');
+Route::get('book/getNewest', [booksController::class, 'getNewest'])->name('getNewest');
+Route::get('book/getBestSeller', [booksController::class, 'getBestSeller'])->name('getBestSeller');
 Route::post('book/upload', [booksController::class, 'uploadFile'])->name('upload.uploadfile');
 Route::get('book/get_basic', [booksController::class, 'get_basic'])->name('book.get_basic');
 

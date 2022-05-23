@@ -1,5 +1,6 @@
 const nameBooks = 'books/';
 let nameCart = 'carts/';
+let nameChild = 'book/';
 
 app.controller('singleBookController', singleBookController);
 function singleBookController($rootScope, $scope, $http) {
@@ -31,6 +32,11 @@ function singleBookController($rootScope, $scope, $http) {
       $("#des-single").html($scope.item.description);
     })
   }
+
+  // Get newest
+  connect_api('get', baseApi + nameChild + 'getNewest', null, (response) => {
+    $scope.dataNewest = response.data;
+  });
 
   // Change quantity
   $scope.changeQuantity = (index) => {

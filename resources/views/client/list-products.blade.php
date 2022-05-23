@@ -26,14 +26,7 @@
             <div class="shop-control-bar__right d-md-flex align-items-center">
               <form class="woocommerce-ordering mb-4 m-md-0" method="get">
 
-                <select class="js-select selectpicker dropdown-select orderby" name="orderby" data-style="border-bottom shadow-none outline-none py-2">
-                  <option value="default" selected="selected">Tùy chọn</option>
-                  <option value="a-z">Tên A-Z</option>
-                  <option value="z-a">Tên Z-A</option>
-                  <option value="price">Giá tăng dần</option>
-                  <option value="price-desc">Giá giảm dần</option>
-                  <option value="newest">Mới nhất</option>
-                  <option value="oldest">Cũ nhất</option>
+                <select class="js-select selectpicker dropdown-select orderby" name="orderby" data-style="border-bottom shadow-none outline-none py-2" ng-model="option" ng-options="row.value as row.label for row in sortOptions" ng-change="sorted(option)">
                 </select>
 
               </form>
@@ -112,7 +105,7 @@
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link row position-relative">
                       <div class="col-md-auto woocommerce-loop-product__thumbnail mb-3 mb-md-0">
-                        <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
+                        <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description" width="200px"></a>
                       </div>
                       <div class="col-md woocommerce-loop-product__body product__body pt-3 bg-white mb-3 mb-md-0">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>

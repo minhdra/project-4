@@ -1,4 +1,5 @@
-const baseApi = 'http://localhost:8000/api/';
+const port = '8000';
+const baseApi = `http://localhost:${port}/api/`;
 const successStatus = 'success';
 const errorStatus = 'error';
 const app = angular.module('app', ['angularUtils.directives.dirPagination', 'ckeditor']);

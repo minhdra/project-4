@@ -14,9 +14,7 @@ class customer_infos extends Model
         $db = new customer_infos();
         $db->customer_id = $customer_id;
         $db->full_name = $request['full_name'];
-        $db->avatar = $request['avatar'] ?? null;
-        $db->phone_number = $request['phone_number'];
-        $db->address = $request['address'];
+        $db->phone = $request['phone'];
         $db->email = $request['email'];
         $db->save();
 
@@ -26,9 +24,7 @@ class customer_infos extends Model
     public function updateInfo($request, $id) {
         $db = customer_infos::where('is_active', 1)->find($id);
         $db->full_name = $request['full_name'];
-        $db->avatar = $request['avatar'] ?? null;
-        $db->phone_number = $request['phone_number'];
-        $db->address = $request['address'];
+        $db->phone = $request['phone'];
         $db->email = $request['email'];
         $db->save();
 

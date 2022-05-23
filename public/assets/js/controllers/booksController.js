@@ -248,6 +248,7 @@ function booksController($scope, $http) {
         modalE.modal('hide');
       })
     }
+    $scope.image = null;
   };
 
   $scope.author_selected = function (author){
