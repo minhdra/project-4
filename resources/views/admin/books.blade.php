@@ -40,7 +40,7 @@
                             <th>Tồn kho</th>
                             <th>Giá bán</th>
                             <th>Hình ảnh</th>
-                            <th>Actions</th>
+                            <th style="width:90px;">Actions</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -52,7 +52,7 @@
                             <td align="right">@{{book.quantity}}</td>
                             <td align="right">@{{book.prices.price}}</td>
                             <td style="padding: 4px;"><img ng-src="/assets/img/books/@{{book.image}}" style='height:40px;' alt=""></td>
-                            <td>
+                            <td style="width:90px;">
                               <a class="success p-0" data-original-title="" ng-click="openModal(book.id,book)" data-toggle="tooltip" title="Sửa">
                                 <i class="fa fa-pencil font-medium-3 mr-2"></i>
                               </a>
