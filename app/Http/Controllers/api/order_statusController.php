@@ -15,7 +15,7 @@ class order_statusController extends Controller
      */
     public function index()
     {
-        //
+        return order_status::where('is_active',1)->get();
     }
 
     /**

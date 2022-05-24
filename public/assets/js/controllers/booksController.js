@@ -115,6 +115,8 @@ function booksController($scope, $http) {
   })
 
   $scope.openModal = function (id,book) {
+    console.log(book);
+  //preload
     $scope.text = {
       textInput : '',
       options: {
@@ -123,28 +125,28 @@ function booksController($scope, $http) {
         entities: false
       }
     };
-  
+  //preload
     $scope.id = id;
     if (id == 0) {
       $scope.modalTitle = 'Thêm sách mới';
-      $scope.book = null;
+      $scope.book = {};
+      $scope.book_authors_tmp = [];
       $("#genres").tagging( "reset" );
       $("#book_authors").tagging( "reset" );
       // $scope.book.publisherID = "1";
       // $scope.book.languageID ="1";
       // $scope.book.categoryID ="1";
     } else {
-      
+      $scope.book_authors_tmp = [];
       $("#genres").tagging( "reset" );
       $("#book_authors").tagging( "reset" );
-      $scope.modalTitle = 'Chỉnh sửa thông tin sách';
-    // connect_api('get',baseApi + nameController + id,(response)=>{
-    // $scope.book = response.data.book;
+      book.book_authors.forEach((book_author)=>{
+        var tmp = {};
+        tmp.authorID = book_author.authorID
+        $scope.book_authors_tmp.push(tmp);
+      })
 
-    //     var element = document.getElementById("img_file_upid");
-    //     var file = element.files[0];
-    //     var blob = file.slice(0, file.size, 'image/*');
-    //     newFile = new File([""],$scope.book.image, {type: 'image/*'});
+      $scope.modalTitle = 'Chỉnh sửa thông tin sách';
 
         $scope.book = book;
         $scope.book.publisherID = String ($scope.book.publisherID);
@@ -152,11 +154,18 @@ function booksController($scope, $http) {
         $scope.book.categoryID = String ($scope.book.categoryID);
 
         $("#genres").tagging( "add",$scope.book.genres_app);
+        
+        var tmp_author_names = [];
+        book.book_authors.forEach((book_author)=>{
+          tmp_author_names.push(book_author.authors.author_name)
+        })
+
+        $("#book_authors").tagging( "add",tmp_author_names);
 
         $scope.book.price = $scope.book.prices?.price;
         $scope.book.publish_date = new Date($scope.book.publish_date);
         $scope.text.textInput = $scope.book.description;
-      // })
+
     }
     modalE.modal('show');
   };
@@ -196,7 +205,24 @@ function booksController($scope, $http) {
       return result;
     }
   }
+  // Execute callback when a tag is removed
+  $("#book_authors").on( "remove:after", function ( el, text, tagging ) {
+    if($scope.book!={}){
+      //lừa
+    }
+    else{
+      if(text.trim()!=""){
+        var objIndex = $scope.authors.findIndex((obj => obj.author_name == text))
+        var author_id  = $scope.authors[objIndex].id;
   
+        var INDEX_original_book_author = $scope.book.book_authors.findIndex((obj=>obj.authors.author_name==text));
+        $scope.book.book_authors.splice(INDEX_original_book_author,1)
+  
+        var obj_book_authors_INDEX = $scope.book_authors_tmp.findIndex((obj => obj.authorID == author_id))
+        $scope.book_authors_tmp.splice(obj_book_authors_INDEX, 1);
+      }
+    }
+  }); 
   $scope.saveData = function () {
     tags = $("#genres").tagging('getTags');
     json = convert_to_json(tags);
@@ -229,9 +255,11 @@ function booksController($scope, $http) {
     $scope.book.description = $scope.text.textInput;
     $scope.book.genres_app = tags;
     $scope.book.genres = json;
+    $scope.book.book_author_tmp = $scope.book_authors_tmp;
     if ($scope.id == 0) {
       // them san pham
       connect_api_data('POST',baseApi + nameController,$scope.book,(response)=>{
+        console.log(response.data);
         //add id to book
         $scope.book.id = response.data.id;
         $scope.books.push($scope.book)
@@ -242,6 +270,7 @@ function booksController($scope, $http) {
     } else {
       //sua san pham
       connect_api_data('PUT',baseApi + nameController + $scope.id,$scope.book,(response)=>{
+        $scope.book.book_authors = response.data;
         console.log(response);
         // location.reload();
         showAlert(successStatus);
@@ -251,11 +280,29 @@ function booksController($scope, $http) {
   };
 
   $scope.author_selected = function (author){
-    console.log(author);
-    $("#book_authors").tagging( "add",author);
+    var book_author = {};
+    book_author.authorID=author.id;
+    $("#book_authors").tagging( "add",author.author_name);
     tags = $("#book_authors").tagging('getTags');
-    console.log(tags);
+    $scope.book_authors_tmp.push(book_author);
+    console.log($scope.book_authors_tmp);
+
+    if($scope.book.book_authors != null){
+      var tmp_author = {};
+      tmp_author.authorID = author.id;
+      tmp_author.authors = author;
+      $scope.book.book_authors.push(tmp_author)
+    }
+    else{
+      $scope.book.book_authors=[];
+      var tmp_author = {};
+      tmp_author.authorID = author.id;
+      tmp_author.authors = author;
+      $scope.book.book_authors.push(tmp_author)
+    }
+    console.log($scope.book);
   }
+
 
   $('#img_file_upid').on('change', function (ev) {
     var filedata = this.files[0];

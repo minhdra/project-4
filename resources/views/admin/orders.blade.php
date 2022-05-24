@@ -25,7 +25,7 @@ datalist option:hover, datalist option:focus {
 
 
 @section('content')
-<div ng-controller="invoicesController">
+<div ng-controller="ordersController">
   <div class="main-panel">
     <div class="main-content">
       <div class="content-wrapper">
@@ -33,7 +33,7 @@ datalist option:hover, datalist option:focus {
           <!--Extended Table starts-->
           <div class="row">
             <div class="col-12">
-              <h2 class="content-header">Nhập hàng</h2>
+              <h2 class="content-header">Quản lý đơn hàng bán</h2>
             </div>
           </div>
           <section id="extended">
@@ -58,28 +58,31 @@ datalist option:hover, datalist option:focus {
                       <table class="table table-responsive-md text-center table-striped">
                         <thead>
                           <tr>
-                            <th>STT</th>
+                            <th>Mã đơn hàng</th>
                             <th>Thời gian</th>
-                            <th>Nhà xuất bản</th>
+                            <th>Khách hàng</th>
+                            <th>Số ĐT</th>
                             <th>Tổng cộng</th>
-                            <th>Trạng thái</th>
+                            <th >Trạng thái</th>
                             <th>Actions</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr dir-paginate="row in data| orderBy:'-invoice_date' |filter: finding|itemsPerPage:10" current-page="currentPage">
-                            <td>@{{$index+1}}</td>
-                            <td>@{{row.invoice_date}}</td>
-                            <td>@{{row.publishers.publisher_name}}</td>
+                          <tr dir-paginate="row in data| orderBy:'-' |filter: finding|itemsPerPage:10" current-page="currentPage">
+                            <td>@{{row.id}}</td>
+                            <td>@{{row.created_at}}</td>
+                            <td>@{{row.customer.info.full_name}}</td>
+                            <td>@{{row.customer.info.phone}}</td>
                             <td align="right">@{{row.total}}</td>
-                            <td>@{{row.status}}</td>
+                            <!-- <td style="width: 15%;">
+                            <select class="form-control" ng-model="row.order_status_id" ng-selected="status_change(row,row.order_status_id)" ng-options="status.id as status.status_name for status in statuses">
+                            </select>
+                            </td> -->
+                            <td>@{{row.status.status_name}}</td>
                             <td>
-                              <a class="success p-0" data-original-title="" ng-click="openModal(row.id)" data-toggle="tooltip" title="Sửa">
+                              <a class="success p-0" data-original-title="" ng-click="openModal(row)" data-toggle="tooltip" title="Xem chi tiết">
                                 <i class="fa fa-pencil font-medium-3 mr-2"></i>
                               </a>  
-                              <a class="danger p-0" data-original-title="" data-toggle="tooltip" title="Xóa" ng-click="deleteClick(row.id)">
-                                <i class="fa fa-trash-o font-medium-3 mr-2"></i>
-                              </a>
                             </td>
                           </tr>
                         </tbody>
@@ -103,10 +106,10 @@ datalist option:hover, datalist option:focus {
     <div class="modal-dialog modal-2xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel17" style="width: 293px;">@{{modalTitle}}</h4>
+          <h4 class="modal-title" id="myModalLabel17" style="width: 293px;">Thông tin đơn hàng</h4>
           <div style="display: flex;justify-content: flex-end;width: 63.3%;align-items: center;">
-            <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Nhân viên: </label>
-            <input ng-model="staffname" type="text" class="form-control-plaintext col-xl-2 col-lg-2 col-md-2" readonly>
+            <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Khách hàng: </label>
+            <input ng-model="order.customer.info.full_name" type="text" class="form-control-plaintext col-xl-2 col-lg-2 col-md-2" readonly>
           </div>
           
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -117,16 +120,13 @@ datalist option:hover, datalist option:focus {
           <div class="form-body">
             <div class="col-xl-12 col-lg-12 col-md-12" style="display:flex;">
                 <div class="col-xl-8 col-lg-8 col-md-8"  style="background: oldlace;padding: 20px;border-radius: 6px;">
-                    <div class="row" style="display: flex;justify-content: center;" ng-if="isCreate">
+                    <div class="row" style="display: flex;justify-content: center;">
                         <div class="form-group" style="width:70%;">
-                            <input class="form-control-plaintext" placeholder="Tìm kiếm sách" id="book_finding" list="ShowDataList">
-                            <datalist id="ShowDataList" style="z-index: 100;">
-                              <option value="@{{book.book_name}}" ng-repeat="book in books" ng-click="book_selected(book)">@{{book.book_name}}</option>
-                            </datalist>
+                            <input class="form-control" placeholder="Tìm kiếm chi tiết đơn hàng" ng-model='q'>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="block" style="display: flex;">
+                        <!-- <div class="block" style="display: flex;">
                             <div class="form-group col-xl-4 col-lg-4 col-md-4" style="display: flex;align-items: center;justify-content: space-between;">
                                 <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Tên sách:</label>
                                 <input ng-model="selected_invoice_details.books.book_name" type="text" class="form-control-plaintext col-xl-8 col-lg-8 col-md-8" readonly id="book_name">
@@ -139,82 +139,71 @@ datalist option:hover, datalist option:focus {
                                 <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Đơn giá:</label>
                                 <input ng-model="selected_invoice_details.price" type="number" min="0" class="form-control col-xl-8 col-lg-8 col-md-8" id="book_name">
                             </div>
-                        </div>
-                        <div class="block" style="width:100%;display:flex;justify-content: space-between;">
+                        </div> -->
+                        <!-- <div class="block" style="width:100%;display:flex;justify-content: space-between;">
                             <div class="form-group col-xl-4 col-lg-4 col-md-4" style="display: flex;align-items: center;justify-content: space-between;">
                                 <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Giảm giá:</label>
                                 <input ng-model="selected_invoice_details.discount" type="number" min="0" max="99" class="form-control col-xl-8 col-lg-8 col-md-8" id="book_name">
                             </div>
                             <button class="btn btn-info" style="margin-right: 15px;" ng-click="update(selected_invoice_details)">Cập nhật</button>
-                        </div>
+                        </div> -->
                         <table class="table table-responsive-md text-center table-striped" id="invoice_details">
                             <thead>
                             <tr>
                                 <th>STT</th>
                                 <th>Tên sách</th>
-                                <th>Tồn kho</th>
                                 <th>Số lượng</th>
                                 <th>Đơn giá</th>
-                                <th>Giảm giá</th>
                                 <th>Thành tiền</th>
-                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr dir-paginate="row in invoice_details|filter: q|itemsPerPage:10" current-page="currentPage" ng-click="selected_row(row)">
+                            <tr dir-paginate="row in order.details|filter: q|itemsPerPage:10" current-page="currentPage">
                                 <td>@{{$index+1}}</td>
-                                <td>@{{row.books.book_name}}</td>
-                                <td>@{{row.books.quantity}}</td>
+                                <td>@{{row.product.book_name}}</td>
                                 <td>@{{row.quantity}}</td>
-                                <td>@{{row.price}}</td>
-                                <td>@{{row.discount}}</td>
-                                <td>@{{row.total}}</td>
-                                <td>
-                                <a class="danger p-0" data-original-title="" data-toggle="tooltip" title="Xóa" ng-click="deleteClick_createform(row)" ng-if="isCreate">
-                                    <i class="fa fa-trash-o font-medium-3 mr-2"></i>
-                                </a>
-                                <a class="danger p-0" data-original-title="" data-toggle="tooltip" title="Xóa" ng-click="deleteClick(row)" ng-if="!isCreate">
-                                    <i class="fa fa-trash-o font-medium-3 mr-2"></i>
-                                </a>
-                                </td>
+                                <td>@{{row.single_price}}</td>
+                                <td>@{{row.quantity*row.single_price}}</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4">
-                    <div class="row" style="display: flex;justify-content: center;">
-                        <div class="form-group" style="width:70%;">
-                          <select name="" id="" class="form-control" ng-model="invoice.publisher_id" ng-change="publisher_change(invoice.publisher_id)">
-                            <option value="" selected disabled>Chọn nhà xuất bản</option>
-                            <option value="@{{publisher.id}}" ng-repeat="publisher in publishers">@{{publisher.publisher_name}}</option>
-                          </select>
-                        </div>
-                    </div>
                     <div class="block" style="width:100%;display:flex;justify-content: space-between;">
                         <div class="form-group col-xl-12 col-lg-12 col-md-12" style="display: flex;align-items: center;justify-content: space-between;">
-                            <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Nhà xuất bản:</label>
-                            <input ng-model="publisher_name" type="text" class="form-control-plaintext col-xl-8 col-lg-8 col-md-8" readonly >
-                        </div>
-                    </div>
-                    <div class="block" style="width:100%;display:flex;justify-content: space-between;">
-                        <div class="form-group col-xl-12 col-lg-12 col-md-12" style="display: flex;align-items: center;justify-content: space-between;">
-                            <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Tổng tiền tạm tính:</label>
-                            <input ng-model="total_invoice"  type="text" readonly class="form-control-plaintext col-xl-8 col-lg-8 col-md-8" >
+                            <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Ngày đặt hàng</label>
+                            <input ng-model="order.created_at"  type="text" readonly class="form-control-plaintext col-xl-8 col-lg-8 col-md-8" >
                         </div>
                     </div>
                     <div class="block" style="width:100%;display:flex;justify-content: space-between;">
                         <div class="form-group col-xl-12 col-lg-12 col-md-12" style="display: flex;align-items: center;justify-content: space-between;">
                             <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Giảm giá:</label>
-                            <input ng-model="invoice.discount" ng-change="invoice_discount_change(invoice.discount)"  type="number" min="0" max="99" class="form-control col-xl-8 col-lg-8 col-md-8">
+                            <input ng-model="order.discount_id" ng-change="invoice_discount_change(invoice.discount)" readonly type="number" min="0" max="99" class="form-control-plaintext col-xl-8 col-lg-8 col-md-8">
                         </div>
                     </div>
                     <div class="block" style="width:100%;display:flex;justify-content: space-between;">
                         <div class="form-group col-xl-12 col-lg-12 col-md-12" style="display: flex;align-items: center;justify-content: space-between;">
-                            <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Tổng tiền phải trả:</label>
-                            <input ng-model="invoice.total" type="text" class="form-control-plaintext col-xl-8 col-lg-8 col-md-8" readonly >
+                            <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Tổng tiền:</label>
+                            <input ng-model="order.total" type="text" class="form-control-plaintext col-xl-8 col-lg-8 col-md-8" readonly >
                         </div>
                     </div>
+                    <div class="block" style="width:100%;display:flex;justify-content: space-between;">
+                        <div class="form-group col-xl-12 col-lg-12 col-md-12" style="display: flex;align-items: center;justify-content: space-between;">
+                            <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Địa chỉ:</label>
+                            <textarea class="form-control-plaintext col-xl-8 col-lg-8 col-md-8" ng-model="order.delivery_address" rows="3" readonly></textarea>
+                        </div>
+                    </div>
+
+                    <div class="block" style="width:100%;display:flex;justify-content: space-between;">
+                        <div class="form-group col-xl-12 col-lg-12 col-md-12" style="display: flex;align-items: center;justify-content: space-between;">
+                            <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Trạng thái:</label>
+                            <select class="form-control col-xl-8 col-lg-8 col-md-8" ng-model="order.order_status_id" ng-change="status_change(order.order_status_id)" ng-options="status.id as status.status_name for status in statuses">
+                              <option value="" selected disabled>Thay đổi trạng thái</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
             </div>
           </div>
@@ -222,7 +211,7 @@ datalist option:hover, datalist option:focus {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-outline-primary" ng-click="saveData()">Lưu</button>
+          <button type="button" class="btn btn-outline-primary" ng-click="saveData(order)">Lưu</button>
         </div>
       </div>
     </div>
@@ -234,5 +223,5 @@ datalist option:hover, datalist option:focus {
 
 @section('js')
 <script src="/assets/js/datalist.js"></script>
-<script src="/assets/js/controllers/invoicesController.js"></script>
+<script src="/assets/js/controllers/ordersController.js"></script>
 @stop

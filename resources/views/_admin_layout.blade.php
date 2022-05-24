@@ -1,3 +1,9 @@
+<script>
+  if(sessionStorage.getItem('login') === null){
+    window.location.replace('/admin/login');
+}
+</script>
+
 <!DOCTYPE html>
 <html lang="en" class="loading">
 

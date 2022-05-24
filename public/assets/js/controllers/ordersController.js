@@ -1,9 +1,87 @@
 
-const nameController = 'test/';
+const ordersController = 'orders/';
+const booksController = 'books/';
+const publishersController = 'publishers/';
+const order_detailsController = 'order_details/';
+const order_statusController = 'order_status/';
 const nameChild = 'child/';
-
  
-app.controller('TestController', TestController);
-function TestController($scope, $http) {
-  $scope.hello = 'Hello bros';
-}
+app.controller('ordersController', ordersController2);
+function ordersController2($scope, $http) {
+
+  const modalE = $('#large');
+
+  var connect_api = function (method,url,callback) { 
+    $http({
+      method: method,
+      url: url,
+    }).then(
+      function (response) {
+        callback(response);
+      },
+      (error) => {console.log(error);showAlert(errorStatus);}
+    );
+   }
+  var connect_api_data = function (method,url,data,callback) { 
+    $http({
+      method: method,
+      url: url,
+      data: data,
+      'content-Type': 'application/json',
+    }).then(
+      function (response) {
+        callback(response);
+      },
+      (error) => {console.log(error);showAlert(errorStatus);}
+    );
+   }
+  //set begin
+  $scope.finding = "";
+  $scope.currentPage = 1;
+  $scope.pageSize = 10;
+  $scope.item;
+  $scope.total_invoice = 0;
+  //get all invoices
+  connect_api('post',baseApi + ordersController+'get_all',(response)=>{
+    $scope.data = response.data;
+    $scope.data.forEach((item)=>{
+      item.created_at = convertDate(item.created_at)
+    })
+    console.log($scope.data);
+  })
+
+  // connect_api('get',baseApi + 'book/'+'get_basic',(response)=>{
+  //   $scope.books = response.data.books;
+  // })
+
+  connect_api('get',baseApi + order_statusController,(response)=>{
+    $scope.statuses = response.data;
+  })
+ 
+  // open modal
+  $scope.openModal = function (row) {
+    $scope.order = row;
+    // console.log($scope.order);
+    // row.order_status_id = String(row.order_status_id);
+    $('#large').modal('show');
+  }
+     // Save data from modal
+  $scope.saveData = function (order) {
+    connect_api_data('POST',baseApi+ordersController+'update_status',order,(res)=>{
+      var objIndex = $scope.data.findIndex((obj => obj.id == order.id));
+      $scope.data[objIndex] = order; 
+      var objIndex2 = $scope.statuses.findIndex((obj => obj.id == order.order_status_id));
+      $scope.data[objIndex].status= $scope.statuses[objIndex2]
+      modalE.modal('hide');
+    })
+  };
+
+  // $scope.status_change = function (row,statusID){
+  //   // if($scope.order.order_status_id != null){
+  //     // var objIndex = $scope.statuses.findIndex((obj => obj.id == statusID));
+  //     // row.status= $scope.statuses[objIndex]
+  //     // console.log(statusID);
+  //   // }
+  // }
+
+};

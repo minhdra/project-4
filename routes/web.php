@@ -71,6 +71,10 @@ Route::get('/admin/authors', function () {
     return view('admin.authors');
 });
 
+Route::get('/admin/orders', function () {
+    return view('admin.orders');
+});
+
 Route::get('/admin/languages', function () {
     return view('admin.languages');
 });

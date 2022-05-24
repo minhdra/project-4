@@ -16,4 +16,7 @@ class invoices extends Model
     public function publishers(){
         return $this->belongsTo(publishers::class,'publisher_id','id')->where('is_active',1);
     }
+    public function staff(){
+        return $this->hasOne(staffs::class,'id','staffID')->where('is_active',1);
+    }
 }

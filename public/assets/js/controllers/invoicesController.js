@@ -46,6 +46,7 @@ function InvoicesController($scope, $http) {
     $scope.data.forEach((item)=>{
       item.invoice_date = convertDate(item.invoice_date)
     })
+    console.log($scope.data);
   })
 
   connect_api('get',baseApi + 'book/'+'get_basic',(response)=>{
@@ -54,7 +55,6 @@ function InvoicesController($scope, $http) {
 
   connect_api('get',baseApi + publishersController,(response)=>{
     $scope.publishers = response.data.publishers;
-    console.log($scope.publishers);
   })
  
   // open modal
@@ -63,6 +63,7 @@ function InvoicesController($scope, $http) {
     $scope.selected_invoice_details ={};
     // CKEDITOR.replace( 'des' );
     $scope.id = id;
+    $scope.staffname = "";
     if (id == 0) {
       $scope.invoice_details = [];
       $scope.invoice = {};
@@ -74,7 +75,9 @@ function InvoicesController($scope, $http) {
       //
       $scope.isCreate = true;
       $scope.modalTitle = 'Nhập hàng';
+      $scope.staffname = JSON.parse(sessionStorage.getItem('login')).staffname;
       $scope.book = null;
+      $('#large').modal('show');
     } else {
       $scope.invoice_details = [];
       $scope.invoice = {};
@@ -86,7 +89,6 @@ function InvoicesController($scope, $http) {
 
       $scope.isCreate = false;
       $scope.modalTitle = 'Chỉnh sửa hóa đơn nhập';
-
       connect_api('get',baseApi + invoicesController + $scope.id,(response)=>{
 
         $scope.invoice = response.data;
@@ -95,7 +97,7 @@ function InvoicesController($scope, $http) {
 
         $scope.invoice.publisher_id = String($scope.invoice.publisher_id);
         $scope.invoice_details = $scope.invoice.invoice_details;
-
+        $scope.staffname = $scope.invoice.staff.staffname;
         //set ban dau cho nxb
         index= $scope.publishers.findIndex((obj=>obj.id == $scope.invoice.publisher_id))
         $scope.publisher_name = $scope.publishers[index].publisher_name;
@@ -104,11 +106,10 @@ function InvoicesController($scope, $http) {
         for(var i = 0 ;i<$scope.invoice_details.length;i++){
           $scope.total_invoice  += $scope.invoice_details[i].total;
         }
-
-        
+        $('#large').modal('show');
       })
     }
-    $('#large').modal('show');
+    
   };
   // Save data from modal
   $scope.saveData = function () {
@@ -116,6 +117,7 @@ function InvoicesController($scope, $http) {
     if ($scope.id == 0) {
       $scope.invoice.invoice_details = $scope.invoice_details;
       $scope.invoice.status = 4;
+      $scope.invoice.staffID = JSON.parse(sessionStorage.getItem('login')).id;
       var time = new Date();
       $scope.invoice.invoice_date = convertDate(time);
       
@@ -128,6 +130,7 @@ function InvoicesController($scope, $http) {
       //Update
       $scope.invoice.invoice_details = $scope.invoice_details;
       $scope.invoice.status = 4;
+      $scope.invoice.staffID = JSON.parse(sessionStorage.getItem('login')).id;
       var time = new Date();
       $scope.invoice.invoice_date = convertDate(time);
       

@@ -22,12 +22,13 @@
   <link rel="stylesheet" type="text/css" href="/assets/admin/fonts/feather/style.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/fonts/simple-line-icons/style.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/fonts/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/toastr.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/perfect-scrollbar.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/prism.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/css/app.css">
 </head>
 
-<body data-col="1-column" class=" 1-column  blank-page blank-page">
+<body data-col="1-column" class=" 1-column  blank-page blank-page" ng-app="login-app" ng-controller="loginController">
   <!-- ////////////////////////////////////////////////////////////////////////////-->
   <div class="wrapper">
     <!--Login Page Starts-->
@@ -52,13 +53,13 @@
                   <form>
                     <div class="form-group">
                       <div class="col-md-12">
-                        <input type="email" class="form-control form-control-lg" name="inputEmail" id="inputEmail" placeholder="Email Address" required email>
+                        <input type="email" class="form-control form-control-lg" name="inputEmail" id="inputEmail" placeholder="Email" ng-model="staff.email" required email>
                       </div>
                     </div>
 
                     <div class="form-group">
                       <div class="col-md-12">
-                        <input type="password" class="form-control form-control-lg" name="inputPass" id="inputPass" placeholder="Password" required>
+                        <input type="password" class="form-control form-control-lg" name="inputPass" id="inputPass" placeholder="Password" ng-model="staff.password" required>
                       </div>
                     </div>
 
@@ -75,15 +76,14 @@
 
                     <div class="form-group">
                       <div class="text-center col-md-12">
-                        <button type="submit" class="btn btn-danger px-4 py-2 text-uppercase white font-small-4 box-shadow-2 border-0">Submit</button>
+                        <button ng-click="login()" type="submit" class="btn btn-danger px-4 py-2 text-uppercase white font-small-4 box-shadow-2 border-0">Đăng nhập</button>
                       </div>
                     </div>
                   </form>
                 </div>
               </div>
               <div class="card-footer grey darken-1">
-                <div class="text-center mb-1">Forgot Password? <a><b>Reset</b></a></div>
-                <div class="text-center">Don't have an account? <a><b>Signup</b></a></div>
+                <div class="text-center mb-1">Quên mật khẩu? <a><b>Reset</b></a></div>
               </div>
             </div>
           </div>
@@ -105,10 +105,13 @@
   <script src="/assets/admin/vendors/js/pace/pace.min.js"></script>
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
+  <script src="/assets/js/angular.min.js"></script>
+  <script src="/assets/admin/vendors/js/toastr.min.js"></script>
   <!-- END PAGE VENDOR JS-->
   <!-- BEGIN CONVEX JS-->
   <script src="/assets/admin/js/app-sidebar.js"></script>
   <script src="/assets/admin/js/notification-sidebar.js"></script>
+  <script src="/assets/js/controllers/staffsController.js"></script>
   <!-- END CONVEX JS-->
   <!-- BEGIN PAGE LEVEL JS-->
   <!-- END PAGE LEVEL JS-->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\book_authors;
 use App\Models\books;
 use App\Models\prices;
 use Illuminate\Http\Request;
@@ -24,7 +25,10 @@ class booksController extends Controller
             $book->prices;
             $book->book_languages;
             $book->publishers;
-            $book->authors;
+            $book_authors = $book->book_authors;
+            foreach($book_authors as $book_author){
+                $book_author->authors;
+            }
         }
         return ['books'=>$books];
     }
@@ -110,6 +114,12 @@ class booksController extends Controller
         $db->created_at = $date;
         $db->save();
 
+        foreach($request["book_author_tmp"] as $author){
+            $db_book_author = new book_authors();
+            $db_book_author->bookID = $db->id;
+            $db_book_author->authorID = $author["authorID"];
+            $db_book_author->save();
+        }
         $db->addprice($db->id,$request->price,$date); 
         return $db;
     }
@@ -172,9 +182,22 @@ class booksController extends Controller
         $db->weight = $request->weight; 
         $db->save();
 
+        book_authors::where('is_active',1)->where('bookID',$id)->delete();
+
+        foreach($request["book_author_tmp"] as $author){
+            $db_book_author = new book_authors();
+            $db_book_author->bookID = $db->id;
+            $db_book_author->authorID = $author["authorID"];
+            $db_book_author->save();
+        }
+
         $db->updateprice($id,$request->price,$date);
-        
-        return $db;
+
+        $book_authors = $db->book_authors;
+            foreach($book_authors as $book_author){
+                $book_author->authors;
+        }
+        return $book_authors;
     }
 
     /**

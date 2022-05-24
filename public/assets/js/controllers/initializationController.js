@@ -2,6 +2,15 @@ const baseApi = 'http://localhost:8000/api/';
 const successStatus = 'success';
 const errorStatus = 'error';
 const app = angular.module('app', ['angularUtils.directives.dirPagination', 'ckeditor']);
+
+app.config(function(paginationTemplateProvider) {
+  paginationTemplateProvider.setPath('/assets/admin/customTemplate/customTemplate.html');
+});
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
 setTimeout(() => {
   $(function () {
     $('[data-toggle="tooltip"]').tooltip();
@@ -12,6 +21,11 @@ function checkCustomerLogin() {
   const request = JSON.parse(sessionStorage.getItem('customer')) || JSON.parse(localStorage.getItem('customer')) || undefined;
 
   return request;
+}
+
+function logout(){
+  sessionStorage.clear('login');
+  window.location.replace('/admin/login');
 }
 
 function showAlert(status) {

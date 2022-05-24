@@ -62,6 +62,12 @@ Route::resource('carts', cartsController::class);
 Route::resource('cart_details', cart_detailsController::class);
 Route::resource('orders', ordersController::class);
 Route::resource('order_details', order_detailsController::class);
+Route::resource('order_status', order_statusController::class);
+
+Route::post('staffs/checkLogin',[staffsController::class,'checkLogin']);
+Route::post('orders/get_all', [ordersController::class, 'get_all']);
+Route::post('orders/update_status', [ordersController::class, 'update_status']);
+
 Route::post('customers/login', [customersController::class, 'login']);
 Route::post('customers/register', [customersController::class, 'register']);
 Route::post('books/search', [booksController::class, 'search'])->name('search');

@@ -26,8 +26,8 @@ class books extends Model
         return $this->belongsTo(publishers::class,'publisherID','id')->where('is_active', 1);
     }
 
-    public function authors() {
-        return $this->hasOneThrough(authors::class, book_authors::class, 'authorID', 'id')->where('authors.is_active', 1);
+    public function book_authors() {
+        return $this->hasMany(book_authors::class,'bookID', 'id')->where('is_active', 1);
     }
 
     public function addprice($bookID,$price,$date) {

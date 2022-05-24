@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class orders extends Model
 {
     use HasFactory;
+    protected $table = 'orders';
 
     public function customer() {
         return $this->belongsTo(customers::class, 'customer_id')->where('is_active', 1);
@@ -20,7 +21,7 @@ class orders extends Model
     public function status() {
         return $this->belongsTo(order_status::class, 'order_status_id')->where('is_active', 1);
     }
-
+    
     public function updateTotal($id, $total) {
         $db = orders::where('is_active', 1)->find($id);
         $db->total = $total;

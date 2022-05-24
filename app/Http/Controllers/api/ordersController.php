@@ -29,6 +29,29 @@ class ordersController extends Controller
         return ['orders'=>$orders, 'customers'=>$customers];
     }
 
+
+    //ADMIN
+    public function get_all(){
+        $orders = orders::where('is_active', 1)->get();
+        foreach ($orders as $order) {
+            $c = $order->customer;
+            $c->info;
+            $details = $order->details;
+            foreach($details as $detail){
+                $detail->product;
+            }
+            $order->status;
+        }
+        return $orders;
+    }
+
+    public function update_status(Request $request){
+        $db = orders::find($request->id);
+        $db->order_status_id = $request->order_status_id;
+        $db->save();
+    }
+    //ADMIN
+
     /**
      * Show the form for creating a new resource.
      *

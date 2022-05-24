@@ -18,6 +18,11 @@ class staffsController extends Controller
         //
     }
 
+    public function checkLogin(Request $request){
+        $staff = staffs::where('is_active',1)->where('email',$request->email)->where('password',$request->password)->first();
+        return $staff;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

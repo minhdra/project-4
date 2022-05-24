@@ -21,6 +21,7 @@ class invoicesController extends Controller
         $invoices = invoices::where('is_active',1)->get();
         foreach($invoices as $invoice){
             $invoice->publishers;
+            $invoice->staff;
         }
         return $invoices;
     }
@@ -84,6 +85,7 @@ class invoicesController extends Controller
         $invoice = invoices::find($id);
         $invoice_details = $invoice->invoice_details;
         $invoice->publishers;
+        $invoice->staff;
         foreach($invoice_details as $invoice_detail){
             $invoice_detail->books;
         }

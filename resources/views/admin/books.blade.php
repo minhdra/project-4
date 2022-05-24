@@ -187,6 +187,7 @@
                             data-tags-input-name="edit-on-delete" 
                             data-no-duplicate="true"
                             data-no-spacebar="true"
+                            data-case-sensitive="true"
                             id="genres">
                               <input class="type-zone" contenteditable="true" spellcheck="false" data-ms-editor="true">
                             </div>
@@ -235,7 +236,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
                           <fieldset class="form-group">
                             <label for="genres">Các tác giả</label>
-                            <div class="edit-on-delete form-control tagging" data-tags-input-name="edit-on-delete" id="book_authors">
+                            <div class="edit-on-delete form-control tagging" data-case-sensitive="true" data-tags-input-name="edit-on-delete" id="book_authors">
                               <input class="type-zone" contenteditable="true" psellcheck="false" data-ms-editor="true">
                             </div>
                           </fieldset>
