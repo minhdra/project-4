@@ -43,11 +43,11 @@ Route::get('/shop/checkout', function () {
 
 Route::get('/shop/order-received', function () {
     return view('client.order-received');
-});
+})->name('order.received');
 
 Route::get('/shop/my-account', function () {
     return view('client.my-account');
-});
+})->name('customer.account');
 
 Route::get('/shop/order-tracking', function () {
     return view('client.order-tracking');

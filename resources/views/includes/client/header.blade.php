@@ -22,16 +22,17 @@
             <div class="site-search ml-xl-0 ml-md-auto w-r-100 my-2 my-xl-0">
               <form class="form-inline">
                 <div class="input-group">
-                  <div class="input-group-prepend">
-                    <i class="glph-icon flaticon-loupe input-group-text py-2d75 bg-white-100 border-white-100"></i>
-                  </div>
-                  <input class="form-control bg-white-100 min-width-380 py-2d75 height-4 border-white-100" type="search" placeholder="Search for Books by Keyword ..." aria-label="Search" spellcheck="false" data-ms-editor="true">
+                  
+                  <input class="form-control bg-white-100 min-width-380 py-2d75 height-4 border-white-100" type="search" placeholder="Nhập tên sách" aria-label="Search" spellcheck="false" data-ms-editor="true" ng-model="keyword">
+                  <a class="input-group-prepend h-primary" href="/shop/list?keyword=@{{keyword}}">
+                    <i class="glph-icon flaticon-loupe input-group-text h-primary py-2d75 bg-white-100 border-white-100"></i>
+                  </a>
                 </div>
-                <button class="btn btn-outline-success my-2 my-sm-0 sr-only" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0 sr-only" type="submit">Tìm kiếm</button>
               </form>
             </div>
           </div>
-          <div class="offcanvas-toggler d-xl-none mr-4">
+          <div class="offcanvas-toggler d-xl-none mr-4" style="flex: 1; align-self: center">
             <a id="sidebarNavToggler2" href="javascript:;" role="button" class="cat-menu target-of-invoker-has-unfolds" aria-controls="sidebarContent2" aria-haspopup="true" aria-expanded="false" data-unfold-event="click" data-unfold-hide-on-scroll="false" data-unfold-target="#sidebarContent2" data-unfold-type="css-animation" data-unfold-overlay="{
                                 &quot;className&quot;: &quot;u-sidebar-bg-overlay&quot;,
                                 &quot;background&quot;: &quot;rgba(0, 0, 0, .7)&quot;,
@@ -62,7 +63,7 @@
               <div class="d-flex align-items-center h-primary font-size-2 text-lh-sm" ng-if="!customer.id">
                 <i class="flaticon-user font-size-5"></i>
                 <div class="ml-2 d-none d-md-block">
-                  <div class="h6 mb-0">Sign In</div>
+                  <div class="h6 mb-0">Đăng nhập</div>
                 </div>
               </div>
             </a>

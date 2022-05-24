@@ -30,6 +30,10 @@ class books extends Model
         return $this->hasMany(book_authors::class,'bookID', 'id')->where('is_active', 1);
     }
 
+    public function order_details() {
+        return $this->hasMany(order_details::class, 'book_id')->where('is_active', 1);
+    }
+
     public function addprice($bookID,$price,$date) {
         $db2 = new prices();
         $db2->bookID = $bookID;

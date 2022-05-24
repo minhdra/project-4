@@ -108,14 +108,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="border" ng-repeat="row in customer.orders">
+                  <tr class="border" dir-paginate="row in customer.orders | itemsPerPage: 6">
                     <th class="pl-3 pl-md-5 font-weight-normal align-middle py-6">#@{{row.id}}</th>
                     <td class="align-middle py-5">@{{row.created_at | date}}</td>
                     <td class="align-middle py-5">
                       @{{row.status.status_name}}
                     </td>
                     <td class="align-middle py-5">
-                      <span class="text-primary">@{{row.total}} VND</span> cho @{{row.orders?.order_details?.length || 0}} chi tiết
+                      <span class="text-primary">@{{row.total|number}} VND</span> cho @{{row.details.length || 0}} chi tiết
                     </td>
                     <td class="align-middle py-5">
                       <div class="d-flex justify-content-center">
@@ -126,13 +126,15 @@
                   </tr>
                 </tbody>
               </table>
-              <h6 class="font-size-5 text-primary">Bạn chưa có đơn hàng nào</h6>
+              <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
+              </dir-pagination-controls>
+              <h6 class="font-size-5 text-primary" ng-if="customer.orders.length === 0">Bạn chưa có đơn hàng nào</h6>
             </div>
           </div>
           <div class="tab-pane fade" id="pills-four-example1" role="tabpanel" aria-labelledby="pills-four-example1-tab">
             <div class="pt-5 pl-md-5 pt-lg-8 pl-lg-9 space-bottom-2 mb-lg-4">
               <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-4 mb-lg-4 pb-xl-1">Địa chỉ của bạn</h6>
-              <button class="btn btn-primary rounded mb-4" type="button" ng-click="showUpdateDeliveryAddress()">Add a new address</button>
+              <button class="btn btn-primary rounded mb-4" type="button" ng-click="showUpdateDeliveryAddress()">Thêm địa chỉ mới</button>
               <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
                 <div class="col" ng-repeat="row in customer.delivery_addresses">
                   <div class="mb-6 mb-md-0">
@@ -148,8 +150,8 @@
 
                     </address>
                     <div class="d-flex">
-                      <button class="btn btn-info rounded py-1 mr-2" type="button" ng-click="showUpdateDeliveryAddress(row)">Edit</button>
-                      <button class="btn btn-danger rounded py-1" type="button" ng-click="removeDeliveryAddress(row.id)">Delete</button>
+                      <button class="btn btn-info rounded py-1 mr-2" type="button" ng-click="showUpdateDeliveryAddress(row)">Sửa</button>
+                      <button class="btn btn-danger rounded py-1" type="button" ng-click="removeDeliveryAddress(row.id)">Xóa</button>
                     </div>
                   </div>
                 </div>
@@ -159,59 +161,60 @@
           <div class="tab-pane fade" id="pills-five-example1" role="tabpanel" aria-labelledby="pills-five-example1-tab">
             <div class="border-bottom mb-6 pb-6 mb-lg-8 pb-lg-9">
               <div class="pt-5 pl-md-5 pt-lg-8 pl-lg-9">
-                <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">Account Details</h6>
-                <div class="font-weight-medium font-size-22 mb-4 pb-xl-1">Edit Account</div>
+                <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">Thông tin của <span class="text-primary">@{{customer.info.full_name ? customer.info.full_name : customer.username}}</span></h6>
+                <div class="font-weight-medium font-size-22 mb-4 pb-xl-1">
+                  
+                </div>
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="js-form-message">
-                      <label for="exampleFormControlInput1">First name *</label>
-                      <input type="text" class="form-control rounded-0 pl-3 placeholder-color-3" id="exampleFormControlInput1" name="name" aria-label="Jack Wayley" placeholder="Ali" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
+                      <label for="exampleFormControlInput1">Họ và tên *</label>
+                      <input type="text" class="form-control rounded-0 pl-3 placeholder-color-3" id="exampleFormControlInput1" name="name" aria-label="Jack Wayley" required="" placeholder="Họ và tên" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success" ng-model="customer.info.full_name">
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="js-form-message">
-                      <label for="exampleFormControlInput2">Last name *</label>
-                      <input type="text" class="form-control rounded-0 pl-3 placeholder-color-3" id="exampleFormControlInput2" name="name" aria-label="Jack Wayley" placeholder="TUF.." required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
+                      <label for="exampleFormControlInput2">Số điện thoại *</label>
+                      <input type="text" class="form-control rounded-0 pl-3 placeholder-color-3" id="exampleFormControlInput2" name="name" aria-label="Jack Wayley" placeholder="Số điện thoại" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success"  ng-model="customer.info.phone">
                     </div>
                   </div>
                   <div class="col-md-12 mb-4">
                     <div class="js-form-message">
-                      <label for="exampleFormControlInput3">Display name</label>
-                      <input type="text" class="form-control rounded-0" name="name" aria-label="Jack Wayley" id="exampleFormControlInput3" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
+                      <label for="exampleFormControlInput3">Địa chỉ email</label>
+                      <input type="text" class="form-control rounded-0" name="name" aria-label="Jack Wayley" id="exampleFormControlInput3" required="" placeholder="Địa chỉ email"data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success" ng-model="customer.info.email">
                     </div>
                   </div>
-                  <div class="col-md-12 mb-4 mb-md-0">
-                    <div class="js-form-message">
-                      <label for="exampleFormControlInput4">Email address</label>
-                      <input type="email" class="form-control rounded-0" name="name" id="exampleFormControlInput4" aria-label="Jack Wayley" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
-                    </div>
-                  </div>
+                </div>
+                <div class="">
+                  <button class="btn btn-wide btn-dark text-white rounded-0 transition-3d-hover height-60 width-390" ng-click="updateInfo()">Cập nhật</button>
                 </div>
               </div>
             </div>
             <div class="pl-md-5 pl-lg-9 space-bottom-2 space-bottom-lg-3">
-              <div class="font-weight-medium font-size-22 mb-4 pb-xl-1">Password Change</div>
+              <div class="font-weight-medium font-size-22 mb-4 pb-xl-1">Đổi mật khẩu</div>
               <div class="row">
                 <div class="col-md-12 mb-4">
                   <div class="js-form-message">
-                    <label for="exampleFormControlInput5">Current Password</label>
-                    <input type="password" class="form-control rounded-0" name="name" id="exampleFormControlInput5" aria-label="Jack Wayley" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
+                    <label for="exampleFormControlInput5">Mật khẩu hiện tại</label>
+                    <input type="password" class="form-control rounded-0" name="name" id="exampleFormControlInput5" aria-label="Jack Wayley" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success" ng-model="password">
+                    <span class="font-size-1 text-danger" ng-if="password!=customer.password">Mật khẩu không đúng</span>
                   </div>
                 </div>
                 <div class="col-md-12 mb-4">
                   <div class="js-form-message">
-                    <label for="exampleFormControlInput6">New Password</label>
-                    <input type="password" class="form-control rounded-0" name="name" id="exampleFormControlInput6" aria-label="Jack Wayley" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
+                    <label for="exampleFormControlInput6">Mật khẩu mới</label>
+                    <input type="password" class="form-control rounded-0" name="name" id="exampleFormControlInput6" aria-label="Jack Wayley" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success" ng-model="newPassword">
                   </div>
                 </div>
                 <div class="col-md-12 mb-5">
                   <div class="js-form-message">
-                    <label for="exampleFormControlInput7">Confirm new password</label>
-                    <input type="password" class="form-control rounded-0" name="name" id="exampleFormControlInput7" aria-label="Jack Wayley" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success">
+                    <label for="exampleFormControlInput7">Xác nhận mật khẩu mới</label>
+                    <input type="password" class="form-control rounded-0" name="name" id="exampleFormControlInput7" aria-label="Jack Wayley" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success" ng-model="confirmNewPassword">
+                    <span class="font-size-1 text-danger" ng-if="newPassword!=confirmNewPassword">Mật khẩu phải giống nhau</span>
                   </div>
                 </div>
                 <div class="ml-3">
-                  <button type="submit" class="btn btn-wide btn-dark text-white rounded-0 transition-3d-hover height-60 width-390">Save Changes</button>
+                  <button type="submit" class="btn btn-wide btn-dark text-white rounded-0 transition-3d-hover height-60 width-390" ng-click="changePassword()">Đổi mật khẩu</button>
                 </div>
               </div>
             </div>
@@ -260,10 +263,10 @@
 
   <!-- Modal -->
   <div class="modal fade" id="modalOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Danh sách chi tiết</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -273,21 +276,21 @@
             <thead>
               <tr class="border">
                 <th scope="col" class="py-3 border-bottom-0 font-weight-medium pl-3 pl-lg-5">Sách / Truyện</th>
-                <th scope="col" class="py-3 border-bottom-0 font-weight-medium">Số lượng</th>
                 <th scope="col" class="py-3 border-bottom-0 font-weight-medium">Giá sản phẩm</th>
+                <th scope="col" class="py-3 border-bottom-0 font-weight-medium">Số lượng</th>
                 <th scope="col" class="py-3 border-bottom-0 font-weight-medium">Hình ảnh</th>
                 <th scope="col" class="py-3 border-bottom-0 font-weight-medium">Tổng tiền</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border" ng-repeat="row in order.order_details">
-                <th class="pl-3 pl-md-5 font-weight-normal py-6">row.product.book_name</th>
-                <td class="align-middle py-5">@{{row.quantity}}</td>
-                <td class="align-middle py-5">@{{row.single_price | number}}</td>
-                <td class="align-middle py-5">
+              <tr class="border" ng-repeat="row in order.details">
+                <th class="pl-3 pl-md-5 font-weight-normal py-5">@{{row.book.book_name}}</th>
+                <td class="py-5">đ@{{row.single_price | number}}</td>
+                <td class="py-5">@{{row.quantity}}</td>
+                <td class="py-5">
                   <img ng-src="/assets/img/books/@{{row.image}}" alt="" width="100px">
                 </td>
-                <td class="align-middle py-5">@{{row.single_price*row.quantity | number}}</td>
+                <td class="py-5">đ@{{row.single_price*row.quantity | number}}</td>
               </tr>
             </tbody>
           </table>

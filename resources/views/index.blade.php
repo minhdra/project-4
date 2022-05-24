@@ -1,7 +1,7 @@
 @extends('_client_layout')
 @section('content')
 
-<div ng-controller="booksController" class="m-auto">
+<div ng-controller="homeController" class="m-auto">
   <!-- Slider -->
   <section class="space-bottom-3 m-auto">
     <div class="bg-gray-200 space-2 space-lg-0 bg-img-hero" style="background-image: url(/assets/img/1920x588/img1.jpg);">
@@ -79,7 +79,7 @@
       </div>
     </div>
   </section>
-  <!-- New books -->
+  <!-- Newest books -->
   <section class="space-bottom-3 m-auto" style="max-width: 1200px;">
     <div class="container">
       <header class="mb-5 d-md-flex justify-content-between align-items-center">
@@ -87,14 +87,14 @@
         <a href="../shop/v1.html" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
       <div class="products no-gutters owl-carousel">
-        <div class="product p-1 m-1" ng-repeat="row in books">
+        <div class="product p-1 m-1" ng-repeat="row in dataNewest">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
               <div class="woocommerce-loop-product__thumbnail">
                 <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
               </div>
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-
+                <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
@@ -119,22 +119,22 @@
       </div>
     </div>
   </section>
-  <!-- Bestselling books -->
-  <section class="space-bottom-3 m-auto" style="max-width: 1200px;">
+  <!-- Best seller books -->
+  <section class="space-bottom-3 m-auto" style="max-width: 1200px;" ng-if="dataBestSeller.length > 0">
     <div class="container">
       <header class="mb-5 d-md-flex justify-content-between align-items-center">
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Sách bán chạy nhất</h2>
         <a href="../shop/v1.html" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
       <div class="products no-gutters owl-carousel">
-        <div class="product p-1 m-1" ng-repeat="row in books">
+        <div class="product p-1 m-1" ng-repeat="row in dataBestSeller">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
               <div class="woocommerce-loop-product__thumbnail">
                 <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
               </div>
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-
+                <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
@@ -180,7 +180,7 @@
                 <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
               </div>
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-
+                <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
@@ -226,7 +226,7 @@
                 <a href="/shop/list/@{{row.id}}" class="d-block"><img ng-src="/assets/img/books/@{{row.image}}" class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description"></a>
               </div>
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
-
+                <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
@@ -338,5 +338,5 @@
 
 @stop
 @section('js')
-<script src="/assets/js/controllers/booksController.js"></script>
+<script src="/assets/js/controllers/client/homeController.js"></script>
 @stop

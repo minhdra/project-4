@@ -31,7 +31,17 @@ class customersController extends Controller
             }
             $orders = $customer->orders;
             foreach ($orders as $order) {
-                $order->details;
+                $details = $order->details;
+                $order->status;
+                $order->discount;
+                foreach ($details as $detail) {
+                    $b = $detail->book;
+                    $b->prices;
+                    $b->book_languages;
+                    $b->authors;
+                    $b->publishers;
+                    $b->categories;
+                }
             }
             $customer->info;
             $customer->delivery_addresses;
@@ -113,7 +123,17 @@ class customersController extends Controller
         }
         $orders = $db->orders;
         foreach ($orders as $order) {
-            $order->details;
+            $details = $order->details;
+            $order->status;
+            $order->discount;
+            foreach ($details as $detail) {
+                $b = $detail->book;
+                $b->prices;
+                $b->book_languages;
+                $b->authors;
+                $b->publishers;
+                $b->categories;
+            }
         }
         $db->info;
         $db->delivery_addresses;

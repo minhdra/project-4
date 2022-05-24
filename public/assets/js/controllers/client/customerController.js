@@ -1,6 +1,7 @@
 const nameDeliveryAddress = 'delivery_addresses/';
 let nameOrders = 'orders/';
 let nameCustomer = 'customers/';
+let nameInfo = 'customer_infos/';
 app.controller('customerController', customerController);
 function customerController($scope, $http) {
   $scope.itemsPerPage = 10;
@@ -44,7 +45,8 @@ function customerController($scope, $http) {
         null,
         function (res) {
           $scope.customer = res.data;
-          $scope.getStatus($scope.customer.orders);
+          $scope.customer.orders.sort((a, b) => b.id - a.id);
+          console.log($scope.customer);
         }
       );
     } else {
@@ -52,36 +54,7 @@ function customerController($scope, $http) {
     }
   };
 
-  $scope.getStatus = (orders) => {
-    orders.forEach((item) => {
-      switch (item.flag) {
-        case 0:
-          return (item.flag = 'Cancelled');
-
-        case 1:
-          return (item.flag = 'Wait confirm');
-
-        case 2:
-          return (item.flag = 'Confirmed');
-
-        case 3:
-          return (item.flag = 'Taking stuff');
-
-        case 4:
-          return (item.flag = 'Took stuff success');
-
-        case 5:
-          return (item.flag = 'Delivering');
-
-        case 6:
-          return (item.flag = 'Delivered success');
-
-        default:
-          break;
-      }
-    });
-  };
-
+  // Log out
   $scope.logout = () => {
     sessionStorage.removeItem('customer');
     localStorage.removeItem('customer');
@@ -253,7 +226,6 @@ function customerController($scope, $http) {
       );
     }
   };
-
   // Remove delivery address
   $scope.removeDeliveryAddress = (id) => {
     const ask = 'Are you sure you want to remove?';
@@ -268,4 +240,35 @@ function customerController($scope, $http) {
         }
       );
   };
+  // Update customer info
+  $scope.updateInfo = () => {
+    connect_api('put', baseApi + nameInfo + $scope.customer.info.id, $scope.customer.info, function (res) {
+      toastr.success('Cập nhật thành công!');
+    })
+  }
+  // Change password
+  $scope.changePassword = () => {
+    if ($scope.password != $scope.customer.password)
+    {
+      toastr.error('Mật khẩu hiện tại không đúng');
+    }
+    else if (!$scope.newPassword || !$scope.confirmNewPassword)
+    {
+      toastr.error('Phải nhập mật khẩu mới');
+    }
+    else if ($scope.newPassword != $scope.confirmNewPassword)
+    {
+      toastr.error('Mật khẩu mới phải giống nhau');
+    }
+    else
+    {
+      $scope.customer.password = $scope.newPassword;
+      connect_api('put', baseApi + nameCustomer + $scope.customer.id, $scope.customer, function (res) {
+        toastr.success('Thay đổi mật khẩu thành công');
+        setTimeout(function () {$scope.logout(); location.href = '/'; }, 1000);
+        
+        
+      })
+    }
+  }
 }

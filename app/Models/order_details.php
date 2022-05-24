@@ -13,7 +13,7 @@ class order_details extends Model
         return $this->belongsTo(orders::class, 'order_id')->where('is_active', 1);
     }
 
-    public function product() {
+    public function book() {
         return $this->belongsTo(books::class, 'book_id')->where('is_active', 1);
     }
 
@@ -24,8 +24,6 @@ class order_details extends Model
         $db->quantity = $data['quantity'];
         $db->single_price = $data['single_price'];
         $db->image = $data['image'];
-        $db->color = $data['color'];
-        $db->size = $data['size'];
         $db->save();
 
         return $db;
@@ -38,8 +36,6 @@ class order_details extends Model
         $db->total = $data['total'];
         $db->single_price = $data['single_price'];
         $db->image = $data['image'];
-        $db->color = $data['color'];
-        $db->size = $data['size'];
         $db->save();
 
         return $db;

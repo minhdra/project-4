@@ -73,7 +73,7 @@
   @include('includes.client.sidebar')
 
   <!-- Content -->
-  @yield('content');
+  @yield('content')
 
 
   <!-- Footer -->

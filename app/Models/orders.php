@@ -19,7 +19,11 @@ class orders extends Model
     }
 
     public function status() {
-        return $this->belongsTo(order_status::class, 'order_status_id')->where('is_active', 1);
+        return $this->belongsTo(order_status::class, 'order_status_id', 'id')->where('is_active', 1);
+    }
+
+    public function discount() {
+        return $this->belongsTo(promotions::class, 'discount_id')->where('is_active', 1);
     }
     
     public function updateTotal($id, $total) {
