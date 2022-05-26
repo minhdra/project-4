@@ -49,8 +49,8 @@
                             <td>@{{book.book_name}}</td>
                             <td>@{{book.publishers.publisher_name}}</td>
                             <td>@{{book.book_languages.language_name}}</td>
-                            <td align="right">@{{book.quantity}}</td>
-                            <td align="right">@{{book.prices.price}}</td>
+                            <td align="right">@{{book.quantity|number}}</td>
+                            <td align="right">@{{book.prices.price|number}}</td>
                             <td style="padding: 4px;"><img ng-src="/assets/img/books/@{{book.image}}" style='height:40px;' alt=""></td>
                             <td style="width:90px;">
                               <a class="success p-0" data-original-title="" ng-click="openModal(book.id,book)" data-toggle="tooltip" title="Sửa">
@@ -225,7 +225,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
                           <div class="form-group" style="width:70%;">
                                 <label for="genres">Tác giả</label>
-                                <input class="form-control" placeholder="Chọn tác giả" id="authors_finding" list="ShowDataList">
+                                <input class="form-control" placeholder="Chọn tác giả" id="authors_finding" list="ShowDataList" onClick="this.setSelectionRange(0, this.value.length)" ng-focus="toggleDataList($event)" ng-blur="toggleDataList()">
                                 <datalist id="ShowDataList" style="z-index: 100;box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;">
                                   <option value="@{{author.author_name}}" ng-repeat="author in authors" ng-click="author_selected(author)">@{{author.author_name}}</option>
                                 </datalist>

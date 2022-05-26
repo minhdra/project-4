@@ -19,51 +19,58 @@ class booksController extends Controller
      */
     public function index()
     {
-        $books = books::where('is_active',1)->get();
+        $books = books::where('is_active', 1)->get();
         foreach ($books as $book) {
             $book->categories;
             $book->prices;
             $book->book_languages;
             $book->publishers;
             $book_authors = $book->book_authors;
-            foreach($book_authors as $book_author){
+            foreach ($book_authors as $book_author) {
                 $book_author->authors;
             }
         }
-        return ['books'=>$books];
+        return ['books' => $books];
     }
 
     public function get_basic()
     {
-        $books = books::where('is_active',1)->get();
-        return ['books'=>$books];
+        $books = books::where('is_active', 1)->get();
+        return ['books' => $books];
     }
 
-    public function search(Request $request) {
-        if($request->category_id == 0 || !$request->category_id) {
-            $books = books::where('is_active', 1)->where('book_name', 'LIKE', '%'.$request->book_name.'%')->get();
+    public function search(Request $request)
+    {
+        if ($request->category_id == 0 || !$request->category_id) {
+            $books = books::where('is_active', 1)->where('book_name', 'LIKE', '%' . $request->book_name . '%')->get();
             foreach ($books as $book) {
                 $book->categories;
                 $book->prices;
                 $book->book_languages;
                 $book->publishers;
-                $book->authors;
+                $book_authors = $book->book_authors;
+                foreach ($book_authors as $book_author) {
+                    $book_author->authors;
+                }
             }
-        }
-        else {
-            $books = books::where('is_active', 1)->where('book_name', 'LIKE', '%'.$request->book_name.'%')->where('categoryID', $request->category_id)->get();
+        } else {
+            $books = books::where('is_active', 1)->where('book_name', 'LIKE', '%' . $request->book_name . '%')->where('categoryID', $request->category_id)->get();
             foreach ($books as $book) {
                 $book->categories;
                 $book->prices;
                 $book->book_languages;
                 $book->publishers;
-                $book->authors;
+                $book_authors = $book->book_authors;
+                foreach ($book_authors as $book_author) {
+                    $book_author->authors;
+                }
             }
         }
         return $books;
-    } 
+    }
 
-    public function uploadFile(Request $request) {
+    public function uploadFile(Request $request)
+    {
         $type = $request->type;
         $data = $request->file('file');
         $filename = $request->file('file')->getClientOriginalName();
@@ -71,31 +78,40 @@ class booksController extends Controller
         $data->move($path, $filename);
         return response()->json([
             'success' => 'done',
-            'valueimg'=>$data ]);
+            'valueimg' => $data
+        ]);
     }
 
     // Get newest products
-    public function getNewest() {
+    public function getNewest()
+    {
         $books = books::where('is_active', 1)->orderBy('created_at', 'desc')->limit(10)->get();
         foreach ($books as $book) {
             $book->categories;
             $book->prices;
             $book->book_languages;
             $book->publishers;
-            $book->authors;
+            $book_authors = $book->book_authors;
+            foreach ($book_authors as $book_author) {
+                $book_author->authors;
+            }
         }
         return $books;
     }
-    
+
     // Get best seller products
-    public function getBestSeller() {
+    public function getBestSeller()
+    {
         $books = books::where('is_active', 1)->get();
         foreach ($books as $book) {
             $book->categories;
             $book->prices;
             $book->book_languages;
             $book->publishers;
-            $book->authors;
+            $book_authors = $book->book_authors;
+            foreach ($book_authors as $book_author) {
+                $book_author->authors;
+            }
             $book->order_details;
         }
         return $books;
@@ -122,32 +138,32 @@ class booksController extends Controller
         $date = new Datetime();
         $db = new books();
         $db->book_name  = $request->book_name;
-        $db->categoryID =$request->categoryID;
-        $db->description=$request->description;
-        $db->dimensions=$request->dimensions;
-        $db->image=$request->image;
-        $db->isnb=$request->isnb;
-        $db->languageID=$request->languageID;
-        $db->numpages=$request->numpages;
-        $db->pdf_src=$request->pdf_src;
-        $db->genres=$request->genres;
-        $db->quantity=$request->quantity;
-        $db->publish_date= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $request->publish_date)));
+        $db->categoryID = $request->categoryID;
+        $db->description = $request->description;
+        $db->dimensions = $request->dimensions;
+        $db->image = $request->image;
+        $db->isnb = $request->isnb;
+        $db->languageID = $request->languageID;
+        $db->numpages = $request->numpages;
+        $db->pdf_src = $request->pdf_src;
+        $db->genres = $request->genres;
+        $db->quantity = $request->quantity;
+        $db->publish_date = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $request->publish_date)));
         // $db->publish_date=$request->publish_date;
-        $db->publisherID=$request->publisherID;
-        $db->type=$request->type;
-        $db->weight = $request->weight; 
-        $db->is_active = 1; 
+        $db->publisherID = $request->publisherID;
+        $db->type = $request->type;
+        $db->weight = $request->weight;
+        $db->is_active = 1;
         $db->created_at = $date;
         $db->save();
 
-        foreach($request["book_author_tmp"] as $author){
+        foreach ($request["book_author_tmp"] as $author) {
             $db_book_author = new book_authors();
             $db_book_author->bookID = $db->id;
             $db_book_author->authorID = $author["authorID"];
             $db_book_author->save();
         }
-        $db->addprice($db->id,$request->price,$date); 
+        $db->addprice($db->id, $request->price, $date);
         return $db;
     }
 
@@ -159,13 +175,16 @@ class booksController extends Controller
      */
     public function show($id)
     {
-        $books = books::where('id',$id)->first();
+        $books = books::where('id', $id)->first();
         $books->categories;
         $books->prices;
         $books->book_languages;
         $books->publishers;
-        $books->authors;
-        return ['book'=>$books];
+        $book_authors = $books->book_authors;
+        foreach ($book_authors as $book_author) {
+            $book_author->authors;
+        }
+        return ['book' => $books];
     }
 
     /**
@@ -192,37 +211,38 @@ class booksController extends Controller
         $date = date('Y-m-d', strtotime(str_replace('-', '/', $newDate->format('Y-m-d'))));
         $db = books::find($id);
         $db->book_name  = $request->book_name;
-        $db->categoryID =$request->categoryID;
-        $db->description=$request->description;
-        $db->dimensions=$request->dimensions;
-        $db->image=$request->image;
-        $db->isnb=$request->isnb;
-        $db->languageID=$request->languageID;
-        $db->numpages=$request->numpages;
-        $db->pdf_src=$request->pdf_src;
-        $db->quantity=$request->quantity;
-        $db->genres=$request['genres'];
+        $db->categoryID = $request->categoryID;
+        $db->description = $request->description;
+        $db->dimensions = $request->dimensions;
+        $db->image = $request->image;
+        $db->isnb = $request->isnb;
+        $db->languageID = $request->languageID;
+        $db->numpages = $request->numpages;
+        $db->pdf_src = $request->pdf_src;
+        $db->quantity = $request->quantity;
+        $db->genres = $request['genres'];
         // $db->publish_date=$request->publish_date;
-        $db->publish_date= date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $request->publish_date)));
-        $db->publisherID=$request->publisherID;
-        $db->type=$request->type;
-        $db->weight = $request->weight; 
+        $db->publish_date = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $request->publish_date)));
+        $db->publisherID = $request->publisherID;
+        $db->type = $request->type;
+        $db->weight = $request->weight;
         $db->save();
 
-        book_authors::where('is_active',1)->where('bookID',$id)->delete();
+        book_authors::where('bookID', '=', $db->id)->delete();
 
-        foreach($request["book_author_tmp"] as $author){
+        foreach ($request["book_author_tmp"] as $author) {
+            
             $db_book_author = new book_authors();
             $db_book_author->bookID = $db->id;
             $db_book_author->authorID = $author["authorID"];
             $db_book_author->save();
         }
 
-        $db->updateprice($id,$request->price,$date);
+        $db->updateprice($id, $request->price, $date);
 
         $book_authors = $db->book_authors;
-            foreach($book_authors as $book_author){
-                $book_author->authors;
+        foreach ($book_authors as $book_author) {
+            $book_author->authors;
         }
         return $book_authors;
     }
@@ -236,7 +256,7 @@ class booksController extends Controller
     public function destroy($id)
     {
         $db = books::findOrFail($id);
-        $db->is_active=0;
+        $db->is_active = 0;
         $db->save();
         return "Deleted";
     }

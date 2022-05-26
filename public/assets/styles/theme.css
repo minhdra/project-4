@@ -20081,6 +20081,9 @@ button.bg-red-1:focus {
     text-align: center !important;
   }
 }
+.title__capitalize::first-letter {
+  text-transform: capitalize !important;
+}
 .text-lowercase {
   text-transform: lowercase !important;
 }

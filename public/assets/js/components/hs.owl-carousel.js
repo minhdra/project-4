@@ -33,7 +33,7 @@
       loop: true,
       navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
     });
-  }, 2000);
+  }, 1000);
 
   setTimeout(() => {
     $('.owl-carousel.authors').owlCarousel({
@@ -45,5 +45,5 @@
       loop: true,
       navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
     });
-  }, 2000);
+  }, 1000);
 })(jQuery);

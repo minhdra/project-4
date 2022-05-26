@@ -75,7 +75,7 @@
                       <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                         <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
-                        <div class="font-size-2  mb-2 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.authors.author_name?row.authors.author_name:row.categories.category_name}}</a></div>
+                        <div class="font-size-2  mb-2 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length>0?row.book_authors[0].authors.author_name:row.categories.category_name}}</a></div>
                         <div class="price d-flex align-items-center font-weight-medium font-size-2">
                           <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
                         </div>
@@ -110,7 +110,7 @@
                       <div class="col-md woocommerce-loop-product__body product__body pt-3 bg-white mb-3 mb-md-0">
                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                         <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 crop-text-2 h-dark"><a href="/shop/list/@{{row.id}}" tabindex="0">@{{row.book_name}}</a></h2>
-                        <div class="font-size-2  mb-2 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.authors.author_name?row.authors.author_name:row.categories.category_name}}</a></div>
+                        <div class="font-size-2  mb-2 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length>0?row.book_authors[0].authors.author_name:row.categories.category_name}}</a></div>
                         <!-- <p class="font-size-2 mb-2 crop-text-2">After disappearing for three years, Artemis Fowl has returned to a life different from the one he left. And spends his days teaching his twin siblings the</p> -->
                         <div class="price d-flex align-items-center font-weight-medium font-size-3">
                           <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>

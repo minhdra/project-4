@@ -115,7 +115,7 @@ function booksController($scope, $http) {
   })
 
   $scope.openModal = function (id,book) {
-    console.log(book);
+    // console.log(book);
   //preload
     $scope.text = {
       textInput : '',
@@ -209,6 +209,7 @@ function booksController($scope, $http) {
   $("#book_authors").on( "remove:after", function ( el, text, tagging ) {
     if($scope.book!={}){
       //lừa
+      // không lừa chút nào
     }
     else{
       if(text.trim()!=""){
@@ -280,7 +281,7 @@ function booksController($scope, $http) {
     $scope.image = null;
   };
 
-  $scope.author_selected = function (author){
+  $scope.author_selected = function (author) {
     var book_author = {};
     book_author.authorID=author.id;
     $("#book_authors").tagging( "add",author.author_name);
@@ -302,6 +303,17 @@ function booksController($scope, $http) {
       $scope.book.book_authors.push(tmp_author)
     }
     console.log($scope.book);
+  }
+
+  $scope.toggleDataList = (event) => {
+    if (!event)
+      setTimeout(() => {
+        $('#ShowDataList').css('display', 'none');
+      }, 150);
+    else
+    {
+      $('#ShowDataList').css('display', 'block');
+    }
   }
 
 

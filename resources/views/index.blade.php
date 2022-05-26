@@ -96,7 +96,7 @@
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                 <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
-                <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
+                <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length > 0 ? row.book_authors[0].authors.author_name : row.categories.category_name}}</a></div>
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
                   <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
                 </div>
@@ -136,7 +136,7 @@
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                 <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
-                <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
+                <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length > 0 ? row.book_authors[0].authors.author_name : row.categories.category_name}}</a></div>
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
                   <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
                 </div>
@@ -182,7 +182,7 @@
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                 <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
-                <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
+                <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length > 0 ? row.book_authors[0].authors.author_name : row.categories.category_name}}</a></div>
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
                   <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
                 </div>
@@ -228,7 +228,7 @@
               <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                 <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
-                <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
+                <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length > 0 ? row.book_authors[0].authors.author_name : row.categories.category_name}}</a></div>
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
                   <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
                 </div>
@@ -339,4 +339,5 @@
 @stop
 @section('js')
 <script src="/assets/js/controllers/client/homeController.js"></script>
+<script src="/assets/js/components/hs.owl-carousel.js"></script>
 @stop
