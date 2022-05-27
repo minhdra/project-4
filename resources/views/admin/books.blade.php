@@ -225,7 +225,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
                           <div class="form-group" style="width:70%;">
                                 <label for="genres">Tác giả</label>
-                                <input class="form-control" placeholder="Chọn tác giả" id="authors_finding" list="ShowDataList" onClick="this.setSelectionRange(0, this.value.length)" ng-focus="toggleDataList($event)" ng-blur="toggleDataList()">
+                                <input class="form-control" placeholder="Chọn tác giả" id="authors_finding" list="ShowDataList" onFocus="this.value=''" ng-focus="toggleDataList($event)" ng-blur="toggleDataList()">
                                 <datalist id="ShowDataList" style="z-index: 100;box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;">
                                   <option value="@{{author.author_name}}" ng-repeat="author in authors" ng-click="author_selected(author)">@{{author.author_name}}</option>
                                 </datalist>
