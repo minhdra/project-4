@@ -322,7 +322,7 @@
             </div>
             <div class="px-4 py-5 px-md-6 d-flex justify-content-between align-items-center font-size-3">
               <h4 class="mb-0 font-size-3">Tổng:</h4>
-              <div class="font-weight-medium text-primary">@{{$root.total | number}} VND</div>
+              <div class="font-weight-medium"><span class=" text-primary">@{{$root.total | number}}</span>VND</div>
             </div>
             <div class="px-4 mb-8 px-md-6">
               <a href="{{route('cart')}}" class="btn btn-block py-4 rounded-0 btn-outline-dark mb-4">Xem giỏ</a>

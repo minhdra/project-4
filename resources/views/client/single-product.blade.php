@@ -1,7 +1,7 @@
 @extends('_client_layout')
 @section('content')
 
-<div class="m-auto" ng-controller="singleBookController" ng-init="loadData()" style="max-width: 1200px;">
+<div class="m-auto" ng-controller="singleBookController" ng-init="loadData(); getSimilar();" style="max-width: 1200px;">
   <input type="text" id="book-id" hidden value="{{$id}}">
   <div class="page-header border-bottom">
     <div class="container">
@@ -25,16 +25,17 @@
               <div class="col-md-4 col-wd-5 woocommerce-product-gallery woocommerce-product-gallery--with-images images">
                 <figure class="woocommerce-product-gallery__wrapper pt-8 mb-0">
                   <div class="u-slick" data-pagi-classes="text-center u-slick__pagination my-4">
-                    <div class="js-slide text-right">
+                    <div class="js-slide text-sm-center text-right">
                       <img ng-src="/assets/img/books/@{{item.image}}" width="300px" alt="Image Description" class="mx-auto img-fluid">
                     </div>
                   </div>
                 </figure>
+                <div class="text-center py-2 h-primary arrow-cursor" ng-click="openPreview()"><i class="fa fa-th-large" aria-hidden="true"></i> Preview</div>
               </div>
               <div class="col-md-8 col-wd-7 pl-0 summary entry-summary">
-                <div class="space-top-2 px-4 px-xl-5 px-wd-7 pb-5">
-                  <h1 class="product_title entry-title font-size-6 mb-3">@{{item.book_name}}</h1>
-                  <div class="font-size-2 mb-4">
+                <div class="pt-8 px-4 px-xl-5 px-wd-7 pb-5">
+                  <h1 class="product_title entry-title font-size-5 pb-2 border-bottom mb-0">@{{item.book_name}}</h1>
+                  <div class="font-size-2 border-bottom mb-0 py-2">
                     <span class="text-yellow-darker">
                       <span class="fas fa-star"></span>
                       <span class="fas fa-star"></span>
@@ -42,59 +43,59 @@
                       <span class="fas fa-star"></span>
                       <span class="fas fa-star"></span>
                     </span>
-                    <span class="ml-3">(1)</span> |
+                    <span class="ml-1 mr-3">(1)</span> |
                     <span class="ml-3 font-weight-medium text-gray-600">Đã bán:</span>
                     <span class="ml-2 "><strong>@{{40}}</strong></span>
                   </div>
-                  <p class="price font-size-22 font-weight-medium mb-3">
+                  <p class="price font-size-3 py-2 border-bottom mb-0 font-weight-medium d-flex justify-content-between">
                     <!-- <span class="woocommerce-Price-amount amount">
                       <span class="woocommerce-Price-currencySymbol">$</span>29.95
                     </span> – -->
                     <span class="woocommerce-Price-amount amount">
-                      <span class="woocommerce-Price-currencySymbol">đ</span>
                       <span class="text-primary"><strong>@{{item.prices.price | number}}</strong></span>
+                      <span class="woocommerce-Price-currencySymbol">đ</span>
                     </span>
+                    <a href="#" class="h-primary"><i class="flaticon-heart mr-2"></i></a>
                   </p>
-                  <div class="d-flex flex-wrap">
-                    <div class="pr-4 border-right">
-                      <div class="font-size-2 mb-4">
+                  <div class="d-flex flex-wrap py-3">
+                    <ul class="pr-4 border-right col-12 col-md-6">
+                      <li class="font-size-2 mb-2">
                         <span class="font-weight-medium text-gray-600">Tác giả:</span>
-                        <span class="ml-2 "><strong><a href="#">@{{item.authors.author_name}}</a></strong></span>
-                      </div>
-                      <div class="font-size-2 mb-4">
+                        <span class="ml-2 "><strong ng-repeat="row in item.book_authors"><a href="#">@{{row.authors.author_name}}, </a></strong></span>
+                      </li>
+                      <li class="font-size-2 mb-2">
                         <span class="font-weight-medium text-gray-600">Thể loại:</span>
                         <span class="ml-2 "><strong><a href="#">@{{item.categories.category_name}}</a></strong></span>
-                      </div>
-                      <div class="font-size-2 mb-4">
+                      </li>
+                      <li class="font-size-2 mb-2">
                         <span class="font-weight-medium text-gray-600">Isbn:</span>
                         <span class="ml-2 "><strong>@{{item.isnb}}</strong></span>
-                      </div>
-                      <div class="font-size-2 mb-4">
+                      </li>
+                      <li class="font-size-2 mb-2">
                         <span class="font-weight-medium text-gray-600">Đối tượng: </span>
                         <span class="ml-2 "><strong>@{{item.publishers.publisher_name}}</strong></span>
-                      </div>
-                      <div class="font-size-2 mb-4">
+                      </li>
+                      <li class="font-size-2 mb-2">
                         <span class="font-weight-medium text-gray-600">Nhà xuất bản:</span>
                         <span class="ml-2 "><strong>@{{item.publishers.publisher_name}}</strong></span>
-                      </div>
-                      <div class="font-size-2 mb-4">
+                      </li>
+                      <li class="font-size-2 mb-2">
                         <span class="font-weight-medium text-gray-600">Số trang:</span>
                         <span class="ml-2 "><strong>@{{item.numpages}}</strong></span>
-                      </div>
-                      <div class="font-size-2 mb-4">
+                      </li>
+                      <li class="font-size-2 mb-2">
                         <span class="font-weight-medium text-gray-600">Khuôn khổ:</span>
                         <span class="ml-2 "><strong>@{{item.dimensions.indexOf('cm') < 0 ? item.dimensions + 'cm' : item.dimensions}}</strong></span>
-                      </div>
-                      <div class="font-size-2 mb-4">
+                      </li>
+                      <li class="font-size-2 mb-2">
                         <span class="font-weight-medium text-gray-600">Trọng lượng:</span>
                         <span class="ml-2 "><strong>@{{item.weight}} gam</strong></span>
-                      </div>
-                    </div>
-                    <div class="pl-4">
+                      </li>
+                    </ul>
+                    <div class="pl-4 col-12 col-md-6">
                       <div class="cart">
-                        <div class="quantity mb-4 mb-md-0 d-flex align-items-center">
-
-                          <div class="border px-3 width-120">
+                        <div class="quantity mb-4 mb-md-0 d-flex align-items-center w-100 flex-wrap">
+                          <div class="border px-3 width-120 mr-4 mb-4">
                             <div class="js-quantity">
                               <div class="d-flex align-items-center">
                                 <label class="screen-reader-text sr-only">Số lượng</label>
@@ -112,15 +113,9 @@
                               </div>
                             </div>
                           </div>
-
+                          <button type="submit" name="add-to-cart" value="7145" class="mb-4 mb-md-0 btn btn-primary border-0 rounded p-2 w-100" ng-click="addCart()">Thêm vào giỏ</button>
                         </div>
-                        <br>
-                        <button type="submit" name="add-to-cart" value="7145" class="mb-4 mb-md-0 btn btn-primary border-0 rounded p-2 min-width-250 single_add_to_cart_button button alt" ng-click="addCart()">Thêm vào giỏ</button>
-                        <!-- <ul class="list-unstyled nav ml-xl-5 mt-md-4 mt-xl-0">
-                          <li class="mr-6 mb-4 mb-md-0">
-                            <a href="#" class="h-primary"><i class="flaticon-heart mr-2"></i> Add to Wishlist</a>
-                          </li>
-                        </ul> -->
+
                       </div>
                     </div>
                   </div>
@@ -136,7 +131,7 @@
 
           <ul class="tabs wc-tabs nav pb-6 justify-content-md-center flex-nowrap flex-md-wrap overflow-auto overflow-md-visble" id="pills-tab" role="tablist">
             <li class="flex-shrink-0 flex-md-shrink-1 nav-item">
-              <a class="py-2 nav-link font-weight-medium active" id="pills-one-example1-tab" data-toggle="pill" href="#pills-one-example1" role="tab" aria-controls="pills-one-example1" aria-selected="true">
+              <a class="py-2 nav-link font-weight-medium active" id="description" data-toggle="pill" href="#des-single" role="tab" aria-controls="des-single" aria-selected="true">
                 Mô tả sản phẩm
               </a>
             </li>
@@ -149,7 +144,7 @@
 
 
           <div class="tab-content container" id="pills-tabContent">
-            <div id="des-single" class="woocommerce-Tabs-panel panel col-xl-8 offset-xl-2 entry-content wc-tab tab-pane fade show active" role="tabpanel" aria-labelledby="pills-one-example1-tab">
+            <div id="des-single" class="woocommerce-Tabs-panel panel col-xl-8 offset-xl-2 entry-content wc-tab tab-pane fade show active" role="tabpanel" aria-labelledby="description">
 
             </div>
             <div class="woocommerce-Tabs-panel panel col-xl-8 offset-xl-2 entry-content wc-tab tab-pane fade pt-9" id="pills-four-example1" role="tabpanel" aria-labelledby="pills-four-example1-tab">
@@ -393,7 +388,7 @@
               <h2 class="font-size-5 mb-3 mb-md-0">Có thể bạn cũng quan tâm</h2>
             </header>
             <div class="products no-gutters owl-carousel">
-              <div class="product p-1 m-1" ng-repeat="row in dataNewest">
+              <div class="product p-1 m-1" ng-repeat="row in similar">
                 <div class="product__inner overflow-hidden">
                   <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                     <div class="woocommerce-loop-product__thumbnail">
@@ -402,9 +397,9 @@
                     <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                       <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                       <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
-                      <!-- <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">Jay Shetty</a></div> -->
+                      <div class="font-size-2  mb-2 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length>0?row.book_authors[0].authors.author_name:row.categories.category_name}}</a></div>
                       <div class="price d-flex align-items-center font-weight-medium font-size-2">
-                        <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
+                        <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}</span></span>đ
                       </div>
                     </div>
                     <div class="product__hover d-flex align-items-center">
@@ -429,12 +424,49 @@
     </main>
   </div>
 
-
+  <!-- Modal -->
+  <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mt-0" role="document">
+      <div class="modal-content">
+        <div class="modal-header py-1">
+          <h5 class="modal-title" id="exampleModalLongTitle">@{{item.book_name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="min-height: 600px; padding: 0 2rem">
+          <div class="row my-3 d-flex justify-content-center">
+            <div class="text-center">
+              <div id="pdf-main-container">
+                <div id="pdf-contents">
+                  <div id="pdf-meta">
+                    <div id="pdf-buttons">
+                      <button id="pdf-prev" class="btn btn-sm btn-primary rounded"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                      <button id="pdf-next" class="btn btn-sm btn-primary rounded"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                    </div>
+                    <div id="page-count-container" style="padding: 1rem 0; font-size: 12px;">Page <span id="pdf-current-page"></span> of <span id="pdf-total-pages"></span></div>
+                  </div>
+                  <canvas id="pdf-canvas" style="width:100%; border: 1px solid #ccc" width="1000px"></canvas>
+                  <div id="page-loader">Loading page ...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 
 
 @stop
 @section('js')
+<script src="//cdn.jsdelivr.net/npm/pdfjs-dist@2.0.385/build/pdf.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/pdfjs-dist@2.0.385/build/pdf.worker.js"></script>
 <script src="/assets/js/controllers/client/singleBookController.js"></script>
 @stop

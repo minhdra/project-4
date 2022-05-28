@@ -18,8 +18,7 @@ class customers extends Model
     }
 
     public function cart() {
-        $cart= $this->hasOne(carts::class, 'customer_id')->where('is_active', 1);
-        return $cart;
+        return $this->hasOne(carts::class, 'customer_id')->where('is_active', 1);
     }
 
     public function cart_details() {

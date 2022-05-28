@@ -41,7 +41,7 @@ function customerController($scope, $http) {
     if ($scope.check) {
       connect_api(
         'GET',
-        baseApi + nameCustomer + $scope.check,
+        baseApi + nameCustomer + $scope.check.id,
         null,
         function (res) {
           $scope.customer = res.data;
