@@ -1,4 +1,31 @@
 @extends('_admin_layout')
+
+@section('css')
+<style>
+        datalist {
+            position: absolute !important;
+            max-height: 20em;
+            border: 0 none;
+            overflow-x: hidden;
+            overflow-y: auto;
+            }
+
+            datalist option {
+            font-size: 0.8em;
+            padding: 0.3em 1em;
+            background-color: white;
+            cursor: pointer;
+            }
+
+            /* option active styles */
+            datalist option:hover, datalist option:focus {
+            color: #fff;
+            background-color: #036;
+            outline: 0 none;
+            }
+    </style>
+@stop
+
 @section('content')
 <div ng-controller="booksController">
   <div class="main-panel">

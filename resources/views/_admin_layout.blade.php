@@ -36,6 +36,7 @@
   <link rel="stylesheet" type="text/css" href="/assets/admin/vendors/css/tagging.css">
   <link rel="stylesheet" type="text/css" href="/assets/admin/css/app.css">
   <link rel="stylesheet" type="text/css" href="/assets/styles/custom_theme.css">
+  @yield('css')
 </head>
 
 <body data-col="2-columns" class=" 2-columns " ng-app="app" ng-controller="globalController">
