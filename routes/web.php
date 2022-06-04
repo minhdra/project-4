@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PDFController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +52,8 @@ Route::get('/shop/my-account', function () {
 Route::get('/shop/order-tracking', function () {
     return view('client.order-tracking');
 });
+
+Route::get('api/generate-pdf/{id}/{staffName}', [PDFController::class, 'generatePDF']);
 
 /*---------------------------- Administration ------------------------------------ */
 

@@ -51,84 +51,33 @@
           <div class="col-xl-4 col-lg-6 col-md-6 col-12">
             <div class="card bg-white">
               <div class="card-body">
-                <div class="card-block pt-2 pb-0">
-                  <div class="media">
+                <div class="card-block pt-2">
+                  <div class="media"  style="align-items: center;">
                     <div class="media-body white text-left">
-                      <h4 class="font-medium-5 card-title mb-0">$4567</h4>
-                      <span class="grey darken-1">Total Sales</span>
+                      <span class="grey darken-1">Tổng doanh thu trong tháng 6</span>
+                      <h4 class="font-medium-5 card-title mb-0">15132</h4>
                     </div>
                     <div class="media-right text-right">
                       <i class="icon-wallet font-large-1 warning"></i>
                     </div>
                   </div>
                 </div>
-                <div id="Widget-line-chart1" class="height-150 lineChartWidget WidgetlineChart1 mb-2">
-                  <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-line" style="width: 100%; height: 100%;">
-                    <g class="ct-grids"></g>
-                    <g>
-                      <g class="ct-series ct-series-a">
-                        <path d="M10,145L10,145C42.22,145,42.22,88.667,74.44,88.667C106.66,88.667,106.66,119,138.88,119C171.1,119,171.1,15,203.32,15C235.54,15,235.54,67,267.76,67C299.98,67,299.98,23.667,332.2,23.667L332.2,145Z" class="ct-area"></path>
-                        <path d="M10,145C42.22,145,42.22,88.667,74.44,88.667C106.66,88.667,106.66,119,138.88,119C171.1,119,171.1,15,203.32,15C235.54,15,235.54,67,267.76,67C299.98,67,299.98,23.667,332.2,23.667" class="ct-line"></path>
-                        <circle cx="10" cy="145" r="10" class="ct-point-circle-transperent"></circle>
-                        <circle cx="74.44000244140625" cy="88.66666666666666" r="10" class="ct-point-circle-transperent"></circle>
-                        <circle cx="138.8800048828125" cy="119" r="10" class="ct-point-circle-transperent"></circle>
-                        <circle cx="203.32000732421875" cy="15" r="10" class="ct-point-circle"></circle>
-                        <circle cx="267.760009765625" cy="67" r="10" class="ct-point-circle-transperent"></circle>
-                        <circle cx="332.20001220703125" cy="23.66666666666667" r="10" class="ct-point-circle-transperent"></circle>
-                      </g>
-                    </g>
-                    <g class="ct-labels"></g>
-                    <defs>
-                      <linearGradient id="wGradient1" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0" stop-color="rgba(252,157,48, 1)"></stop>
-                        <stop offset="1" stop-color="rgba(250,91,76, 1)"></stop>
-                      </linearGradient>
-                    </defs>
-                    <line x1="203.32000732421875" x2="203.32000732421875" y1="145" y2="15" class="ct-target-line"></line>
-                  </svg>
-                </div>
-
               </div>
             </div>
           </div>
           <div class="col-xl-4 col-lg-6 col-md-6 col-12">
             <div class="card bg-white">
               <div class="card-body">
-                <div class="card-block pt-2 pb-0">
-                  <div class="media">
+                <div class="card-block pt-2">
+                  <div class="media"  style="align-items: center;">
                     <div class="media-body white text-left">
-                      <h4 class="font-medium-5 card-title mb-0">$9822</h4>
-                      <span class="grey darken-1">Total Value</span>
+                      <span class="grey darken-1">Số lượng đơn hàng trong ngày</span>
+                      <h4 class="font-medium-5 card-title mb-0">15132</h4>
                     </div>
                     <div class="media-right text-right">
                       <i class="icon-basket-loaded font-large-1 success"></i>
                     </div>
                   </div>
-                </div>
-                <div id="Widget-line-chart2" class="height-150 lineChartWidget WidgetlineChart2 mb-2">
-                  <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-line" style="width: 100%; height: 100%;">
-                    <g class="ct-grids"></g>
-                    <g>
-                      <g class="ct-series ct-series-a">
-                        <path d="M10,145L10,145C42.22,145,42.22,88.667,74.44,88.667C106.66,88.667,106.66,119,138.88,119C171.1,119,171.1,15,203.32,15C235.54,15,235.54,67,267.76,67C299.98,67,299.98,23.667,332.2,23.667L332.2,145Z" class="ct-area"></path>
-                        <path d="M10,145C42.22,145,42.22,88.667,74.44,88.667C106.66,88.667,106.66,119,138.88,119C171.1,119,171.1,15,203.32,15C235.54,15,235.54,67,267.76,67C299.98,67,299.98,23.667,332.2,23.667" class="ct-line"></path>
-                        <circle cx="10" cy="145" r="10" class="ct-point-circle-transperent"></circle>
-                        <circle cx="74.44000244140625" cy="88.66666666666666" r="10" class="ct-point-circle-transperent"></circle>
-                        <circle cx="138.8800048828125" cy="119" r="10" class="ct-point-circle-transperent"></circle>
-                        <circle cx="203.32000732421875" cy="15" r="10" class="ct-point-circle"></circle>
-                        <circle cx="267.760009765625" cy="67" r="10" class="ct-point-circle-transperent"></circle>
-                        <circle cx="332.20001220703125" cy="23.66666666666667" r="10" class="ct-point-circle-transperent"></circle>
-                      </g>
-                    </g>
-                    <g class="ct-labels"></g>
-                    <defs>
-                      <linearGradient id="wGradient2" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0" stop-color="rgba(120, 204, 55, 1)"></stop>
-                        <stop offset="1" stop-color="rgba(0, 75, 145, 1)"></stop>
-                      </linearGradient>
-                    </defs>
-                    <line x1="203.32000732421875" x2="203.32000732421875" y1="145" y2="15" class="ct-target-line"></line>
-                  </svg>
                 </div>
               </div>
             </div>
@@ -473,7 +422,7 @@
         </div>
         <div class="row match-height">
           <div class="col-xl-6 col-lg-12">
-            <div class="card" style="">
+            <div class="card">
               <div class="card-header">
                 <div class="card-title-wrap bar-primary">
                   <h4 class="card-title">Product Statistics</h4>
@@ -567,14 +516,13 @@
             <div class="card" style="">
               <div class="card-header">
                 <div class="card-title-wrap bar-warning">
-                  <h4 class="card-title">Project Stats</h4>
+                  <h4 class="card-title">Trạng thái đặt hàng</h4>
                 </div>
               </div>
               <div class="card-body">
-
                 <p class="font-medium-2 text-muted text-center">Project Tasks</p>
                 <div id="donut-dashboard-chart" class="height-250 donut donutShadow">
-                  <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
+                  <svg  width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
                     <g ct:series-name="done" class="ct-series ct-done">
                       <path d="M460.498,193.829A120,120,0,0,0,270.275,47.865L293.256,67.149A90,90,0,0,1,435.924,176.622Z" class="ct-slice-donut-solid" ct:value="35"></path>
                     </g>
@@ -582,6 +530,9 @@
                       <path d="M331.142,240.911A120,120,0,0,0,460.738,193.486L436.103,176.364A90,90,0,0,1,338.906,211.933Z" class="ct-slice-donut-solid" ct:value="14"></path>
                     </g>
                     <g ct:series-name="outstanding" class="ct-series ct-outstanding">
+                      <path d="M270.275,47.865A120,120,0,0,0,331.547,241.019L339.21,212.014A90,90,0,0,1,293.256,67.149Z" class="ct-slice-donut-solid" ct:value="23"></path>
+                    </g>
+                    <g ct:series-name="outstanding2" class="ct-series ct-outstanding2">
                       <path d="M270.275,47.865A120,120,0,0,0,331.547,241.019L339.21,212.014A90,90,0,0,1,293.256,67.149Z" class="ct-slice-donut-solid" ct:value="23"></path>
                     </g>
                     <g><text dx="362.20001220703125" dy="125" text-anchor="middle" class="ct-label">72%</text></g>

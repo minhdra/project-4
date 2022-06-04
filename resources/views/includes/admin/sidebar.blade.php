@@ -9,7 +9,7 @@
       <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
         <li class="nav-item" ng-class="getClass('/admin')"><a href="/admin" class="menu-item"><i class="icon-home"></i><span data-i18n="" class="menu-title">Dashboard</span></a>
         </li>
-        <li class="has-sub nav-item"><a href="#"><i class="icon-screen-desktop"></i><span data-i18n="" class="menu-title">Nhà sách</span></a>
+        <li class="has-sub nav-item open"><a href="#"><i class="icon-screen-desktop"></i><span data-i18n="" class="menu-title">Nhà sách</span></a>
           <ul class="menu-content">
             <li ng-class="getClass('/books')"><a href="/admin/books" class="menu-item">Quản lý sách</a>
             </li>

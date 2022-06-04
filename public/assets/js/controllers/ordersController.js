@@ -76,12 +76,8 @@ function ordersController2($scope, $http) {
     })
   };
 
-  // $scope.status_change = function (row,statusID){
-  //   // if($scope.order.order_status_id != null){
-  //     // var objIndex = $scope.statuses.findIndex((obj => obj.id == statusID));
-  //     // row.status= $scope.statuses[objIndex]
-  //     // console.log(statusID);
-  //   // }
-  // }
+  $scope.generate_pdf=function (order){
+    window.open(baseApi+'generate-pdf/'+order.id+'/'+JSON.parse(sessionStorage.getItem('login')).staffname, "_blank").focus();
+  }
 
 };

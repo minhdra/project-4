@@ -103,45 +103,24 @@
                         </div>
                     </div>
                     <div class="row">
-                        <!-- <div class="block" style="display: flex;">
-                            <div class="form-group col-xl-4 col-lg-4 col-md-4" style="display: flex;align-items: center;justify-content: space-between;">
-                                <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Tên sách:</label>
-                                <input ng-model="selected_invoice_details.books.book_name" type="text" class="form-control-plaintext col-xl-8 col-lg-8 col-md-8" readonly id="book_name">
-                            </div>
-                            <div class="form-group col-xl-4 col-lg-4 col-md-4" style="display: flex;align-items: center;justify-content: space-between;">
-                                <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Số lượng:</label>
-                                <input ng-model="selected_invoice_details.quantity" type="number" min="0" class="form-control col-xl-8 col-lg-8 col-md-8" id="book_name">
-                            </div>
-                            <div class="form-group col-xl-4 col-lg-4 col-md-4" style="display: flex;align-items: center;justify-content: space-between;">
-                                <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Đơn giá:</label>
-                                <input ng-model="selected_invoice_details.price" type="number" min="0" class="form-control col-xl-8 col-lg-8 col-md-8" id="book_name">
-                            </div>
-                        </div> -->
-                        <!-- <div class="block" style="width:100%;display:flex;justify-content: space-between;">
-                            <div class="form-group col-xl-4 col-lg-4 col-md-4" style="display: flex;align-items: center;justify-content: space-between;">
-                                <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Giảm giá:</label>
-                                <input ng-model="selected_invoice_details.discount" type="number" min="0" max="99" class="form-control col-xl-8 col-lg-8 col-md-8" id="book_name">
-                            </div>
-                            <button class="btn btn-info" style="margin-right: 15px;" ng-click="update(selected_invoice_details)">Cập nhật</button>
-                        </div> -->
                         <table class="table table-responsive-md text-center table-striped" id="invoice_details">
                             <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Tên sách</th>
-                                <th>Số lượng</th>
-                                <th>Đơn giá</th>
-                                <th>Thành tiền</th>
-                            </tr>
+                              <tr>
+                                  <th>STT</th>
+                                  <th>Tên sách</th>
+                                  <th>Số lượng</th>
+                                  <th>Đơn giá</th>
+                                  <th>Thành tiền</th>
+                              </tr>
                             </thead>
                             <tbody>
-                            <tr dir-paginate="row in order.details|filter: q|itemsPerPage:10" current-page="currentPage">
-                                <td>@{{$index+1}}</td>
-                                <td>@{{row.product.book_name}}</td>
-                                <td>@{{row.quantity}}</td>
-                                <td>@{{row.single_price}}</td>
-                                <td>@{{row.quantity*row.single_price}}</td>
-                            </tr>
+                              <tr dir-paginate="row in order.details|filter: q|itemsPerPage:10" current-page="currentPage">
+                                  <td>@{{$index+1}}</td>
+                                  <td>@{{row.product.book_name}}</td>
+                                  <td>@{{row.quantity}}</td>
+                                  <td>@{{row.single_price}}</td>
+                                  <td>@{{row.quantity*row.single_price}}</td>
+                              </tr>
                             </tbody>
                         </table>
                     </div>
@@ -187,6 +166,7 @@
 
         </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-outline-info" ng-click="generate_pdf(order)">Tạo hóa đơn</button>
           <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Đóng</button>
           <button type="button" class="btn btn-outline-primary" ng-click="saveData(order)">Lưu</button>
         </div>
