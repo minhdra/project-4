@@ -35,7 +35,12 @@ function ordersController2($scope, $http) {
       (error) => {console.log(error);showAlert(errorStatus);}
     );
    }
+  
   //set begin
+  $scope.tmp ={};
+  if(window.location.pathname=='/admin/orders/now'){
+    $scope.tmp.created_at = convertDatetoDay(new Date());
+  }
   $scope.currentPage = 1;
   $scope.currentPage2 = 1;
   $scope.item;
@@ -60,7 +65,7 @@ function ordersController2($scope, $http) {
   // open modal
   $scope.openModal = function (row) {
     $scope.order = row;
-    // console.log($scope.order);
+    console.log($scope.order);
     // row.order_status_id = String(row.order_status_id);
     $('#large').modal('show');
   }

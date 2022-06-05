@@ -69,6 +69,10 @@ Route::post('orders/get_all', [ordersController::class, 'get_all']);
 Route::post('orders/update_status', [ordersController::class, 'update_status']);
 Route::post('orders/getTopProductSell', [ordersController::class, 'getTopProductSell']);
 Route::post('orders/getStatusAnalysis', [ordersController::class, 'getStatusAnalysis']);
+Route::post('orders/getSellYear', [ordersController::class, 'getSellYear']);
+Route::post('orders/getOrderToday', [ordersController::class, 'getOrderToday']);
+Route::post('orders/getSumPriceMonth', [ordersController::class, 'getSumPriceMonth']);
+Route::post('orders/getQuantityCustomers', [ordersController::class, 'getQuantityCustomers']);
 
 Route::post('customers/login', [customersController::class, 'login']);
 Route::post('customers/register', [customersController::class, 'register']);

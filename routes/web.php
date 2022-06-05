@@ -76,6 +76,9 @@ Route::get('/admin/authors', function () {
 Route::get('/admin/orders', function () {
     return view('admin.orders');
 });
+Route::get('/admin/orders/now', function () {
+    return view('admin.orders');
+});
 
 Route::get('/admin/languages', function () {
     return view('admin.languages');

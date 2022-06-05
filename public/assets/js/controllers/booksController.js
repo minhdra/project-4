@@ -12,6 +12,7 @@ function booksController($scope, $http) {
   $scope.currentPage = 1;
   $scope.pageSize = 10;
   $scope.book = [];
+  $scope.tmp = {};
   $scope.image = '';
   $scope.pdf_src = '';
   $scope.books = [];

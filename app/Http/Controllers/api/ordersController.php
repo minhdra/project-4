@@ -8,7 +8,7 @@ use App\Models\customers;
 use App\Models\order_details;
 use App\Models\orders;
 use Illuminate\Http\Request;
-
+use DB;
 class ordersController extends Controller
 {
     /**
@@ -47,7 +47,7 @@ class ordersController extends Controller
             $c->info;
             $details = $order->details;
             foreach($details as $detail){
-                $detail->product;
+                $detail->book;
             }
             $order->status;
         }
@@ -175,13 +175,41 @@ class ordersController extends Controller
         return "Deleted";
     }
 
+    public function getSellYear(){
+        $order_group_by_month = orders::where('is_active',1)->whereYear('created_at',date('Y'))->get()->groupBy(function($data){
+            return $data->created_at->format('m');
+        });
+        return $order_group_by_month;
+    }
 
     public function getTopProductSell(){
-        $orderdetails = order_details::take(7)->whereMonth('created_at', date('m')-1)->orderBy('single_price','DESC')->orderBy('quantity','DESC')->get();
-        foreach($orderdetails as $orderdetail){
-            $orderdetail->book;
+        $count_quantity = order_details::whereMonth('created_at', date('m'))->get()->sum('quantity');
+        $orderdetail_books =order_details::whereMonth('created_at', date('m'))->get()->groupBy(function($data){
+            return $data->book_id;
+        });
+
+        foreach($orderdetail_books as $books){
+            $sum_quantity = $books->sum('quantity');
+            foreach($books as $book){
+                $tmp_book = $book->book;
+                $tmp_book->prices;
+                $tmp_book->sum_quantity = $sum_quantity;
+                $tmp_book->progress = $sum_quantity*100/$count_quantity;;
+            }   
         }
-        return $orderdetails;    
+        return [$orderdetail_books,$count_quantity];
+    }
+
+    public function getOrderToday(){
+        return orders::whereDay('created_at',date('d'))->get()->count();
+    }
+
+    public function getSumPriceMonth(){
+        return orders::whereMonth('created_at',date('m'))->get()->sum('total');
+    }
+
+    public function getQuantityCustomers(){
+        return customers::whereMonth('created_at',date('m'))->get()->count();
     }
 
     public function getStatusAnalysis(){

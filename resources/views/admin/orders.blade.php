@@ -35,12 +35,12 @@
                       <table class="table table-responsive-md text-center table-striped">
                         <thead>
                           <tr>
-                            <th style="width:15%;"></th>
-                            <th style="width:15%;"><input type="text" class="form-control" style="width:100%;"></th>
-                            <th style="width:15%;">Khách hàng</th>
-                            <th style="width:15%;">Số ĐT</th>
-                            <th style="width:15%;">Tổng cộng</th>
-                            <th style="width:15%;">Trạng thái</th>
+                            <th style="width:15%;"><input ng-model='tmp.id' type="text" placeholder="Tìm theo mã" class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input ng-model='tmp.created_at' type="text" placeholder="Tìm thời gian" class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.customer.info.full_name' placeholder="Tìm tên"  type="text" class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.customer.info.phone' placeholder="Tìm SĐT"  type="text" class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.total' type="text"  placeholder="Tìm tổng cộng" class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.status.status_name' type="text" placeholder="Tìm trạng thái"  class="form-control" style="width:100%;"></th>
                             <th style="width:10%;"></th>
                           </tr>
                           <tr>
@@ -54,7 +54,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr dir-paginate="row in data| orderBy:'-' |filter: finding|itemsPerPage:9" current-page="currentPage">
+                          <tr dir-paginate="row in data| orderBy:'-' |filter:tmp|filter: finding|itemsPerPage:9" current-page="currentPage">
                             <td>@{{row.id}}</td>
                             <td>@{{row.created_at}}</td>
                             <td>@{{row.customer.info.full_name}}</td>
@@ -125,7 +125,7 @@
                             <tbody>
                               <tr dir-paginate="row in order.details|filter: find|itemsPerPage:5" current-page="currentPage2">
                                   <td>@{{$index+1}}</td>
-                                  <td>@{{row.product.book_name}}</td>
+                                  <td>@{{row.book.book_name}}</td>
                                   <td>@{{row.quantity}}</td>
                                   <td>@{{row.single_price}}</td>
                                   <td>@{{row.quantity*row.single_price}}</td>

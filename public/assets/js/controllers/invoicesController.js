@@ -35,6 +35,25 @@ function InvoicesController($scope, $http) {
     );
    }
   //set begin
+  $scope.InvoiceStatus = [
+    {
+        "id":1,
+        "name":"Đặt hàng"
+    },
+    {
+        "id":2,
+        "name":"Đang giao dịch"
+    },
+    {
+        "id":3,
+        "name":"Hoàn thành"
+    },
+    {
+        "id":4,
+        "name":"Đã hủy"
+    }
+];
+  $scope.tmp ={};
   $scope.finding = "";
   $scope.currentPage = 1;
   $scope.currentPage2 = 1;
@@ -46,6 +65,7 @@ function InvoicesController($scope, $http) {
     $scope.data = response.data;
     $scope.data.forEach((item)=>{
       item.invoice_date = convertDate(item.invoice_date)
+      item.status_name = $scope.InvoiceStatus.find((x)=>x.id==item.status).name;
     })
     console.log($scope.data);
   })
@@ -117,7 +137,7 @@ function InvoicesController($scope, $http) {
     //Insert
     if ($scope.id == 0) {
       $scope.invoice.invoice_details = $scope.invoice_details;
-      $scope.invoice.status = 4;
+      $scope.invoice.status_name = $scope.InvoiceStatus.find((x)=>x.id==$scope.invoice.status).name;
       $scope.invoice.staffID = JSON.parse(sessionStorage.getItem('login')).id;
       var time = new Date();
       $scope.invoice.invoice_date = convertDate(time);
@@ -130,8 +150,9 @@ function InvoicesController($scope, $http) {
     } else {
       //Update
       $scope.invoice.invoice_details = $scope.invoice_details;
-      $scope.invoice.status = 4;
       $scope.invoice.staffID = JSON.parse(sessionStorage.getItem('login')).id;
+      
+      $scope.invoice.status_name = $scope.InvoiceStatus.find((x)=>x.id==$scope.invoice.status).name;
       var time = new Date();
       $scope.invoice.invoice_date = convertDate(time);
       

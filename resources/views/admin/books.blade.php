@@ -60,6 +60,16 @@
                       <table class="table table-responsive-md text-center table-striped">
                         <thead>
                           <tr>
+                            <th style="width:5%;"></th>
+                            <th style="width:25%;"><input ng-model='tmp.book_name' type="text" placeholder="Tên sách..." class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.publishers.publisher_name' placeholder="Nhà xuất bản..."  type="text" class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.book_languages.language_name' placeholder="Ngôn ngữ..."  type="text" class="form-control" style="width:100%;"></th>
+                            <th style="width:10%;"><input  ng-model='tmp.book.quantity' type="text"  placeholder="Tồn kho..." class="form-control" style="width:100%;"></th>
+                            <th style="width:10%;"><input  ng-model='tmp.prices.price' type="text" placeholder="Giá bán..."  class="form-control" style="width:100%;"></th>
+                            <th style="width:10%;"></th>
+                            <th style="width:15%;"></th>
+                          </tr>
+                          <tr>
                             <th>STT</th>
                             <th>Tên sách</th>
                             <th>Nhà xuất bản</th>
@@ -71,7 +81,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr dir-paginate="book in books|filter: finding|itemsPerPage:10" current-page="currentPage">
+                          <tr dir-paginate="book in books|filter: finding|filter:tmp|itemsPerPage:10" current-page="currentPage">
                             <td>@{{$index+1}}</td>
                             <td>@{{book.book_name}}</td>
                             <td>@{{book.publishers.publisher_name}}</td>

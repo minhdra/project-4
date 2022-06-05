@@ -51,6 +51,14 @@ function convertDate(date) {
   return result;
 }
 
+function convertDatetoDay(date) {
+  let result;
+  if (date)
+    date = new Date(date);
+    result = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+  return result;
+}
+
 async function getCities() {
   let data = [];
   await $.ajax({

@@ -50,7 +50,7 @@ class invoicesController extends Controller
         $invoice->invoice_date = new DateTime();
         $invoice->total = $request->total;
         $invoice->discount = $request->discount;
-        $invoice->status = 4;
+        $invoice->status = 1;
         $invoice->save();
 
         $id = $invoice->id;
@@ -117,7 +117,7 @@ class invoicesController extends Controller
         $invoice->staffID = $request->staffID;
         $invoice->total = $request->total;
         $invoice->discount = $request->discount;
-        $invoice->status = 4;
+        $invoice->status = $request->status;
         $invoice->save();
 
         $invoice_details = $request['invoice_details'];

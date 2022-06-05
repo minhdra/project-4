@@ -60,7 +60,16 @@
                       <table class="table table-responsive-md text-center table-striped">
                         <thead>
                           <tr>
-                            <th>STT</th>
+                            <th style="width:10%;"><input ng-model='tmp.id' type="text" placeholder="Mã..." class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input ng-model='tmp.invoice_date' type="text" placeholder="Thời gian..." class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.publishers.publisher_name' placeholder="Nhà xuất bản..."  type="text" class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.total' placeholder="Tổng cộng..."  type="text" class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.status' type="text"  placeholder="Trạng thái" class="form-control" style="width:100%;"></th>
+                            
+                            <th style="width:10%;"></th>
+                          </tr>
+                          <tr>
+                            <th>Mã nhập</th>
                             <th>Thời gian</th>
                             <th>Nhà xuất bản</th>
                             <th>Tổng cộng</th>
@@ -70,11 +79,11 @@
                         </thead>
                         <tbody>
                           <tr dir-paginate="row in data| orderBy:'-invoice_date' |filter: finding|itemsPerPage:10" current-page="currentPage">
-                            <td>@{{$index+1}}</td>
+                            <td>@{{row.id}}</td>
                             <td>@{{row.invoice_date}}</td>
                             <td>@{{row.publishers.publisher_name}}</td>
                             <td align="right">@{{row.total}}</td>
-                            <td>@{{row.status}}</td>
+                            <td>@{{row.status_name}}</td>
                             <td>
                               <a class="success p-0" data-original-title="" ng-click="openModal(row.id)" data-toggle="tooltip" title="Sửa">
                                 <i class="fa fa-pencil font-medium-3 mr-2"></i>
@@ -217,6 +226,13 @@
                         <div class="form-group col-xl-12 col-lg-12 col-md-12" style="display: flex;align-items: center;justify-content: space-between;">
                             <label for="book_name col-xl-4 col-lg-4 col-md-4" style="margin:0px;padding-right: 5px;">Tổng tiền phải trả:</label>
                             <input ng-model="invoice.total" type="text" class="form-control-plaintext col-xl-8 col-lg-8 col-md-8" readonly >
+                        </div>
+                    </div>
+                    <div class="block" style="width:100%;display:flex;justify-content: space-between;">
+                        <div class="form-group col-xl-12 col-lg-12 col-md-12" style="display: flex;align-items: center;justify-content: space-between;">
+                            <select class="form-control col-xl-12 col-lg-12 col-md-12" ng-model="invoice.status" ng-options="status.id as status.name for status in InvoiceStatus">
+                              <option value="" selected disabled>Trạng thái</option>
+                            </select>
                         </div>
                     </div>
                 </div>
