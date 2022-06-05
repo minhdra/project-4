@@ -242,6 +242,9 @@
               </div>
               <div id="widgetCollapseOne" class="mt-3 widget-content collapse show" aria-labelledby="widgetHeadingOne" data-parent="#widgetHeadingOne">
                 <ul class="product-categories">
+                  <li class="cat-item cat-item-9 cat-parent">
+                    <a href="/shop/list?keyword={{request()->keyword}}">Tất cả</a>
+                  </li>
                   <li class="cat-item cat-item-9 cat-parent" ng-repeat="row in categories">
                     <a href="/shop/list?keyword={{request()->keyword}}&category=@{{row.id}}">@{{row.category_name}}</a>
                   </li>

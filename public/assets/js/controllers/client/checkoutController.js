@@ -4,7 +4,7 @@ const nameDeliveryAddress = 'delivery_addresses/';
 const nameOrder = 'orders/';
 
 app.controller('checkoutController', checkoutController);
-function checkoutController($scope, $http) {
+function checkoutController($rootScope, $scope, $http) {
   $scope.check = checkCustomerLogin();
   $scope.itemAddress = {};
   $scope.cities = [];
@@ -57,6 +57,7 @@ function checkoutController($scope, $http) {
         $scope.customer = res.data;
         $scope.customer.info = $scope.customer.info || {};
         // console.log($scope.customer);
+        if (!$scope.customer.cart) location.href = '/shop/list';
         $scope.countTotal();
         if ($scope.customer.delivery_addresses.length > 0)
         {
@@ -66,7 +67,7 @@ function checkoutController($scope, $http) {
     }
     else
     {
-      location.href = '/';
+      location.href = '/shop/list';
     }
   }
   $scope.loadData();
@@ -233,7 +234,12 @@ function checkoutController($scope, $http) {
 
     connect_api('POST', baseApi + nameOrder, order, function (res) {
       $scope.order = res.data;
-      console.log($scope.order);
+      // console.log($scope.order);
+
+      // Remove cart
+      connect_api('DELETE', baseApi + 'carts/' + $scope.customer.cart.id, function (res) {
+        $rootScope.loadCart();
+      })
     });
   }
 }

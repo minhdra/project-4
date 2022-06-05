@@ -339,5 +339,5 @@
 @stop
 @section('js')
 <script src="/assets/js/controllers/client/homeController.js"></script>
-<script src="/assets/js/components/hs.owl-carousel.js"></script>
+
 @stop

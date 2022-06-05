@@ -1,5 +1,4 @@
 (function ($) {
-
   setTimeout(() => {
     $('.owl-carousel.products').owlCarousel({
       margin: 5,

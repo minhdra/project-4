@@ -8,27 +8,22 @@
         <h6 class="font-weight-medium font-size-7 pt-5 pt-lg-8  mb-5 mb-lg-7">Tài khoản của tôi</h6>
         <div class="tab-wrapper">
           <ul class="my__account-nav nav flex-column mb-0" role="tablist" id="pills-tab">
-            <li class="nav-item mx-0">
-              <a class="nav-link d-flex align-items-center px-0 active" id="pills-one-example1-tab" data-toggle="pill" href="#pills-one-example1" role="tab" aria-controls="pills-one-example1" aria-selected="false">
-                <span class="font-weight-normal text-gray-600">Bảng điều khiển</span>
-              </a>
-            </li>
-            <li class="nav-item mx-0">
+            <li class="nav-item mx-0" ng-click="setClassSidebar($event)">
               <a class="nav-link d-flex align-items-center px-0" id="pills-two-example1-tab" data-toggle="pill" href="#pills-two-example1" role="tab" aria-controls="pills-two-example1" aria-selected="false">
-                <span class="font-weight-normal text-gray-600">Hóa đơn</span>
+                <span class="font-weight-normal text-gray-600 active">Hóa đơn</span>
               </a>
             </li>
-            <li class="nav-item mx-0">
+            <li class="nav-item mx-0" ng-click="setClassSidebar($event)">
               <a class="nav-link d-flex align-items-center px-0" id="pills-four-example1-tab" data-toggle="pill" href="#pills-four-example1" role="tab" aria-controls="pills-four-example1" aria-selected="false">
                 <span class="font-weight-normal text-gray-600">Địa chỉ</span>
               </a>
             </li>
-            <li class="nav-item mx-0">
+            <li class="nav-item mx-0" ng-click="setClassSidebar($event)">
               <a class="nav-link d-flex align-items-center px-0" id="pills-five-example1-tab" data-toggle="pill" href="#pills-five-example1" role="tab" aria-controls="pills-five-example1" aria-selected="false">
                 <span class="font-weight-normal text-gray-600">Thông tin tài khoản</span>
               </a>
             </li>
-            <li class="nav-item mx-0">
+            <li class="nav-item mx-0" ng-click="setClassSidebar($event)">
               <a class="nav-link d-flex align-items-center px-0" id="pills-six-example1-tab" data-toggle="pill" href="#pills-six-example1" role="tab" aria-controls="pills-six-example1" aria-selected="false">
                 <span class="font-weight-normal text-gray-600">Danh sách yêu thích</span>
               </a>
@@ -43,58 +38,7 @@
       </div>
       <div class="col-md-9">
         <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="pills-one-example1" role="tabpanel" aria-labelledby="pills-one-example1-tab">
-            <div class="pt-5 pt-lg-8 pl-md-5 pl-lg-9 space-bottom-2 space-bottom-lg-3 mb-xl-1">
-              <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">Bảng điều khiển</h6>
-              <div class="ml-lg-1 mb-4">
-                <span class="font-size-22">Xin chào Minh</span>
-                <span class="font-size-2"> (không phải Minh? <a class="link-black-100" href="{{route('home')}}" ng-click="logout()">Đăng xuất</a>)</span>
-              </div>
-              <div class="row no-gutters row-cols-1 row-cols-md-2 row-cols-lg-3">
-                <div class="col">
-                  <div class="border py-6 text-center">
-                    <a href="#" class="btn btn-primary rounded-circle px-4 mb-2">
-                      <span class="flaticon-order font-size-10 btn-icon__inner"></span>
-                    </a>
-                    <div class="font-size-3 mb-xl-1">Hóa đơn</div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="border border-left-0 py-6 text-center">
-                    <a href="#" class="btn bg-gray-200 rounded-circle px-4 mb-2">
-                      <span class="flaticon-place font-size-10 btn-icon__inner text-primary"></span>
-                    </a>
-                    <div class="font-size-3 mb-xl-1">Địa chỉ</div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="border py-6 text-center">
-                    <a href="#" class="btn bg-gray-200 rounded-circle px-4 mb-2">
-                      <span class="flaticon-user-1 font-size-10 btn-icon__inner text-primary"></span>
-                    </a>
-                    <div class="font-size-3 mb-xl-1">Thông tin tài khoản</div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="border border-left-0 py-6 text-center">
-                    <a href="#" class="btn bg-gray-200  rounded-circle px-4 mb-2">
-                      <span class="flaticon-heart font-size-10 btn-icon__inner text-primary"></span>
-                    </a>
-                    <div class="font-size-3 mb-xl-1">Danh sách yêu thích</div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="border border-left-0 py-6 text-center">
-                    <a href="{{route('home')}}" ng-click="logout()" class="btn bg-gray-200 rounded-circle px-4 mb-2">
-                      <span class="flaticon-exit font-size-10 btn-icon__inner text-primary"></span>
-                    </a>
-                    <div class="font-size-3 mb-xl-1">Đăng xuất</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="pills-two-example1" role="tabpanel" aria-labelledby="pills-two-example1-tab">
+          <div class="tab-pane fade show active" id="pills-two-example1" role="tabpanel" aria-labelledby="pills-two-example1-tab">
             <div class="pt-5 pl-md-5 pt-lg-8 pl-lg-9 space-bottom-lg-2 mb-lg-4">
               <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">Đơn hàng của bạn</h6>
               <table class="table" ng-if="customer.orders.length > 0">

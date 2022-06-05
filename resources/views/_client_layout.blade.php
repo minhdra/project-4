@@ -101,7 +101,6 @@
   <script src="/assets/js/components/hs.header.js"></script>
   <script src="/assets/js/components/hs.selectpicker.js"></script>
   <script src="/assets/js/components/hs.show-animation.js"></script>
-  <script src="/assets/js/components/hs.owl-carousel.js"></script>
 
 
   <script>
@@ -180,7 +179,7 @@
   <script src="/assets/js/controllers/client/headerController.js"></script>
   <script src="/assets/js/controllers/client/accountController.js"></script>
   <script src="/assets/js/angular-ckeditor.js"></script>
-
+  <script src="/assets/js/components/hs.owl-carousel.js"></script>
   @yield('js')
 
 </body>

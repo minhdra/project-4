@@ -41,7 +41,7 @@ function customerController($scope, $http) {
     if ($scope.check) {
       connect_api(
         'GET',
-        baseApi + nameCustomer + $scope.check.id,
+        baseApi + nameCustomer + $scope.check,
         null,
         function (res) {
           $scope.customer = res.data;
@@ -270,5 +270,12 @@ function customerController($scope, $http) {
         
       })
     }
+  }
+
+  // Set class active
+  $scope.setClassSidebar = (event) => {
+    console.log(event);
+    $('.my__account-nav .nav-item span').removeClass('active');
+    $(event.target).addClass('active');
   }
 }

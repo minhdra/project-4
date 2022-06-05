@@ -69,7 +69,7 @@ function homeController($scope, $http) {
 
   // Get best seller
   connect_api('get', baseApi + nameChild + 'getBestSeller', (response) => {
-    console.log(response.data);
+    // console.log(response.data);
     $scope.dataBestSeller = [];
     response.data.forEach((item) => {
       if (item.order_details.length > 0) {
@@ -79,6 +79,6 @@ function homeController($scope, $http) {
       }
     });
     $scope.dataBestSeller.sort((a, b) => b.detailsLength - a.detailsLength);
-    console.log($scope.dataBestSeller);
+    // console.log($scope.dataBestSeller);
   });
 }

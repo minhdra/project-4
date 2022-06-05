@@ -128,22 +128,7 @@
                   <li><a href="../blog/blog-v3.html" class="dropdown-item link-black-100">Giới thiệu nhà xuất bản</a></li>
                 </ul>
               </li>
-              <li class="nav-item dropdown">
-                <a id="pagesDropdownInvoker" href="#" class="dropdown-toggle nav-link link-black-100 mx-3 px-0 py-1 font-weight-medium d-flex align-items-center" aria-haspopup="true" aria-expanded="false" data-unfold-event="hover" data-unfold-target="#pagesDropdownMenu" data-unfold-type="css-animation" data-unfold-duration="200" data-unfold-delay="50" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut">
-                  Others
-                </a>
-                <ul id="pagesDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900 u-unfold--css-animation u-unfold--hidden" aria-labelledby="pagesDropdownInvoker" style="animation-duration: 200ms; left: 0px;">
-                  <li><a href="../others/404.html" class="dropdown-item link-black-100">404</a></li>
-                  <li><a href="../others/about.html" class="dropdown-item link-black-100">About Us</a></li>
-                  <li><a href="../others/authors-list.html" class="dropdown-item link-black-100">Authors List</a></li>
-                  <li><a href="../others/authors-single.html" class="dropdown-item link-black-100">Authors Single</a></li>
-                  <li><a href="../others/coming-soon.html" class="dropdown-item link-black-100">Coming Soon</a></li>
-                  <li><a href="../others/contact.html" class="dropdown-item link-black-100">Contact Us</a></li>
-                  <li><a href="../others/faq.html" class="dropdown-item link-black-100">FAQ</a></li>
-                  <li><a href="../others/pricing-table.html" class="dropdown-item link-black-100">Pricing Table</a></li>
-                  <li><a href="../others/terms-conditions.html" class="dropdown-item link-black-100">Terms Conditions</a></li>
-                </ul>
-              </li>
+              <li class="nav-item"><a href="#" class="nav-link link-black-100 mx-3 px-0 py-1 font-weight-medium">Liên lạc</a></li>
             </ul>
           </div>
         </div>
