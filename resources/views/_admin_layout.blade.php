@@ -15,7 +15,7 @@
   <meta name="description" content="Convex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
   <meta name="keywords" content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
   <meta name="author" content="PIXINVENT">
-  <title>Extended Table - Convex bootstrap 4 admin dashboard template</title>
+  <title>Admin - Book Worm</title>
   <!-- <link rel="apple-touch-icon" sizes="60x60" href="/assets/admin/img/ico/apple-icon-60.png">
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/admin/img/ico/apple-icon-76.png">
   <link rel="apple-touch-icon" sizes="120x120" href="/assets/admin/img/ico/apple-icon-120.png">
