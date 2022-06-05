@@ -46,7 +46,7 @@ function customerController($scope, $http) {
         function (res) {
           $scope.customer = res.data;
           $scope.customer.orders.sort((a, b) => b.id - a.id);
-          console.log($scope.customer);
+          // console.log($scope.customer);
         }
       );
     } else {

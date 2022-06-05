@@ -56,7 +56,7 @@ function checkoutController($scope, $http) {
       connect_api('GET', baseApi + nameCustomer + $scope.check, null, function (res) {
         $scope.customer = res.data;
         $scope.customer.info = $scope.customer.info || {};
-        console.log($scope.customer);
+        // console.log($scope.customer);
         $scope.countTotal();
         if ($scope.customer.delivery_addresses.length > 0)
         {

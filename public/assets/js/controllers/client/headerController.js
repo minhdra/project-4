@@ -28,7 +28,7 @@ function headerController($rootScope, $http) {
     if ($rootScope.check) {
       connect_api(
         'GET',
-        baseApi + nameAccount + $rootScope.check.id,
+        baseApi + nameAccount + $rootScope.check,
         null,
         function (res) {
           $rootScope.customer = res.data;
