@@ -30,7 +30,7 @@
                   <div class="media"  style="align-items: center;">
                     <div class="media-body white text-left">
                       <span class="grey darken-1">Tổng doanh thu trong tháng 6</span>
-                      <h4 class="font-medium-5 card-title mb-0">@{{sumPrice | number}}</h4>
+                      <h4 class="font-medium-5 card-title mb-0">@{{sumPrice | number}} VNĐ</h4>
                     </div>
                     <div class="media-right text-right">
                       <i class="icon-wallet font-large-1 warning"></i>
@@ -44,7 +44,7 @@
             <div class="card bg-white">
               <div class="card-body">
                 <div class="card-block pt-2">
-                  <div class="media"  style="align-items: center;">
+                  <div class="media"  style="align-items: center;position:relative">
                     <div class="media-body white text-left">
                       <span class="grey darken-1">Số lượng đơn hàng trong ngày</span>
                       <h4 class="font-medium-5 card-title mb-0">@{{orderToday | number}}</h4>
@@ -52,6 +52,7 @@
                     <div class="media-right text-right">
                       <i class="icon-basket-loaded font-large-1 success"></i>
                     </div>
+                    <a href="/admin/orders/now" style="bottom:-16px;position: absolute;right: 0px;">Chi tiết</a>
                   </div>
                 </div>
               </div>
@@ -82,7 +83,7 @@
                           <th class="border-top-0">Tên sách</th>
                           <th class="border-top-0">Giá bán hiện tại</th>
                         <th class="border-top-0">Độ phổ biến</th>
-                          <th class="border-top-0">Tổng thu</th>
+                          <th class="border-top-0">Doanh thu dự kiến</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -116,7 +117,7 @@
                   <div class="chart">
                     <canvas id="myChart" width="400" height="400"></canvas>
                   </div>
-                  <a href="/admin/orders" style="position: absolute;bottom: 5px;right: 10px;">Xem chi tiết</a>
+                  <a href="/admin/orders" style="position: absolute; bottom: calc(50% - 12px); right: calc(50% - 83.76px / 2); ">Xem chi tiết</a>
               </div>
             </div>
           </div>
