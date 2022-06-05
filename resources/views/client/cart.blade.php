@@ -147,7 +147,7 @@
             </div>
           </div>
           <div class="wc-proceed-to-checkout">
-            <a href="{{route('checkout')}}" class="checkout-button button alt wc-forward btn btn-primary btn-block rounded-0">Tiến hàng thanh toán</a>
+            <a href="{{route('checkout')}}" class="checkout-button button alt wc-forward btn btn-primary btn-block rounded-0">Tiến hành thanh toán</a>
           </div>
         </div>
       </div>
