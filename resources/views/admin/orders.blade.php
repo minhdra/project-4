@@ -35,6 +35,15 @@
                       <table class="table table-responsive-md text-center table-striped">
                         <thead>
                           <tr>
+                            <th style="width:15%;"></th>
+                            <th style="width:15%;"><input type="text" class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;">Khách hàng</th>
+                            <th style="width:15%;">Số ĐT</th>
+                            <th style="width:15%;">Tổng cộng</th>
+                            <th style="width:15%;">Trạng thái</th>
+                            <th style="width:10%;"></th>
+                          </tr>
+                          <tr>
                             <th>Mã đơn hàng</th>
                             <th>Thời gian</th>
                             <th>Khách hàng</th>
@@ -45,7 +54,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr dir-paginate="row in data| orderBy:'-' |filter: finding|itemsPerPage:10" current-page="currentPage">
+                          <tr dir-paginate="row in data| orderBy:'-' |filter: finding|itemsPerPage:9" current-page="currentPage">
                             <td>@{{row.id}}</td>
                             <td>@{{row.created_at}}</td>
                             <td>@{{row.customer.info.full_name}}</td>
@@ -99,7 +108,7 @@
                 <div class="col-xl-8 col-lg-8 col-md-8"  style="background: oldlace;padding: 20px;border-radius: 6px;">
                     <div class="row" style="display: flex;justify-content: center;">
                         <div class="form-group" style="width:70%;">
-                            <input class="form-control" placeholder="Tìm kiếm chi tiết đơn hàng" ng-model='q'>
+                            <input class="form-control" placeholder="Tìm kiếm chi tiết đơn hàng" ng-model='fin'>
                         </div>
                     </div>
                     <div class="row">
@@ -114,7 +123,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr dir-paginate="row in order.details|filter: q|itemsPerPage:10" current-page="currentPage">
+                              <tr dir-paginate="row in order.details|filter: find|itemsPerPage:5" current-page="currentPage2">
                                   <td>@{{$index+1}}</td>
                                   <td>@{{row.product.book_name}}</td>
                                   <td>@{{row.quantity}}</td>
@@ -123,6 +132,8 @@
                               </tr>
                             </tbody>
                         </table>
+                        <dir-pagination-controls style="float: right; padding-right: 100px;" direction-links="true" boundary-links="true">
+                      </dir-pagination-controls>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4">

@@ -1,6 +1,6 @@
 @extends('_admin_layout')
 @section('content')
-<div class="main-panel">
+<div class="main-panel" ng-controller="homeController">
   <div class="main-content">
     <div class="content-wrapper">
       <div class="container-fluid">
@@ -421,7 +421,7 @@
           </div>
         </div>
         <div class="row match-height">
-          <div class="col-xl-6 col-lg-12">
+          <div class="col-xl-8 col-lg-12">
             <div class="card">
               <div class="card-header">
                 <div class="card-title-wrap bar-primary">
@@ -512,69 +512,18 @@
               </div>
             </div>
           </div>
-          <div class="col-xl-6 col-lg-12">
-            <div class="card" style="">
+          <div class="col-xl-4 col-lg-12">
+            <div class="card">
               <div class="card-header">
                 <div class="card-title-wrap bar-warning">
                   <h4 class="card-title">Trạng thái đặt hàng</h4>
                 </div>
               </div>
               <div class="card-body">
-                <p class="font-medium-2 text-muted text-center">Project Tasks</p>
-                <div id="donut-dashboard-chart" class="height-250 donut donutShadow">
-                  <svg  width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
-                    <g ct:series-name="done" class="ct-series ct-done">
-                      <path d="M460.498,193.829A120,120,0,0,0,270.275,47.865L293.256,67.149A90,90,0,0,1,435.924,176.622Z" class="ct-slice-donut-solid" ct:value="35"></path>
-                    </g>
-                    <g ct:series-name="progress" class="ct-series ct-progress">
-                      <path d="M331.142,240.911A120,120,0,0,0,460.738,193.486L436.103,176.364A90,90,0,0,1,338.906,211.933Z" class="ct-slice-donut-solid" ct:value="14"></path>
-                    </g>
-                    <g ct:series-name="outstanding" class="ct-series ct-outstanding">
-                      <path d="M270.275,47.865A120,120,0,0,0,331.547,241.019L339.21,212.014A90,90,0,0,1,293.256,67.149Z" class="ct-slice-donut-solid" ct:value="23"></path>
-                    </g>
-                    <g ct:series-name="outstanding2" class="ct-series ct-outstanding2">
-                      <path d="M270.275,47.865A120,120,0,0,0,331.547,241.019L339.21,212.014A90,90,0,0,1,293.256,67.149Z" class="ct-slice-donut-solid" ct:value="23"></path>
-                    </g>
-                    <g><text dx="362.20001220703125" dy="125" text-anchor="middle" class="ct-label">72%</text></g>
-                    <defs>
-                      <linearGradient id="donutGradient1" x1="0" y1="1" x2="0" y2="0">
-                        <stop offset="0" stop-color="rgba(155, 60, 183,1)"></stop>
-                        <stop offset="1" stop-color="rgba(255, 57, 111, 1)"></stop>
-                      </linearGradient>
-                      <linearGradient id="donutGradient2" x1="0" y1="1" x2="0" y2="0">
-                        <stop offset="0" stop-color="rgba(0, 75, 145,0.8)"></stop>
-                        <stop offset="1" stop-color="rgba(120, 204, 55, 0.8)"></stop>
-                      </linearGradient>
-                      <linearGradient id="donutGradient3" x1="0" y1="1" x2="0" y2="0">
-                        <stop offset="0" stop-color="rgba(132, 60, 247,1)"></stop>
-                        <stop offset="1" stop-color="rgba(56, 184, 242, 1)"></stop>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-
-                <div class="card-block">
-                  <div class="row my-3">
-                    <div class="col">
-                      <span class="mb-1 text-muted d-block">23% - Started</span>
-                      <div class="progress" style="height: 8px;">
-                        <div class="progress-bar gradient-blackberry" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <span class="mb-1 text-muted d-block">35% - In Progress</span>
-                      <div class="progress" style="height: 8px;">
-                        <div class="progress-bar gradient-pomegranate" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <span class="mb-1 text-muted d-block">14% - Done</span>
-                      <div class="progress" style="height: 8px;">
-                        <div class="progress-bar gradient-green-tea" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
+                  <div class="chart">
+                    <canvas id="myChart" width="400" height="400"></canvas>
                   </div>
-                </div>
+                  <a href="/admin/orders" style="position: absolute;bottom: 5px;right: 10px;">Xem chi tiết</a>
               </div>
             </div>
           </div>
@@ -585,4 +534,9 @@
 
 
 </div>
+@stop
+
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/assets/js/controllers/admin/homeController.js"></script>
 @stop

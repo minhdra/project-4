@@ -5,7 +5,6 @@ app.controller('authorsController', authorsController);
 function authorsController($scope, $http) {
   //set begin
   $scope.currentPage = 1;
-  $scope.pageSize = 10;
   $scope.item;
   const modalE = $('#large');
   //get all authors

@@ -36,9 +36,8 @@ function ordersController2($scope, $http) {
     );
    }
   //set begin
-  $scope.finding = "";
   $scope.currentPage = 1;
-  $scope.pageSize = 10;
+  $scope.currentPage2 = 1;
   $scope.item;
   $scope.total_invoice = 0;
   //get all invoices

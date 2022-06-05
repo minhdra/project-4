@@ -67,6 +67,8 @@ Route::resource('order_status', order_statusController::class);
 Route::post('staffs/checkLogin',[staffsController::class,'checkLogin']);
 Route::post('orders/get_all', [ordersController::class, 'get_all']);
 Route::post('orders/update_status', [ordersController::class, 'update_status']);
+Route::post('orders/getTopProductSell', [ordersController::class, 'getTopProductSell']);
+Route::post('orders/getStatusAnalysis', [ordersController::class, 'getStatusAnalysis']);
 
 Route::post('customers/login', [customersController::class, 'login']);
 Route::post('customers/register', [customersController::class, 'register']);

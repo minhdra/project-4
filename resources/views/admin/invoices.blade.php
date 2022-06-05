@@ -163,7 +163,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr dir-paginate="row in invoice_details|filter: q|itemsPerPage:10" current-page="currentPage" ng-click="selected_row(row)">
+                            <tr dir-paginate="row in invoice_details|filter: q|itemsPerPage:5" current-page="currentPage2" ng-click="selected_row(row)">
                                 <td>@{{$index+1}}</td>
                                 <td>@{{row.books.book_name}}</td>
                                 <td>@{{row.books.quantity}}</td>
@@ -182,6 +182,8 @@
                             </tr>
                             </tbody>
                         </table>
+                        <dir-pagination-controls style="float: right; padding-right: 100px;" direction-links="true" boundary-links="true">
+                      </dir-pagination-controls>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-4">

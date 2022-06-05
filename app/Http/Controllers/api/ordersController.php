@@ -174,4 +174,44 @@ class ordersController extends Controller
 
         return "Deleted";
     }
+
+
+    public function getTopProductSell(){
+        $orderdetails = order_details::take(7)->whereMonth('created_at', date('m')-1)->orderBy('single_price','DESC')->orderBy('quantity','DESC')->get();
+        foreach($orderdetails as $orderdetail){
+            $orderdetail->book;
+        }
+        return $orderdetails;    
+    }
+
+    public function getStatusAnalysis(){
+        $orders = orders::where('is_active',1)->get();
+        $status_1 = 0;
+        $status_2 = 0;
+        $status_3 = 0;
+        $status_4 = 0;
+        $status_5 = 0;
+        $status_6 = 0;
+        foreach($orders as $od){
+            if($od->order_status_id == 1){
+                $status_1++;
+            }
+            else if($od->order_status_id == 2){
+                $status_2++;
+            }
+            else if($od->order_status_id == 3){
+                $status_3++;
+            }
+            else if($od->order_status_id == 4){
+                $status_4++;
+            }
+            else if($od->order_status_id == 5){
+                $status_5++;
+            }
+            else{
+                $status_6++;
+            }
+        }
+        return [$status_1,$status_2,$status_3,$status_4,$status_5,$status_6];
+    }
 }
