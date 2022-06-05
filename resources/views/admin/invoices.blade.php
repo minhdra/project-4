@@ -130,7 +130,7 @@
                 <div class="col-xl-8 col-lg-8 col-md-8"  style="background: oldlace;padding: 20px;border-radius: 6px;">
                     <div class="row" style="display: flex;justify-content: center;" ng-if="isCreate">
                         <div class="form-group" style="width:70%;">
-                            <input class="form-control-plaintext" placeholder="Tìm kiếm sách" id="book_finding" list="ShowDataList">
+                            <input class="form-control-plaintext" placeholder="Tìm kiếm sách" id="book_finding" list="ShowDataList" onFocus="this.value=''" ng-focus="toggleDataList($event)" ng-blur="toggleDataList()">
                             <datalist id="ShowDataList" style="z-index: 100;">
                               <option value="@{{book.book_name}}" ng-repeat="book in books" ng-click="book_selected(book)">@{{book.book_name}}</option>
                             </datalist>

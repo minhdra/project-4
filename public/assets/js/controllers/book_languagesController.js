@@ -1,9 +1,6 @@
 
 const nameController = 'book_languages/';
 const nameChild = 'child/';
-const successStatus = 'success';
-const errorStatus = 'danger';
-
 app.controller('book_languagesController', book_languagesController);
 function book_languagesController($scope, $http) {
   //set begin

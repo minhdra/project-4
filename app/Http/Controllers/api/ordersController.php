@@ -55,9 +55,22 @@ class ordersController extends Controller
     }
 
     public function update_status(Request $request){
-        $db = orders::find($request->id);
-        $db->order_status_id = $request->order_status_id;
-        $db->save();
+        $order = orders::find($request->id);
+        if($request->order_status_id == $order->order_status_id){
+
+        }
+        else{
+            $order->order_status_id = $request->order_status_id;
+            if($request->order_status_id==5){
+                $orderdetails = $order->details;
+                foreach($orderdetails as $od){
+                    $book = $od->book;
+                    $book->quantity = $book->quantity - $od->quantity;
+                    $book->save();
+                }
+            }
+            $order->save();
+        }
     }
     //ADMIN
 
@@ -175,8 +188,11 @@ class ordersController extends Controller
         return "Deleted";
     }
 
+
+    //statistic
     public function getSellYear(){
-        $order_group_by_month = orders::where('is_active',1)->whereYear('created_at',date('Y'))->get()->groupBy(function($data){
+
+        $order_group_by_month = orders::where('is_active',1)->where('order_status_id',5)->whereYear('created_at',date('Y'))->get()->groupBy(function($data){
             return $data->created_at->format('m');
         });
         return $order_group_by_month;
@@ -184,6 +200,7 @@ class ordersController extends Controller
 
     public function getTopProductSell(){
         $count_quantity = order_details::whereMonth('created_at', date('m'))->get()->sum('quantity');
+
         $orderdetail_books =order_details::whereMonth('created_at', date('m'))->get()->groupBy(function($data){
             return $data->book_id;
         });
@@ -205,7 +222,7 @@ class ordersController extends Controller
     }
 
     public function getSumPriceMonth(){
-        return orders::whereMonth('created_at',date('m'))->get()->sum('total');
+        return orders::whereMonth('created_at',date('m'))->where('order_status_id',5)->get()->sum('total');
     }
 
     public function getQuantityCustomers(){

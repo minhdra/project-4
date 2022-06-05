@@ -72,10 +72,12 @@ function ordersController2($scope, $http) {
      // Save data from modal
   $scope.saveData = function (order) {
     connect_api_data('POST',baseApi+ordersController+'update_status',order,(res)=>{
+      console.log(res);
       var objIndex = $scope.data.findIndex((obj => obj.id == order.id));
       $scope.data[objIndex] = order; 
       var objIndex2 = $scope.statuses.findIndex((obj => obj.id == order.order_status_id));
       $scope.data[objIndex].status= $scope.statuses[objIndex2]
+      toastr.success('Cập nhật thành công!!');
       modalE.modal('hide');
     })
   };
@@ -84,4 +86,14 @@ function ordersController2($scope, $http) {
     window.open(baseApi+'generate-pdf/'+order.id+'/'+JSON.parse(sessionStorage.getItem('login')).staffname, "_blank").focus();
   }
 
+  $scope.toggleDataList = (event) => {
+    if (!event)
+      setTimeout(() => {
+        $('#ShowDataList').css('display', 'none');
+      }, 150);
+    else
+    {
+      $('#ShowDataList').css('display', 'block');
+    }
+  }
 };

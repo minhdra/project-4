@@ -34,13 +34,13 @@
                     <div class="card-block">
                       <table class="table table-responsive-md text-center table-striped">
                         <thead>
-                          <tr>
-                            <th style="width:15%;"><input ng-model='tmp.id' type="text" placeholder="Tìm theo mã" class="form-control" style="width:100%;"></th>
-                            <th style="width:15%;"><input ng-model='tmp.created_at' type="text" placeholder="Tìm thời gian" class="form-control" style="width:100%;"></th>
-                            <th style="width:15%;"><input  ng-model='tmp.customer.info.full_name' placeholder="Tìm tên"  type="text" class="form-control" style="width:100%;"></th>
-                            <th style="width:15%;"><input  ng-model='tmp.customer.info.phone' placeholder="Tìm SĐT"  type="text" class="form-control" style="width:100%;"></th>
-                            <th style="width:15%;"><input  ng-model='tmp.total' type="text"  placeholder="Tìm tổng cộng" class="form-control" style="width:100%;"></th>
-                            <th style="width:15%;"><input  ng-model='tmp.status.status_name' type="text" placeholder="Tìm trạng thái"  class="form-control" style="width:100%;"></th>
+                          <tr style="border-top: none !important;">
+                            <th style="width:15%;"><input ng-model='tmp.id' type="text" placeholder="Mã..." class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input ng-model='tmp.created_at' type="text" placeholder="Thời gian..." class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.customer.info.full_name' placeholder="Tên..."  type="text" class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.customer.info.phone' placeholder="SĐT..."  type="text" class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.total' type="text"  placeholder="Tổng cộng..." class="form-control" style="width:100%;"></th>
+                            <th style="width:15%;"><input  ng-model='tmp.status.status_name' type="text" placeholder="Trạng thái..."  class="form-control" style="width:100%;"></th>
                             <th style="width:10%;"></th>
                           </tr>
                           <tr>
