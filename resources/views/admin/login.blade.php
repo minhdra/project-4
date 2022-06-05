@@ -9,12 +9,12 @@
   <meta name="keywords" content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
   <meta name="author" content="PIXINVENT">
   <title>Login Page - Convex bootstrap 4 admin dashboard template</title>
-  <link rel="apple-touch-icon" sizes="60x60" href="/assets/admin/img/ico/apple-icon-60.png">
+  <!-- <link rel="apple-touch-icon" sizes="60x60" href="/assets/admin/img/ico/apple-icon-60.png">
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/admin/img/ico/apple-icon-76.png">
   <link rel="apple-touch-icon" sizes="120x120" href="/assets/admin/img/ico/apple-icon-120.png">
   <link rel="apple-touch-icon" sizes="152x152" href="/assets/admin/img/ico/apple-icon-152.png">
-  <link rel="shortcut icon" type="image/x-icon" href="/assets/admin/img/ico/favicon.ico">
-  <link rel="shortcut icon" type="image/png" href="/assets/admin/img/ico/favicon-32.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/admin/img/ico/favicon.ico"> -->
+  <link rel="shortcut icon" type="image/png" href="/assets/img/logo/favicon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-touch-fullscreen" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
