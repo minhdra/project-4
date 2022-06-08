@@ -214,7 +214,7 @@
                       <tr>
                         <th scope="row" class="pr-0 py-0 font-weight-medium">#@{{order.id}}</th>
                         <td class="pr-0 py-0 font-weight-medium">@{{order.created_at | date}}</td>
-                        <td class="pr-0 py-0 font-weight-medium text-md-center">đ@{{order.total | number}}</td>
+                        <td class="pr-0 py-0 font-weight-medium text-md-center">@{{order.total | number}} VND</td>
                         <td class="pr-md-4 py-0 font-weight-medium text-md-right">Thanh toán khi nhận hàng</td>
                       </tr>
                     </tbody>
@@ -233,7 +233,7 @@
                         </div>
                         <span class="font-size-2 ml-4 ml-md-8">x@{{row.quantity}}</span>
                       </div>
-                      <span class="font-weight-medium font-size-2">đ@{{row.single_price*row.quantity|number}}</span>
+                      <span class="font-weight-medium font-size-2">@{{row.single_price*row.quantity|number}} VND</span>
                     </div>
                   </div>
                 </div>
@@ -242,7 +242,7 @@
                 <ul class="list-unstyled px-3 pl-md-5 pr-md-4 mb-0">
                   <li class="d-flex justify-content-between py-2">
                     <span class="font-weight-medium font-size-2">Tổng phụ:</span>
-                    <span class="font-weight-medium font-size-2">đ@{{order.total|number}}</span>
+                    <span class="font-weight-medium font-size-2">@{{order.total|number}} VND</span>
                   </li>
                   <li class="d-flex justify-content-between py-2">
                     <span class="font-weight-medium font-size-2">Giao hàng:</span>
@@ -258,7 +258,7 @@
                 <div class="px-3 pl-md-5 pr-md-4">
                   <div class="d-flex justify-content-between">
                     <span class="font-size-2 font-weight-medium">Tổng</span>
-                    <span class="font-weight-medium fon-size-2">đ@{{order.total|number}}</span>
+                    <span class="font-weight-medium fon-size-2">@{{order.total|number}} VND</span>
                   </div>
                 </div>
               </div>

@@ -30,7 +30,7 @@
                   <div class="media"  style="align-items: center;">
                     <div class="media-body white text-left">
                       <span class="grey darken-1">Tổng doanh thu trong tháng 6</span>
-                      <h4 class="font-medium-5 card-title mb-0">@{{sumPrice | number}} VNĐ</h4>
+                      <h4 class="font-medium-5 card-title mb-0">@{{sumPrice | number}} VND</h4>
                     </div>
                     <div class="media-right text-right">
                       <i class="icon-wallet font-large-1 warning"></i>

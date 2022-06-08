@@ -9,6 +9,7 @@ use App\Models\order_details;
 use App\Models\orders;
 use Illuminate\Http\Request;
 use DB;
+
 class ordersController extends Controller
 {
     /**
@@ -35,18 +36,19 @@ class ordersController extends Controller
                 $b->categories;
             }
         }
-        return ['orders'=>$orders, 'customers'=>$customers];
+        return ['orders' => $orders, 'customers' => $customers];
     }
 
 
     //ADMIN
-    public function get_all(){
+    public function get_all()
+    {
         $orders = orders::where('is_active', 1)->get();
         foreach ($orders as $order) {
             $c = $order->customer;
             $c->info;
             $details = $order->details;
-            foreach($details as $detail){
+            foreach ($details as $detail) {
                 $detail->book;
             }
             $order->status;
@@ -54,16 +56,15 @@ class ordersController extends Controller
         return $orders;
     }
 
-    public function update_status(Request $request){
+    public function update_status(Request $request)
+    {
         $order = orders::find($request->id);
-        if($request->order_status_id == $order->order_status_id){
-
-        }
-        else{
+        if ($request->order_status_id == $order->order_status_id) {
+        } else {
             $order->order_status_id = $request->order_status_id;
-            if($request->order_status_id==5){
+            if ($request->order_status_id == 5) {
                 $orderdetails = $order->details;
-                foreach($orderdetails as $od){
+                foreach ($orderdetails as $od) {
                     $book = $od->book;
                     $book->quantity = $book->quantity - $od->quantity;
                     $book->save();
@@ -100,9 +101,9 @@ class ordersController extends Controller
         $db->discount_id = $request->discount_id ?? null;
         $db->save();
         $details = $request->details;
-        if($details) {
+        if ($details) {
             $detail = new order_details();
-            foreach($details as $item) {
+            foreach ($details as $item) {
                 $detail->insertDetail($item, $db->id);
             }
         }
@@ -131,6 +132,27 @@ class ordersController extends Controller
             $b->authors;
             $b->publishers;
             $b->categories;
+        }
+        return $order;
+    }
+
+    public function trackingOrder(Request $request)
+    {
+        $order = orders::where('is_active', 1)->where('customer_id', $request->customer_id)->find($request->id);
+        if ($order) {
+            $c = $order->customer;
+            $c->info;
+            $details = $order->details;
+            $order->status;
+            $order->discount;
+            foreach ($details as $detail) {
+                $b = $detail->book;
+                $b->prices;
+                $b->book_languages;
+                $b->authors;
+                $b->publishers;
+                $b->categories;
+            }
         }
         return $order;
     }
@@ -178,8 +200,8 @@ class ordersController extends Controller
         $db->save();
 
         $details = order_details::where('order_id', $id)->get();
-        if($details) {
-            foreach($details as $item) {
+        if ($details) {
+            foreach ($details as $item) {
                 $item->is_active = 0;
                 $item->save();
             }
@@ -190,73 +212,74 @@ class ordersController extends Controller
 
 
     //statistic
-    public function getSellYear(){
+    public function getSellYear()
+    {
 
-        $order_group_by_month = orders::where('is_active',1)->where('order_status_id',5)->whereYear('created_at',date('Y'))->get()->groupBy(function($data){
+        $order_group_by_month = orders::where('is_active', 1)->where('order_status_id', 5)->whereYear('created_at', date('Y'))->get()->groupBy(function ($data) {
             return $data->created_at->format('m');
         });
         return $order_group_by_month;
     }
 
-    public function getTopProductSell(){
+    public function getTopProductSell()
+    {
         $count_quantity = order_details::whereMonth('created_at', date('m'))->get()->sum('quantity');
 
-        $orderdetail_books =order_details::whereMonth('created_at', date('m'))->get()->groupBy(function($data){
+        $orderdetail_books = order_details::whereMonth('created_at', date('m'))->get()->groupBy(function ($data) {
             return $data->book_id;
         });
 
-        foreach($orderdetail_books as $books){
+        foreach ($orderdetail_books as $books) {
             $sum_quantity = $books->sum('quantity');
-            foreach($books as $book){
+            foreach ($books as $book) {
                 $tmp_book = $book->book;
                 $tmp_book->prices;
                 $tmp_book->sum_quantity = $sum_quantity;
-                $tmp_book->progress = $sum_quantity*100/$count_quantity;;
-            }   
+                $tmp_book->progress = $sum_quantity * 100 / $count_quantity;;
+            }
         }
-        return [$orderdetail_books,$count_quantity];
+        return [$orderdetail_books, $count_quantity];
     }
 
-    public function getOrderToday(){
-        return orders::whereDay('created_at',date('d'))->get()->count();
+    public function getOrderToday()
+    {
+        return orders::whereDay('created_at', date('d'))->get()->count();
     }
 
-    public function getSumPriceMonth(){
-        return orders::whereMonth('created_at',date('m'))->where('order_status_id',5)->get()->sum('total');
+    public function getSumPriceMonth()
+    {
+        return orders::whereMonth('created_at', date('m'))->where('order_status_id', 5)->get()->sum('total');
     }
 
-    public function getQuantityCustomers(){
-        return customers::whereMonth('created_at',date('m'))->get()->count();
+    public function getQuantityCustomers()
+    {
+        return customers::whereMonth('created_at', date('m'))->get()->count();
     }
 
-    public function getStatusAnalysis(){
-        $orders = orders::where('is_active',1)->get();
+    public function getStatusAnalysis()
+    {
+        $orders = orders::where('is_active', 1)->get();
         $status_1 = 0;
         $status_2 = 0;
         $status_3 = 0;
         $status_4 = 0;
         $status_5 = 0;
         $status_6 = 0;
-        foreach($orders as $od){
-            if($od->order_status_id == 1){
+        foreach ($orders as $od) {
+            if ($od->order_status_id == 1) {
                 $status_1++;
-            }
-            else if($od->order_status_id == 2){
+            } else if ($od->order_status_id == 2) {
                 $status_2++;
-            }
-            else if($od->order_status_id == 3){
+            } else if ($od->order_status_id == 3) {
                 $status_3++;
-            }
-            else if($od->order_status_id == 4){
+            } else if ($od->order_status_id == 4) {
                 $status_4++;
-            }
-            else if($od->order_status_id == 5){
+            } else if ($od->order_status_id == 5) {
                 $status_5++;
-            }
-            else{
+            } else {
                 $status_6++;
             }
         }
-        return [$status_1,$status_2,$status_3,$status_4,$status_5,$status_6];
+        return [$status_1, $status_2, $status_3, $status_4, $status_5, $status_6];
     }
 }

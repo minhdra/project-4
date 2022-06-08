@@ -51,7 +51,15 @@ Route::get('/shop/my-account', function () {
 
 Route::get('/shop/order-tracking', function () {
     return view('client.order-tracking');
-});
+})->name('tracking');
+
+Route::get('/shop/contact', function () {
+    return view('client.contact');
+})->name('contact');
+
+Route::get('/shop/about', function () {
+    return view('client.about');
+})->name('about');
 
 Route::get('api/generate-pdf/{id}/{staffName}', [PDFController::class, 'generatePDF']);
 

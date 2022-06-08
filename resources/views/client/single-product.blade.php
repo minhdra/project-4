@@ -25,18 +25,18 @@
               <div class="col-md-4 col-wd-5 woocommerce-product-gallery woocommerce-product-gallery--with-images images">
                 <figure class="woocommerce-product-gallery__wrapper pt-8 mb-0">
                   <div class="u-slick" data-pagi-classes="text-center u-slick__pagination my-4">
-                    <div class="js-slide text-sm-center text-right">
+                    <div class="js-slide text-sm-center text-md-right">
                       <img ng-src="/assets/img/books/@{{item.image}}" width="300px" alt="Image Description" class="mx-auto img-fluid">
+                      <div class="text-center py-2 h-primary arrow-cursor m-sm-auto ml-md-auto mr-md-0" ng-click="openPreview()" style="width:300px !important; margin-left:auto;"><i class="fa fa-th-large" aria-hidden="true"></i> Preview</div>
                     </div>
                   </div>
                 </figure>
-                <div class="text-center py-2 h-primary arrow-cursor" ng-click="openPreview()"><i class="fa fa-th-large" aria-hidden="true"></i> Preview</div>
               </div>
               <div class="col-md-8 col-wd-7 pl-0 summary entry-summary">
                 <div class="pt-8 px-4 px-xl-5 px-wd-7 pb-5">
                   <h1 class="product_title entry-title font-size-5 pb-2 border-bottom mb-0">@{{item.book_name}}</h1>
                   <div class="font-size-2 border-bottom mb-0 py-2">
-                    <span class="text-yellow-darker">
+                    <!-- <span class="text-yellow-darker">
                       <span class="fas fa-star"></span>
                       <span class="fas fa-star"></span>
                       <span class="fas fa-star"></span>
@@ -45,7 +45,9 @@
                     </span>
                     <span class="ml-1 mr-3">(1)</span> |
                     <span class="ml-3 font-weight-medium text-gray-600">Đã bán:</span>
-                    <span class="ml-2 "><strong>@{{40}}</strong></span>
+                    <span class="ml-2 "><strong>@{{40}}</strong></span> -->
+                    <span ng-if="item.quantity > 0" class="text-success">Còn hàng (@{{item.quantity}})</span>
+                    <span ng-if="item.quantity <= 0" class="text-danger">Đã hết hàng</span>
                   </div>
                   <p class="price font-size-3 py-2 border-bottom mb-0 font-weight-medium d-flex justify-content-between">
                     <!-- <span class="woocommerce-Price-amount amount">
@@ -53,7 +55,7 @@
                     </span> – -->
                     <span class="woocommerce-Price-amount amount">
                       <span class="text-primary"><strong>@{{item.prices.price | number}}</strong></span>
-                      <span class="woocommerce-Price-currencySymbol">đ</span>
+                      <span class="woocommerce-Price-currencySymbol">VND</span>
                     </span>
                     <a href="#" class="h-primary"><i class="flaticon-heart mr-2"></i></a>
                   </p>
@@ -113,7 +115,8 @@
                               </div>
                             </div>
                           </div>
-                          <button type="submit" name="add-to-cart" value="7145" class="mb-4 mb-md-0 btn btn-primary border-0 rounded p-2 w-100" ng-click="addCart()">Thêm vào giỏ</button>
+                          <button type="submit" name="add-to-cart" value="7145" class="mb-4 mb-md-0 btn btn-secondary border-0 rounded p-2 w-100" ng-if="item.quantity <= 0">Thêm vào giỏ</button>
+                          <button type="submit" name="add-to-cart" value="7145" class="mb-4 mb-md-0 btn btn-primary border-0 rounded p-2 w-100" ng-click="addCart()" ng-if="item.quantity > 0">Thêm vào giỏ</button>
                         </div>
 
                       </div>
@@ -399,7 +402,7 @@
                       <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                       <div class="font-size-2  mb-2 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length>0?row.book_authors[0].authors.author_name:row.categories.category_name}}</a></div>
                       <div class="price d-flex align-items-center font-weight-medium font-size-2">
-                        <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}</span></span>đ
+                        <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}} </span></span>VND
                       </div>
                     </div>
                     <div class="product__hover d-flex align-items-center">

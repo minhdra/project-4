@@ -40,6 +40,7 @@ function singleBookController($rootScope, $scope, $http) {
       null,
       function (res) {
         $scope.item = res.data.book;
+        console.log(res.data.book);
         $('#des-single').html($scope.item.description);
       }
     );

@@ -101,7 +101,7 @@
         <div class="d-md-flex align-items-center position-relative">
           <div class="site-navigation mx-auto">
             <ul class="nav">
-              <li class="nav-item"><a href="#" class="nav-link link-black-100 mx-3 px-0 py-1 font-weight-medium">Trang chủ</a></li>
+              <li class="nav-item"><a href="{{route('home')}}" class="nav-link link-black-100 mx-3 px-0 py-1 font-weight-medium">Trang chủ</a></li>
               <li class="nav-item dropdown">
                 <a href="{{route('shop')}}" id="shopDropdownInvoker" class="dropdown-toggle nav-link link-black-100 mx-3 px-0 py-1 font-weight-medium d-flex align-items-center target-of-invoker-has-unfolds" aria-haspopup="true" aria-expanded="false" data-unfold-event="hover" data-unfold-target="#shopDropdownMenu" data-unfold-type="css-animation" data-unfold-duration="200" data-unfold-delay="50" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut">
                   Danh mục sản phẩm
@@ -123,12 +123,12 @@
                   Giới thiệu
                 </a>
                 <ul id="introduceDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900 u-unfold--css-animation u-unfold--hidden" aria-labelledby="introduceDropdownInvoker" style="animation-duration: 200ms; left: 0px;">
-                  <li><a href="../blog/blog-v1.html" class="dropdown-item link-black-100">Giới thiệu nhà sách</a></li>
+                  <li><a href="{{route('about')}}" class="dropdown-item link-black-100">Giới thiệu nhà sách</a></li>
                   <li><a href="../blog/blog-v2.html" class="dropdown-item link-black-100">Giới thiệu tác giả</a></li>
                   <li><a href="../blog/blog-v3.html" class="dropdown-item link-black-100">Giới thiệu nhà xuất bản</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a href="#" class="nav-link link-black-100 mx-3 px-0 py-1 font-weight-medium">Liên lạc</a></li>
+              <li class="nav-item"><a href="{{route('contact')}}" class="nav-link link-black-100 mx-3 px-0 py-1 font-weight-medium">Liên lạc</a></li>
             </ul>
           </div>
         </div>

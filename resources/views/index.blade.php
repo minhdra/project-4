@@ -16,7 +16,7 @@
                     <span class="hero__title-line-1 font-weight-regular d-block">Sách nổi bật của</span>
                     <span class="hero__title-line-2 font-weight-bold d-block">Tháng Hai</span>
                   </h2>
-                  <a href="../shop/v1.html" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">Xem thêm</a>
+                  <a href="{{route('shop')}}" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">Xem thêm</a>
                 </div>
               </div>
               <div class="col-lg-5 col-wd-6" data-scs-animation-in="fadeInRight" data-scs-animation-delay="100">
@@ -33,7 +33,7 @@
                     <span class="hero__title-line-1 font-weight-regular d-block">Featured Books of the</span>
                     <span class="hero__title-line-2 font-weight-bold d-block">February</span>
                   </h2>
-                  <a href="../shop/v1.html" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">See More</a>
+                  <a href="{{route('shop')}}" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">See More</a>
                 </div>
               </div>
               <div class="col-lg-5 col-wd-6" data-scs-animation-in="fadeInRight" data-scs-animation-delay="100">
@@ -50,7 +50,7 @@
                     <span class="hero__title-line-1 font-weight-regular d-block">Featured Books of the</span>
                     <span class="hero__title-line-2 font-weight-bold d-block">February</span>
                   </h2>
-                  <a href="../shop/v1.html" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">See More</a>
+                  <a href="{{route('shop')}}" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">See More</a>
                 </div>
               </div>
               <div class="col-lg-5 col-wd-6" data-scs-animation-in="fadeInRight" data-scs-animation-delay="100">
@@ -67,7 +67,7 @@
                     <span class="hero__title-line-1 font-weight-regular d-block">Featured Books of the</span>
                     <span class="hero__title-line-2 font-weight-bold d-block">February</span>
                   </h2>
-                  <a href="../shop/v1.html" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">See More</a>
+                  <a href="{{route('shop')}}" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">See More</a>
                 </div>
               </div>
               <div class="col-lg-5 col-wd-6" data-scs-animation-in="fadeInRight" data-scs-animation-delay="100">
@@ -84,7 +84,7 @@
     <div class="container">
       <header class="mb-5 d-md-flex justify-content-between align-items-center">
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Sách mới</h2>
-        <a href="../shop/v1.html" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
+        <a href="{{route('shop')}}" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
       <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in dataNewest">
@@ -98,7 +98,7 @@
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length > 0 ? row.book_authors[0].authors.author_name : row.categories.category_name}}</a></div>
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
-                  <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
+                  <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}} VND</span></span>
                 </div>
               </div>
               <div class="product__hover d-flex align-items-center">
@@ -124,7 +124,7 @@
     <div class="container">
       <header class="mb-5 d-md-flex justify-content-between align-items-center">
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Sách bán chạy nhất</h2>
-        <a href="../shop/v1.html" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
+        <a href="{{route('shop')}}" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
       <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in dataBestSeller">
@@ -138,7 +138,7 @@
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length > 0 ? row.book_authors[0].authors.author_name : row.categories.category_name}}</a></div>
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
-                  <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
+                  <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}} VND</span></span>
                 </div>
               </div>
               <div class="product__hover d-flex align-items-center">
@@ -170,7 +170,7 @@
     <div class="container">
       <header class="mb-5 d-md-flex justify-content-between align-items-center">
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Manga - Comic</h2>
-        <a href="../shop/v1.html" class="h-primary text-primary d-block">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
+        <a href="{{route('shop')}}" class="h-primary text-primary d-block">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
       <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in books">
@@ -184,7 +184,7 @@
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length > 0 ? row.book_authors[0].authors.author_name : row.categories.category_name}}</a></div>
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
-                  <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
+                  <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}} VND</span></span>
                 </div>
               </div>
               <div class="product__hover d-flex align-items-center">
@@ -216,7 +216,7 @@
     <div class="container">
       <header class="mb-5 d-md-flex justify-content-between align-items-center">
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Doraemon</h2>
-        <a href="../shop/v1.html" class="h-primary text-primary d-block">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
+        <a href="{{route('shop')}}" class="h-primary text-primary d-block">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
       <div class="products no-gutters owl-carousel">
         <div class="product p-1 m-1" ng-repeat="row in books">
@@ -230,7 +230,7 @@
                 <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                 <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length > 0 ? row.book_authors[0].authors.author_name : row.categories.category_name}}</a></div>
                 <div class="price d-flex align-items-center font-weight-medium font-size-2">
-                  <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
+                  <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}} VND</span></span>
                 </div>
               </div>
               <div class="product__hover d-flex align-items-center">

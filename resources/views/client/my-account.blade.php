@@ -40,7 +40,11 @@
         <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-two-example1" role="tabpanel" aria-labelledby="pills-two-example1-tab">
             <div class="pt-5 pl-md-5 pt-lg-8 pl-lg-9 space-bottom-lg-2 mb-lg-4">
-              <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">Đơn hàng của bạn</h6>
+
+              <div class="d-flex justify-content-between align-items-start">
+                <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">Đơn hàng của bạn</h6>
+                <a class="btn btn-wide btn-primary text-white rounded-0 transition-3d-hover" href="{{route('tracking')}}">Tracking</a>
+              </div>
               <table class="table" ng-if="customer.orders.length > 0">
                 <thead>
                   <tr class="border">
@@ -63,7 +67,7 @@
                     </td>
                     <td class="align-middle py-5">
                       <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-dark rounded-0 btn-wide font-weight-medium" data-toggle="modal" ng-click="showDetails(row.id)">Xem chi tiết
+                        <button type="submit" class="btn btn-primary rounded font-weight-medium" data-toggle="modal" ng-click="showDetails(row.id)">Xem chi tiết
                         </button>
                       </div>
                     </td>
@@ -107,7 +111,7 @@
               <div class="pt-5 pl-md-5 pt-lg-8 pl-lg-9">
                 <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">Thông tin của <span class="text-primary">@{{customer.info.full_name ? customer.info.full_name : customer.username}}</span></h6>
                 <div class="font-weight-medium font-size-22 mb-4 pb-xl-1">
-                  
+
                 </div>
                 <div class="row">
                   <div class="col-md-6 mb-4">
@@ -119,13 +123,13 @@
                   <div class="col-md-6 mb-4">
                     <div class="js-form-message">
                       <label for="exampleFormControlInput2">Số điện thoại *</label>
-                      <input type="text" class="form-control rounded-0 pl-3 placeholder-color-3" id="exampleFormControlInput2" name="name" aria-label="Jack Wayley" placeholder="Số điện thoại" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success"  ng-model="customer.info.phone">
+                      <input type="text" class="form-control rounded-0 pl-3 placeholder-color-3" id="exampleFormControlInput2" name="name" aria-label="Jack Wayley" placeholder="Số điện thoại" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success" ng-model="customer.info.phone">
                     </div>
                   </div>
                   <div class="col-md-12 mb-4">
                     <div class="js-form-message">
                       <label for="exampleFormControlInput3">Địa chỉ email</label>
-                      <input type="text" class="form-control rounded-0" name="name" aria-label="Jack Wayley" id="exampleFormControlInput3" required="" placeholder="Địa chỉ email"data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success" ng-model="customer.info.email">
+                      <input type="text" class="form-control rounded-0" name="name" aria-label="Jack Wayley" id="exampleFormControlInput3" required="" placeholder="Địa chỉ email" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success" ng-model="customer.info.email">
                     </div>
                   </div>
                 </div>
@@ -229,12 +233,12 @@
             <tbody>
               <tr class="border" ng-repeat="row in order.details">
                 <th class="pl-3 pl-md-5 font-weight-normal py-5">@{{row.book.book_name}}</th>
-                <td class="py-5">đ@{{row.single_price | number}}</td>
+                <td class="py-5">@{{row.single_price | number}} VND</td>
                 <td class="py-5">@{{row.quantity}}</td>
                 <td class="py-5">
                   <img ng-src="/assets/img/books/@{{row.image}}" alt="" width="100px">
                 </td>
-                <td class="py-5">đ@{{row.single_price*row.quantity | number}}</td>
+                <td class="py-5">@{{row.single_price*row.quantity | number}} VND</td>
               </tr>
             </tbody>
           </table>

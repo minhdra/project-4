@@ -77,7 +77,7 @@
                         <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
                         <div class="font-size-2  mb-2 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length>0?row.book_authors[0].authors.author_name:row.categories.category_name}}</a></div>
                         <div class="price d-flex align-items-center font-weight-medium font-size-2">
-                          <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
+                          <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}} VND</span></span>
                         </div>
                       </div>
                       <div class="product__hover d-flex align-items-center">
@@ -113,7 +113,7 @@
                         <div class="font-size-2  mb-2 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length>0?row.book_authors[0].authors.author_name:row.categories.category_name}}</a></div>
                         <!-- <p class="font-size-2 mb-2 crop-text-2">After disappearing for three years, Artemis Fowl has returned to a life different from the one he left. And spends his days teaching his twin siblings the</p> -->
                         <div class="price d-flex align-items-center font-weight-medium font-size-3">
-                          <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}}đ</span></span>
+                          <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}} VND</span></span>
                         </div>
                       </div>
                       <div class="col-md-auto d-flex align-items-center">
@@ -161,11 +161,11 @@
                   </li>
                   <li class="custom-control custom-checkbox mb-2 pb-2">
                     <input type="radio" name="prices" class="custom-control-input" ng-model="priceFilter" ng-change="handleChangePriceFilter()" value="1" id="underHundred">
-                    <label class="custom-control-label" for="underHundred">Dưới 100.000đ</label>
+                    <label class="custom-control-label" for="underHundred">Dưới 100.000 VND</label>
                   </li>
                   <li class="custom-control custom-checkbox mb-2 pb-2">
                     <input type="radio" name="prices" class="custom-control-input" ng-model="priceFilter" ng-change="handleChangePriceFilter()" value="2" id="100to200">
-                    <label class="custom-control-label" for="100to200">Từ 100.000đ - 200.000đ</label>
+                    <label class="custom-control-label" for="100to200">Từ 100.000 VND - 200.000 VND</label>
                   </li>
                 </ul>
               </div>
