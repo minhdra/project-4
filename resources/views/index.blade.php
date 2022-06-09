@@ -1,81 +1,18 @@
 @extends('_client_layout')
 @section('content')
 
-<div ng-controller="homeController" class="m-auto">
+<div ng-controller="homeController" class="m-auto" ng-init="loadData(); loadSlides();">
   <!-- Slider -->
   <section class="space-bottom-3 m-auto">
-    <div class="bg-gray-200 space-2 space-lg-0 bg-img-hero" style="background-image: url(/assets/img/1920x588/img1.jpg);">
+    <div class="space-2 space-lg-0">
       <div class="container">
-        <div class="owl-carousel slides">
-          <div class="js-slide">
-            <div class="hero row min-height-588 align-items-center">
-              <div class="col-lg-7 col-wd-6 mb-4 mb-lg-0">
-                <div class="media-body mr-wd-4 align-self-center mb-4 mb-md-0">
-                  <p class="hero__pretitle text-uppercase font-weight-bold text-gray-400 mb-2" data-scs-animation-in="fadeInUp" data-scs-animation-delay="200">Bộ sưu tập của Bookworm</p>
-                  <h2 class="hero__title font-size-14 mb-4" data-scs-animation-in="fadeInUp" data-scs-animation-delay="100">
-                    <span class="hero__title-line-1 font-weight-regular d-block">Sách nổi bật của</span>
-                    <span class="hero__title-line-2 font-weight-bold d-block">Tháng Hai</span>
-                  </h2>
-                  <a href="{{route('shop')}}" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">Xem thêm</a>
-                </div>
-              </div>
-              <div class="col-lg-5 col-wd-6" data-scs-animation-in="fadeInRight" data-scs-animation-delay="100">
-                <img class="img-fluid" ng-src="/assets/img/800x420/img1.png" alt="image-description">
-              </div>
-            </div>
+        <data-owl-carousel class="owl-carousel slides" data-options="{loop:true, nav: true}">
+          <div owl-carousel-item="" class="" ng-repeat="row in slides">
+            <a href="@{{row.link}}" class="hero row min-height-588 align-items-center">
+              <img width="100%" ng-src="/assets/img/slides/@{{row.image}}" alt="">
+            </a>
           </div>
-          <div class="js-slide">
-            <div class="hero row min-height-588 align-items-center">
-              <div class="col-lg-7 col-wd-6 mb-4 mb-lg-0">
-                <div class="media-body mr-wd-4 align-self-center mb-4 mb-md-0">
-                  <p class="hero__pretitle text-uppercase font-weight-bold text-gray-400 mb-2" data-scs-animation-in="fadeInUp" data-scs-animation-delay="200">The Bookworm Editors'</p>
-                  <h2 class="hero__title font-size-14 mb-4" data-scs-animation-in="fadeInUp" data-scs-animation-delay="100">
-                    <span class="hero__title-line-1 font-weight-regular d-block">Featured Books of the</span>
-                    <span class="hero__title-line-2 font-weight-bold d-block">February</span>
-                  </h2>
-                  <a href="{{route('shop')}}" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">See More</a>
-                </div>
-              </div>
-              <div class="col-lg-5 col-wd-6" data-scs-animation-in="fadeInRight" data-scs-animation-delay="100">
-                <img class="img-fluid" ng-src="/assets/img/800x420/img1.png" alt="image-description">
-              </div>
-            </div>
-          </div>
-          <div class="js-slide">
-            <div class="hero row min-height-588 align-items-center">
-              <div class="col-lg-7 col-wd-6 mb-4 mb-lg-0">
-                <div class="media-body mr-wd-4 align-self-center mb-4 mb-md-0">
-                  <p class="hero__pretitle text-uppercase font-weight-bold text-gray-400 mb-2" data-scs-animation-in="fadeInUp" data-scs-animation-delay="200">The Bookworm Editors'</p>
-                  <h2 class="hero__title font-size-14 mb-4" data-scs-animation-in="fadeInUp" data-scs-animation-delay="100">
-                    <span class="hero__title-line-1 font-weight-regular d-block">Featured Books of the</span>
-                    <span class="hero__title-line-2 font-weight-bold d-block">February</span>
-                  </h2>
-                  <a href="{{route('shop')}}" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">See More</a>
-                </div>
-              </div>
-              <div class="col-lg-5 col-wd-6" data-scs-animation-in="fadeInRight" data-scs-animation-delay="100">
-                <img class="img-fluid" ng-src="/assets/img/800x420/img1.png" alt="image-description">
-              </div>
-            </div>
-          </div>
-          <div class="js-slide">
-            <div class="hero row min-height-588 align-items-center">
-              <div class="col-lg-7 col-wd-6 mb-4 mb-lg-0">
-                <div class="media-body mr-wd-4 align-self-center mb-4 mb-md-0">
-                  <p class="hero__pretitle text-uppercase font-weight-bold text-gray-400 mb-2" data-scs-animation-in="fadeInUp" data-scs-animation-delay="200">The Bookworm Editors'</p>
-                  <h2 class="hero__title font-size-14 mb-4" data-scs-animation-in="fadeInUp" data-scs-animation-delay="100">
-                    <span class="hero__title-line-1 font-weight-regular d-block">Featured Books of the</span>
-                    <span class="hero__title-line-2 font-weight-bold d-block">February</span>
-                  </h2>
-                  <a href="{{route('shop')}}" class="btn btn-dark btn-wide rounded-0 hero__btn" data-scs-animation-in="fadeInLeft" data-scs-animation-delay="100">See More</a>
-                </div>
-              </div>
-              <div class="col-lg-5 col-wd-6" data-scs-animation-in="fadeInRight" data-scs-animation-delay="100">
-                <img class="img-fluid" ng-src="/assets/img/800x420/img1.png" alt="image-description">
-              </div>
-            </div>
-          </div>
-        </div>
+        </data-owl-carousel>
       </div>
     </div>
   </section>
@@ -86,8 +23,8 @@
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Sách mới</h2>
         <a href="{{route('shop')}}" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-      <div class="products no-gutters owl-carousel">
-        <div class="product p-1 m-1" ng-repeat="row in dataNewest">
+      <data-owl-carousel class="products no-gutters owl-carousel" data-options="{loop:false, items: 5, autoplay: false, nav: true, dots: false}">
+        <div owl-carousel-item="" class="product p-1 m-1" ng-repeat="row in dataNewest">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
               <div class="woocommerce-loop-product__thumbnail">
@@ -116,7 +53,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </data-owl-carousel>
     </div>
   </section>
   <!-- Best seller books -->
@@ -126,8 +63,8 @@
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Sách bán chạy nhất</h2>
         <a href="{{route('shop')}}" class="h-primary d-block text-primary">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-      <div class="products no-gutters owl-carousel">
-        <div class="product p-1 m-1" ng-repeat="row in dataBestSeller">
+      <data-owl-carousel class="products no-gutters owl-carousel" data-options="{loop:false, items: 5, autoplay: false, nav: true, dots: false}">
+        <div owl-carousel-item="" class="product p-1 m-1" ng-repeat="row in dataBestSeller">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
               <div class="woocommerce-loop-product__thumbnail">
@@ -156,7 +93,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </data-owl-carousel>
     </div>
   </section>
   <!-- Banner -->
@@ -172,8 +109,8 @@
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Manga - Comic</h2>
         <a href="{{route('shop')}}" class="h-primary text-primary d-block">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-      <div class="products no-gutters owl-carousel">
-        <div class="product p-1 m-1" ng-repeat="row in books">
+      <data-owl-carousel class="products no-gutters owl-carousel" data-options="{loop:false, items: 5, autoplay: false, nav: true, dots: false}">
+        <div owl-carousel-item="" class="product p-1 m-1" ng-repeat="row in books">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
               <div class="woocommerce-loop-product__thumbnail">
@@ -202,7 +139,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </data-owl-carousel>
     </div>
   </section>
   <!-- Banner -->
@@ -218,8 +155,8 @@
         <h2 class="font-size-5 mb-3 mb-md-0 text-uppercase">Doraemon</h2>
         <a href="{{route('shop')}}" class="h-primary text-primary d-block">Xem tất cả <i class="glyph-icon flaticon-next"></i></a>
       </header>
-      <div class="products no-gutters owl-carousel">
-        <div class="product p-1 m-1" ng-repeat="row in books">
+      <data-owl-carousel class="products no-gutters owl-carousel" data-options="{loop:false, items: 5, autoplay: false, nav: true, dots: false}">
+        <div owl-carousel-item="" class="product p-1 m-1" ng-repeat="row in books">
           <div class="product__inner overflow-hidden">
             <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
               <div class="woocommerce-loop-product__thumbnail">
@@ -248,7 +185,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </data-owl-carousel>
     </div>
   </section>
   <!-- Favorite authors -->

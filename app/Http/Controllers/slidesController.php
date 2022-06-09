@@ -14,7 +14,7 @@ class slidesController extends Controller
      */
     public function index()
     {
-        $slides = slides::where('is_active', 1)->get();
+        $slides = slides::where('is_active', 1)->orderBy('sort_order')->get();
         return ['slides'=>$slides];
     }
 

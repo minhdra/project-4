@@ -390,8 +390,8 @@
             <header class="mb-5 d-md-flex justify-content-between align-items-center">
               <h2 class="font-size-5 mb-3 mb-md-0">Có thể bạn cũng quan tâm</h2>
             </header>
-            <div class="products no-gutters owl-carousel">
-              <div class="product p-1 m-1" ng-repeat="row in similar">
+            <data-owl-carousel class="products no-gutters owl-carousel" data-options="{loop:false, items: 5, autoplay: false, nav: true, dots: false}">
+              <div owl-carousel-item="" class="product p-1 m-1" ng-repeat="row in similar">
                 <div class="product__inner overflow-hidden">
                   <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                     <div class="woocommerce-loop-product__thumbnail">
@@ -400,9 +400,9 @@
                     <div class="woocommerce-loop-product__body product__body pt-3 bg-white">
                       <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="/shop/list/@{{row.id}}">@{{row.type}}</a></div>
                       <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2"><a href="/shop/list/@{{row.id}}">@{{row.book_name}}</a></h2>
-                      <div class="font-size-2  mb-2 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length>0?row.book_authors[0].authors.author_name:row.categories.category_name}}</a></div>
+                      <div class="font-size-2  mb-1 text-truncate"><a href="../others/authors-single.html" class="text-gray-700">@{{row.book_authors.length > 0 ? row.book_authors[0].authors.author_name : row.categories.category_name}}</a></div>
                       <div class="price d-flex align-items-center font-weight-medium font-size-2">
-                        <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}} </span></span>VND
+                        <span class="woocommerce-Price-amount amount text-primary"><span class="text-primary"> @{{row.prices.price | number}} VND</span></span>
                       </div>
                     </div>
                     <div class="product__hover d-flex align-items-center">
@@ -420,7 +420,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </data-owl-carousel>
           </div>
         </section>
       </div>

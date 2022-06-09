@@ -33,18 +33,18 @@
                             <th>Thứ tự</th>
                             <th>Ảnh</th>
                             <th>Tác vụ</th>
+                            
                           </tr>
                         </thead>
                         <tbody>
                           <tr dir-paginate="row in data|filter: q|itemsPerPage:10" current-page="currentPage">
                             <td>@{{$index+1}}</td>
-                            <td>@{{row.category_name}}</td>
+                            <td class="info"><a href="@{{row.link}}">@{{row.link}}</a></td>
+                            <td>@{{row.sort_order}}</td>
+                            <td><img width="300px" ng-src="/assets/img/slides/@{{row.image}}"></td>
                             <td>
                               <a class="success p-0" data-original-title="" ng-click="openModal(row.id)" data-toggle="tooltip" title="Sửa">
                                 <i class="fa fa-pencil font-medium-3 mr-2"></i>
-                              </a>
-                              <a class="info p-0" data-original-title="" data-toggle="tooltip" title="check">
-                                <i class="fa fa-check font-medium-3 mr-2"></i>
                               </a>
                               <a class="danger p-0" data-original-title="" data-toggle="tooltip" title="Xóa" ng-click="deleteClick(row.id)">
                                 <i class="fa fa-trash-o font-medium-3 mr-2"></i>
@@ -104,8 +104,8 @@
               <div class="col-xl-4 col-lg-4 col-md-12 mb-1"></div>
               <div class="col-xl-4 col-lg-4 col-md-12 mb-1">
                 <div>
-                  <img ng-if="book.image == '' || book.image==null" ng-src="/assets/img/books/book_temp.png" id="img_prv" style="max-width: 150px;max-height: 150px;min-width: 150px;min-height: 150px" class="img-thumbnail" alt="">
-                  <img id="img_prv" ng-if="book.image != '' && book.image!=null" ng-src="/assets/img/books/@{{book.image}}" id="img_prv" style="max-width: 150px;max-height: 150px;min-width: 150px;min-height: 150px" class="img-thumbnail" alt="">
+                  <img ng-if="item.image == '' || item.image==null" ng-src="/assets/img/books/book_temp.png" id="img_prv" style="max-width: 150px;max-height: 150px;min-width: 150px;min-height: 150px" class="img-thumbnail" alt="">
+                  <img id="img_prv" ng-if="item.image != '' && item.image!=null" ng-src="/assets/img/slides/@{{item.image}}" id="img_prv" style="max-width: 150px;max-height: 150px;min-width: 150px;min-height: 150px" class="img-thumbnail" alt="">
                 </div>
               </div>
             </div>
