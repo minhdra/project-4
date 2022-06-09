@@ -14,7 +14,7 @@ class order_details extends Model
     }
 
     public function book() {
-        return $this->belongsTo(books::class, 'book_id')->where('is_active', 1);
+        return $this->belongsTo(books::class, 'book_id', 'id')->where('is_active', 1);
     }
 
     public function insertDetail($data, $order_id) {

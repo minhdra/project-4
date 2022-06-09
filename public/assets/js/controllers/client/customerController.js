@@ -278,4 +278,23 @@ function customerController($scope, $http) {
     $('.my__account-nav .nav-item span').removeClass('active');
     $(event.target).addClass('active');
   }
+
+  // Increase or decrease the count
+  // $scope.changedCount = (check, index) => {
+  //   $scope.customer.cart_details[index].quantity;
+  //   if (check === 0) $scope.customer.cart_details[index].quantity++;
+  //   else {
+  //     if ($scope.customer.cart_details[index].quantity > 1)
+  //       $scope.customer.cart_details[index].quantity--;
+  //   }
+
+  //   connect_api(
+  //     'PUT',
+  //     baseApi + nameCartDetail + $scope.customer.cart_details[index].id,
+  //     $scope.customer.cart_details[index],
+  //     function (res) {
+  //       $scope.countTotal();
+  //     }
+  //   );
+  // };
 }

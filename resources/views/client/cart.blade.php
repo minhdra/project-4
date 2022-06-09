@@ -1,6 +1,6 @@
 @extends('_client_layout')
 @section('content')
-<div class="right-sidebar woocommerce-cart" ng-controller="headerController" ng-init="loadData()">
+<div class="right-sidebar woocommerce-cart" ng-controller="customerController" ng-init="loadData()">
   <div class="page-header border-bottom">
     <div class="container">
       <div class="d-md-flex justify-content-between align-items-center py-4">
@@ -25,7 +25,7 @@
 
               <div class="entry-content">
                 <div class="woocommerce">
-                  <form class="woocommerce-cart-form table-responsive" action="#" method="post">
+                  <div class="woocommerce-cart-form table-responsive" ng-if="customer.cart_details.length > 0">
                     <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents">
                       <thead>
                         <tr>
@@ -37,7 +37,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="woocommerce-cart-form__cart-item cart_item" ng-repeat="row in customer.cart_details">
+                        <tr class="woocommerce-cart-form__cart-item cart_item" ng-repeat="row in $root.customer.cart_details">
                           <td class="product-name" data-title="Product">
                             <div class="d-flex align-items-start">
                               <a href="#">
@@ -89,7 +89,10 @@
                         </tr>
                       </tbody>
                     </table>
-                  </form>
+                  </div>
+                  <div ng-if="customer.cart_details.length === 0" class="woocommerce-cart-form">
+                    <h1>Bạn chưa có sản phẩm nào trong giỏ hàng</h1>
+                  </div>
                 </div>
               </div>
 
@@ -147,7 +150,8 @@
             </div>
           </div>
           <div class="wc-proceed-to-checkout">
-            <a href="{{route('checkout')}}" class="checkout-button button alt wc-forward btn btn-primary btn-block rounded-0">Tiến hành thanh toán</a>
+            <a href="{{route('checkout')}}" class="checkout-button button alt wc-forward btn btn-primary btn-block rounded-0" ng-if="$root.total > 0">Tiến hành thanh toán</a>
+            <a class="checkout-button button alt wc-forward btn btn-secondary btn-block rounded-0 text-white" ng-if="$root.total <= 0">Tiến hành thanh toán</a>
           </div>
         </div>
       </div>
