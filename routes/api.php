@@ -42,7 +42,7 @@ use App\Http\Controllers\api\rolesController;
 use App\Http\Controllers\api\SlideController;
 use App\Http\Controllers\api\staffsController;
 use App\Http\Controllers\api\wardsController;
-
+use App\Http\Controllers\slidesController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -63,6 +63,7 @@ Route::resource('cart_details', cart_detailsController::class);
 Route::resource('orders', ordersController::class);
 Route::resource('order_details', order_detailsController::class);
 Route::resource('order_status', order_statusController::class);
+Route::resource('slides', slidesController::class);
 
 Route::post('staffs/checkLogin',[staffsController::class,'checkLogin']);
 Route::post('orders/get_all', [ordersController::class, 'get_all']);
@@ -82,4 +83,5 @@ Route::get('book/getNewest', [booksController::class, 'getNewest'])->name('getNe
 Route::get('book/getBestSeller', [booksController::class, 'getBestSeller'])->name('getBestSeller');
 Route::post('book/upload', [booksController::class, 'uploadFile'])->name('upload.uploadfile');
 Route::get('book/get_basic', [booksController::class, 'get_basic'])->name('book.get_basic');
+Route::post('slide/upload', [slidesController::class, 'uploadFile']);
 

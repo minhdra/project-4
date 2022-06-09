@@ -75,7 +75,6 @@
   <!-- Content -->
   @yield('content')
 
-
   <!-- Footer -->
   @include('includes.client.footer')
 

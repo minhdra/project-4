@@ -27,6 +27,12 @@
             </li>
           </ul>
         </li>
+        <li class="has-sub nav-item"><a href="#"><i class="icon-screen-desktop"></i><span data-i18n="" class="menu-title">Quản trị website</span></a>
+          <ul class="menu-content">
+            <li ng-class="getClass('/slides')"><a href="/admin/slides" class="menu-item">Quản lý slides</a>
+            </li>
+          </ul>
+        </li>
         <li class=" nav-item"><a href=""><i class="icon-support"></i><span data-i18n="" class="menu-title">Support</span></a>
         </li>
       </ul>

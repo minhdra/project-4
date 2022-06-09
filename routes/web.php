@@ -104,6 +104,10 @@ Route::get('/admin/invoices', function () {
     return view('admin.invoices');
 });
 
+Route::get('/admin/slides', function () {
+    return view('admin.slides');
+});
+
 
 
 
